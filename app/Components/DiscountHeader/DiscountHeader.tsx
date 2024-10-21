@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css'
+import styles from './Discount.module.css'
 
 interface Props{
     text:string;
@@ -27,7 +27,7 @@ const DiscountHeader:React.FC<Props>=(props)=>{
       }
 
     return(
-        <div className='header'>{props.text}</div>
+        <div className={styles.header}>{props.text}</div>
         );
 
 }

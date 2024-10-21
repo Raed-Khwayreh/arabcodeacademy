@@ -21,10 +21,15 @@ const DiscountHeader:React.FC<Props>=(props)=>{
     const endDate = new Date(props.endDate);
     const isValid = isInRange(currentDate, startDate, endDate);
     
+
+    if (!isValid) {
+        return null; 
+      }
+
     return(
         <div className='header'>
 
-        {isValid ? props.text : null}        
+        {props.text}        
 
         </div>
 

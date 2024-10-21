@@ -27,17 +27,8 @@ const DiscountHeader:React.FC<Props>=(props)=>{
       }
 
     return(
-        <div className='header'>
-
-        {props.text}        
-
-        </div>
-
-
-
-
-    );
-
+        <div className='header'>{props.text}</div>
+        );
 
 }
 

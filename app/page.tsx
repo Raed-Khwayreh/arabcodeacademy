@@ -5,7 +5,7 @@ export default function Home() {
     <div>
       <DiscountHeader text="خصومات بنسبة 20% على الكورسات"
         startDate="2024-10-20T00:00:00" 
-        endDate="2024-10-22T18:37:36"   />
+        endDate="2024-10-24T18:55:10"   />
     </div>
   );
 }

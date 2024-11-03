@@ -1,29 +1,19 @@
 import React from "react";
 import styles from "./Discount.module.css";
-
+import { isInRange } from "@/app/utils/utilities";
 interface Props {
   text: string;
   startDate: string;
   endDate: string;
 }
 
-const isInRange = (currentDate: Date, startDate: Date, endDate: Date) => {
-  const isAfterStart = currentDate >= startDate;
-  const isBeforeEnd = currentDate <= endDate;
-  return isAfterStart && isBeforeEnd;
-};
-
-const DiscountHeader: React.FC<Props> = (props) => {
+const DiscountHeader: React.FC<Props> = ({ text, startDate, endDate }) => {
   const currentDate = new Date();
-  const startDate = new Date(props.startDate);
-  const endDate = new Date(props.endDate);
-  const isValid = isInRange(currentDate, startDate, endDate);
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  const isValid = isInRange(currentDate, start, end);
 
-  if (!isValid) {
-    return null;
-  }
-
-  return <div className={styles.header}>{props.text}</div>;
+  return isValid && <div className={styles.header}>{text}</div>;
 };
 
 export default DiscountHeader;

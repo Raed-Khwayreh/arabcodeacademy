@@ -39,7 +39,7 @@ export default function RootLayout({
         <DiscountHeader
           text="خصومات بنسبة 20% على الكورسات"
           startDate="2024-10-20T00:00:00"
-          endDate="2024-10-24T18:55:10"
+          endDate="2025-10-24T18:55:10"
         />
         {children}
       </body>

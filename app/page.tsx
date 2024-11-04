@@ -20,9 +20,9 @@ const Example = () => (
       size="medium"
       icon={<Image src={profileIconSrc} alt="Icon" />}
     />
-    <Button text="المدونة" variant="transparent" size="medium" />
+    <Button text="المدونة" variant="transparent" size="large" />
 
-    <Button text="المزيد..." variant="teal" size="small" icon={<Image src={moreIconSrc} alt="Icon"/>} />
+    <Button text="...المزيد" variant="teal" size="small" icon={<Image src={moreIconSrc} alt="Icon"/>} />
 
   </div>
 );

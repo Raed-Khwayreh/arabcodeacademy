@@ -1,0 +1,9 @@
+.header {
+  background-color: #462576;
+  padding: 32px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 17px;
+  font-family: var(--font-tajawal), sans-serif;
+  font-weight: bold;
+}

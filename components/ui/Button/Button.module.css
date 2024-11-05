@@ -1,0 +1,137 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Tajawal", sans-serif;
+  color: #ffffff;
+}
+
+.transparent {
+  background-color: transparent;
+}
+.primary {
+  background-color: var(--primary-color);
+}
+
+.secondary {
+  background-color: var(--secondary-color);
+}
+
+.teal {
+  background-color: var(--teal-color);
+}
+
+.tomato {
+  background-color: var(--tomato-color);
+}
+
+.small,
+.medium,
+.large {
+  box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  border: none;
+}
+.small {
+  font-size: 14px;
+  min-width: 100px;
+  height: 40px;
+  font-weight: 700;
+  gap: 10px;
+}
+
+.medium {
+  font-size: 14px;
+  padding: 14px 36px;
+  min-width: 150px;
+  height: 50px;
+  gap: 10px;
+  font-weight: 700;
+}
+
+.large {
+  font-size: 15px;
+  padding: 26px 51px;
+  min-width: 100px;
+  height: 40px;
+  font-weight: 500;
+  font-size: 15px;
+  gap: 8px;
+  font-weight: 900;
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+  .small,
+  .medium,
+  .large {
+    box-shadow: 0px 1px 20px 2px rgba(0, 0, 0, 0.25);
+    border: none;
+  }
+  .small {
+    font-size: 19px;
+    min-width: 160px;
+    height: 50px;
+    font-weight: 700;
+    gap: 10px;
+    border-radius: 10px;
+  }
+
+  .medium {
+    font-size: 20px;
+    padding: 14px 36px;
+    min-width: 234px;
+    height: 70px;
+    gap: 10px;
+    font-weight: 700;
+    border-radius: 5px;
+  }
+
+  .large {
+    font-size: 20px;
+    padding: 26px 51px;
+    min-width: 330px;
+    height: 85px;
+    font-weight: 500;
+    font-size: 15px;
+    gap: 15px;
+    font-weight: 900;
+    border-radius: 10px;
+  }
+}
+
+@media (min-width: 901px) {
+  .small,
+  .medium,
+  .large {
+    box-shadow: 0px 1px 20px 1px rgba(0, 0, 0, 0.25);
+    border: none;
+    font-size: 17px;
+  }
+  .small {
+    min-width: 140px;
+    height: 44px;
+    font-weight: 700;
+    gap: 10px;
+    border-radius: 10px;
+  }
+
+  .medium {
+    padding: 14px 36px;
+    min-width: 200px;
+    height: 60px;
+    gap: 10px;
+    font-weight: 700;
+    border-radius: 5px;
+  }
+
+  .large {
+    padding: 26px 51px;
+    min-width: 310px;
+    height: 80px;
+    font-weight: 500;
+    font-size: 15px;
+    gap: 10px;
+    font-weight: 900;
+    border-radius: 10px;
+  }
+}

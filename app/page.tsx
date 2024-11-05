@@ -1,9 +1,9 @@
 import React from "react";
-import Button from "./Components/Button/Button";
-import loginIconSrc from "./Components/Button/buttonSvgIcons/🦆 icon _log in_.svg";
-import profileIconSrc from "./Components/Button/buttonSvgIcons/🦆 icon _profile circled_ (1).svg";
-import moreIconSrc from "./Components/Button/buttonSvgIcons/🦆 icon _more horiz circled outline_.svg";
-
+import Button from "../components/ui/Button/Button";
+import loginIconSrc from "../components/ui/Button/buttonSvgIcons/🦆 log_in.svg";
+import profileIconSrc from "../components/ui/Button/buttonSvgIcons/🦆 profile_circled.svg";
+import moreIconSrc from "../components/ui/Button/buttonSvgIcons/🦆more_horiz_circled_outline.svg";
+import chalkboardTeacher from "../components/ui/Button/buttonSvgIcons/🦆 Chalkboard_Teacher.svg";
 import Image from "next/image";
 
 const Example = () => (
@@ -14,14 +14,21 @@ const Example = () => (
       size="medium"
       icon={<Image src={loginIconSrc} alt="Icon" />}
     />
+    <br/>
+    <br/>
     <Button
       text="انشاء حساب "
       variant="teal"
       size="medium"
       icon={<Image src={profileIconSrc} alt="Icon" />}
     />
-    <Button text="المدونة" variant="transparent" size="large" />
 
+<br/>
+<br/>
+    <Button text="المسارات التعليمية" variant="teal" size="large" icon={<Image src={chalkboardTeacher} alt="Icon" />
+      }  />
+    <br/>
+    <br/>
     <Button text="...المزيد" variant="teal" size="small" icon={<Image src={moreIconSrc} alt="Icon"/>} />
 
   </div>

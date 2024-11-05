@@ -4,7 +4,7 @@ import styles from "./ACAButton.module.css";
 interface Props {
   text: string;
   variant: "primary" | "secondary" | "teal" | "tomato" | "transparent";
-  size: "small" | "medium" | "large";
+  size: "small" | "medium" | "large" | "xlarge" ;
   icon?: React.ReactNode;
 }
 

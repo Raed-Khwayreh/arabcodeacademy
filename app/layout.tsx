@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-// import { Tajawal } from "next/font/google";
 import "./globals.css";
 import "../styles/variables.css";
-import DiscountHeader from "./Components/DiscountHeader/DiscountHeader";
+import DiscountHeader from "../components/ui/DiscountHeader/DiscountHeader";
 import { Provider } from "../components/ui/provider";
 
 const tajawal = localFont({

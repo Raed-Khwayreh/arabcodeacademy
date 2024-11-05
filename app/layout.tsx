@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+// import { Tajawal } from "next/font/google";
 import "./globals.css";
 import "../styles/variables.css";
+import DiscountHeader from "./Components/DiscountHeader/DiscountHeader";
 import { Provider } from "../components/ui/provider";
 
 const tajawal = localFont({
@@ -59,8 +61,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${tajawal.variable}`}>
-        <Provider>{children}</Provider>
+      <body
+        className={`${tajawal.variable}`}
+      >
+         <Provider>
+        <DiscountHeader
+          text="خصومات بنسبة 20% على الكورسات"
+          startDate="2024-10-20T00:00:00"
+          endDate="2025-10-24T18:55:10"
+        />
+        {children}
+        </Provider>
       </body>
     </html>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Button.module.css";
+import styles from "./ACAButton.module.css";
 
 interface Props {
   text: string;
@@ -8,7 +8,7 @@ interface Props {
   icon?: React.ReactNode;
 }
 
-const Button: React.FC<Props> = ({ text, variant, size, icon }) => {
+const ACAButton: React.FC<Props> = ({ text, variant, size, icon }) => {
   const buttonClass = `${styles.button} ${styles[variant]} ${styles[size]}`;
 
   return (
@@ -19,4 +19,4 @@ const Button: React.FC<Props> = ({ text, variant, size, icon }) => {
   );
 };
 
-export default Button;
+export default ACAButton;

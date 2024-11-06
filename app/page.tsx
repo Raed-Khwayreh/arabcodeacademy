@@ -1,7 +1,12 @@
 import React from "react";
+import InteractiveTools from "../sections/InteractiveTools/InteractiveTools";
 
 const page = () => {
-  return <div></div>;
+  return (
+    <div>
+      <InteractiveTools />
+    </div>
+  );
 };
 
 export default page;

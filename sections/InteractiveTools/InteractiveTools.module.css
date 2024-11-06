@@ -1,0 +1,26 @@
+.interactive-tools {
+  display: flex;
+  position: relative;
+  background-position: center;
+  background-image: url("/images/interactive-tools-image.png");
+  background-size: cover;
+  height: 856px;
+}
+
+.promo-text-container {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 148px;
+}
+
+@media (max-width: 1400px) {
+  .interactive-tools {
+    display: flex;
+    justify-content: center;
+  }
+  .promo-text-container {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

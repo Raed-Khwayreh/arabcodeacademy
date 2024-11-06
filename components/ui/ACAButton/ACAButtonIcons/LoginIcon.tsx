@@ -1,6 +1,10 @@
 import { SVGProps } from "../../../../types/SVGProps";
 
-const LogOutIcon: React.FC<SVGProps> = ({ width, height, color }) => {
+const LogOutIcon: React.FC<SVGProps> = ({
+  width = "34",
+  height = "34",
+  color = "white",
+}) => {
   return (
     <svg
       width={width}

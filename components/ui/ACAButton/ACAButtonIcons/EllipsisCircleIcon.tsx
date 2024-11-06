@@ -2,8 +2,8 @@ import React from "react";
 import { SVGProps } from "../../../../types/SVGProps";
 
 const EllipsisCircleIcon: React.FC<SVGProps> = ({
-  width = "28",
-  height = "28",
+  width = "34",
+  height = "34",
   color = "white",
 }) => {
   return (

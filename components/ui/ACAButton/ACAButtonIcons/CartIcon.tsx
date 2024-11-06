@@ -1,9 +1,13 @@
 import React from "react";
 import { SVGProps } from "../../../../types/SVGProps";
 
-const CartIcon: React.FC<SVGProps> = ({ width, height, color }) => {
+const CartIcon: React.FC<SVGProps> = ({
+  width = "34",
+  height = "34",
+  color = "white",
+}) => {
   return (
-    <svg
+    <svg 
       width={width}
       height={height}
       viewBox="0 0 27 28"

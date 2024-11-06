@@ -1,7 +1,11 @@
 import React from "react";
 import { SVGProps } from "../../../../types/SVGProps";
 
-const ChalkboardTeacher: React.FC<SVGProps> = ({ width, height, color }) => {
+const ChalkboardTeacher: React.FC<SVGProps> = ({
+  width = "34",
+  height = "34",
+  color = "white",
+}) => {
   return (
     <svg
       width={width}

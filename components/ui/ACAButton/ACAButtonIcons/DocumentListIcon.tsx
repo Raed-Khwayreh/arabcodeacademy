@@ -1,7 +1,11 @@
 import React from "react";
 import { SVGProps } from "../../../../types/SVGProps";
 
-const DocumentListIcon: React.FC<SVGProps> = ({ width = "28", height = "28", color = "white" }) => {
+const DocumentListIcon: React.FC<SVGProps> = ({
+  width = "34",
+  height = "34",
+  color = "white",
+}) => {
   return (
     <svg
       width={width}

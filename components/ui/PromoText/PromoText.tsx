@@ -13,21 +13,21 @@ const PromoText: React.FC<PromoTextProps> = ({
   title,
   text,
   button,
-  border,
-  opacity,
+  border = false,
+  opacity = 1,
 }) => {
   return (
     <div
       className={`${styles.container} ${border ? styles.withBorder : ""} ${
-        opacity ? styles.overlay : ""
+        opacity < 1 ? styles.overlay : ""
       }`}
       style={{
-        backgroundColor: opacity
-          ? `rgba(255, 255, 255, ${opacity})`
-          : "#ffffff",
+        backgroundColor: `rgba(255, 255, 255, ${opacity})`,
       }}
     >
-      <h1 className={styles.title}>{title}</h1>
+      <h1 className={`${styles.title} ${button ? styles.titleWithButton : styles.titleWithoutButton}`}>
+        {title}
+      </h1>
       <p className={styles.content}>{text}</p>
       {button && <div className={styles.buttonContainer}>{button}</div>}
     </div>

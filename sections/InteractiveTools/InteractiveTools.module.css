@@ -9,8 +9,8 @@
 
 .promo-text-container {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 40%;
+  transform: translateY(-40%);
   left: 148px;
 }
 
@@ -18,10 +18,9 @@
   .interactive-tools {
     display: flex;
     justify-content: center;
-    height: 640px;
   }
   .promo-text-container {
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-40%, -50%);
   }
 }

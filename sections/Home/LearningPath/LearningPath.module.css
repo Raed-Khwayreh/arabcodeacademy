@@ -1,0 +1,47 @@
+.learning_path_section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 4rem;
+  gap: 4rem;
+ 
+}
+
+.img_container {
+  position: relative;
+  width: 100%;
+  max-width: 886.23px;
+  height: auto;
+  object-fit: cover;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+}
+
+.promotext_style {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+@media (max-width: 1400px) {
+  .learning_path_section {
+    flex-direction: column-reverse;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 786px) {
+  .learning_path_section {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .img_container {
+    width: 300px;
+    height: auto;
+  }
+}

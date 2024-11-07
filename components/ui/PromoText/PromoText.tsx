@@ -25,7 +25,11 @@ const PromoText: React.FC<PromoTextProps> = ({
         backgroundColor: `rgba(255, 255, 255, ${opacity})`,
       }}
     >
-      <h1 className={`${styles.title} ${button ? styles.titleWithButton : styles.titleWithoutButton}`}>
+      <h1
+        className={`${styles.title} ${
+          button ? styles.titleWithButton : styles.titleWithoutButton
+        }`}
+      >
         {title}
       </h1>
       <p className={styles.content}>{text}</p>

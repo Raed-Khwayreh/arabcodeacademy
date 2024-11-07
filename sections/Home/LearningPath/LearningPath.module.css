@@ -4,13 +4,11 @@
   align-items: center;
   padding: 4rem;
   gap: 4rem;
- 
 }
 
 .img_container {
   position: relative;
   width: 100%;
-  max-width: 886.23px;
   height: auto;
   object-fit: cover;
 }

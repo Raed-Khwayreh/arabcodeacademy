@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
-import PromoText from "../../../components/ui/PromoText/PromoText";
 import Image from "next/image";
 import ImageSource from "@/public/images/learning-path-image.png";
 import styles from "./LearningPath.module.css";
 import ACAButton from "@/components/ui/ACAButton/ACAButton";
+import PromoText from "@/components/ui/PromoText/PromoText";
 
 const LearningPath = () => {
   const [isMobile, setIsMobile] = React.useState(false);

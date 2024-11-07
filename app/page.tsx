@@ -1,6 +1,6 @@
 import React from "react";
 import InteractiveTools from "../sections/Home/InteractiveTools/InteractiveTools";
-import LearningPath from "../sections/LearningPath/LearningPath";
+import LearningPath from "../sections/Home/LearningPath/LearningPath";
 
 const page = () => {
   return (

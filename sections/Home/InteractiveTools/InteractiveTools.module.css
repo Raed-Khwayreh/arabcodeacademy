@@ -16,8 +16,8 @@
 
 @media (max-width: 1400px) {
   .interactive-tools {
-    display: flex;
     justify-content: center;
+    height: 560px;
   }
   .promo-text-container {
     left: 50%;

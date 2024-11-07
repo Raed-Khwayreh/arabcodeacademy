@@ -1,5 +1,5 @@
 import React from "react";
-import InteractiveTools from "../sections/InteractiveTools/InteractiveTools";
+import InteractiveTools from "../sections/Home/InteractiveTools/InteractiveTools";
 
 const page = () => {
   return (

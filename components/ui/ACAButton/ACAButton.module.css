@@ -13,7 +13,6 @@
   background-color: var(--primary-color);
 }
 
-
 .secondary {
   background-color: var(--secondary-color);
 }
@@ -65,6 +64,17 @@
   height: 45px;
   font-weight: 500;
   border-radius: 6px;
+}
+
+.button {
+  cursor: pointer;
+}
+.tomato:hover {
+  background-color: #fa4e27;
+}
+
+.teal:hover {
+  background-color: #04b08e;
 }
 
 @media (min-width: 600px) and (max-width: 900px) {

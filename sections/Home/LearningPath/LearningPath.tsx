@@ -35,6 +35,7 @@ const LearningPath = () => {
                 text="المسارات التعليمية"
                 variant="teal"
                 size="medium"
+                icon={<ChalkboardTeacherIcon />}
               />
             )
           }

@@ -44,7 +44,7 @@ export const PopoverCloseTrigger = forwardRef<
       asChild
       ref={ref}
     >
-      <CloseButton size="sm" />
+      <CloseButton />
     </ChakraPopover.CloseTrigger>
   )
 })

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import ImageSource from "@/public/images/learning-path-image.png";
 import styles from "./LearningPath.module.css";
@@ -8,8 +8,8 @@ import ChalkboardTeacherIcon from "@/components/ui/ACAButton/ACAButtonIcons/Chal
 import PromoText from "@/components/ui/PromoText/PromoText";
 
 const LearningPath = () => {
-  const [isMobile, setIsMobile] = React.useState(window.innerWidth < 600);
-  const [showBorder, setShowBorder] = React.useState(window.innerWidth < 1400);
+  const [isMobile, setIsMobile] = useState(false);
+  const [showBorder, setShowBorder] = useState(false);
 
   React.useEffect(() => {
     const handleResize = () => {

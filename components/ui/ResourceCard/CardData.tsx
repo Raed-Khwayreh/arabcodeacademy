@@ -1,12 +1,12 @@
 import React from "react";
-import BookIcon from "./ResourceCardIcons/BookIcon";
-import Glossary from "./ResourceCardIcons/Glossary";
 import ACAButton from "../ACAButton/ACAButton";
 import EllipsisCircleIcon from "../ACAButton/ACAButtonIcons/EllipsisCircleIcon";
-import CartIcon from "../ACAButton/ACAButtonIcons/CartIcon";
-import ChalkboardTeacher from "../ACAButton/ACAButtonIcons/ChalkboardTeacherIcon";
-import ProfileCircleIcon from "../ACAButton/ACAButtonIcons/ProfileCircleIcon";
 import CheckListIcon from "./ResourceCardIcons/CheckListIcon";
+import DhadIcon from "./ResourceCardIcons/DhadIcon";
+import AiIcon from "./ResourceCardIcons/AiIcon";
+import VideoLessonsIcon from "./ResourceCardIcons/VideoLessonsIcon";
+import BookIcon from "./ResourceCardIcons/BookIcon";
+import Glossary from "./ResourceCardIcons/Glossary";
 
 interface TitleWidth {
   desktop: string;
@@ -25,7 +25,14 @@ const cardData: CardDataItem[] = [
   {
     title: "قاموس المصطلحات التقنية",
     icon: <Glossary />,
-    button: <ACAButton text="...المزيد" variant="teal" size="medium" icon={<EllipsisCircleIcon/>} />,
+    button: (
+      <ACAButton
+        text="...المزيد"
+        variant="teal"
+        size="medium"
+        icon={<EllipsisCircleIcon />}
+      />
+    ),
     titleWidth: {
       desktop: "261px",
       tablet: "150px",
@@ -34,8 +41,15 @@ const cardData: CardDataItem[] = [
   },
   {
     title: "بنك الأسئلة التقنية",
-    icon: <CheckListIcon/>,
-    button: <ACAButton text="...المزيد" variant="teal" size="medium" icon={<EllipsisCircleIcon/>} />,
+    icon: <CheckListIcon />,
+    button: (
+      <ACAButton
+        text="...المزيد"
+        variant="teal"
+        size="medium"
+        icon={<EllipsisCircleIcon />}
+      />
+    ),
     titleWidth: {
       desktop: "192px",
       tablet: "166px",
@@ -45,7 +59,14 @@ const cardData: CardDataItem[] = [
   {
     title: "دروس وأنماط الميدجورني",
     icon: <BookIcon />,
-    button: <ACAButton text="...المزيد" variant="teal" size="medium" icon={<EllipsisCircleIcon/>} />,
+    button: (
+      <ACAButton
+        text="...المزيد"
+        variant="teal"
+        size="medium"
+        icon={<EllipsisCircleIcon />}
+      />
+    ),
     titleWidth: {
       desktop: "220px",
       tablet: "150px",
@@ -55,8 +76,15 @@ const cardData: CardDataItem[] = [
 
   {
     title: "لغة ضاد",
-    icon: <CartIcon />,
-    button: <ACAButton text="...المزيد" variant="teal" size="medium" icon={<EllipsisCircleIcon/>} />,
+    icon: <DhadIcon />,
+    button: (
+      <ACAButton
+        text="...المزيد"
+        variant="teal"
+        size="medium"
+        icon={<EllipsisCircleIcon />}
+      />
+    ),
     titleWidth: {
       desktop: "220px",
       tablet: "150px",
@@ -66,8 +94,15 @@ const cardData: CardDataItem[] = [
 
   {
     title: "دليل أدوات الذكاء الاصطناعي",
-    icon: <ChalkboardTeacher />,
-    button: <ACAButton text="...المزيد" variant="teal" size="medium" icon={<EllipsisCircleIcon/>} />,
+    icon: <AiIcon />,
+    button: (
+      <ACAButton
+        text="...المزيد"
+        variant="teal"
+        size="medium"
+        icon={<EllipsisCircleIcon />}
+      />
+    ),
     titleWidth: {
       desktop: "220px",
       tablet: "166px",
@@ -77,8 +112,15 @@ const cardData: CardDataItem[] = [
 
   {
     title: "دروس الفيديو القصيرة",
-    icon: <ProfileCircleIcon />,
-    button: <ACAButton text="...المزيد" variant="teal" size="medium" icon={<EllipsisCircleIcon/>} />,
+    icon: <VideoLessonsIcon />,
+    button: (
+      <ACAButton
+        text="...المزيد"
+        variant="teal"
+        size="medium"
+        icon={<EllipsisCircleIcon />}
+      />
+    ),
     titleWidth: {
       desktop: "220px",
       tablet: "166px",

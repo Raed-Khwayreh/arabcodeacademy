@@ -1,0 +1,178 @@
+/* Base container and layout for desktop */
+.container {
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(270.06deg, #783ba2 0.05%, #462576 76.2%);
+  color: #ffffff;
+  gap: 80px;
+  padding: 40px;
+}
+
+/* Left Content Styling */
+.leftContent {
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+  max-width: 30%;
+}
+
+.iconHeading {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 10px;
+}
+
+.icon {
+  width: 24px;
+}
+
+.heading {
+  font-size: 1.4375rem;
+}
+
+.description {
+  font-size: 1.1875rem;
+  margin-top: 8px;
+  direction: rtl;
+  text-align: right;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+/* Right Content Styling */
+.rightContent {
+  position: relative;
+  width: 100%;
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.image {
+  width: 59.5%;
+  height: 56.5%;
+  border: 3px solid white;
+}
+
+.team2 {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  z-index: 1;
+}
+
+.team1 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+}
+
+/* Mobile view (less than 768px) */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .rightContent,
+  .leftContent {
+    max-width: 60%;
+  }
+
+  .leftContent {
+    margin-top: 30%;
+    text-align: center;
+  }
+
+  .iconHeading {
+    justify-content: center;
+  }
+
+  .image {
+    height: auto;
+  }
+
+  .team1 {
+    top: 90px;
+  }
+
+  .heading {
+    font-size: 1rem;
+  }
+
+  .icon {
+    width: 20px;
+  }
+
+  .description {
+    font-size: 0.8rem;
+    margin-top: 6px;
+    direction: rtl;
+    text-align: center;
+  }
+
+  .button {
+    font-size: 0.8rem;
+    padding: 8px 18px;
+  }
+}
+
+/* Small Mobile view (less than 480px) */
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .rightContent,
+  .leftContent {
+    max-width: 60%;
+  }
+
+  .leftContent {
+    margin-top: 23%;
+    text-align: center;
+  }
+
+  .iconHeading {
+    justify-content: center;
+  }
+
+  .image {
+    height: auto;
+  }
+
+  .team1 {
+    top: 55px;
+  }
+
+  .heading {
+    font-size: 0.8rem;
+  }
+
+  .icon {
+    width: 16px;
+  }
+
+  .description {
+    font-size: 0.6rem;
+    margin-top: 4px;
+    direction: rtl;
+    text-align: center;
+  }
+
+  .button {
+    font-size: 0.6rem;
+    padding: 6px 16px;
+  }
+}

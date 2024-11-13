@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Discount.module.css";
-import { isInRange } from "../../../utils/inRange";
+import { isInRange } from "@/utils/isInRange";
 interface Props {
   text: string;
   startDate: string;

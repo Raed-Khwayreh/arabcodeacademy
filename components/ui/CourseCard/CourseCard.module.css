@@ -62,7 +62,7 @@
 
   .card_body {
     gap: 0;
-    margin-top: 0;
+    margin-top: -7px;
     padding: 16px 23px;
   }
 
@@ -78,7 +78,12 @@
 
   .card_title {
     font-size: 16px;
-    margin-right: 4.2rem;
-    justify-content: space-around;
+    text-align: center;
+    justify-content: space-between;
   }
+
+  .label {
+    margin: 0 auto;
+    margin-left: 2rem
+  } 
 }

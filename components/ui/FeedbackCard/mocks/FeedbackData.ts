@@ -1,8 +1,5 @@
-import user3Image from "@/components/ui/FeedbackCard/AvatarImages/user3.png";
-import user2Image from "@/components/ui/FeedbackCard/AvatarImages/user2.png";
-import user1Image from "@/components/ui/FeedbackCard/AvatarImages/user1.png"; 
-
 import { StaticImageData } from "next/image";
+import { user1, user2, user3 } from "../Images";
 
 interface Feedback {
   name: string;
@@ -15,7 +12,7 @@ interface Feedback {
 export const feedbackData: Feedback[] = [
   {
     name: "اسم المستخدم",
-    image: user1Image,
+    image: user1,
     rating: 4,
     comment:
       "تقدم الأكاديمية العربية للبرمجة تجربة تعلم متميزة من خلال مجموعة من الدروس والمناهج الاحترافية بجودة عالية وأسلوب تدريسي ممتع يتناسب",
@@ -24,7 +21,7 @@ export const feedbackData: Feedback[] = [
 
   {
     name: "اسم المستخدم",
-    image: user2Image,
+    image: user2,
     rating: 4,
     comment:
       "تقدم الأكاديمية العربية للبرمجة تجربة تعلم متميزة من خلال مجموعة من الدروس والمناهج الاحترافية بجودة عالية وأسلوب تدريسي ممتع يتناسب.",
@@ -32,7 +29,32 @@ export const feedbackData: Feedback[] = [
   },
   {
     name: "اسم المستخدم",
-    image: user3Image,
+    image: user3,
+    rating: 4,
+    comment:
+      "تقدم الأكاديمية العربية للبرمجة تجربة تعلم متميزة من خلال مجموعة من الدروس والمناهج الاحترافية بجودة عالية وأسلوب تدريسي ممتع يتناسب",
+    date: "2023, 11 نيسان",
+  },
+  {
+    name: "اسم المستخدم",
+    image: user1,
+    rating: 4,
+    comment:
+      "تقدم الأكاديمية العربية للبرمجة تجربة تعلم متميزة من خلال مجموعة من الدروس والمناهج الاحترافية بجودة عالية وأسلوب تدريسي ممتع يتناسب",
+    date: "2023, 11 نيسان",
+  },
+
+  {
+    name: "اسم المستخدم",
+    image: user2,
+    rating: 4,
+    comment:
+      "تقدم الأكاديمية العربية للبرمجة تجربة تعلم متميزة من خلال مجموعة من الدروس والمناهج الاحترافية بجودة عالية وأسلوب تدريسي ممتع يتناسب.",
+    date: "2023, 11 نيسان",
+  },
+  {
+    name: "اسم المستخدم",
+    image: user3,
     rating: 4,
     comment:
       "تقدم الأكاديمية العربية للبرمجة تجربة تعلم متميزة من خلال مجموعة من الدروس والمناهج الاحترافية بجودة عالية وأسلوب تدريسي ممتع يتناسب",

@@ -40,12 +40,13 @@
   padding-bottom: 17px;
 }
 
-@media (min-width: 600px) and (max-width: 900px) {
+@media (min-width: 480px) and (max-width: 768px) {
   .container {
     width: 360px;
     padding-top: 30px;
     border-radius: 0;
     box-shadow: none;
+    
   }
 
   .iconContainer {
@@ -69,7 +70,7 @@
   }
 }
 
-@media (min-width: 901px) {
+@media (min-width: 768px) {
   .container {
     width: 300px;
     padding-top: 63px;

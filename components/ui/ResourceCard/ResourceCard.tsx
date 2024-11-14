@@ -1,27 +1,33 @@
 import React from "react";
 import styles from "./ResourceCard.module.css";
-
-interface TitleWidth {
-  desktop: string;
-  tablet: string;
-  mobile: string;
-}
+import EllipsisCircleIcon from "../ACAButton/ACAButtonIcons/EllipsisCircleIcon";
+import ACAButton from "../ACAButton/ACAButton";
 
 interface Props {
   title: string;
   icon: React.ReactNode;
-  button: React.ReactNode;
-  titleWidth: TitleWidth;
 }
 
-const ResourceCard: React.FC<Props> = ({ title, icon, button, titleWidth }) => {
+const ResourceCard: React.FC<Props> = ({ title, icon }) => {
   return (
     <div className={styles.container}>
       <div className={styles.iconContainer}>{icon}</div>
-      <div className={styles.title} style={{ "--title-width-desktop": titleWidth.desktop, "--title-width-tablet": titleWidth.tablet, "--title-width-mobile": titleWidth.mobile } as React.CSSProperties}>
+      <div
+        className={styles.title}
+        style={{ width: title === "بنك الأسئلة التقنية" ? 192 : 220 }}
+      >
         {title}
       </div>
-      <div className={styles.buttonContainer}>{button}</div>
+      <div className={styles.buttonContainer}>
+        {
+          <ACAButton
+            text="...المزيد"
+            variant="teal"
+            size="medium"
+            icon={<EllipsisCircleIcon />}
+          />
+        }
+      </div>
     </div>
   );
 };

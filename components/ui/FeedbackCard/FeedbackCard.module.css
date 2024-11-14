@@ -1,0 +1,206 @@
+.card {
+  width: 260px;
+  height: 255px;
+  border-radius: 5px;
+  box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  height: 76px;
+  position: relative;
+}
+
+.headerBackground {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.profileImageContainer {
+  width: 63px;
+  height: 63px;
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.profileImageContainer img {
+  width: 100%;
+  height: 100%;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #723689;
+  text-align: center;
+  margin-top: 13px;
+  line-height: 19px;
+}
+
+.comment {
+  text-align: center;
+  width: 183px;
+  height: 99px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #713488;
+  margin-top: 9px;
+}
+
+.dateContainer {
+  color: #713488;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 500;
+  position: absolute;
+  bottom: 7px;
+  left: 15px;
+}
+
+.ratingContainer {
+  display: flex;
+  position: absolute;
+  right: 8px;
+  bottom: 11px;
+  gap: 2.4px;
+  width: 79px;
+  height: 15px;
+}
+
+.ratingContainer svg {
+  width: 15px;
+  height: 14px;
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+  .card {
+    width: 385px;
+    height: 380px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 20px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .header {
+    width: 385px;
+    height: 113px;
+  }
+
+  .profileImageContainer {
+    width: 92px;
+    height: 92px;
+
+    top: 36px;
+  }
+
+  .name {
+    width: 138px;
+    height: 24px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 14px;
+    line-height: 24px;
+  }
+
+  .comment {
+    width: 272px;
+    height: 81px;
+    font-size: 19px;
+    line-height: 27px;
+    font-weight: 400;
+    margin-top: 12px;
+  }
+
+  .dateContainer {
+    font-size: 19px;
+    line-height: 23px;
+    font-weight: 500;
+    bottom: 18px;
+    left: 18px;
+    width: 140px;
+    height: 18px;
+  }
+
+  .ratingContainer {
+    right: 12px;
+    bottom: 16px;
+    gap: 3px;
+    width: 117px;
+    height: 23px;
+  }
+
+  .ratingContainer svg {
+    width: 23px;
+    height: 21px;
+  }
+}
+
+@media (min-width: 768px) {
+  .card {
+    width: 400px;
+    height: 400px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 20px 1px rgba(0, 0, 0, 0.1);
+  }
+
+  .header {
+    width: 400px;
+    height: 118px;
+  }
+
+  .profileImageContainer {
+    width: 100px;
+    height: 100px;
+
+    top: 38px;
+  }
+
+  .name {
+    width: 100%;
+    height: 23px;
+    font-size: 19px;
+    font-weight: 700;
+
+    margin-top: 26px;
+  }
+
+  .comment {
+    width: 295px;
+    height: 114px;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    margin-top: 15px;
+  }
+
+  .dateContainer {
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 500;
+    bottom: 16px;
+    left: 33px;
+    width: 112px;
+    height: 22px;
+  }
+
+  .ratingContainer {
+    right: 24px;
+    bottom: 14px;
+    gap: 4px;
+    width: 127px;
+    height: 24px;
+  }
+
+  .ratingContainer svg {
+    width: 23px;
+    height: 21px;
+  }
+}

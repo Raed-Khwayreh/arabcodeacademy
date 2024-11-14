@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap");
+
+.TitleSection {
+  width: 210px;
+  height: 35px;
+  border-bottom: 2px solid #713488;
+}
+
+.SubTitleSection {
+  width: 195px;
+  height: 32px;
+  margin: 0px 4px 0px 11px;
+  text-align: center;
+  font-size: 27px;
+  color: #713488;
+  font-family: "Tajawal", sans-serif;
+  font-weight: 700;
+  line-height: 32.4px;
+}
+
+@media (max-width: 768px) {
+  .TitleSection {
+    width: 210px;
+    height: 34px;
+  }
+
+  .SubTitleSection {
+    width: 181px;
+    height: 30px;
+    margin: 0px 0px 0px 29px;
+    font-size: 25px;
+    line-height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .TitleSection {
+    width: 190px;
+    height: 38px;
+  }
+
+  .SubTitleSection {
+    width: 130px;
+    height: 22px;
+    margin: 0px 27px 16px 33px;
+    font-size: 18px;
+    line-height: 21.6px;
+  }
+}

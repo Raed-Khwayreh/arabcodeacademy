@@ -8,9 +8,10 @@ import SearchBar from "../sections/Home/SearchBar/SearchBar";
 const page = () => {
   return (
     <div>
-      <QuizzSection />
+<SearchBar></SearchBar>
+      {/* <QuizzSection />
       <LearningPath />
-      <InteractiveTools />
+      <InteractiveTools /> */}
     </div>
   );
 };

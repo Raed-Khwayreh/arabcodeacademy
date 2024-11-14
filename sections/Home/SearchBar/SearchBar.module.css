@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap");
+
 .searchBar {
   width: 720px;
   height: 65px;
@@ -44,6 +46,7 @@
 
 .input::placeholder {
   color: #713488ad;
+  font-family: "Tajawal", sans-serif;
 }
 
 @media (max-width: 768px) {

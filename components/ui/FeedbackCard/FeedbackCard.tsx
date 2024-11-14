@@ -7,7 +7,7 @@ import headerBackground from "./Icons/headerBackground.png";
 
 interface Props {
   name: string;
-  image: string | StaticImageData;
+  image: StaticImageData;
   rating: number;
   comment: string;
   date: string;

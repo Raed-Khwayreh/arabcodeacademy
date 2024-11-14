@@ -1,12 +1,12 @@
 import user3Image from "@/components/ui/FeedbackCard/AvatarImages/user3.png";
 import user2Image from "@/components/ui/FeedbackCard/AvatarImages/user2.png";
-import user1Image from "@/components/ui/FeedbackCard/AvatarImages/user1.png"; // Add paths for other images as needed
+import user1Image from "@/components/ui/FeedbackCard/AvatarImages/user1.png"; 
 
 import { StaticImageData } from "next/image";
 
 interface Feedback {
   name: string;
-  image: string | StaticImageData;
+  image: StaticImageData;
   rating: number;
   comment: string;
   date: string;

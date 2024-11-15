@@ -22,12 +22,12 @@ const Feedback: React.FC = () => {
       breakPoints={{
         desktop: { slidesToScroll: 3, slidesToShow: 3 },
         tablet: {
-          screenSize: LargeScreenSize + 340,
+          screenSize: LargeScreenSize + 200,
           slidesToScroll: 2,
           slidesToShow: 2,
         },
         mobile: {
-          screenSize: MediumScreenSize + 100,
+          screenSize: MediumScreenSize,
           slidesToScroll: 1,
           slidesToShow: 1,
         },
@@ -35,11 +35,9 @@ const Feedback: React.FC = () => {
       carouselContainerWidth={
         screenSize < SmallScreenSize
           ? "100%"
-          : screenSize < MediumScreenSize + 100
-          ? "60%"
-          : screenSize < LargeScreenSize + 340
-          ? "60%"
-          : "65%"
+          : screenSize < LargeScreenSize + 200
+          ? 820
+          : 1280
       }
       sliderRef={feedbackRef}
       generatedSliderList={feedbackData.map((e, i) => (

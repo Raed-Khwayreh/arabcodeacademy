@@ -30,7 +30,7 @@ const CarouselSlider: React.FC<CarouselSliderProps> = ({
   carouselContainerWidth = "90%",
   carouselContainerPadding = 30,
   sliderRef,
-  //   generatedSliderList = [],
+  generatedSliderList = [],
   breakPoints = {
     desktop: { slidesToScroll: 4, slidesToShow: 4 },
     tablet: { screenSize: 1400, slidesToScroll: 2, slidesToShow: 2 },
@@ -73,9 +73,7 @@ const CarouselSlider: React.FC<CarouselSliderProps> = ({
     >
       <SliderButtons sliderRef={sliderRef} />
       <Slider ref={sliderRef} {...settings}>
-        {[1, 2, 3, 4, 5].map((e) => (
-          <div key={e}>1</div>
-        ))}
+        {generatedSliderList}
       </Slider>
     </div>
   );

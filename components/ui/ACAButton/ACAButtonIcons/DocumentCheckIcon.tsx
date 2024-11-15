@@ -1,10 +1,7 @@
 import React from "react";
-import { SVGProps } from "../../../../types/SVGProps";
+import { SVGProps } from "@/types/SVGProps";
 
-const DocumentCheckIcon: React.FC<SVGProps> = ({
-  width = "30",
-  height = "37",
-}) => {
+const DocumentCheckIcon: React.FC<SVGProps> = ({ width = 30, height = 37 }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

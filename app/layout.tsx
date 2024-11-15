@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import "../styles/variables.css";
-import DiscountHeader from "../components/ui/DiscountHeader/DiscountHeader";
-import { Provider } from "../components/ui/provider";
+import "@/styles/variables.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import DiscountHeader from "@/components/ui/DiscountHeader/DiscountHeader";
+import { Provider } from "@/components/ui/provider";
 
 const tajawal = localFont({
   src: [
@@ -60,16 +62,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${tajawal.variable}`}
-      >
-         <Provider>
-        <DiscountHeader
-          text="خصومات بنسبة 20% على الكورسات"
-          startDate="2024-10-20T00:00:00"
-          endDate="2025-10-24T18:55:10"
-        />
-        {children}
+      <body className={`${tajawal.variable}`}>
+        <Provider>
+          <DiscountHeader
+            text="خصومات بنسبة 20% على الكورسات"
+            startDate="2024-10-20T00:00:00"
+            endDate="2025-10-24T18:55:10"
+          />
+          {children}
         </Provider>
       </body>
     </html>

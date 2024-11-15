@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   background-color: white;
+  margin: auto;
   width: 204px;
   padding-top: 18px;
   text-align: center;
@@ -46,7 +47,6 @@
     padding-top: 30px;
     border-radius: 0;
     box-shadow: none;
-    
   }
 
   .iconContainer {

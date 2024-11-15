@@ -52,7 +52,7 @@ const Course: React.FC<Props> = ({
             text={book}
             variant="tomato"
             size="small"
-            icon={<CartIcon width="25" height="25" />}
+            icon={<CartIcon width={25} height={25} />}
           />
         </div>
       </div>

@@ -1,15 +1,19 @@
+import {
+  InteractiveTools,
+  LearningPath,
+  QuizzSection,
+  ResourcesCardSection,
+} from "@/sections/Home";
 import React from "react";
-import InteractiveTools from "../sections/Home/InteractiveTools/InteractiveTools";
-import LearningPath from "../sections/Home/LearningPath/LearningPath";
-import QuizzSection from "../sections/Home/QuizzSection/QuizzSection";
 
 const page = () => {
   return (
-    <div>
+    <>
+      <ResourcesCardSection />
       <QuizzSection />
       <LearningPath />
       <InteractiveTools />
-    </div>
+    </>
   );
 };
 

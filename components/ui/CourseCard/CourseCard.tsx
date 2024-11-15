@@ -46,7 +46,7 @@ const Course: React.FC<Props> = ({
             text="اقرأ المزيد"
             variant="teal"
             size="small"
-            icon={<EllipsisCircleIcon width="25" height="25" />}
+            icon={<EllipsisCircleIcon width={25} height={25} />}
           />
           <ACAButton
             text={book}

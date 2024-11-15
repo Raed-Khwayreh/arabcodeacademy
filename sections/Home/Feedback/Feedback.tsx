@@ -39,7 +39,7 @@ const Feedback: React.FC = () => {
           ? "60%"
           : screenSize < LargeScreenSize + 340
           ? "60%"
-          : "70%"
+          : "65%"
       }
       sliderRef={feedbackRef}
       generatedSliderList={feedbackData.map((e, i) => (

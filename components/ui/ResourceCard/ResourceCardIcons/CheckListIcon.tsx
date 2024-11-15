@@ -1,5 +1,5 @@
 import React from "react";
-import { SVGProps } from "../../../../types/SVGProps";
+import { SVGProps } from "@/types/SVGProps";
 
 const CheckListIcon: React.FC<SVGProps> = ({}) => {
   return (

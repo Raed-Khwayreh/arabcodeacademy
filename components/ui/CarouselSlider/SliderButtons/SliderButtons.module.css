@@ -1,0 +1,15 @@
+.left-arrow,
+.right-arrow {
+  cursor: pointer;
+}
+
+.left-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.right-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}

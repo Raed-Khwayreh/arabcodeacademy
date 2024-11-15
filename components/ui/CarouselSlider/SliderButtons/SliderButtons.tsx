@@ -18,9 +18,12 @@ const SliderButtons: React.FC<SliderButtonsProps> = ({
   const [isTablet, setIsTablet] = useState(false);
 
   React.useEffect(() => {
+    setIsMobile(window.innerWidth < 786);
+    setIsTablet(window.innerWidth < 1442);
+
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 920);
-      setIsTablet(window.innerWidth < 1225);
+      setIsMobile(window.innerWidth < 786);
+      setIsTablet(window.innerWidth < 1442);
     };
     window.addEventListener("resize", handleResize);
     return () => {

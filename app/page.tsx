@@ -1,15 +1,27 @@
+import {
+  InteractiveTools,
+  LearningPath,
+  QuizzSection,
+  ResourcesCardSection,
+} from "@/sections/Home";
+import SearchBar from "@/sections/Home/SearchBar/SearchBar";
+import TitleSection from "@/sections/Home/SectionTitle/TitleSection";
 import React from "react";
-import InteractiveTools from "../sections/Home/InteractiveTools/InteractiveTools";
-import LearningPath from "../sections/Home/LearningPath/LearningPath";
-import QuizzSection from "../sections/Home/QuizzSection/QuizzSection";
 
 const page = () => {
   return (
-    <div>
+    <>
+      <ResourcesCardSection />
       <QuizzSection />
       <LearningPath />
       <InteractiveTools />
-    </div>
+      <div style={{ margin: 200 }}>
+        <SearchBar />
+      </div>
+      <div style={{ margin: 200 }}>
+        <TitleSection title="الدورات" />
+      </div>
+    </>
   );
 };
 

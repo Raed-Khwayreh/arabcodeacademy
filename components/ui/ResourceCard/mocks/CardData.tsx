@@ -13,7 +13,7 @@ interface CardDataItem {
   icon: React.ReactNode;
 }
 
-const cardData: CardDataItem[] = [
+export const cardData: CardDataItem[] = [
   {
     title: "قاموس المصطلحات التقنية",
     icon: <Glossary />,

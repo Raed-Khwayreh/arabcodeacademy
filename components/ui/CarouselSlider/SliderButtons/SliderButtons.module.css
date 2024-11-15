@@ -1,6 +1,7 @@
 .left-arrow,
 .right-arrow {
   cursor: pointer;
+  z-index: 20;
 }
 
 .left-arrow {

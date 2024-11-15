@@ -7,9 +7,13 @@ import ArrowLeft from "./icons/ArrowLeft";
 
 interface SliderButtonsProps {
   sliderRef: React.RefObject<Slider>;
+  buttonsPostion?: { desktop?: number; tablet?: number; mobile?: number };
 }
 
-const SliderButtons: React.FC<SliderButtonsProps> = ({ sliderRef }) => {
+const SliderButtons: React.FC<SliderButtonsProps> = ({
+  sliderRef,
+  buttonsPostion = { desktop: 60, tablet: 158, mobile: 9 },
+}) => {
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
 
@@ -29,7 +33,13 @@ const SliderButtons: React.FC<SliderButtonsProps> = ({ sliderRef }) => {
       <div
         onClick={() => sliderRef.current?.slickNext()}
         className={styles["left-arrow"]}
-        style={{ left: isMobile ? 9 : isTablet ? 158 : 60 }}
+        style={{
+          left: isMobile
+            ? buttonsPostion.mobile
+            : isTablet
+            ? buttonsPostion.tablet
+            : buttonsPostion.desktop,
+        }}
       >
         <ArrowLeft
           width={isMobile ? 40 : isTablet ? 80 : 70}
@@ -38,7 +48,13 @@ const SliderButtons: React.FC<SliderButtonsProps> = ({ sliderRef }) => {
       </div>
       <button
         onClick={() => sliderRef.current?.slickNext()}
-        style={{ right: isMobile ? 9 : isTablet ? 158 : 60 }}
+        style={{
+          right: isMobile
+            ? buttonsPostion.mobile
+            : isTablet
+            ? buttonsPostion.tablet
+            : buttonsPostion.desktop,
+        }}
         className={styles["right-arrow"]}
       >
         <ArrowRight

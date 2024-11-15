@@ -24,6 +24,7 @@ interface CarouselSliderProps {
       slidesToScroll?: number;
     };
   };
+  isSliderDivRelativeToButtons?: boolean;
 }
 
 const CarouselSlider: React.FC<CarouselSliderProps> = ({
@@ -31,6 +32,7 @@ const CarouselSlider: React.FC<CarouselSliderProps> = ({
   carouselContainerPadding = 30,
   sliderRef,
   generatedSliderList = [],
+  isSliderDivRelativeToButtons = false,
   breakPoints = {
     desktop: { slidesToScroll: 4, slidesToShow: 4 },
     tablet: { screenSize: 1400, slidesToScroll: 2, slidesToShow: 2 },
@@ -68,6 +70,8 @@ const CarouselSlider: React.FC<CarouselSliderProps> = ({
       style={{
         width: carouselContainerWidth,
         margin: "auto",
+        background: "red",
+        position: isSliderDivRelativeToButtons ? "relative" : "static",
         padding: carouselContainerPadding,
       }}
     >

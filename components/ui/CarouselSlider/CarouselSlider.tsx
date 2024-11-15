@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import SliderButtons from "./SliderButtons/SliderButtons";
 
 interface CarouselSliderProps {
-  carouselContainerWidth?: number;
+  carouselContainerWidth?: number | string;
   carouselContainerPadding?: number;
   generatedSliderList?: JSX.Element[];
   sliderRef: React.RefObject<Slider>;

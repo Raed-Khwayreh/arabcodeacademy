@@ -1,4 +1,5 @@
 import {
+  Feedback,
   InteractiveTools,
   LearningPath,
   QuizzSection,
@@ -13,6 +14,7 @@ const page = () => {
       <QuizzSection />
       <LearningPath />
       <InteractiveTools />
+      <Feedback />
     </>
   );
 };

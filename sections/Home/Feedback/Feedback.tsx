@@ -6,7 +6,6 @@ import { feedbackData } from "@/components/ui/FeedbackCard/mocks/FeedbackData";
 import {
   LargeScreenSize,
   MediumScreenSize,
-  SmallScreenSize,
 } from "@/constants/ScreenSizes";
 import useScreenSize from "@/utils/useScreenSize";
 import React, { useRef } from "react";
@@ -19,6 +18,7 @@ const Feedback: React.FC = () => {
   return (
     <CarouselSlider
       containerBoxShadow={false}
+      buttonsPostion={{ desktop: 63, tablet: 34, mobile: 12 }}
       breakPoints={{
         desktop: { slidesToScroll: 3, slidesToShow: 3 },
         tablet: {
@@ -33,7 +33,7 @@ const Feedback: React.FC = () => {
         },
       }}
       carouselContainerWidth={
-        screenSize < SmallScreenSize
+        screenSize < MediumScreenSize
           ? "100%"
           : screenSize < LargeScreenSize + 200
           ? 820

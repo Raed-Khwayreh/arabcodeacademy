@@ -3,7 +3,7 @@
   height: 255px;
   border-radius: 5px;
   margin: 20px auto;
-  box-shadow: 0px 1px 10px 1px rgba(0, 0, 0, 0.336);
+  box-shadow: 0px 1px 6px 1px rgb(0 0 0 / 38%);
   position: relative;
   display: flex;
   flex-direction: column;

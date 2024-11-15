@@ -9,6 +9,7 @@ interface CarouselSliderProps {
   generatedSliderList?: JSX.Element[];
   sliderRef: React.RefObject<Slider>;
   containerBoxShadow?: boolean;
+  buttonsPostion?: { desktop?: number; tablet?: number; mobile?: number };
   breakPoints?: {
     desktop: {
       slidesToShow?: number;
@@ -30,6 +31,7 @@ interface CarouselSliderProps {
 const CarouselSlider: React.FC<CarouselSliderProps> = ({
   carouselContainerWidth = "90%",
   carouselContainerPadding = 10,
+  buttonsPostion = { desktop: 60, tablet: 158, mobile: 9 },
   containerBoxShadow = false,
   sliderRef,
   generatedSliderList = [],
@@ -78,7 +80,14 @@ const CarouselSlider: React.FC<CarouselSliderProps> = ({
           borderRadius: 10,
         }}
       >
-        <SliderButtons sliderRef={sliderRef} />
+        <SliderButtons
+          buttonsPostion={{
+            desktop: buttonsPostion?.desktop,
+            tablet: buttonsPostion?.tablet,
+            mobile: buttonsPostion?.mobile,
+          }}
+          sliderRef={sliderRef}
+        />
         <Slider ref={sliderRef} {...settings}>
           {generatedSliderList}
         </Slider>

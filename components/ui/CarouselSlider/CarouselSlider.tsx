@@ -2,13 +2,13 @@
 import React from "react";
 import Slider from "react-slick";
 import SliderButtons from "./SliderButtons/SliderButtons";
-import ResourceCard from "../ResourceCard/ResourceCard";
 
 interface CarouselSliderProps {
   carouselContainerWidth?: number;
   carouselContainerPadding?: number;
   generatedSliderList?: JSX.Element[];
   sliderRef: React.RefObject<Slider>;
+  containerBoxShadow?: boolean;
   breakPoints?: {
     desktop: {
       slidesToShow?: number;
@@ -30,6 +30,7 @@ interface CarouselSliderProps {
 const CarouselSlider: React.FC<CarouselSliderProps> = ({
   carouselContainerWidth = "90%",
   carouselContainerPadding = 10,
+  containerBoxShadow = false,
   sliderRef,
   generatedSliderList = [],
   breakPoints = {
@@ -71,8 +72,9 @@ const CarouselSlider: React.FC<CarouselSliderProps> = ({
           width: carouselContainerWidth,
           margin: "auto",
           padding: carouselContainerPadding,
+          background: "white",
           marginBlock: 20,
-          boxShadow: "0 0 25px -2px #7f7f7f",
+          boxShadow: containerBoxShadow ? "0 0 25px -2px #7f7f7f" : "none",
           borderRadius: 10,
         }}
       >

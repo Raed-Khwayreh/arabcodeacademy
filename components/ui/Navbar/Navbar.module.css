@@ -39,6 +39,10 @@
   .navbar {
     padding: 16.5px 44px;
   }
+
+  .links {
+    gap: 30px;
+  }
 }
 
 @media (max-width: 1200px) {

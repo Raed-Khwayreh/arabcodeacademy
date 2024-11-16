@@ -1,5 +1,5 @@
 .search-container {
-  margin-block: 211px;
+  margin-inline: 211px;
   display: flex;
   justify-content: space-between;
   align-items: end;
@@ -7,7 +7,7 @@
 }
 
 .soon-container {
-  margin-block: 211px;
+  margin-inline: 211px;
   display: flex;
   justify-content: end;
   margin-top: 83px;

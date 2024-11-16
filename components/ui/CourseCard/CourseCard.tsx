@@ -7,22 +7,9 @@ import EllipsisCircleIcon from "../ACAButton/ACAButtonIcons/EllipsisCircleIcon";
 import useScreenSize from "@/utils/useScreenSize";
 import { SoonLargeIcon, SoonSmallIcon } from "./icons";
 import Image from "next/image";
+import { CoruseProps } from "@/types/CourseProps";
 
-interface Props {
-  name?: string;
-  price?: number;
-  instructor?: string;
-  duration?: {
-    video: number;
-    hour: number;
-    min: number;
-  };
-  book?: string;
-  soon?: boolean;
-  image?: string;
-}
-
-const CourseCard: React.FC<Props> = ({
+const CourseCard: React.FC<CoruseProps> = ({
   name = "اسم الكورس",
   price = 24,
   instructor = "اسم المدرب",
@@ -32,8 +19,8 @@ const CourseCard: React.FC<Props> = ({
     min: 45,
   },
   book = "شراء",
-  soon = true,
-  image = "/images/courses/java.png",
+  soon = false,
+  image = "/images/courses/default-course.png",
 }) => {
   const screenSize = useScreenSize();
 

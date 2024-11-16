@@ -1,7 +1,9 @@
-const coursesData = [
+import { CoruseProps } from "@/types/CourseProps";
+
+const coursesData: CoruseProps[] = [
   {
     id: 1,
-    name: "أساسيات البرمجة",
+    name: "أساسيات HTML",
     price: 150,
     instructor: "أحمد علي",
     duration: {
@@ -9,11 +11,12 @@ const coursesData = [
       hour: 10,
       min: 30,
     },
-    image: "",
+    image: "/images/courses/html.png",
+    soon: false,
   },
   {
     id: 2,
-    name: "تطوير الويب",
+    name: "أساسيات #C",
     price: 200,
     instructor: "سارة خالد",
     duration: {
@@ -21,10 +24,12 @@ const coursesData = [
       hour: 12,
       min: 45,
     },
+    soon: false,
+    image: "/images/courses/csharp.png",
   },
   {
     id: 3,
-    name: "تصميم UX",
+    name: "كورس Bootsrap",
     price: 120,
     instructor: "محمد عمر",
     duration: {
@@ -32,10 +37,12 @@ const coursesData = [
       hour: 8,
       min: 20,
     },
+    soon: false,
+    image: "/images/courses/bootstrap.png",
   },
   {
     id: 4,
-    name: "الذكاء الاصطناعي",
+    name: "أساسيات Java",
     price: 250,
     instructor: "خالد حسن",
     duration: {
@@ -43,21 +50,12 @@ const coursesData = [
       hour: 15,
       min: 40,
     },
-  },
-  {
-    id: 5,
-    name: "التسويق الرقمي",
-    price: 180,
-    instructor: "ريم يوسف",
-    duration: {
-      video: 22,
-      hour: 9,
-      min: 50,
-    },
+    soon: false,
+    image: "/images/courses/java.png",
   },
   {
     id: 6,
-    name: "تحليل البيانات",
+    name: "كورس لغة Python",
     price: 210,
     instructor: "عمرو فهمي",
     duration: {
@@ -65,10 +63,25 @@ const coursesData = [
       hour: 11,
       min: 35,
     },
+    soon: true,
+    image: "/images/courses/python.png",
+  },
+  {
+    id: 5,
+    name: "كورس Laravel",
+    price: 180,
+    instructor: "ريم يوسف",
+    duration: {
+      video: 22,
+      hour: 9,
+      min: 50,
+    },
+    soon: true,
+    image: "/images/courses/laravel.png",
   },
   {
     id: 7,
-    name: "علم البيانات",
+    name: "Ruby Language",
     price: 190,
     instructor: "نادية حسن",
     duration: {
@@ -76,10 +89,12 @@ const coursesData = [
       hour: 10,
       min: 0,
     },
+    soon: true,
+    image: "/images/courses/ruby.png",
   },
   {
     id: 8,
-    name: "برمجة بايثون",
+    name: "كورس PHP",
     price: 220,
     instructor: "علي رضا",
     duration: {
@@ -87,138 +102,8 @@ const coursesData = [
       hour: 12,
       min: 15,
     },
-  },
-  {
-    id: 9,
-    name: "مفاهيم الشبكات",
-    price: 170,
-    instructor: "لينا مصطفى",
-    duration: {
-      video: 16,
-      hour: 7,
-      min: 45,
-    },
-  },
-  {
-    id: 10,
-    name: "التصميم الجرافيكي",
-    price: 160,
-    instructor: "أحمد سامي",
-    duration: {
-      video: 18,
-      hour: 6,
-      min: 30,
-    },
-  },
-  {
-    id: 11,
-    name: "تحليل البيانات",
-    price: 230,
-    instructor: "هالة عادل",
-    duration: {
-      video: 24,
-      hour: 8,
-      min: 50,
-    },
-  },
-  {
-    id: 12,
-    name: "أمن المعلومات",
-    price: 240,
-    instructor: "أحمد محسن",
-    duration: {
-      video: 20,
-      hour: 10,
-      min: 20,
-    },
-  },
-  {
-    id: 13,
-    name: "التسويق عبر الإنترنت",
-    price: 210,
-    instructor: "محمود مصطفى",
-    duration: {
-      video: 22,
-      hour: 9,
-      min: 10,
-    },
-  },
-  {
-    id: 14,
-    name: "البرمجة بلغة جافا",
-    price: 180,
-    instructor: "سلمى جمال",
-    duration: {
-      video: 26,
-      hour: 12,
-      min: 30,
-    },
-  },
-  {
-    id: 15,
-    name: "إدارة المشاريع",
-    price: 250,
-    instructor: "عبد الله أحمد",
-    duration: {
-      video: 27,
-      hour: 11,
-      min: 50,
-    },
-  },
-  {
-    id: 16,
-    name: "تصميم UI",
-    price: 200,
-    instructor: "محمود سمير",
-    duration: {
-      video: 23,
-      hour: 10,
-      min: 15,
-    },
-  },
-  {
-    id: 17,
-    name: "برمجة الموبايل",
-    price: 220,
-    instructor: "هند سعيد",
-    duration: {
-      video: 29,
-      hour: 14,
-      min: 0,
-    },
-  },
-  {
-    id: 18,
-    name: "إدارة الأعمال الرقمية",
-    price: 210,
-    instructor: "محمد زكريا",
-    duration: {
-      video: 21,
-      hour: 8,
-      min: 30,
-    },
-  },
-  {
-    id: 19,
-    name: "البرمجة بلغة C++",
-    price: 200,
-    instructor: "سمية عبد الله",
-    duration: {
-      video: 17,
-      hour: 9,
-      min: 40,
-    },
-  },
-  {
-    id: 20,
-    name: "البرمجة بلغة JS",
-    price: 180,
-    instructor: "فاطمة يوسف",
-    duration: {
-      video: 19,
-      hour: 11,
-      min: 25,
-    },
+    soon: true,
+    image: "/images/courses/php.png",
   },
 ];
 

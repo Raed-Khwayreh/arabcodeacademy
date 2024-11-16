@@ -11,8 +11,9 @@ interface CoursesListProps {
 }
 
 const CoursesList: React.FC<CoursesListProps> = ({ activeCourses }) => {
-  const feedbackRef = useRef<Slider>(null);
+  const coursesRef = useRef<Slider>(null);
   const screenSize = useScreenSize();
+
   return (
     <CarouselSlider
       containerBoxShadow={false}
@@ -40,7 +41,7 @@ const CoursesList: React.FC<CoursesListProps> = ({ activeCourses }) => {
           ? "90%"
           : "82%"
       }
-      sliderRef={feedbackRef}
+      sliderRef={coursesRef}
       generatedSliderList={coursesData
         .filter((e) => (activeCourses ? e.soon : !e.soon))
         .map((e, i) => (

@@ -38,7 +38,7 @@ const CoursesList: React.FC<CoursesListProps> = ({ activeCourses }) => {
           : screenSize < LargeScreenSize + 200
           ? 820
           : screenSize < LargeScreenSize + 400
-          ? "90%"
+          ? "86%"
           : "82%"
       }
       sliderRef={coursesRef}

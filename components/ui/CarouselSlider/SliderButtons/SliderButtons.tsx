@@ -1,10 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React  from "react";
 import styles from "./SliderButtons.module.css";
 import Slider from "react-slick";
 import { ArrowRight } from "./icons";
 import ArrowLeft from "./icons/ArrowLeft";
 import { LargeScreenSize, SmallScreenSize } from "@/constants/ScreenSizes";
+import useScreenSize from "@/utils/useScreenSize";
 
 interface SliderButtonsProps {
   sliderRef: React.RefObject<Slider>;
@@ -15,18 +16,15 @@ const SliderButtons: React.FC<SliderButtonsProps> = ({
   sliderRef,
   buttonsPostion = { desktop: 60, tablet: 158, mobile: 9 },
 }) => {
-  const [screenSize, setScreenSize] = useState(0);
-
-  React.useEffect(() => {
-    setScreenSize(window.innerWidth);
-    const handleResize = () => {
-      setScreenSize(window.innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const screenSize = useScreenSize();
+  const iconSize =
+    screenSize < SmallScreenSize ? 40 : screenSize < LargeScreenSize ? 80 : 70;
+  const buttonsSpace =
+    screenSize < SmallScreenSize
+      ? buttonsPostion.mobile
+      : screenSize < LargeScreenSize
+      ? buttonsPostion.tablet
+      : buttonsPostion.desktop;
 
   return (
     <>
@@ -34,59 +32,19 @@ const SliderButtons: React.FC<SliderButtonsProps> = ({
         onClick={() => sliderRef.current?.slickNext()}
         className={styles["left-arrow"]}
         style={{
-          left:
-            screenSize < SmallScreenSize
-              ? buttonsPostion.mobile
-              : screenSize < LargeScreenSize
-              ? buttonsPostion.tablet
-              : buttonsPostion.desktop,
+          left: buttonsSpace,
         }}
       >
-        <ArrowLeft
-          width={
-            screenSize < SmallScreenSize
-              ? 40
-              : screenSize < LargeScreenSize
-              ? 80
-              : 70
-          }
-          height={
-            screenSize < SmallScreenSize
-              ? 40
-              : screenSize < LargeScreenSize
-              ? 80
-              : 70
-          }
-        />
+        <ArrowLeft width={iconSize} height={iconSize} />
       </div>
       <button
         onClick={() => sliderRef.current?.slickNext()}
         style={{
-          right:
-            screenSize < SmallScreenSize
-              ? buttonsPostion.mobile
-              : screenSize < LargeScreenSize
-              ? buttonsPostion.tablet
-              : buttonsPostion.desktop,
+          right: buttonsSpace,
         }}
         className={styles["right-arrow"]}
       >
-        <ArrowRight
-          width={
-            screenSize < SmallScreenSize
-              ? 40
-              : screenSize < LargeScreenSize
-              ? 80
-              : 70
-          }
-          height={
-            screenSize < SmallScreenSize
-              ? 40
-              : screenSize < LargeScreenSize
-              ? 80
-              : 70
-          }
-        />
+        <ArrowRight width={iconSize} height={iconSize} />
       </button>
     </>
   );

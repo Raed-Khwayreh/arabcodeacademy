@@ -7,3 +7,4 @@ export { default as PromoText } from "./PromoText/PromoText";
 export { default as ResourceCard } from "./ResourceCard/ResourceCard";
 export { default as SearchBar } from "./SearchBar/SearchBar";
 export { default as UnderlineText } from "./UnderlineText/UnderlineText";
+export { default as Navbar } from "./Navbar/Navbar";

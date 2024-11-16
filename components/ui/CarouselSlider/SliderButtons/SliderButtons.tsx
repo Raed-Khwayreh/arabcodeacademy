@@ -1,5 +1,5 @@
 "use client";
-import React  from "react";
+import React from "react";
 import styles from "./SliderButtons.module.css";
 import Slider from "react-slick";
 import { ArrowRight } from "./icons";
@@ -29,7 +29,7 @@ const SliderButtons: React.FC<SliderButtonsProps> = ({
   return (
     <>
       <div
-        onClick={() => sliderRef.current?.slickNext()}
+        onClick={() => sliderRef.current?.slickPrev()}
         className={styles["left-arrow"]}
         style={{
           left: buttonsSpace,

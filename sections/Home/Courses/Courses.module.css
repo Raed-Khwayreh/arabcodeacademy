@@ -1,0 +1,31 @@
+.search-container {
+  margin-inline: 211px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 84px;
+}
+
+.soon-container {
+  margin-inline: 211px;
+  display: flex;
+  justify-content: end;
+  margin-top: 83px;
+  margin-bottom: 65px;
+}
+
+@media (max-width: 1440px) {
+  .search-container {
+    margin: 0px;
+    margin-bottom: 36px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+  }
+  .soon-container {
+    justify-content: center;
+    margin-bottom: 33px;
+    margin-top: 52px;
+  }
+}

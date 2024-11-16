@@ -75,7 +75,6 @@ const CarouselSlider: React.FC<CarouselSliderProps> = ({
           margin: "auto",
           padding: carouselContainerPadding,
           background: "white",
-          marginBlock: 20,
           boxShadow: containerBoxShadow ? "0 0 25px -2px #7f7f7f" : "none",
           borderRadius: 10,
         }}

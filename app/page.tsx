@@ -1,4 +1,5 @@
 import {
+  Courses,
   Feedback,
   InteractiveTools,
   LearningPath,
@@ -11,6 +12,7 @@ const page = () => {
   return (
     <>
       <ResourcesCardSection />
+      <Courses />
       <QuizzSection />
       <LearningPath />
       <InteractiveTools />

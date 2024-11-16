@@ -17,3 +17,7 @@ body {
   padding: 0;
   margin: 0;
 }
+
+.slick-list {
+  padding: 70px;
+}

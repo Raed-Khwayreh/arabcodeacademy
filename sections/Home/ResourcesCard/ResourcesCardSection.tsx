@@ -7,23 +7,13 @@ import {
   MediumScreenSize,
   SmallScreenSize,
 } from "@/constants/ScreenSizes";
-import React, { useRef, useState } from "react";
+import useScreenSize from "@/utils/useScreenSize";
+import React, { useRef } from "react";
 import Slider from "react-slick";
 
-const ResourcesCardSection = () => {
+const ResourcesCardSection: React.FC = () => {
   const resourcesCardRef = useRef<Slider>(null);
-  const [screenSize, setScreenSize] = useState(0);
-
-  React.useEffect(() => {
-    setScreenSize(window.innerWidth);
-    const handleResize = () => {
-      setScreenSize(window.innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const screenSize = useScreenSize();
 
   return (
     <CarouselSlider

@@ -17,7 +17,7 @@ const InteractiveTools = () => {
               size="medium"
               variant="teal"
               text="تواصل معنا"
-              icon={<PhoneIcon color="white" width="22" height="23.38px" />}
+              icon={<PhoneIcon color="white" width={22} height={23.38} />}
             />
           }
         />

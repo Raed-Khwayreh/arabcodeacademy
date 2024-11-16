@@ -16,7 +16,6 @@ const page = () => {
       <QuizzSection />
       <LearningPath />
       <InteractiveTools />
-      
       <Feedback />
     </>
   );

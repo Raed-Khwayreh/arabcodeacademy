@@ -5,10 +5,11 @@ const coursesData = [
     price: 150,
     instructor: "أحمد علي",
     duration: {
-      vedio: 20,
+      video: 20,
       hour: 10,
       min: 30,
     },
+    image: "",
   },
   {
     id: 2,
@@ -16,7 +17,7 @@ const coursesData = [
     price: 200,
     instructor: "سارة خالد",
     duration: {
-      vedio: 18,
+      video: 18,
       hour: 12,
       min: 45,
     },
@@ -27,7 +28,7 @@ const coursesData = [
     price: 120,
     instructor: "محمد عمر",
     duration: {
-      vedio: 15,
+      video: 15,
       hour: 8,
       min: 20,
     },
@@ -38,7 +39,7 @@ const coursesData = [
     price: 250,
     instructor: "خالد حسن",
     duration: {
-      vedio: 25,
+      video: 25,
       hour: 15,
       min: 40,
     },
@@ -49,7 +50,7 @@ const coursesData = [
     price: 180,
     instructor: "ريم يوسف",
     duration: {
-      vedio: 22,
+      video: 22,
       hour: 9,
       min: 50,
     },
@@ -60,7 +61,7 @@ const coursesData = [
     price: 210,
     instructor: "عمرو فهمي",
     duration: {
-      vedio: 30,
+      video: 30,
       hour: 11,
       min: 35,
     },
@@ -71,7 +72,7 @@ const coursesData = [
     price: 190,
     instructor: "نادية حسن",
     duration: {
-      vedio: 25,
+      video: 25,
       hour: 10,
       min: 0,
     },
@@ -82,7 +83,7 @@ const coursesData = [
     price: 220,
     instructor: "علي رضا",
     duration: {
-      vedio: 28,
+      video: 28,
       hour: 12,
       min: 15,
     },
@@ -93,7 +94,7 @@ const coursesData = [
     price: 170,
     instructor: "لينا مصطفى",
     duration: {
-      vedio: 16,
+      video: 16,
       hour: 7,
       min: 45,
     },
@@ -104,7 +105,7 @@ const coursesData = [
     price: 160,
     instructor: "أحمد سامي",
     duration: {
-      vedio: 18,
+      video: 18,
       hour: 6,
       min: 30,
     },
@@ -115,7 +116,7 @@ const coursesData = [
     price: 230,
     instructor: "هالة عادل",
     duration: {
-      vedio: 24,
+      video: 24,
       hour: 8,
       min: 50,
     },
@@ -126,7 +127,7 @@ const coursesData = [
     price: 240,
     instructor: "أحمد محسن",
     duration: {
-      vedio: 20,
+      video: 20,
       hour: 10,
       min: 20,
     },
@@ -137,7 +138,7 @@ const coursesData = [
     price: 210,
     instructor: "محمود مصطفى",
     duration: {
-      vedio: 22,
+      video: 22,
       hour: 9,
       min: 10,
     },
@@ -148,7 +149,7 @@ const coursesData = [
     price: 180,
     instructor: "سلمى جمال",
     duration: {
-      vedio: 26,
+      video: 26,
       hour: 12,
       min: 30,
     },
@@ -159,7 +160,7 @@ const coursesData = [
     price: 250,
     instructor: "عبد الله أحمد",
     duration: {
-      vedio: 27,
+      video: 27,
       hour: 11,
       min: 50,
     },
@@ -170,7 +171,7 @@ const coursesData = [
     price: 200,
     instructor: "محمود سمير",
     duration: {
-      vedio: 23,
+      video: 23,
       hour: 10,
       min: 15,
     },
@@ -181,7 +182,7 @@ const coursesData = [
     price: 220,
     instructor: "هند سعيد",
     duration: {
-      vedio: 29,
+      video: 29,
       hour: 14,
       min: 0,
     },
@@ -192,7 +193,7 @@ const coursesData = [
     price: 210,
     instructor: "محمد زكريا",
     duration: {
-      vedio: 21,
+      video: 21,
       hour: 8,
       min: 30,
     },
@@ -203,7 +204,7 @@ const coursesData = [
     price: 200,
     instructor: "سمية عبد الله",
     duration: {
-      vedio: 17,
+      video: 17,
       hour: 9,
       min: 40,
     },
@@ -214,7 +215,7 @@ const coursesData = [
     price: 180,
     instructor: "فاطمة يوسف",
     duration: {
-      vedio: 19,
+      video: 19,
       hour: 11,
       min: 25,
     },

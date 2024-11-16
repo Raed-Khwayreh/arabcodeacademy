@@ -1,0 +1,23 @@
+.search-container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: end;
+  margin-bottom: 84px;
+}
+
+@media (max-width: 1440px) {
+  .search-container {
+    margin-bottom: 36px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-container {
+    margin-bottom: 36px;
+    justify-content: center;
+  }
+}

@@ -19,7 +19,7 @@ export const cardData: CardDataItem[] = [
     icon: <Glossary />,
   },
   {
-    title: "بنك الأسئلة التقنية",
+    title: "بنك الأسئلة  التقنية",
     icon: <CheckListIcon />,
   },
   {

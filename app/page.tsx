@@ -5,7 +5,6 @@ import {
   QuizzSection,
   ResourcesCardSection,
 } from "@/sections/Home";
-import SearchBar from "@/components/ui/SearchBar/SearchBar";
 import React from "react";
 
 const page = () => {
@@ -16,7 +15,6 @@ const page = () => {
       <LearningPath />
       <InteractiveTools />
       <Feedback />
-      <SearchBar />
     </>
   );
 };

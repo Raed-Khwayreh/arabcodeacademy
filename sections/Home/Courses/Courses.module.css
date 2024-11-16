@@ -2,14 +2,14 @@
   margin-inline: 211px;
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: flex-end;
   margin-bottom: 84px;
 }
 
 .soon-container {
   margin-inline: 211px;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   margin-top: 83px;
   margin-bottom: 65px;
 }

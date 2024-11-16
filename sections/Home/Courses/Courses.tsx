@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Courses.module.css";
 import { SearchBar, UnderlineText } from "@/components/ui";
-import CoursesList from "./ActiveCourses/CoursesList";
+import CoursesList from "./CoursesList/CoursesList";
 
 const Courses = () => {
   return (

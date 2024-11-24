@@ -1,5 +1,5 @@
 export interface SVGProps {
-  width?: string;
-  height?: string;
+  width?: number;
+  height?: number;
   color?: string;
 }

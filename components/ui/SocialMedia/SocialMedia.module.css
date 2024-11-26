@@ -1,0 +1,123 @@
+.container {
+  width: 450px;
+  height: 439px;
+  font-family: "Tajawal", sans-serif;
+  background-color: #fff;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  padding-top: 42px;
+  padding-right: 51px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.mainHeader {
+  font-family: "Tajawal", sans-serif;
+  font-size: 23px;
+  font-weight: 500;
+  width: 241px;
+  position: relative;
+  color: var(--primary-color);
+}
+
+.mainHeader::after {
+  content: "";
+  display: block;
+  width: 260px;
+  height: 1px;
+  background-color: var(--primary-color);
+  position: absolute;
+  bottom: -14px;
+  right: -4px;
+}
+
+.iconContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 65px;
+  margin-top: 42px;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.footerText {
+  width: 420px;
+  font-size: 19px;
+  font-weight: 500;
+  direction: rtl;
+  color: var(--primary-color);
+}
+
+.breakLine {
+  display: block;
+}
+
+@media (max-width: 1440px) {
+  .container {
+    width: 367px;
+    height: 378px;
+    padding-top: 41px;
+    padding-right: 37px;
+  }
+
+  .mainHeader {
+    font-size: 25px;
+    width: 262px;
+  }
+
+  .mainHeader::after {
+    width: 270px;
+    bottom: -12px;
+    right: -2.7px;
+  }
+
+  .iconContainer {
+    gap: 11px;
+    margin-bottom: 46px;
+    margin-top: 42px;
+  }
+
+  .footerText {
+    line-height: 22.8px;
+    width: 270px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 270px;
+    height: 304.66px;
+    padding-top: 34px;
+  }
+
+  .mainHeader {
+    font-size: 16px;
+    width: 168px;
+  }
+
+  .mainHeader::after {
+    width: 170px;
+    bottom: -11.46px;
+    right: -0.38px;
+  }
+
+  .iconContainer {
+    gap: 9.8px;
+    margin-bottom: 32.8px;
+    margin-top: 33.7px;
+  }
+
+  .footerText {
+    width: 197px;
+    line-height: 18px;
+  }
+}

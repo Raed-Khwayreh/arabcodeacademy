@@ -2,7 +2,7 @@
 import React from "react";
 import Slider from "react-slick";
 import SliderButtons from "./SliderButtons/SliderButtons";
-
+import styles from "./CarouselSlider.module.css";
 interface CarouselSliderProps {
   carouselContainerWidth?: number | string;
   carouselContainerPadding?: number;
@@ -26,11 +26,16 @@ interface CarouselSliderProps {
       slidesToScroll?: number;
     };
   };
+  containerBackgroundColor?: string;
+  arrowsColor?: string;
+  showDots?: boolean;
 }
 
 const CarouselSlider: React.FC<CarouselSliderProps> = ({
+  showDots = false,
   carouselContainerWidth = "90%",
   carouselContainerPadding = 10,
+  containerBackgroundColor = "white",
   buttonsPostion = { desktop: 60, tablet: 158, mobile: 9 },
   containerBoxShadow = false,
   sliderRef,
@@ -40,9 +45,17 @@ const CarouselSlider: React.FC<CarouselSliderProps> = ({
     tablet: { slidesToScroll: 2, slidesToShow: 2 },
     mobile: { slidesToScroll: 1, slidesToShow: 1 },
   },
+  arrowsColor,
 }) => {
   const settings = {
-    dots: false,
+    customPaging: function () {
+      return <div className={styles.dots} />;
+    },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    appendDots: (dots: any) => (
+      <div className={`${styles["dots-container"]} slick-dots`}>{dots}</div>
+    ),
+    dots: showDots,
     infinite: true,
     speed: 500,
     slidesToShow: breakPoints.desktop?.slidesToShow,
@@ -68,18 +81,25 @@ const CarouselSlider: React.FC<CarouselSliderProps> = ({
   };
 
   return (
-    <div style={{ width: "100%", position: "relative" }}>
+    <div
+      style={{
+        width: "100%",
+        position: "relative",
+        zIndex: 1,
+      }}
+    >
       <div
         style={{
           width: carouselContainerWidth,
           margin: "auto",
           padding: carouselContainerPadding,
-          background: "white",
+          background: containerBackgroundColor,
           boxShadow: containerBoxShadow ? "0 0 25px -2px #7f7f7f" : "none",
           borderRadius: 10,
         }}
       >
         <SliderButtons
+          arrowsColor={arrowsColor}
           buttonsPostion={{
             desktop: buttonsPostion?.desktop,
             tablet: buttonsPostion?.tablet,

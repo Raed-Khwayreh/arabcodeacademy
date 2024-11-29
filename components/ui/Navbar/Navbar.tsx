@@ -1,30 +1,53 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import styles from "./Navbar.module.css";
 import Image from "next/image";
 import { ACAButton } from "@/components/ui";
 import { LoginIcon, ProfileCircleIcon } from "../ACAButton/ACAButtonIcons";
-import { ArrowDown, BurgerMenu } from "./icons";
+import { ArrowDown, Avatar, BurgerMenu, Logout } from "./icons";
 
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <div className={styles.navbar}>
       <div className={styles["burger-menu"]}>
+        {isLoggedIn && (
+          <div className={styles["logout-mobile"]}>
+            <div onClick={() => setIsLoggedIn(false)}>
+              <Logout />
+            </div>
+            <Avatar />
+          </div>
+        )}
         <BurgerMenu />
       </div>
-      <div className={styles["buttons-container"]}>
-        <ACAButton
-          size="medium"
-          variant="teal"
-          text="إنشاء حساب"
-          icon={<ProfileCircleIcon />}
-        />
-        <ACAButton
-          size="medium"
-          variant="tomato"
-          text="تسجيل الدخول"
-          icon={<LoginIcon />}
-        />
-      </div>
+      {isLoggedIn ? (
+        <div className={styles.logout}>
+          <div onClick={() => setIsLoggedIn(false)}>
+            <Logout />
+          </div>
+          <Avatar />
+        </div>
+      ) : (
+        <div className={styles["buttons-container"]}>
+          <ACAButton
+            size="medium"
+            variant="teal"
+            text="إنشاء حساب"
+            icon={<ProfileCircleIcon />}
+          />
+          <div onClick={() => setIsLoggedIn(true)}>
+            <ACAButton
+              size="medium"
+              variant="tomato"
+              text="تسجيل الدخول"
+              icon={<LoginIcon />}
+            />
+          </div>
+        </div>
+      )}
       <ul className={styles.links}>
         <li>المسارات التعليمية</li>
         <li>التواصل </li>

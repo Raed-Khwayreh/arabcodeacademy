@@ -13,7 +13,7 @@ const VideoSection: React.FC = () => {
       const video = videoRef.current;
       if (video) {
         const isMobile = window.innerWidth <= 768;
-        const source = isMobile ? "/small.mp4" : "/large.mp4";
+        const source = isMobile ? "/dhadSection_small.mp4" : "/dhadSection_large.mp4";
 
         if (video.src !== source) {
           video.src = source;

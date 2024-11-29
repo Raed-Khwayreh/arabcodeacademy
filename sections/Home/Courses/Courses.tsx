@@ -5,7 +5,7 @@ import CoursesList from "./CoursesList/CoursesList";
 
 const Courses = () => {
   return (
-    <div style={{ color: "black", marginBlock: 123 }}>
+    <div style={{ color: "black" }}>
       <div className={styles["search-container"]}>
         <SearchBar />
         <UnderlineText

@@ -4,8 +4,8 @@ import "./globals.css";
 import "@/styles/variables.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import DiscountHeader from "@/components/ui/DiscountHeader/DiscountHeader";
 import { Provider } from "@/components/ui/provider";
+import { DiscountHeader, Navbar } from "@/components/ui";
 
 const tajawal = localFont({
   src: [
@@ -69,6 +69,7 @@ export default function RootLayout({
             startDate="2024-10-20T00:00:00"
             endDate="2025-10-24T18:55:10"
           />
+          <Navbar />
           {children}
         </Provider>
       </body>

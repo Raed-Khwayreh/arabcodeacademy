@@ -1,0 +1,213 @@
+.main {
+  position: relative;
+  height: 533px;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 26px 84px 81px 84px;
+}
+
+.container {
+  z-index: 1;
+}
+
+.video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  object-fit: cover;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+.icon {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 21px;
+}
+.content {
+  width: 222px;
+  height: 285px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 25px;
+  font-weight: 400;
+}
+
+.button {
+  position: absolute;
+  bottom: 23px;
+}
+
+@media (min-width: 768px) and (max-width: 1440px) {
+  .main {
+    position: relative;
+    height: 801px;
+    width: 100%;
+  }
+
+  .video {
+    height: 801px;
+  }
+
+  .container {
+    position: absolute;
+    top: 39px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .icon svg {
+    width: 350px;
+    height: 182px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 58px;
+    text-align: center;
+  }
+
+  .title {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 40px;
+    margin-bottom: 42px;
+    text-align: center;
+  }
+
+  .content {
+    font-size: 25px;
+    line-height: 40px;
+    width: 699px;
+    height: 254px;
+    text-align: center;
+    margin: 0 auto;
+    font-weight: 700;
+    margin-bottom: 66px;
+  }
+
+  .button {
+    position: absolute;
+    bottom: 20px;
+    margin: 20px auto;
+  }
+}
+
+@media (min-width: 1441px) and (max-width: 1670px) {
+  .main {
+    height: 1068px;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon svg {
+    position: absolute;
+    right: 250px;
+    top: 260px;
+    text-align: center;
+    width: 400px;
+    height: 209px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 150px;
+  }
+
+  .title {
+    position: absolute;
+    right: 300px;
+    bottom: 436px;
+
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 40px;
+  }
+
+  .content {
+    position: absolute;
+    top: 260px;
+    right: 820px;
+
+    width: 633px;
+    height: 349px;
+    font-size: 27px;
+    line-height: 40px;
+    font-weight: 400;
+    text-align: right;
+  }
+
+  .button {
+    position: absolute;
+    bottom: 380px;
+    right: 820px;
+  }
+}
+
+@media (min-width: 1671px) {
+  .main {
+    height: 1068px;
+    width: 100%;
+
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon svg {
+    position: absolute;
+    right: 349px;
+    top: 307px;
+    text-align: center;
+    width: 400px;
+    height: 209px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 150px;
+  }
+
+  .title {
+    position: absolute;
+    right: 401px;
+    bottom: 436px;
+
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 40px;
+  }
+
+  .content {
+    position: absolute;
+    top: 319px;
+    right: 919px;
+
+    width: 633px;
+    height: 349px;
+    font-size: 27px;
+    line-height: 40px;
+    font-weight: 400;
+    text-align: right;
+  }
+
+  .button {
+    position: absolute;
+    margin-top: 28px;
+    bottom: 312px;
+    right: 919px;
+  }
+}

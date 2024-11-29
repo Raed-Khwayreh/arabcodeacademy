@@ -1,0 +1,25 @@
+.dots {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  cursor: pointer;
+  position: absolute;
+  bottom: -90px;
+}
+
+@media (min-width: 1671px) {
+  .dots {
+  bottom: -60px
+  }
+}
+
+@media (max-width: 1440px) {
+  .dots {
+    bottom: -20px;
+  }
+}

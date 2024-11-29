@@ -35,6 +35,13 @@
   display: none;
 }
 
+.logout {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  cursor: pointer;
+}
+
 @media (max-width: 1440px) {
   .navbar {
     padding: 16.5px 44px;
@@ -42,6 +49,10 @@
 
   .links {
     gap: 30px;
+  }
+
+  .logout {
+    gap: 20px;
   }
 }
 
@@ -53,10 +64,21 @@
     display: none;
   }
   .burger-menu {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
   .image {
     width: 155.48px;
     height: 30px;
+  }
+  .logout {
+    display: none;
+  }
+  .logout-mobile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
   }
 }

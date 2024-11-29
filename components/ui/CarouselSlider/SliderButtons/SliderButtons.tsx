@@ -10,9 +10,11 @@ import useScreenSize from "@/utils/useScreenSize";
 interface SliderButtonsProps {
   sliderRef: React.RefObject<Slider>;
   buttonsPostion?: { desktop?: number; tablet?: number; mobile?: number };
+  arrowsColor?: string;
 }
 
 const SliderButtons: React.FC<SliderButtonsProps> = ({
+  arrowsColor,
   sliderRef,
   buttonsPostion = { desktop: 60, tablet: 158, mobile: 9 },
 }) => {
@@ -35,7 +37,7 @@ const SliderButtons: React.FC<SliderButtonsProps> = ({
           left: buttonsSpace,
         }}
       >
-        <ArrowLeft width={iconSize} height={iconSize} />
+        <ArrowLeft color={arrowsColor} width={iconSize} height={iconSize} />
       </div>
       <button
         onClick={() => sliderRef.current?.slickNext()}
@@ -44,7 +46,7 @@ const SliderButtons: React.FC<SliderButtonsProps> = ({
         }}
         className={styles["right-arrow"]}
       >
-        <ArrowRight width={iconSize} height={iconSize} />
+        <ArrowRight color={arrowsColor} width={iconSize} height={iconSize} />
       </button>
     </>
   );

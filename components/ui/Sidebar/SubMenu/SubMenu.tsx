@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../Sidebar.module.css";
 import { ArrowDown } from "../../Navbar/icons";
+import { subMenuList } from "@/sections/Home/Courses/mock/subMenuList";
 
 interface SubMenuProps {
   isResourcesOpen: boolean;
@@ -10,17 +11,6 @@ const SubMenu: React.FC<SubMenuProps> = ({
   isResourcesOpen,
   toggleResources,
 }) => {
-  const menuList = [
-    "المدونة",
-    "المنتدى",
-    "قاموس المصطلحات",
-    "دروس فيديو قصيرة",
-    "دليل أدوات الذكاء الاصطناعي",
-    "بنك الاسئلة التقنية",
-    "دورس و أنماط الميدجورني",
-    "لغة ضاد",
-  ];
-
   return (
     <div>
       <ul
@@ -54,7 +44,7 @@ const SubMenu: React.FC<SubMenuProps> = ({
         </li>
         {isResourcesOpen && (
           <ul>
-            {menuList.map((e, i) => {
+            {subMenuList.map((e, i) => {
               return (
                 <li key={i} className={styles.subMenuItem}>
                   {e}

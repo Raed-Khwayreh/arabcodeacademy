@@ -3,12 +3,13 @@
 import React, { useState } from "react";
 import styles from "./Navbar.module.css";
 import Image from "next/image";
-import { ACAButton } from "@/components/ui";
+import { ACAButton, Sidebar } from "@/components/ui";
 import { LoginIcon, ProfileCircleIcon } from "../ACAButton/ACAButtonIcons";
 import { ArrowDown, Avatar, BurgerMenu, Logout } from "./icons";
-import Sidebar from "../Sidebar/Sidebar";
+import { subMenuList } from "@/sections/Home/Courses/mock/subMenuList";
 
 const Navbar = () => {
+  const [showResoursesList, setShowResoursesList] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const toggleSidebar = () => {
@@ -67,9 +68,24 @@ const Navbar = () => {
       <ul className={styles.links}>
         <li>المسارات التعليمية</li>
         <li>التواصل </li>
-        <div className={styles["resource-list"]}>
+        <div
+          onClick={() => setShowResoursesList((e) => !e)}
+          className={styles["resource-list"]}
+        >
           <li>المصادر</li>
-          <ArrowDown />
+          {showResoursesList && (
+            <ul className={styles["resouces-menu"]} style={{}}>
+              {subMenuList.map((e, i) => {
+                return <li key={i}>{e}</li>;
+              })}
+            </ul>
+          )}
+          <div
+            className={styles.arrowDown}
+            style={{ transform: showResoursesList ? "rotate(-180deg)" : "" }}
+          >
+            <ArrowDown />
+          </div>
         </div>
       </ul>
       <Image

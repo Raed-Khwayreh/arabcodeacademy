@@ -1,4 +1,5 @@
 .navbar {
+  position: relative;
   width: 100%;
   padding: 16.5px 99px;
   background-color: var(--primary-color);

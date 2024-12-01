@@ -1,8 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600&display=swap");
 
 .sidebar {
+  position: absolute;
+  top: 146px;
+  left: 0px;
+  z-index: 1000;
   width: 224px;
   box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.25);
+  background-color: white;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%);
+}
+.sidebarOpen {
+  transform: translateX(0);
 }
 
 .menu {

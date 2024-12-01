@@ -2,9 +2,9 @@
 
 import React, { useState, FC } from "react";
 import styles from "./Sidebar.module.css";
-import SignInIcon from "@/public/Sidebar/LogIn.svg";
-import CreateAccountIcon from "@/public/Sidebar/CreateAccount.svg";
-import AngleDownIcon from "@/public/Sidebar/Polygon.svg";
+import SignInIcon from "./icons/LogIn.svg";
+import CreateAccountIcon from "./icons/CreateAccount.svg";
+import AngleDownIcon from "./icons/Polygon.svg";
 
 interface SidebarProps {
   isLoggedIn: boolean;

@@ -4,24 +4,6 @@ import Image from "next/image";
 import UnderlineText from "../UnderlineText/UnderlineText";
 import socialMediaIcons from "./data/socialMediaIcons";
 
-type ImgProps = {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-  className?: string;
-};
-
-const Img: React.FC<ImgProps> = ({ src, alt, width, height, className }) => (
-  <Image
-    src={src}
-    alt={alt}
-    width={width}
-    height={height}
-    className={className}
-  />
-);
-
 const SocialMedia: React.FC = () => {
   return (
     <div className={styles.container}>
@@ -34,13 +16,12 @@ const SocialMedia: React.FC = () => {
       />
       <div className={styles.iconContainer}>
         {socialMediaIcons.map((icon, index) => (
-          <Img
+          <Image
             key={index}
             src={icon.src}
             alt={icon.alt}
-            width={icon.width}
-            height={icon.height}
-            className={styles.icon}
+            width={34}
+            height={34}
           />
         ))}
       </div>

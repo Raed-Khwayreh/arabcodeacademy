@@ -1,51 +1,35 @@
 const socialMediaIcons = [
   {
-    src: "/Images/SocialMedia/linkedin.png",
+    src: "/images/SocialMedia/linkedin.png",
     alt: "LinkedIn",
-    width: 34,
-    height: 34,
   },
   {
-    src: "/Images/SocialMedia/twitter.png",
+    src: "/images/SocialMedia/twitter.png",
     alt: "X (formerly Twitter)",
-    width: 34,
-    height: 34,
   },
   {
-    src: "/Images/SocialMedia/instagram.png",
+    src: "/images/SocialMedia/instagram.png",
     alt: "Instagram",
-    width: 34,
-    height: 34,
   },
   {
-    src: "/Images/SocialMedia/facebook.png",
+    src: "/images/SocialMedia/facebook.png",
     alt: "Facebook",
-    width: 34,
-    height: 34,
   },
   {
-    src: "/Images/SocialMedia/discord.png",
+    src: "/images/SocialMedia/discord.png",
     alt: "Discord",
-    width: 34,
-    height: 34,
   },
   {
-    src: "/Images/SocialMedia/threads.png",
+    src: "/images/SocialMedia/threads.png",
     alt: "Threads",
-    width: 34,
-    height: 34,
   },
   {
-    src: "/Images/SocialMedia/youtube.png",
+    src: "/images/SocialMedia/youtube.png",
     alt: "YouTube",
-    width: 34,
-    height: 34,
   },
   {
-    src: "/Images/SocialMedia/tiktok.png",
+    src: "/images/SocialMedia/tiktok.png",
     alt: "TikTok",
-    width: 34,
-    height: 34,
   },
 ];
 

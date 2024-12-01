@@ -46,15 +46,11 @@ const Footer = () => {
         <hr className={styles.break} />
         <div className={styles.copyright}>
           <div className={styles.image_container}>
-            <Image
-              className={styles.img}
-              src={LogoImage}
-              alt="logo"
-              fill
-              objectFit="cover"
-            />
+            <Image className={styles.img} src={LogoImage} alt="logo" fill />
           </div>
-          <div className={styles.ref} >جميع الحقوق محفوظة  &copy; 2023 الأكاديمية العربية للبرمجة</div>
+          <div className={styles.ref}>
+            جميع الحقوق محفوظة &copy; 2023 الأكاديمية العربية للبرمجة
+          </div>
         </div>
       </div>
     </footer>

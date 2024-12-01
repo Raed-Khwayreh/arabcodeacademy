@@ -21,6 +21,7 @@ const SubMenu: React.FC<SubMenuProps> = ({
           borderRadius: isResourcesOpen ? 10 : 0,
         }}
       >
+        
         <li
           style={{
             marginInline: !isResourcesOpen ? 18 : 0,

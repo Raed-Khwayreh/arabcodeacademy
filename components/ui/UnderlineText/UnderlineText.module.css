@@ -2,8 +2,6 @@
   width: fit-content;
   border-bottom: solid;
   line-height: 32.4px;
-  padding-left: 15px;
-  padding-right: 6px;
 }
 
 .title {
@@ -15,8 +13,6 @@
     width: fit-content;
     border-bottom: solid;
     line-height: 32.4px;
-    padding-left: 15px;
-    padding-right: 6px;
   }
   .title {
     font-size: var(--font-size-tablet);
@@ -28,7 +24,6 @@
     width: fit-content;
     border-bottom: solid;
     line-height: 32.4px;
-    padding-inline: 15px;
   }
   .title {
     font-size: var(--font-size-mobile);

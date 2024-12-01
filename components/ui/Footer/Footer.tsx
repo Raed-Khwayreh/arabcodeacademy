@@ -28,6 +28,9 @@ const Footer = () => {
               fontSize={{ desktop: 23, tablet: 25, mobile: 16 }}
               fontWeight={700}
               paddingBottom={12}
+              paddingLeft={30}
+              paddingRight={0}
+              centeredInMobile={true}
               borderWidth={1.3}
               color="#FFFFFF"
             />

@@ -10,6 +10,9 @@ const FooterLinks = () => {
       <div className={styles.links_container}>
         <div>
           <UnderlineText
+            paddingLeft={30}
+            paddingRight={0}
+            centeredInMobile={true}
             title="معلومات"
             fontSize={{ desktop: 23, tablet: 25, mobile: 16 }}
             fontWeight={700}
@@ -33,6 +36,9 @@ const FooterLinks = () => {
         </div>
         <div>
           <UnderlineText
+            paddingLeft={30}
+            paddingRight={0}
+            centeredInMobile={true}
             title="السياسات"
             fontSize={{ desktop: 23, tablet: 25, mobile: 16 }}
             fontWeight={700}
@@ -60,7 +66,7 @@ const FooterLinks = () => {
           text="المسارات التعليمية"
           variant="teal"
           size="medium"
-          icon={<ChalkboardTeacher />}  
+          icon={<ChalkboardTeacher />}
         />
       </div>
     </div>

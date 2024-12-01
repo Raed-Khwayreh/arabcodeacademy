@@ -15,6 +15,9 @@ const ContactInfoCard: React.FC = () => {
             fontSize={{ desktop: 23, tablet: 25, mobile: 16 }}
             fontWeight={500}
             paddingBottom={12}
+            paddingLeft={20}
+            paddingRight={0}
+            centeredInMobile={false}
             borderWidth={1.3}
           />
         </div>

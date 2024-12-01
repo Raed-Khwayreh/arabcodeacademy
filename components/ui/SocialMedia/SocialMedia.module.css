@@ -96,6 +96,7 @@
 @media (max-width: 768px) {
   .container {
     width: 270px;
+    height: 320px;
     padding-top: 34px;
   }
 
@@ -119,5 +120,11 @@
   .footerText {
     width: 197px;
     line-height: 18px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 18px;
+    text-align: right;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
   }
 }

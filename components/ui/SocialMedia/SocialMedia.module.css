@@ -1,7 +1,6 @@
 .container {
   width: 450px;
   height: 439px;
-  font-family: "Tajawal", sans-serif;
   background-color: #fff;
   border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -17,7 +16,6 @@
 }
 
 .mainHeader {
-  font-family: "Tajawal", sans-serif;
   font-size: 23px;
   font-weight: 500;
   width: 241px;

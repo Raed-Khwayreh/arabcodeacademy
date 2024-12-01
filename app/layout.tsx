@@ -5,8 +5,7 @@ import "@/styles/variables.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Provider } from "@/components/ui/provider";
-import { DiscountHeader, Navbar } from "@/components/ui";
-import Footer from "@/components/ui/Footer/Footer";
+import { DiscountHeader, Footer, Navbar } from "@/components/ui";
 
 const tajawal = localFont({
   src: [

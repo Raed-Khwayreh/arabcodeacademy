@@ -1,7 +1,6 @@
 .container {
   width: 450px;
   height: 439px;
-  font-family: "Tajawal", sans-serif;
   background-color: #fff;
   border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -12,11 +11,11 @@
   padding-right: 51px;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
+  direction: rtl;
 }
 
 .mainHeader {
-  font-family: "Tajawal", sans-serif;
   font-size: 23px;
   font-weight: 500;
   width: 241px;
@@ -61,7 +60,7 @@
   display: block;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1400px) {
   .container {
     width: 367px;
     height: 378px;
@@ -88,6 +87,8 @@
 
   .footerText {
     line-height: 22.8px;
+    font-size: 19px;
+    font-weight: 500;
     width: 270px;
   }
 }
@@ -95,7 +96,6 @@
 @media (max-width: 768px) {
   .container {
     width: 270px;
-    height: 304.66px;
     padding-top: 34px;
   }
 

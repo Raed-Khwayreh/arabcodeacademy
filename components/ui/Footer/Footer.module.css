@@ -1,0 +1,152 @@
+.footer {
+  background-color: #462576;
+  padding-top: 2rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 2rem;
+}
+
+.footer_main {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  margin-top: 92px;
+  margin-bottom: 112px;
+}
+
+.footer_links {
+  margin-top: 2.4rem;
+}
+
+.contact {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 2.3rem;
+}
+
+.resources {
+  direction: rtl;
+  margin-bottom: 2rem;
+}
+
+.title {
+  margin-bottom: 2.4rem;
+}
+
+.resources_links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-right: 7rem;
+}
+
+.resources_links button {
+  flex: 1 0 calc(25% - 16px);
+  box-sizing: border-box;
+}
+
+.break {
+  border-top: 1px solid #ffffff;
+  margin-bottom: 12px;
+  font-size: 22px;
+}
+
+.copyright {
+  direction: rtl;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image_container {
+  position: relative;
+  width: 187.79px;
+  height: 100px;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 767px) {
+  .contact,
+  .resources_links {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer {
+    margin-top: 0px;
+    padding: 0px;
+  }
+
+  .footer_main {
+    gap: 5rem;
+    margin-top: 36px;
+  }
+
+  .footer_links {
+    margin-top: 0px;
+  }
+
+  .resources_links button {
+    flex: 1 0 100%;
+  }
+
+  .copyright {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
+
+  .ref {
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 13.2px;
+  }
+
+  .image_container {
+    width: 75.2px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .footer {
+    margin-top: 0px;
+    padding: 0px;
+  }
+
+  .footer_main {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin: 2.2rem 0;
+  }
+
+  .resources_links {
+    max-width: 580px;
+    margin: 3rem auto;
+  }
+
+  .resources_links button {
+    flex: 1 0 calc(50% - 16px);
+  }
+
+  .title > div:first-child {
+    margin: 0 auto;
+  }
+
+  .break {
+    margin-top: 3rem;
+  }
+}

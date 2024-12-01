@@ -79,7 +79,7 @@
 }
 
 .arrowDown {
-  transition: 0.5s;
+  transition: 0.3s;
 }
 
 @media (max-width: 1440px) {

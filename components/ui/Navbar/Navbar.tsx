@@ -41,7 +41,7 @@ const Navbar = () => {
         <BurgerMenu />
       </div>
       {isLoggedIn ? (
-        <div className={styles.logout}>
+        <div className={styles.logout} >
           <div onClick={handleOnLogOut}>
             <Logout />
           </div>
@@ -82,7 +82,7 @@ const Navbar = () => {
           )}
           <div
             className={styles.arrowDown}
-            style={{ transform: showResoursesList ? "rotate(-180deg)" : "" }}
+            style={{ transform: showResoursesList ? "rotate(60deg)" : "" }}
           >
             <ArrowDown />
           </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./SocialMedia.module.css";
 import Image from "next/image";
+import UnderlineText from "../UnderlineText/UnderlineText";
 
 type ImgProps = {
   src: string;
@@ -74,7 +75,14 @@ const SocialMedia: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <p className={styles.mainHeader}>مواقع التواصل الاجتماعي</p>
+      {/* <p className={styles.mainHeader}>مواقع التواصل الاجتماعي</p> */}
+      <UnderlineText
+        title="مواقع التواصل الاجتماعي"
+        fontSize={{ desktop: 23, tablet: 25, mobile: 16 }}
+        fontWeight={500}
+        paddingBottom={12}
+        borderWidth={1.3}
+      />
       <div className={styles.iconContainer}>
         {socialMediaIcons.map((icon, index) => (
           <Img

@@ -1,6 +1,6 @@
 .title-container {
   width: fit-content;
-  border-bottom: 2px solid;
+  border-bottom: solid;
   line-height: 32.4px;
   padding-left: 15px;
   padding-right: 6px;
@@ -13,7 +13,7 @@
 @media (max-width: 1440px) {
   .title-container {
     width: fit-content;
-    border-bottom: 2px solid;
+    border-bottom: solid;
     line-height: 32.4px;
     padding-left: 15px;
     padding-right: 6px;
@@ -26,7 +26,7 @@
 @media (max-width: 768px) {
   .title-container {
     width: fit-content;
-    border-bottom: 2px solid;
+    border-bottom: solid;
     line-height: 32.4px;
     padding-inline: 15px;
   }

@@ -12,7 +12,8 @@
   padding-right: 51px;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
+  direction: rtl;
 }
 
 .mainHeader {
@@ -88,6 +89,8 @@
 
   .footerText {
     line-height: 22.8px;
+    font-size: 19px;
+    font-weight: 500;
     width: 270px;
   }
 }

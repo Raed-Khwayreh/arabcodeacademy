@@ -12,9 +12,10 @@ const ContactInfoCard: React.FC = () => {
         <div className={styles.title}>
           <UnderlineText
             title="التواصل"
-            fontSize={{ desktop: 30, tablet: 25, mobile: 16 }}
-            fontWeight={600}
+            fontSize={{ desktop: 23, tablet: 25, mobile: 16 }}
+            fontWeight={500}
             paddingBottom={12}
+            borderWidth={1.3}
           />
         </div>
 

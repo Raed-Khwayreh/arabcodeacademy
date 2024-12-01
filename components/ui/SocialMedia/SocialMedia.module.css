@@ -61,7 +61,7 @@
   display: block;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1400px) {
   .container {
     width: 367px;
     height: 378px;

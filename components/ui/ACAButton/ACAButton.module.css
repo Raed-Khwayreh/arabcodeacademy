@@ -60,7 +60,8 @@
 
 .xlarge {
   font-size: 15px;
-  min-width: 180px;
+  min-width: 200px;
+  padding: 13px 0px;
   height: 45px;
   font-weight: 500;
   border-radius: 6px;

@@ -1,8 +1,6 @@
 .title-container {
   width: fit-content;
-  border-bottom: 2px solid var(--primary-color);
-  color: var(--primary-color);
-  color: var(--primary-color);
+  border-bottom: 2px solid;
   line-height: 32.4px;
   padding-left: 15px;
   padding-right: 6px;
@@ -15,8 +13,7 @@
 @media (max-width: 1440px) {
   .title-container {
     width: fit-content;
-    border-bottom: 2px solid var(--primary-color);
-    color: var(--primary-color);
+    border-bottom: 2px solid;
     line-height: 32.4px;
     padding-left: 15px;
     padding-right: 6px;
@@ -29,7 +26,7 @@
 @media (max-width: 768px) {
   .title-container {
     width: fit-content;
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 2px solid;
     line-height: 32.4px;
     padding-inline: 15px;
   }

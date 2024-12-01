@@ -2,15 +2,17 @@
 
 import React, { useState, FC } from "react";
 import styles from "./Sidebar.module.css";
-import SignInIcon from "@/public/Sidebar/LogIn.svg";
-import CreateAccountIcon from "@/public/Sidebar/CreateAccount.svg";
-import AngleDownIcon from "@/public/Sidebar/Polygon.svg";
+import SignInIcon from "./icons/LogIn.svg";
+import CreateAccountIcon from "./icons/CreateAccount.svg";
+
+import SubMenu from "./SubMenu/SubMenu";
 
 interface SidebarProps {
   isLoggedIn: boolean;
+  onLogin: () => void;
 }
 
-const Sidebar: FC<SidebarProps> = ({ isLoggedIn }) => {
+const Sidebar: FC<SidebarProps> = ({ isLoggedIn, onLogin }) => {
   const [isResourcesOpen, setIsResourcesOpen] = useState<boolean>(false);
 
   const toggleResources = (): void => {
@@ -18,11 +20,11 @@ const Sidebar: FC<SidebarProps> = ({ isLoggedIn }) => {
   };
 
   return (
-    <nav className={styles.sidebar}>
+    <nav className={styles.sidebar} style={{ top: isLoggedIn ? 84 : 62 }}>
       <ul className={styles.menu}>
         {!isLoggedIn && (
           <>
-            <li className={styles.menuItem}>
+            <li onClick={onLogin} className={styles.menuItem}>
               <span>تسجيل الدخول</span>
               <SignInIcon className={styles.icon} />
             </li>
@@ -36,29 +38,11 @@ const Sidebar: FC<SidebarProps> = ({ isLoggedIn }) => {
         <li className={styles.menuItem}>
           <span>المسارات التعليمية</span>
         </li>
-
-        <li
-          className={`${styles.menuItem} ${styles.dropdown}`}
-          onClick={toggleResources}
-        >
-          <div className={styles.meanuHeader}>
-            <span className={styles.menuHeader}>المصادر</span>
-            <AngleDownIcon className={styles.iconDropDown} />
-          </div>
-          {isResourcesOpen && (
-            <ul className={styles.subMenu}>
-              <li className={styles.subMenuItem}>المدونة</li>
-              <li className={styles.subMenuItem}>المنتدى</li>
-              <li className={styles.subMenuItem}>قاموس المصطلحات</li>
-              <li className={styles.subMenuItem}>دروس فيديو قصيرة</li>
-              <li className={styles.subMenuItem}>
-                دليل أدوات الذكاء الاصطناعي
-              </li>
-              <li className={styles.subMenuItem}>بنك الأسئلة التقنية</li>
-              <li className={styles.subMenuItem}>دروس و أنماط الميدجورني</li>
-              <li className={styles.subMenuItem}>لغة الضاد</li>
-            </ul>
-          )}
+        <li>
+          <SubMenu
+            isResourcesOpen={isResourcesOpen}
+            toggleResources={toggleResources}
+          />
         </li>
 
         <li className={styles.menuItem}>التواصل</li>

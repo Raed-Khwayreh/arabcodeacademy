@@ -1,23 +1,35 @@
-@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600&display=swap");
-
 .sidebar {
+  position: absolute;
+  top: 62px;
+  left: 0px;
+  z-index: 1000;
   width: 224px;
   box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.25);
+  background-color: white;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+.sidebar ul li {
+  cursor: pointer;
+}
+
+.sidebarOpen {
+  transform: translateX(0);
 }
 
 .menu {
   list-style: none;
   margin: 0;
-  padding: 0px 23.9px;
 }
 
 .menuItem {
+  margin: 0px 23.9px;
   display: flex;
   justify-content: center;
   padding: 16px 0px 14px 0px;
   font-size: 16px;
   color: #713488;
-  font-family: "Tajawal", sans-serif;
   border-bottom: 1px solid #713488;
 }
 
@@ -42,9 +54,9 @@
 }
 
 .meanuHeader {
-  display: grid;
-  grid-template-columns: auto auto;
+  display: flex;
   align-items: center;
+  gap: 10px;
 }
 
 .subMenu {
@@ -52,20 +64,26 @@
   list-style: none;
   padding: 0;
   text-align: center;
+  background-color: #71348814;
+  border-radius: 10;
 }
 
 .subMenuItem {
+  margin: 0px 18px;
   display: flex;
   justify-content: center;
   padding: 19px 0px 14px 0px;
   font-size: 16px;
   color: #713488;
-  font-family: "Tajawal", sans-serif;
   border-bottom: 1px solid #713488;
-  background-color: #71348814;
-  width: 224px;
 }
 
 .subMenuItem:last-child {
   border-bottom: none;
+}
+
+@media (min-width: 1200px) {
+  .sidebar {
+    display: block;
+  }
 }

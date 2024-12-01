@@ -11,6 +11,14 @@ const HeroComponent = () => {
           تعمل الأكاديمية العربية للبرمجة كجسر يربط العقول التكنولوجية العربية
           في المهجر بالطلبة العرب أينما كانوا
         </h1>
+        <div className={styles.centerButton}>
+          <ACAButton
+            size="large"
+            text="المسارات التعليمية"
+            variant="teal"
+            icon={<ChalkboardTeacherIcon />}
+          />
+        </div>
         <div className={styles.left}>
           <div className={styles["left-headings"]}>
             <h1>
@@ -22,12 +30,14 @@ const HeroComponent = () => {
               والمحترفين بإشراف مدربين ومبرمجين ذوي خبرة عالمية في المجال التقني
             </h1>
           </div>
-          <ACAButton
-            size="large"
-            text="المسارات التعليمية"
-            variant="teal"
-            icon={<ChalkboardTeacherIcon />}
-          />
+          <div className={styles.bottomButton}>
+            <ACAButton
+              size="large"
+              text="المسارات التعليمية"
+              variant="teal"
+              icon={<ChalkboardTeacherIcon />}
+            />
+          </div>
         </div>
       </div>
     </div>

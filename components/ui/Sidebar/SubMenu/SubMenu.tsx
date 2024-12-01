@@ -13,27 +13,11 @@ const SubMenu: React.FC<SubMenuProps> = ({
 }) => {
   return (
     <div>
-      <ul
-        className={styles.subMenu}
-        style={{
-          boxShadow: isResourcesOpen ? "#00000024 0px 2px 1px 2px" : "none",
-          background: !isResourcesOpen ? "white" : " #71348814",
-          borderRadius: isResourcesOpen ? 10 : 0,
-        }}
-      >
-        
+      <ul className={isResourcesOpen ? styles.subMenuOpen : styles.subMenu}>
         <li
-          style={{
-            marginInline: !isResourcesOpen ? 18 : 0,
-            marginTop: isResourcesOpen ? -1 : 0,
-            background: isResourcesOpen ? "var(--primary-color)" : "white",
-            color: isResourcesOpen ? "white" : "#713488",
-            borderRadius: isResourcesOpen ? 10 : 0,
-            borderBottom: !isResourcesOpen
-              ? "1px solid var(--primary-color)"
-              : "",
-          }}
-          className={`${styles.menuItem} ${styles.dropdown}`}
+          className={`${styles.menuItem}  ${
+            isResourcesOpen ? styles.pressed : styles.notpressed
+          }`}
           onClick={toggleResources}
         >
           <div className={styles.meanuHeader}>

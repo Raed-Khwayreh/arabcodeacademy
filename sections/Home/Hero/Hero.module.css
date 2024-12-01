@@ -3,6 +3,7 @@
   position: relative;
   justify-content: center;
   align-items: center;
+  margin-left: -4px;
   background-position: center;
   background-image: url("/images/heroSection/header.jpg");
   background-size: cover;

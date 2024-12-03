@@ -17,7 +17,7 @@ const Hero = () => {
         containerBackgroundColor="transparent"
         arrowsColor="white"
         carouselContainerPadding={0}
-        buttonsPostion={{ desktop: 73, tablet: 158, mobile: 28 }}
+        buttonsPostion={{ desktop: 20, tablet: 158, mobile: 28 }}
         breakPoints={{
           desktop: { slidesToScroll: 1, slidesToShow: 1 },
           tablet: {

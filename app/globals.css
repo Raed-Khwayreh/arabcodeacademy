@@ -17,6 +17,7 @@ body {
   padding: 0;
   margin: 0;
   user-select: none;
+  color: white;
 }
 
 .slick-list {

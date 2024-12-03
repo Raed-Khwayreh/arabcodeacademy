@@ -20,7 +20,7 @@ const ResourcesCardSection: React.FC = () => {
     <div className={styles.main}>
       <CarouselSlider
         containerBoxShadow={true}
-        buttonsPostion={{ desktop: 40 }}
+        buttonsPostion={{ desktop: 69, mobile: 32, tablet: 158 }}
         breakPoints={{
           desktop: { slidesToScroll: 3, slidesToShow: 3 },
           tablet: {

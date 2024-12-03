@@ -16,6 +16,10 @@
   z-index: 1;
 }
 
+.container p {
+  color: white;
+}
+
 .video {
   position: absolute;
   top: 0;

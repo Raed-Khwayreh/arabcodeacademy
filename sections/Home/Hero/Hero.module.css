@@ -8,6 +8,7 @@
   background-image: url("/images/heroSection/header.jpg");
   background-size: cover;
   height: 831px;
+  color: white;
 }
 
 @media (max-width: 1440px) {

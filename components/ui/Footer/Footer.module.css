@@ -3,6 +3,10 @@
   padding-top: 2rem;
 }
 
+.ref {
+  color: white;
+}
+
 .container {
   width: 100%;
   max-width: 1400px;

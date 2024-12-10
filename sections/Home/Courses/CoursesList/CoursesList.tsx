@@ -1,10 +1,10 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { LargeScreenSize, MediumScreenSize } from "@/constants/ScreenSizes";
 import useScreenSize from "@/utils/useScreenSize";
 import Slider from "react-slick";
 import { CarouselSlider, CourseCard } from "@/components/ui";
-import coursesData from "../mock/coursesData";
+import { CoruseProps } from "@/types/CourseProps";
 
 interface CoursesListProps {
   activeCourses: boolean;
@@ -13,6 +13,21 @@ interface CoursesListProps {
 const CoursesList: React.FC<CoursesListProps> = ({ activeCourses }) => {
   const coursesRef = useRef<Slider>(null);
   const screenSize = useScreenSize();
+  const [courses, setCourses] = useState<CoruseProps[]>([]);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/courses");
+        const data = await response.json();
+        setCourses(data);
+      } catch (error) {
+        console.error("Failed to fetch courses:", error);
+      }
+    };
+
+    fetchCourses();
+  }, []);
 
   return (
     <CarouselSlider
@@ -42,7 +57,7 @@ const CoursesList: React.FC<CoursesListProps> = ({ activeCourses }) => {
           : "82%"
       }
       sliderRef={coursesRef}
-      generatedSliderList={coursesData
+      generatedSliderList={courses
         .filter((e) => (activeCourses ? e.soon : !e.soon))
         .map((e, i) => (
           <CourseCard

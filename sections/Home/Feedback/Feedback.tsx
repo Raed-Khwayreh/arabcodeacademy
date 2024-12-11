@@ -1,16 +1,46 @@
 "use client";
 import CarouselSlider from "@/components/ui/CarouselSlider/CarouselSlider";
 import FeedbackCardComponent from "@/components/ui/FeedbackCard/FeedbackCard";
-import { feedbackData } from "@/components/ui/FeedbackCard/mocks/FeedbackData";
 
 import { LargeScreenSize, MediumScreenSize } from "@/constants/ScreenSizes";
 import useScreenSize from "@/utils/useScreenSize";
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Slider from "react-slick";
+import { StaticImageData } from "next/image";
+import { user1, user2, user3 } from "@/components/ui/FeedbackCard/Images";
+
+interface Feedback {
+  name: string;
+  image: string; 
+  rating: number;
+  comment: string;
+  date: string;
+}
+
+const imageMapping: Record<string, StaticImageData> = {
+  user1,
+  user2,
+  user3,
+};
 
 const Feedback: React.FC = () => {
   const feedbackRef = useRef<Slider>(null);
   const screenSize = useScreenSize();
+  const [feedbackData, setFeedbackData] = useState<Feedback[]>([]); 
+
+  useEffect(() => {
+    const fetchFeedback = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/feedback");
+        const data = await response.json();
+        setFeedbackData(data); 
+      } catch (error) {
+        console.error("Error fetching feedback data:", error);
+      }
+    };
+
+    fetchFeedback();
+  }, []);
 
   return (
     <div style={{ marginBlock: 111 }}>
@@ -38,14 +68,14 @@ const Feedback: React.FC = () => {
             : 1280
         }
         sliderRef={feedbackRef}
-        generatedSliderList={feedbackData.map((e, i) => (
+        generatedSliderList={feedbackData.map((feedback, index) => (
           <FeedbackCardComponent
-            key={i}
-            image={e.image}
-            comment={e.comment}
-            date={e.date}
-            name={e.name}
-            rating={e.rating}
+            key={index}
+            image={imageMapping[feedback.image]}
+            comment={feedback.comment}
+            date={feedback.date}
+            name={feedback.name}
+            rating={feedback.rating}
           />
         ))}
       />

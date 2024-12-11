@@ -1,4 +1,5 @@
 {
+  
     "courses": [
       {
         "id": 1,
@@ -23,8 +24,8 @@
           "hour": 12,
           "min": 45
         },
-        "soon": false,
-        "image": "/images/courses/csharp.png"
+        "image": "/images/courses/csharp.png",
+        "soon": false
       },
       {
         "id": 3,
@@ -36,8 +37,8 @@
           "hour": 8,
           "min": 20
         },
-        "soon": false,
-        "image": "/images/courses/bootstrap.png"
+        "image": "/images/courses/bootstrap.png",
+        "soon": false
       },
       {
         "id": 4,
@@ -49,8 +50,8 @@
           "hour": 15,
           "min": 40
         },
-        "soon": false,
-        "image": "/images/courses/java.png"
+        "image": "/images/courses/java.png",
+        "soon": false
       },
       {
         "id": 5,
@@ -62,8 +63,8 @@
           "hour": 11,
           "min": 35
         },
-        "soon": true,
-        "image": "/images/courses/python.png"
+        "image": "/images/courses/python.png",
+        "soon": true
       },
       {
         "id": 6,
@@ -75,8 +76,8 @@
           "hour": 9,
           "min": 50
         },
-        "soon": true,
-        "image": "/images/courses/laravel.png"
+        "image": "/images/courses/laravel.png",
+        "soon": true
       },
       {
         "id": 7,
@@ -88,8 +89,8 @@
           "hour": 10,
           "min": 0
         },
-        "soon": true,
-        "image": "/images/courses/ruby.png"
+        "image": "/images/courses/ruby.png",
+        "soon": true
       },
       {
         "id": 8,
@@ -101,9 +102,113 @@
           "hour": 12,
           "min": 15
         },
-        "soon": true,
-        "image": "/images/courses/php.png"
+        "image": "/images/courses/php.png",
+        "soon": true
       }
-    ]
-  }
+    ],
   
+  
+  "feedback": [
+    {
+      "name": "اسم المستخدم",
+      "image": "user1",
+      "rating": 2,
+      "comment": "تقدم الأكاديمية العربية للبرمجة تجربة تعلم متميزة من خلال مجموعة من الدروس والمناهج الاحترافية بجودة عالية وأسلوب تدريسي ممتع يتناسب",
+      "date": "2023, 11 نيسان"
+    },
+    {
+      "name": "اسم المستخدم",
+      "image": "user2",
+      "rating": 4,
+      "comment": "تقدم الأكاديمية العربية للبرمجة تجربة تعلم متميزة من خلال مجموعة من الدروس والمناهج الاحترافية بجودة عالية وأسلوب تدريسي ممتع يتناسب.",
+      "date": "2023, 11 نيسان"
+    },
+    {
+      "name": "اسم المستخدم",
+      "image": "user3",
+      "rating": 4,
+      "comment": "تقدم الأكاديمية العربية للبرمجة تجربة تعلم متميزة من خلال مجموعة من الدروس والمناهج الاحترافية بجودة عالية وأسلوب تدريسي ممتع يتناسب",
+      "date": "2023, 11 نيسان"
+    },
+    {
+      "name": "اسم المستخدم",
+      "image": "user1",
+      "rating": 4,
+      "comment": "تقدم الأكاديمية العربية للبرمجة تجربة تعلم متميزة من خلال مجموعة من الدروس والمناهج الاحترافية بجودة عالية وأسلوب تدريسي ممتع يتناسب",
+      "date": "2023, 11 نيسان"
+    },
+    {
+      "name": "اسم المستخدم",
+      "image": "user2",
+      "rating": 4,
+      "comment": "تقدم الأكاديمية العربية للبرمجة تجربة تعلم متميزة من خلال مجموعة من الدروس والمناهج الاحترافية بجودة عالية وأسلوب تدريسي ممتع يتناسب.",
+      "date": "2023, 11 نيسان"
+    },
+    {
+      "name": "اسم المستخدم",
+      "image": "user3",
+      "rating": 4,
+      "comment": "تقدم الأكاديمية العربية للبرمجة تجربة تعلم متميزة من خلال مجموعة من الدروس والمناهج الاحترافية بجودة عالية وأسلوب تدريسي ممتع يتناسب",
+      "date": "2023, 11 نيسان"
+    }
+  ],
+  "aiTools": [
+    {
+      "id": 1,
+      "name": "Free Essay Generator",
+      "tag": "#writing generators",
+      "description": "يساعد الطلاب والكتّاب في إنشاء مقالات عالية الجودة بسهولة. هل تعاني من كتابة الأوراق الأكاديمية؟ مولد المقالات المجاني هنا للمساعدة!....",
+      "image": "/images/aiTools/freeEssayGenerator.png"
+    },
+    {
+      "id": 2,
+      "name": "Andi",
+      "tag": "#search engine",
+      "description": "أندي هو محرك بحث يعتمد على التكنولوجيا الذكية التي تعززها الذكاء الاصطناعي، ويوفر إجابات مباشرة بدلاً من مجرد روابط. يقوم أندي .....",
+      "image": "/images/aiTools/andi.png"
+    },
+    {
+      "id": 3,
+      "name": "GitMind AI",
+      "tag": "#productivity",
+      "description": "زيِّن سرعة رسم خرائط ذهنك باستخدام أداة GitMind المدعومة بالذكاء الاصطناعي. GitMind هو برنامج مجاني لرسم الخرائط اي،",
+      "image": "/images/aiTools/gitMindAi"
+    },
+    {
+      "id": 4,
+      "name": "Upword",
+      "tag": "#summarizer",
+      "description": "قم بإنشاء ملخصات بشكل أسرع باستخدام أدوات الذكاء الاصطناعي الخاصة بـ Upword.Upword هي أداة بحث مدعومة بالذكاء الاصطناعي للأفراد .......",
+      "image": "/images/aiTools/upword.png"
+    },
+    {
+      "id": 5,
+      "name": "Stable Diffusion",
+      "tag": "#image generators",
+      "description": "نموذج تحويل النصوص إلى صور باستخدام تعلم الآلة العميق. يتفوق في إنشاء صور مفصلة استنادًا إلى وصف النصوص ويمكن تطبيقه على مهام ......",
+      "image": "/images/aiTools/stableDiffusion.png"
+    },
+    {
+      "id": 6,
+      "name": "GPT3 Playground",
+      "tag": "#productivity #writing generators",
+      "description": "أدخل تعليمات أو حدد إعدادًا مسبقًا، وشاهد استجابة واجهة البرمجة (API) يحاول تطابق السياق أو النمط الذي قدمته. يمكنك......",
+      "image": "/images/aiTools/GPT3Playground.png"
+    },
+    {
+      "id": 7,
+      "name": "Chatbase",
+      "tag": "#education",
+      "description": "قم بإنشاء دردشة ذكية باستخدام الذكاء الاصطناعي مدربة على بياناتك. Chatbase هو منصة بناء للدردشة الذكية بواسطة الذكاء الاصطناعي، .....ة.",
+      "image": "/images/aiTools/chatBase.png"
+    },
+    {
+      "id": 8,
+      "name": "Midjourney",
+      "tag": "#art",
+      "description": "مختبر ذكاء اصطناعي يستكشف وسائط جديدة لتوسيع خيال الإنسان. `Midjourney` هو مختبر بحث مستقل مكرس لتقدم قدرات التخيل البشرية .....م.",
+      "image": "/images/aiTools/midjourney.png"
+    }
+  ]
+
+}

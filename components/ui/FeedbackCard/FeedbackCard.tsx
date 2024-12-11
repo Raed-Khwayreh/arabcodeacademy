@@ -5,7 +5,7 @@ import FilledStar from "./Icons/FilledStar";
 import OutlinedStar from "./Icons/OutlinedStar";
 import headerBackground from "./Icons/headerBackground.png";
 
-interface Props {
+export interface Feedback {
   name: string;
   image: StaticImageData;
   rating: number;
@@ -13,7 +13,7 @@ interface Props {
   date: string;
 }
 
-const FeedbackCardComponent: React.FC<Props> = ({
+const FeedbackCardComponent: React.FC<Feedback> = ({
   name,
   image,
   rating,

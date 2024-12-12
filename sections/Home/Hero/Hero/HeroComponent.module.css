@@ -1,0 +1,137 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 10%;
+  direction: rtl;
+}
+
+.headings {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.headings h1 {
+  color: white;
+}
+
+.left {
+  align-items: flex-start;
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  gap: 200px;
+}
+
+.right-headings {
+  width: 637px;
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 48px;
+  text-align: right;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.left-headings {
+  font-size: 23px;
+  font-weight: 900;
+  line-height: 27px;
+  text-align: right;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  width: 683px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.centerButton {
+  display: none;
+}
+
+.bottomButton {
+  margin-bottom: 40px;
+}
+
+@media (min-width: 1671px) {
+  .headings {
+    gap: 6%;
+  }
+}
+
+@media (max-width: 1440px) {
+  .headings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+  .left,
+  .left-headings,
+  .right-headings {
+    text-align: center;
+  }
+  .left-headings {
+    gap: 50px;
+    font-size: 25px;
+    font-weight: 900;
+    line-height: 30px;
+  }
+
+  .right-headings {
+    width: 562px;
+    font-size: 50px;
+    font-weight: 900;
+    line-height: 60px;
+  }
+  .left {
+    align-items: center;
+    width: 722px;
+    gap: 31px;
+  }
+  .main {
+    padding-top: 0%;
+  }
+}
+
+@media (max-width: 1199px) {
+  .bottomButton {
+    display: none;
+  }
+
+  .centerButton {
+    margin-block: 30px;
+    display: block;
+  }
+
+  .headings {
+    gap: 0px;
+  }
+  .left-headings {
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 19.2px;
+    width: 315px;
+    gap: 20px;
+    margin-bottom: 52px;
+  }
+
+  .right-headings {
+    width: 199px;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30px;
+  }
+  .left {
+    align-items: center;
+    width: 722px;
+    gap: 80px;
+  }
+  .main {
+    padding-top: 0%;
+  }
+}

@@ -10,15 +10,17 @@ import {
 import useScreenSize from "@/utils/useScreenSize";
 import React, { useRef } from "react";
 import Slider from "react-slick";
+import styles from "./ResourcesCardSection.module.css";
 
 const ResourcesCardSection: React.FC = () => {
   const resourcesCardRef = useRef<Slider>(null);
   const screenSize = useScreenSize();
 
   return (
-    <div style={{ marginBlock: 111 }}>
+    <div className={styles.main}>
       <CarouselSlider
         containerBoxShadow={true}
+        buttonsPostion={{ desktop: 69, mobile: 32, tablet: 158 }}
         breakPoints={{
           desktop: { slidesToScroll: 3, slidesToShow: 3 },
           tablet: {

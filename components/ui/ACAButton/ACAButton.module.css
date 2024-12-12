@@ -37,7 +37,8 @@
   min-width: 100px;
   height: 40px;
   font-weight: 700;
-  gap: 10px;
+  gap: 5px;
+  padding: 12px 6px;
 }
 
 .medium {
@@ -50,17 +51,18 @@
 }
 
 .large {
-  font-size: 15px;
-  padding: 26px 51px;
+  font-size: 14px;
+  padding: 26px 16px;
   min-width: 100px;
-  height: 40px;
+  height: 60px;
   gap: 8px;
   font-weight: 900;
 }
 
 .xlarge {
   font-size: 15px;
-  min-width: 180px;
+  min-width: 200px;
+  padding: 13px 0px;
   height: 45px;
   font-weight: 500;
   border-radius: 6px;
@@ -82,7 +84,7 @@
   background-color: var(--secondary-color);
 }
 
-@media (min-width: 768px) and (max-width: 1440px) {
+@media (min-width: 1200px) and (max-width: 1440px) {
   .small,
   .medium,
   .large {

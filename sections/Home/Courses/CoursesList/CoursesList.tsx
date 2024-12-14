@@ -4,30 +4,53 @@ import { LargeScreenSize, MediumScreenSize } from "@/constants/ScreenSizes";
 import useScreenSize from "@/utils/useScreenSize";
 import Slider from "react-slick";
 import { CarouselSlider, CourseCard } from "@/components/ui";
+import ACALoading from "@/components/ui/ACALoading";
+import ACAError from "@/components/ui/ACAError";
+import ACAAvailability from "@/components/ui/ACAAvailability";
 import { CoruseProps } from "@/types/CourseProps";
 
 interface CoursesListProps {
   activeCourses: boolean;
+  isLoading: boolean;
 }
 
-const CoursesList: React.FC<CoursesListProps> = ({ activeCourses }) => {
+const CoursesList: React.FC<CoursesListProps> = ({
+  activeCourses,
+  isLoading: parentLoading,
+}) => {
   const coursesRef = useRef<Slider>(null);
   const screenSize = useScreenSize();
   const [courses, setCourses] = useState<CoruseProps[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [coursesError, setCoursesError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchCourses = async () => {
       try {
+        setLoading(true);
         const response = await fetch("http://localhost:3001/courses");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
         setCourses(data);
       } catch (error) {
         console.error("Failed to fetch courses:", error);
+        setCoursesError((error as Error).message);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchCourses();
   }, []);
+
+  if (parentLoading || loading) return <ACALoading />;
+
+  if (coursesError) return <ACAError />;
+
+  if (courses.length === 0)
+    return <ACAAvailability message="لا يوجد كورسات لعرضها" />;
 
   return (
     <CarouselSlider

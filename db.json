@@ -1,154 +1,244 @@
 {
-  
-    "courses": [
-      {
-        "id": 1,
-        "name": "أساسيات HTML",
-        "price": 150,
-        "instructor": "أحمد علي",
-        "duration": {
-          "video": 20,
-          "hour": 10,
-          "min": 30
-        },
-        "image": "/images/courses/html.png",
-        "soon": false
+  "courses": [
+    {
+      "id": 1,
+      "name": "أساسيات HTML",
+      "price": 150,
+      "instructor": "أحمد علي",
+      "duration": {
+        "video": 20,
+        "hour": 10,
+        "min": 30
       },
-      {
-        "id": 2,
-        "name": "أساسيات #C",
-        "price": 200,
-        "instructor": "سارة خالد",
-        "duration": {
-          "video": 18,
-          "hour": 12,
-          "min": 45
-        },
-        "image": "/images/courses/csharp.png",
-        "soon": false
+      "image": "/images/courses/html.png",
+      "soon": false
+    },
+    {
+      "id": 2,
+      "name": "أساسيات #C",
+      "price": 200,
+      "instructor": "سارة خالد",
+      "duration": {
+        "video": 18,
+        "hour": 12,
+        "min": 45
       },
-      {
-        "id": 3,
-        "name": "كورس Bootsrap",
-        "price": 120,
-        "instructor": "محمد عمر",
-        "duration": {
-          "video": 15,
-          "hour": 8,
-          "min": 20
-        },
-        "image": "/images/courses/bootstrap.png",
-        "soon": false
+      "image": "/images/courses/csharp.png",
+      "soon": false
+    },
+    {
+      "id": 3,
+      "name": "كورس Bootsrap",
+      "price": 120,
+      "instructor": "محمد عمر",
+      "duration": {
+        "video": 15,
+        "hour": 8,
+        "min": 20
       },
-      {
-        "id": 4,
-        "name": "أساسيات Java",
-        "price": 250,
-        "instructor": "خالد حسن",
-        "duration": {
-          "video": 25,
-          "hour": 15,
-          "min": 40
-        },
-        "image": "/images/courses/java.png",
-        "soon": false
+      "image": "/images/courses/bootstrap.png",
+      "soon": false
+    },
+    {
+      "id": 4,
+      "name": "أساسيات Java",
+      "price": 250,
+      "instructor": "خالد حسن",
+      "duration": {
+        "video": 25,
+        "hour": 15,
+        "min": 40
       },
-      {
-        "id": 5,
-        "name": "كورس لغة Python",
-        "price": 210,
-        "instructor": "عمرو فهمي",
-        "duration": {
-          "video": 30,
-          "hour": 11,
-          "min": 35
-        },
-        "image": "/images/courses/python.png",
-        "soon": true
+      "image": "/images/courses/java.png",
+      "soon": false
+    },
+    {
+      "id": 5,
+      "name": "كورس لغة Python",
+      "price": 210,
+      "instructor": "عمرو فهمي",
+      "duration": {
+        "video": 30,
+        "hour": 11,
+        "min": 35
       },
-      {
-        "id": 6,
-        "name": "كورس Laravel",
-        "price": 180,
-        "instructor": "ريم يوسف",
-        "duration": {
-          "video": 22,
-          "hour": 9,
-          "min": 50
-        },
-        "image": "/images/courses/laravel.png",
-        "soon": true
+      "image": "/images/courses/python.png",
+      "soon": true
+    },
+    {
+      "id": 6,
+      "name": "كورس Laravel",
+      "price": 180,
+      "instructor": "ريم يوسف",
+      "duration": {
+        "video": 22,
+        "hour": 9,
+        "min": 50
       },
-      {
-        "id": 7,
-        "name": "Ruby Language",
-        "price": 190,
-        "instructor": "نادية حسن",
-        "duration": {
-          "video": 25,
-          "hour": 10,
-          "min": 0
-        },
-        "image": "/images/courses/ruby.png",
-        "soon": true
+      "image": "/images/courses/laravel.png",
+      "soon": true
+    },
+    {
+      "id": 7,
+      "name": "Ruby Language",
+      "price": 190,
+      "instructor": "نادية حسن",
+      "duration": {
+        "video": 25,
+        "hour": 10,
+        "min": 0
       },
-      {
-        "id": 8,
-        "name": "كورس PHP",
-        "price": 220,
-        "instructor": "علي رضا",
-        "duration": {
-          "video": 28,
-          "hour": 12,
-          "min": 15
-        },
-        "image": "/images/courses/php.png",
-        "soon": true
-      }
-    ],
+      "image": "/images/courses/ruby.png",
+      "soon": true
+    },
+    {
+      "id": 8,
+      "name": "كورس PHP",
+      "price": 220,
+      "instructor": "علي رضا",
+      "duration": {
+        "video": 28,
+        "hour": 12,
+        "min": 15
+      },
+      "image": "/images/courses/php.png",
+      "soon": true
+    },
+    {
+      "id": 9,
+      "name": "برمجة تطبيقات الموبايل باستخدام React Native",
+      "price": 300,
+      "instructor": "محمود عوض",
+      "duration": {
+        "video": 35,
+        "hour": 7,
+        "min": 42
+      },
+      "image": "/images/courses/html.png",
+      "soon": false
+    },
+    {
+      "id": 10,
+      "name": "أساسيات قواعد البيانات باستخدام MySQL",
+      "price": 120,
+      "instructor": "هند الجابري",
+      "duration": {
+        "video": 20,
+        "hour": 4,
+        "min": 22
+      },
+      "image": "/images/courses/html.png",
+      "soon": false
+    },
+    {
+      "id": 11,
+      "name": "احتراف تطوير الواجهات الأمامية باستخدام React.js",
+      "price": 400,
+      "instructor": "خالد العتيبي",
+      "duration": {
+        "video": 50,
+        "hour": 6,
+        "min": 14
+      },
+      "image": "/images/courses/html.png",
+      "soon": true
+    },
+    {
+      "id": 12,
+      "name": "التعلم الآلي باستخدام Python",
+      "price": 500,
+      "instructor": "أماني الزهراني",
+      "duration": {
+        "video": 45,
+        "hour": 4,
+        "min": 36
+      },
+      "image": "/images/courses/html.png",
+      "soon": true
+    },
+    {
+      "id": 13,
+      "name": "إدارة المشاريع البرمجية باستخدام Git و GitHub",
+      "price": 90,
+      "instructor": "ماجد السعدي",
+      "duration": {
+        "video": 20,
+        "hour": 4,
+        "min": 30
+      },
+      "image": "/images/courses/html.png",
+      "soon": false
+    },
+    {
+      "id": 14,
+      "name": "أساسيات البرمجة بلغة Java",
+      "price": 300,
+      "instructor": "نواف الجاسم",
+      "duration": {
+        "video": 25,
+        "hour": 4,
+        "min": 41
+      },
+      "image": "/images/courses/html.png",
+      "soon": false
+    },
+    {
+      "id": 15,
+      "name": "أساسيات الأمن السيبراني",
+      "price": 50,
+      "instructor": "فهد القاضي",
+      "duration": {
+        "video": 15,
+        "hour": 2,
+        "min": 18
+      },
+      "image": "/images/courses/html.png",
+      "soon": false
+    }
+  ],
   
   
   "feedback": [
     {
-      "name": "اسم المستخدم",
+      "name": "أحمد المصري",
       "image": "user1",
-      "rating": 2,
-      "comment": "تقدم الأكاديمية العربية للبرمجة تجربة تعلم متميزة من خلال مجموعة من الدروس والمناهج الاحترافية بجودة عالية وأسلوب تدريسي ممتع يتناسب",
+      "rating": 5,
+      "comment":"أكاديمية البرمجة العربية قدمت لي الأدوات اللازمة لتطوير مهاراتي البرمجية. الدورات شاملة وتغطي كل ما هو جديد في عالم البرمجة",
       "date": "2023, 11 نيسان"
     },
     {
-      "name": "اسم المستخدم",
+      "name": "سارة الجمعة",
+      "image": "user2",
+      "rating": 4.5,
+      "comment":"دورات أكاديمية البرمجة العربية رائعة! تعلمت الكثير عن تطوير الويب، وكان المحتوى مفصلاً وسهل الفهم. أنصح الجميع بالانضمام إليها.",
+      "date": "2023, 11 نيسان"
+    },
+    {
+      "name": "يوسف القصير",
+      "image": "user3",
+      "rating": 5,
+      "comment":"الدورات على أكاديمية البرمجة العربية فعلاً ممتازة، أنا فخور بما تعلمته وأشعر بثقة أكبر في مهاراتي البرمجية.",
+      "date": "2023, 11 نيسان"
+    },
+    {
+      "name": "مريم الحمد",
+      "image": "user1",
+      "rating": 4,
+      "comment":"أكاديمية البرمجة العربية توفر محتوى تعليمي عالي الجودة. الدورات مفيدة للغاية لجميع مستويات المتعلمين",
+      "date": "2023, 11 نيسان"
+    },
+    {
+      "name": "علي الناصر",
       "image": "user2",
       "rating": 4,
-      "comment": "تقدم الأكاديمية العربية للبرمجة تجربة تعلم متميزة من خلال مجموعة من الدروس والمناهج الاحترافية بجودة عالية وأسلوب تدريسي ممتع يتناسب.",
+      "comment": "الدورات التدريبية في أكاديمية البرمجة العربية متميزة وذات فائدة كبيرة. شكراً لكل من ساهم في تقديم هذا المحتوى القيّم.",
       "date": "2023, 11 نيسان"
     },
     {
-      "name": "اسم المستخدم",
+      "name": "خالد الطويل",
       "image": "user3",
       "rating": 4,
-      "comment": "تقدم الأكاديمية العربية للبرمجة تجربة تعلم متميزة من خلال مجموعة من الدروس والمناهج الاحترافية بجودة عالية وأسلوب تدريسي ممتع يتناسب",
-      "date": "2023, 11 نيسان"
-    },
-    {
-      "name": "اسم المستخدم",
-      "image": "user1",
-      "rating": 4,
-      "comment": "تقدم الأكاديمية العربية للبرمجة تجربة تعلم متميزة من خلال مجموعة من الدروس والمناهج الاحترافية بجودة عالية وأسلوب تدريسي ممتع يتناسب",
-      "date": "2023, 11 نيسان"
-    },
-    {
-      "name": "اسم المستخدم",
-      "image": "user2",
-      "rating": 4,
-      "comment": "تقدم الأكاديمية العربية للبرمجة تجربة تعلم متميزة من خلال مجموعة من الدروس والمناهج الاحترافية بجودة عالية وأسلوب تدريسي ممتع يتناسب.",
-      "date": "2023, 11 نيسان"
-    },
-    {
-      "name": "اسم المستخدم",
-      "image": "user3",
-      "rating": 4,
-      "comment": "تقدم الأكاديمية العربية للبرمجة تجربة تعلم متميزة من خلال مجموعة من الدروس والمناهج الاحترافية بجودة عالية وأسلوب تدريسي ممتع يتناسب",
+      "comment": "محتوى أكاديمية البرمجة العربية غني ومتنوع. أحببت طريقة الشرح التي تجعل الأمور المعقدة سهلة الفهم. أنصح الجميع بها.",
       "date": "2023, 11 نيسان"
     }
   ],

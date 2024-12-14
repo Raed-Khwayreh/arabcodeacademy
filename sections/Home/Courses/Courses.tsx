@@ -14,12 +14,12 @@ const Courses = () => {
           paddingBottom={5}
         />
       </div>
-      <CoursesList activeCourses={false} isLoading={false}/>
+      <CoursesList activeCourses={false} isLoading={false} />
       <div className={styles["soon-container"]}>
         <UnderlineText title="قريباً" fontWeight={700} paddingBottom={5} />
       </div>
       <div style={{ marginBottom: 61 }}>
-        <CoursesList activeCourses={true} isLoading={false}/>
+        <CoursesList activeCourses={true} isLoading={false} />
       </div>
     </div>
   );

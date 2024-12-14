@@ -8,13 +8,17 @@ import React, { useRef, useState, useEffect } from "react";
 import Slider from "react-slick";
 import { StaticImageData } from "next/image";
 import { user1, user2, user3 } from "@/components/ui/FeedbackCard/Images";
+import ACALoading from "@/components/ui/ACALoading";
+import ACAError from "@/components/ui/ACAError";
+import ACAAvailability from "@/components/ui/ACAAvailability";
 
 interface Feedback {
   name: string;
-  image: string; 
+  image: string;
   rating: number;
   comment: string;
   date: string;
+  isLoading: boolean;
 }
 
 const imageMapping: Record<string, StaticImageData> = {
@@ -23,24 +27,38 @@ const imageMapping: Record<string, StaticImageData> = {
   user3,
 };
 
-const Feedback: React.FC = () => {
+const Feedback: React.FC<Feedback> = ({ isLoading: parentLoading }) => {
   const feedbackRef = useRef<Slider>(null);
   const screenSize = useScreenSize();
-  const [feedbackData, setFeedbackData] = useState<Feedback[]>([]); 
+  const [feedbackData, setFeedbackData] = useState<Feedback[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchFeedback = async () => {
       try {
-        const response = await fetch("http://localhost:3001/feedback");
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/feedback`
+        );
         const data = await response.json();
-        setFeedbackData(data); 
+        setFeedbackData(data);
       } catch (error) {
         console.error("Error fetching feedback data:", error);
+        setError((error as Error).message);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchFeedback();
   }, []);
+
+  if (parentLoading || loading) return <ACALoading />;
+
+  if (error) return <ACAError />;
+
+  if (feedbackData.length === 0)
+    return <ACAAvailability message="لا يوجد بيانات لعرضها" />;
 
   return (
     <div style={{ marginBlock: 111 }}>

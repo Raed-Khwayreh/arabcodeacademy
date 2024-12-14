@@ -1,6 +1,8 @@
 "use client";
 import CarouselSlider from "@/components/ui/CarouselSlider/CarouselSlider";
-import FeedbackCardComponent from "@/components/ui/FeedbackCard/FeedbackCard";
+import FeedbackCardComponent, {
+  FeedbackProps,
+} from "@/components/ui/FeedbackCard/FeedbackCard";
 
 import { LargeScreenSize, MediumScreenSize } from "@/constants/ScreenSizes";
 import useScreenSize from "@/utils/useScreenSize";
@@ -12,25 +14,18 @@ import ACALoading from "@/components/ui/ACALoading";
 import ACAError from "@/components/ui/ACAError";
 import ACAAvailability from "@/components/ui/ACAAvailability";
 
-interface Feedback {
-  name: string;
-  image: string;
-  rating: number;
-  comment: string;
-  date: string;
-  isLoading: boolean;
-}
-
 const imageMapping: Record<string, StaticImageData> = {
   user1,
   user2,
   user3,
 };
 
-const Feedback: React.FC<Feedback> = ({ isLoading: parentLoading }) => {
+const Feedback: React.FC<{ isLoading: boolean }> = ({
+  isLoading: parentLoading,
+}) => {
   const feedbackRef = useRef<Slider>(null);
   const screenSize = useScreenSize();
-  const [feedbackData, setFeedbackData] = useState<Feedback[]>([]);
+  const [feedbackData, setFeedbackData] = useState<FeedbackProps[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -53,7 +48,9 @@ const Feedback: React.FC<Feedback> = ({ isLoading: parentLoading }) => {
     fetchFeedback();
   }, []);
 
-  if (parentLoading || loading) return <ACALoading />;
+  const isLoading = parentLoading || loading;
+
+  if (isLoading) return <ACALoading />;
 
   if (error) return <ACAError />;
 
@@ -89,7 +86,11 @@ const Feedback: React.FC<Feedback> = ({ isLoading: parentLoading }) => {
         generatedSliderList={feedbackData.map((feedback, index) => (
           <FeedbackCardComponent
             key={index}
-            image={imageMapping[feedback.image]}
+            image={
+              typeof feedback.image === "string"
+                ? imageMapping[feedback.image]
+                : feedback.image
+            }
             comment={feedback.comment}
             date={feedback.date}
             name={feedback.name}

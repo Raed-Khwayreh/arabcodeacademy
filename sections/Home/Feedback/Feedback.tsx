@@ -20,8 +20,7 @@ const imageMapping: Record<string, StaticImageData> = {
   user3,
 };
 
-const Feedback: React.FC<{ isLoading: boolean }> = ({
-  isLoading: parentLoading,
+const Feedback: React.FC= ({
 }) => {
   const feedbackRef = useRef<Slider>(null);
   const screenSize = useScreenSize();
@@ -48,9 +47,8 @@ const Feedback: React.FC<{ isLoading: boolean }> = ({
     fetchFeedback();
   }, []);
 
-  const isLoading = parentLoading || loading;
 
-  if (isLoading) return <ACALoading />;
+  if (loading) return <ACALoading />;
 
   if (error) return <ACAError />;
 

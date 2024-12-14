@@ -20,7 +20,7 @@ const page = () => {
       <QuizzSection />
       <LearningPath />
       <InteractiveTools />
-      <Feedback isLoading={false}/>
+      <Feedback/>
     </>
   );
 };

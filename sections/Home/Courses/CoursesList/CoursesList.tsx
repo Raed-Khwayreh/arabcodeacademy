@@ -11,13 +11,9 @@ import { CoruseProps } from "@/types/CourseProps";
 
 interface CoursesListProps {
   activeCourses: boolean;
-  isLoading: boolean;
 }
 
-const CoursesList: React.FC<CoursesListProps> = ({
-  activeCourses,
-  isLoading: parentLoading,
-}) => {
+const CoursesList: React.FC<CoursesListProps> = ({ activeCourses }) => {
   const coursesRef = useRef<Slider>(null);
   const screenSize = useScreenSize();
   const [courses, setCourses] = useState<CoruseProps[]>([]);
@@ -47,7 +43,7 @@ const CoursesList: React.FC<CoursesListProps> = ({
     fetchCourses();
   }, []);
 
-  if (parentLoading || loading) return <ACALoading />;
+  if (loading) return <ACALoading />;
 
   if (coursesError) return <ACAError />;
 

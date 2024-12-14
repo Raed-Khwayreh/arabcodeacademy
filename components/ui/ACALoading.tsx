@@ -6,7 +6,7 @@ const ACALoading: React.FC = () => {
     <VStack justifyContent="center" alignItems="center" height="30vh">
       <Spinner color="#783ba2" size="xl" fontWeight={"bold"} />
       <Text color="#783ba2" fontSize="2xl" fontWeight="bold">
-        جاري التحميل...
+        جاري التحميل
       </Text>
     </VStack>
   );

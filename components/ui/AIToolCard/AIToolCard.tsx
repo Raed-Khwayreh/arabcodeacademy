@@ -4,27 +4,43 @@ import Image from "next/image";
 import AIToolImage from "@/public/images/ai-tool-image.png";
 import ACAButton from "../ACAButton/ACAButton";
 import EllipsisCircleIcon from "../ACAButton/ACAButtonIcons/EllipsisCircleIcon";
+export interface AIToolCardProps {
+  tool_id?: number;
+  title: string;
+  imageURL?: string;
+  description: string;
+  tags?: string[];
+  isFav?: boolean;
+  subject?: string[];
+  pricing?: string[];
+}
 
-export default function AIToolCard() {
+export default function AIToolCard({
+  tags = [],
+  title = "title",
+  description,
+}: AIToolCardProps) {
   return (
     <div className={styles.card}>
       <div className={styles.image_container}>
-        <Image src={AIToolImage} alt="AI tool image" />
+        <Image
+          src={AIToolImage}
+          alt="AI tool image"
+          style={{ width: "100%" }}
+        />
       </div>
       <div className={styles.card_body}>
-        <div className={styles.card_header}>
-          <div className={styles.card_title}>Luna Ai</div>
-          <div className={styles.card_tags}>
-            <div>#social media</div>
-            <div>#personal assistant</div>
+        <div>
+          <div className={styles.card_header}>
+            <div className={styles.card_title}>{title}</div>
+            <div className={styles.card_tags}>
+              {tags.map((e, i) => {
+                return <div key={i}>{e}</div>;
+              })}
+            </div>
           </div>
-        </div>
-        <div className={styles.card_content}>
-          <div className={styles.line_clamp}>
-            يساعد الطلاب والكتّاب في إنشاء مقالات عالية الجودة بسهولة. هل تعاني
-            من كتابة الأوراق الأكاديمية؟ مولد المقالات المجاني هنا للمساعدة!
-            توليد العملاء بواسطة الذكاء الاصطناعي. يضع صوتك في رسائل البريد
-            الإلكتروني. يعمل مع أي بريد إلكتروني. حوّل العملاء
+          <div className={styles.card_content}>
+            <div className={styles.line_clamp}>{description}</div>
           </div>
         </div>
         <div className={styles.card_footer}>

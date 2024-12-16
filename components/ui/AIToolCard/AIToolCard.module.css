@@ -1,12 +1,32 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+    scale: 1.02;
+  }
+  to {
+    scale: 1;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .card {
+  opacity: 0; /* البداية مخفي */
   direction: rtl;
-  width: 400px;
+  background-color: white;
+  min-height: 492px;
   box-shadow: 0 1px 20px 1px #00000040;
-  margin: 5rem auto;
+  animation: fadeIn 0.8s forwards; /* حركة الظهور */
+  visibility: visible;
 }
 
 .card_body {
+  display: flex;
+  justify-content: space-between;
   padding: 24px;
+  flex-direction: column;
+  min-height: 284px;
 }
 
 .card_header {
@@ -21,23 +41,27 @@
 
 .card_tags {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   font-size: 18px;
 }
 
 .card_content {
   color: var(--primary-color);
-  font-zie: 17px;
+  font-size: 17px;
   font-weight: 500;
   margin: 20px;
   line-height: 1.2rem;
 }
 
 .line_clamp {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
+  display: -webkit-box; /* For WebKit-based browsers */
+  line-clamp: 4;
+  -webkit-line-clamp: 4; /* Limits the text to 2 lines */
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-overflow: ellipsis; /* Adds dots at the end */
+  direction: rtl; /* Ensures proper Arabic alignment */
 }
 
 .card_footer button {
@@ -46,7 +70,8 @@
 
 @media (max-width: 767px) {
   .card {
-    width: 280px;
+    min-height: 192px;
+
     box-shadow: 0 1px 10px #00000040;
   }
 
@@ -62,22 +87,28 @@
 
   .card_content {
     margin: 7px 20px;
-    font-zie: 14px;
-    line-hegiht: 16.8px;
+    font-size: 14px;
+    line-height: 16.8px;
     text-align: center;
   }
 
   .line_clamp {
+    line-clamp: 6;
     -webkit-line-clamp: 6;
+  }
+  .card_body {
+    min-height: 184px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1400px) {
-  .card {
-    width: 400px;
-  }
-
   .card_tags {
     gap: 12.5px;
+  }
+  .card {
+    height: 284px;
+  }
+  .card_body {
+    min-height: 184px;
   }
 }

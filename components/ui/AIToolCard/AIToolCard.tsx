@@ -4,6 +4,7 @@ import Image from "next/image";
 import AIToolImage from "@/public/images/ai-tool-image.png";
 import ACAButton from "../ACAButton/ACAButton";
 import EllipsisCircleIcon from "../ACAButton/ACAButtonIcons/EllipsisCircleIcon";
+import Favorite from "../Favorite/Favorite";
 export interface AIToolCardProps {
   tool_id?: number;
   title: string;
@@ -51,6 +52,9 @@ export default function AIToolCard({
             icon={<EllipsisCircleIcon />}
           />
         </div>
+      </div>
+      <div className={styles.favorite}>
+        <Favorite width={24} height={20} />
       </div>
     </div>
   );

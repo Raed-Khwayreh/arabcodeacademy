@@ -2,22 +2,15 @@ import AIToolCard, {
   AIToolCardProps,
 } from "@/components/ui/AIToolCard/AIToolCard";
 import React from "react";
+import styles from "./AIToolsList.module.css";
 
-interface AiList {
+interface AIToolsListData {
   data: AIToolCardProps[];
 }
 
-const AIList = ({ data }: AiList) => {
+const AIToolsList = ({ data }: AIToolsListData) => {
   return (
-    <div
-      style={{
-        display: "grid",
-        padding: 20,
-        rowGap: 60,
-        columnGap: 24,
-        gridTemplateColumns: "repeat(auto-fill, minmax(400px, 1fr))",
-      }}
-    >
+    <div className={styles["attools-list-container"]}>
       {data.map((e: AIToolCardProps) => {
         return (
           <AIToolCard
@@ -32,4 +25,4 @@ const AIList = ({ data }: AiList) => {
   );
 };
 
-export default AIList;
+export default AIToolsList;

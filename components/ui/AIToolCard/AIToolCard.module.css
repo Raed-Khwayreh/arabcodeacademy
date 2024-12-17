@@ -12,12 +12,11 @@
 }
 
 .card {
-  opacity: 0; /* البداية مخفي */
+  opacity: 0;
   direction: rtl;
   background-color: white;
-  min-height: 492px;
   box-shadow: 0 1px 20px 1px #00000040;
-  animation: fadeIn 0.8s forwards; /* حركة الظهور */
+  animation: fadeIn 0.8s forwards;
   visibility: visible;
   position: relative;
 }
@@ -44,7 +43,7 @@
   justify-content: space-between;
   padding: 24px;
   flex-direction: column;
-  min-height: 284px;
+  min-height: 267px;
 }
 
 .card_header {
@@ -88,8 +87,6 @@
 
 @media (max-width: 767px) {
   .card {
-    min-height: 192px;
-
     box-shadow: 0 1px 10px #00000040;
   }
 
@@ -99,8 +96,7 @@
 
   .card_tags {
     font-size: 14px;
-    flex-direction: column;
-    gap: 0;
+    gap: 15px;
   }
 
   .card_content {
@@ -114,19 +110,10 @@
     line-clamp: 6;
     -webkit-line-clamp: 6;
   }
-  .card_body {
-    min-height: 184px;
-  }
 }
 
 @media (min-width: 768px) and (max-width: 1400px) {
   .card_tags {
     gap: 12.5px;
-  }
-  .card {
-    height: 284px;
-  }
-  .card_body {
-    min-height: 184px;
   }
 }

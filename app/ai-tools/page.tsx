@@ -3,131 +3,92 @@ import ACALoading from "@/components/ui/ACALoading";
 import { AIToolCardProps } from "@/components/ui/AIToolCard/AIToolCard";
 
 import React, { useEffect, useRef, useState } from "react";
-import AIList from "./AIList/AIList";
+import AIToolsList from "./AIToolsList/AIToolsList";
 import { useRouter, useSearchParams } from "next/navigation";
-
+import { generateNumbersList } from "./utils/generateNumbersList";
+import { getPageSize } from "./utils/getPageSize";
+import styles from "./AITools.module.css";
+import ACAError from "@/components/ui/ACAError";
+import { FilledArrow } from "@/public/icons";
 const AITools = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [data, setData] = useState<AIToolCardProps[]>([]);
-  const [currentPage, setCurrentPage] = useState<number>(
-    parseInt(searchParams.get("page") || "1", 10)
-  );
-  const [totalPages, setTotalPages] = useState<number>(0);
-  const [loading, setLoading] = useState(true);
-  const [activeButton, setActive] = useState(
-    parseInt(searchParams.get("page") || "1", 10) - 1
-  );
-  const size = useRef(0);
-  const [notFound, setNotFound] = useState(false);
-  const [startEnd, setStartEnd] = useState({
-    start:
-      parseInt(searchParams.get("page") || "1", 10) % 5 === 0
-        ? (parseInt(searchParams.get("page") || "1", 10) % 5) - 4
-        : parseInt(searchParams.get("page") || "1", 10) % 5 === 1
-        ? parseInt(searchParams.get("page") || "1", 10) - 1
-        : parseInt(searchParams.get("page") || "1", 10) -
-          Math.round(parseInt(searchParams.get("page") || "1", 10) % 5),
-    end:
-      parseInt(searchParams.get("page") || "1", 10) -
-      Math.round(parseInt(searchParams.get("page") || "1", 10) % 5) +
-      5,
-    // start: parseInt(searchParams.get("page") || "1", 10) - 1,
-    // end: parseInt(searchParams.get("page") || "1", 10) - 1 + 5,
+  const pageNum = parseInt(searchParams.get("page") || "1", 10);
+  const [pageNationState, setPageNationState] = useState({
+    data: [] as AIToolCardProps[],
+    currentPage: parseInt(searchParams.get("page") || "1", 10),
+    totalPages: 0,
+    loading: true,
+    activeButton: parseInt(searchParams.get("page") || "1", 10) - 1,
+    pageNotFound: false,
+    startEnd: generateNumbersList(pageNum),
   });
+  const pageSize = useRef(0);
+
   const fetchData = async (page: number) => {
-    setLoading(true);
+    setPageNationState((prev) => {
+      return {
+        ...prev,
+        loading: true,
+      };
+    });
     try {
       const response = await fetch(
-        `https://sitev2.arabcodeacademy.com/wp-json/aca/v1/aitools?page_size=${size.current}&page=${page}`
+        `https://sitev2.arabcodeacademy.com/wp-json/aca/v1/aitools?page_size=${pageSize.current}&page=${page}`
       );
       const result = await response.json();
-      setData(result.data); // Assuming the API returns data in this format
-      setTotalPages(result.total_pages);
+      setPageNationState((prev) => {
+        return {
+          ...prev,
+          data: result.data,
+          totalPages: result.total_pages,
+        };
+      });
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
-      setTimeout(() => {
-        setLoading(false);
-      }, 400);
-      setTimeout(() => {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      }, 500);
+      setPageNationState((prev) => {
+        return {
+          ...prev,
+          loading: false,
+        };
+      });
     }
   };
 
   useEffect(() => {
-    setStartEnd({
-      start:
-        parseInt(searchParams.get("page") || "1", 10) % 5 === 0
-          ? (parseInt(searchParams.get("page") || "1", 10) % 5) - 4
-          : parseInt(searchParams.get("page") || "1", 10) % 5 === 1
-          ? parseInt(searchParams.get("page") || "1", 10) - 1
-          : parseInt(searchParams.get("page") || "1", 10) -
-            Math.round(parseInt(searchParams.get("page") || "1", 10) % 5),
-      end:
-        parseInt(searchParams.get("page") || "1", 10) % 5 === 0
-          ? parseInt(searchParams.get("page") || "1")
-          : parseInt(searchParams.get("page") || "1", 10) -
-            Math.round(parseInt(searchParams.get("page") || "1", 10) % 5) +
-            5,
+    pageSize.current = getPageSize();
+    setPageNationState((prev) => {
+      return {
+        ...prev,
+        startEnd: generateNumbersList(pageNum),
+        activeButton: pageNum - 1,
+        pageNotFound: pageNum > pageNationState.totalPages,
+        currentPage: page,
+      };
     });
-    setActive(parseInt(searchParams.get("page") || "1", 10) - 1);
-    size.current =
-      window.innerWidth > 1280
-        ? 12
-        : window.innerWidth < 1279 && window.innerWidth > 850
-        ? 8
-        : 4;
-    setNotFound(parseInt(searchParams.get("page") || "1", 10) > totalPages);
-    const page = parseInt(searchParams.get("page") || "1", 10);
-    setCurrentPage(page);
+    const page = pageNum;
     fetchData(page);
-  }, [searchParams, totalPages]);
+  }, [pageNum, searchParams, pageNationState.totalPages]);
 
   const handlePageChange = (newPage: number): void => {
-    if (newPage >= 1 && newPage <= totalPages) {
+    if (newPage >= 1 && newPage <= pageNationState.totalPages) {
       router.push(`/ai-tools?page=${newPage}`); // Update URL for App Router
     }
   };
 
   return (
     <>
-      {notFound ? (
-        <div
-          style={{
-            transition: ".6s",
-            height: "50vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <h1
-            style={{
-              color: "var(--primary-color)",
-              fontWeight: 900,
-              fontSize: 40,
-            }}
-          >{`لم يتم العثور على الصفحة ${currentPage}`}</h1>
-        </div>
-      ) : loading ? (
-        <div
-          style={{
-            transition: ".6s",
-            height: "100vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+      {pageNationState.loading ? (
+        <div className={styles["loading-container"]}>
           <ACALoading />
         </div>
+      ) : pageNationState.pageNotFound ? (
+        <div className={styles["page-not-found"]}>
+          <ACAError />
+        </div>
       ) : (
-        <AIList data={data} />
+        <AIToolsList data={pageNationState.data} />
       )}
       <div
         style={{
@@ -138,29 +99,33 @@ const AITools = () => {
         }}
       >
         <div
-          style={{ cursor: activeButton + 1 === 1 ? "default" : "pointer" }}
+          style={{
+            cursor:
+              pageNationState.activeButton + 1 === 1 ? "default" : "pointer",
+          }}
           onClick={() => {
-            if (activeButton + 1 !== 1) {
-              setActive((e) => e - 1);
-              setCurrentPage((e) => e - 1);
-              handlePageChange(currentPage - 1);
+            if (pageNationState.activeButton + 1 !== 1) {
+              setPageNationState((prev) => {
+                return {
+                  ...prev,
+                  startEnd: generateNumbersList(pageNum),
+                  activeButton: pageNationState.activeButton - 1,
+                  pageNotFound: pageNum > pageNationState.totalPages,
+                  currentPage: pageNationState.currentPage - 1,
+                };
+              });
+              handlePageChange(pageNationState.currentPage - 1);
             }
           }}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="37"
-            viewBox="0 0 32 37"
-            fill="none"
-          >
-            <path
-              d="M2.35342 21.2276C0.393124 20.0656 0.393128 17.2284 2.35342 16.0663L27.1577 1.36265C29.1575 0.177197 31.6875 1.61855 31.6875 3.94331V33.3507C31.6875 35.6754 29.1575 37.1168 27.1577 35.9313L2.35342 21.2276Z"
-              fill={
-                activeButton + 1 === 1 || notFound ? "#793ba28a" : "#783BA2"
-              }
-            />
-          </svg>
+          <FilledArrow
+            color={
+              pageNationState.activeButton + 1 === 1 ||
+              pageNationState.pageNotFound
+                ? "#793ba28a"
+                : "#783BA2"
+            }
+          />
         </div>
         <div
           style={{
@@ -171,11 +136,11 @@ const AITools = () => {
           }}
         >
           {[
-            ...Array(totalPages)
+            ...Array(pageNationState.totalPages)
               .fill(0)
               .map((_, i) => i),
           ]
-            .slice(startEnd.start, startEnd.end)
+            .slice(pageNationState.startEnd.start, pageNationState.startEnd.end)
             .map((e, index) => (
               <button
                 style={{
@@ -191,16 +156,26 @@ const AITools = () => {
                   justifyContent: "center",
                   alignItems: "center",
                   border: "3px solid var(--primary-color)",
-                  color: activeButton === e ? "white" : "var(--primary-color)",
+                  color:
+                    pageNationState.activeButton === e
+                      ? "white"
+                      : "var(--primary-color)",
                   background:
-                    activeButton === e ? "var(--primary-color)" : "white",
+                    pageNationState.activeButton === e
+                      ? "var(--primary-color)"
+                      : "white",
                 }}
                 key={index}
                 onClick={() => {
                   handlePageChange(e + 1);
-                  setActive(e);
+                  setPageNationState((prev) => {
+                    return {
+                      ...prev,
+                      activeButton: e,
+                    };
+                  });
                 }}
-                disabled={currentPage === e + 1}
+                disabled={pageNationState.currentPage === e + 1}
               >
                 {`${e + 1}`}
               </button>
@@ -209,32 +184,34 @@ const AITools = () => {
         <div
           style={{
             transform: "rotate(-180deg)",
-            cursor: activeButton + 1 === totalPages ? "no-drop" : "pointer",
+            cursor:
+              pageNationState.activeButton + 1 === pageNationState.totalPages
+                ? "no-drop"
+                : "pointer",
           }}
           onClick={() => {
-            if (activeButton + 1 < totalPages) {
-              setActive((e) => e + 1);
-              setCurrentPage((e) => e + 1);
-              handlePageChange(currentPage + 1);
+            if (pageNationState.activeButton + 1 < pageNationState.totalPages) {
+              setPageNationState((prev) => {
+                return {
+                  ...prev,
+                  startEnd: generateNumbersList(pageNum),
+                  activeButton: pageNationState.activeButton + 1,
+                  pageNotFound: pageNum > pageNationState.totalPages,
+                  currentPage: pageNationState.currentPage + 1,
+                };
+              });
+              handlePageChange(pageNationState.currentPage + 1);
             }
           }}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="37"
-            viewBox="0 0 32 37"
-            fill="none"
-          >
-            <path
-              d="M2.35342 21.2276C0.393124 20.0656 0.393128 17.2284 2.35342 16.0663L27.1577 1.36265C29.1575 0.177197 31.6875 1.61855 31.6875 3.94331V33.3507C31.6875 35.6754 29.1575 37.1168 27.1577 35.9313L2.35342 21.2276Z"
-              fill={
-                activeButton + 1 === totalPages || notFound
-                  ? "#793ba28a"
-                  : "#783BA2"
-              }
-            />
-          </svg>
+          <FilledArrow
+            color={
+              pageNationState.activeButton + 1 === pageNationState.totalPages ||
+              pageNationState.pageNotFound
+                ? "#793ba28a"
+                : "#783BA2"
+            }
+          />
         </div>
       </div>
     </>

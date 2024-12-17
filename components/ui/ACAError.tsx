@@ -2,6 +2,8 @@ import React from "react";
 import { Text, VStack, useBreakpointValue } from "@chakra-ui/react";
 import Image from "next/image";
 
+
+
 const ACAError: React.FC = () => {
   const errorMessage = useBreakpointValue({
     base: "لا يوجد نتائج لعرضها", 

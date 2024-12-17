@@ -41,11 +41,21 @@ export default function AIToolCard({
             </div>
           </div>
           <div className={styles.card_content}>
-            <div className={styles.line_clamp}>{description}</div>
+            <div className={styles.line_clamp}>
+              {description}
+              {description}
+              {description}
+              {description}
+              {description}
+
+              {description}
+              {description}
+            </div>
           </div>
         </div>
         <div className={styles.card_footer}>
           <ACAButton
+            boxShadow="0px 4px 4px 0px #00000040"
             text="المزيد"
             size="small"
             variant="teal"

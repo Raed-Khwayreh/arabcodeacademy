@@ -20,7 +20,10 @@ const AITools = () => {
   const pageNum = parseInt(searchParams.get("page") || "1", 10);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
-  const [isFavoritePressed, setIsFavoritePressed] = useState(false);
+  const [isFavoritePressed, setIsFavoritePressed] = useState(
+    searchParams.get("isFav") === "true" ? true : false
+  );
+  const [searchValue, setSearchValue] = useState("");
   const [pageNationState, setPageNationState] = useState({
     data: [] as AIToolCardProps[],
     currentPage: parseInt(searchParams.get("page") || "1", 10),
@@ -32,7 +35,7 @@ const AITools = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetchAIToolsData(pageNum, pageSize.current, isFavoritePressed)
+    fetchAIToolsData(pageNum, pageSize.current, isFavoritePressed, searchValue)
       .then((result) => {
         setPageNationState((prev) => {
           return {
@@ -50,7 +53,7 @@ const AITools = () => {
           setLoading(false);
         }
       });
-  }, [pageNum, searchParams, isFavoritePressed]);
+  }, [pageNum, searchParams, isFavoritePressed, searchValue]);
 
   useEffect(() => {
     pageSize.current = getPageSize();
@@ -66,16 +69,41 @@ const AITools = () => {
 
   const handlePageChange = (newPage: number) => {
     if (newPage >= 1 && newPage <= pageNationState.totalPages) {
-      router.push(`/ai-tools?page=${newPage}`);
+      router.push(
+        `/ai-tools?page=${newPage}${
+          isFavoritePressed ? `&isFav=${isFavoritePressed}` : ""
+        }`
+      );
     }
   };
 
   const handleOnPressFavorite = () => {
     setIsFavoritePressed((value) => !value);
+    {
+      !isFavoritePressed
+        ? router.push(`/ai-tools?isFav=${!isFavoritePressed}`)
+        : router.push(`/ai-tools`);
+    }
+  };
+
+  const handleOnSearch = (searchText: string) => {
+    router.push(`/ai-tools`);
+    setSearchValue(searchText);
   };
 
   return (
     <>
+      <div className={styles["search-container"]}>
+        <SearchBar placeholder="....chatgpt" handleOnSearch={handleOnSearch} />
+        {!error ? (
+          <FavoriteButton
+            handleOnPressFavorite={handleOnPressFavorite}
+            isFavoritePressed={isFavoritePressed}
+          />
+        ) : (
+          <></>
+        )}
+      </div>
       {loading ? (
         <div className={styles["loading-container"]}>
           <ACALoading />
@@ -84,26 +112,23 @@ const AITools = () => {
         <div className={styles["page-not-found"]}>
           <ACAError />
         </div>
-      ) : !error ? (
-        <>
-          <div className={styles["search-container"]}>
-            <SearchBar placeholder="....chatgpt" />
-            <FavoriteButton
-              handleOnPressFavorite={handleOnPressFavorite}
-              isFavoritePressed={isFavoritePressed}
-            />
-          </div>
-          <AIToolsList data={pageNationState.data} />
-          <ProgressPagination
-            listStartEnd={pageNationState.listStartEnd}
-            currentPage={pageNationState.currentPage}
-            pageNotFound={pageNationState.pageNotFound}
-            totalPages={pageNationState.totalPages}
-            handlePageChange={handlePageChange}
-          />
-        </>
       ) : (
-        <ACAError />
+        <>
+          {error ? (
+            <ACAError />
+          ) : (
+            <>
+              <AIToolsList data={pageNationState.data} />
+              <ProgressPagination
+                listStartEnd={pageNationState.listStartEnd}
+                currentPage={pageNationState.currentPage}
+                pageNotFound={pageNationState.pageNotFound}
+                totalPages={pageNationState.totalPages}
+                handlePageChange={handlePageChange}
+              />
+            </>
+          )}
+        </>
       )}
     </>
   );

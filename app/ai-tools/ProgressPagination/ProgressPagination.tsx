@@ -19,18 +19,16 @@ const ProgressPagination = ({
 }: ProgressPaginationProps) => {
   return (
     <div className={styles.container}>
-      <div
-        className={currentPage === 1 ? "" : styles["pointer-cursor"]}
+      <button
+        className={styles["arrow-left"]}
         onClick={() => {
-          if (currentPage + 1 !== 1) {
-            handlePageChange(currentPage - 1);
-          }
+          handlePageChange(currentPage - 1);
         }}
       >
         <FilledArrow
           color={currentPage === 1 || pageNotFound ? "#793ba28a" : "#783BA2"}
         />
-      </div>
+      </button>
       <div className={styles.numbers}>
         {[
           ...Array(totalPages)
@@ -56,9 +54,7 @@ const ProgressPagination = ({
           ))}
       </div>
       <div
-        className={`${styles["arrow-right"]} ${
-          currentPage === totalPages ? "" : styles["pointer-cursor"]
-        }`}
+        className={styles["arrow-right"]}
         onClick={() => {
           handlePageChange(currentPage + 1);
         }}

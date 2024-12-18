@@ -42,8 +42,12 @@
   margin: 24px 28px 19px 0px;
 }
 
+.input::selection {
+  background-color: #3535353f;
+}
+
 .input::placeholder {
-  color: var(--primary-color)ad;
+  color: var(--primary-color) ad;
 }
 
 @media (max-width: 1440px) {

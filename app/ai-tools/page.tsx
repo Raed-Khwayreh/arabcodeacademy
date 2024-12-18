@@ -11,11 +11,16 @@ import styles from "./AITools.module.css";
 import ACAError from "@/components/ui/ACAError";
 import ProgressPagination from "./ProgressPagination/ProgressPagination";
 import { fetchAIToolsData } from "./utils/fetchAIToolsData";
+import { SearchBar } from "@/components/ui";
+import FavoriteButton from "./FavoriteButton/FavoriteButton";
+
 const AITools = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pageNum = parseInt(searchParams.get("page") || "1", 10);
   const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [isFavoritePressed, setIsFavoritePressed] = useState(false);
   const [pageNationState, setPageNationState] = useState({
     data: [] as AIToolCardProps[],
     currentPage: parseInt(searchParams.get("page") || "1", 10),
@@ -27,7 +32,7 @@ const AITools = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetchAIToolsData(pageNum, pageSize.current)
+    fetchAIToolsData(pageNum, pageSize.current, isFavoritePressed)
       .then((result) => {
         setPageNationState((prev) => {
           return {
@@ -37,12 +42,15 @@ const AITools = () => {
           };
         });
       })
+      .catch(() => {
+        setError(true);
+      })
       .finally(() => {
         {
           setLoading(false);
         }
       });
-  }, [pageNum, searchParams]);
+  }, [pageNum, searchParams, isFavoritePressed]);
 
   useEffect(() => {
     pageSize.current = getPageSize();
@@ -62,6 +70,10 @@ const AITools = () => {
     }
   };
 
+  const handleOnPressFavorite = () => {
+    setIsFavoritePressed((value) => !value);
+  };
+
   return (
     <>
       {loading ? (
@@ -72,16 +84,27 @@ const AITools = () => {
         <div className={styles["page-not-found"]}>
           <ACAError />
         </div>
+      ) : !error ? (
+        <>
+          <div className={styles["search-container"]}>
+            <SearchBar placeholder="....chatgpt" />
+            <FavoriteButton
+              handleOnPressFavorite={handleOnPressFavorite}
+              isFavoritePressed={isFavoritePressed}
+            />
+          </div>
+          <AIToolsList data={pageNationState.data} />
+          <ProgressPagination
+            listStartEnd={pageNationState.listStartEnd}
+            currentPage={pageNationState.currentPage}
+            pageNotFound={pageNationState.pageNotFound}
+            totalPages={pageNationState.totalPages}
+            handlePageChange={handlePageChange}
+          />
+        </>
       ) : (
-        <AIToolsList data={pageNationState.data} />
+        <ACAError />
       )}
-      <ProgressPagination
-        listStartEnd={pageNationState.listStartEnd}
-        currentPage={pageNationState.currentPage}
-        pageNotFound={pageNationState.pageNotFound}
-        totalPages={pageNationState.totalPages}
-        handlePageChange={handlePageChange}
-      />
     </>
   );
 };

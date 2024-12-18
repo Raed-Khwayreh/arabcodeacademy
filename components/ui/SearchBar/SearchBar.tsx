@@ -5,7 +5,11 @@ import { SearchIcon } from "@/public/icons";
 import useScreenSize from "@/utils/useScreenSize";
 import { LargeScreenSize, SmallScreenSize } from "@/constants/ScreenSizes";
 
-const SearchBar = () => {
+interface SearchBarProps {
+  placeholder: string;
+}
+
+const SearchBar = ({ placeholder }: SearchBarProps) => {
   const screenSize = useScreenSize();
   return (
     <div className={styles.searchBar}>
@@ -27,11 +31,7 @@ const SearchBar = () => {
           }
         />
       </div>
-      <input
-        type="text"
-        placeholder="مقدمة لمحرك الألعاب اليونتي ....."
-        className={styles.input}
-      />
+      <input type="text" placeholder={placeholder} className={styles.input} />
     </div>
   );
 };

@@ -3,6 +3,7 @@
   gap: 35px;
   align-items: center;
   justify-content: center;
+  margin-bottom: 117px;
 }
 
 .numbers {
@@ -38,7 +39,12 @@
 }
 
 .arrow-right {
+  cursor: pointer;
   transform: rotate(-180deg);
+}
+
+.arrow-left {
+  cursor: pointer;
 }
 
 .pointer-cursor {

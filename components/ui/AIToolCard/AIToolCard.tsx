@@ -20,6 +20,7 @@ export default function AIToolCard({
   tags = [],
   title = "title",
   description,
+  isFav = false,
 }: AIToolCardProps) {
   return (
     <div className={styles.card}>
@@ -41,16 +42,7 @@ export default function AIToolCard({
             </div>
           </div>
           <div className={styles.card_content}>
-            <div className={styles.line_clamp}>
-              {description}
-              {description}
-              {description}
-              {description}
-              {description}
-
-              {description}
-              {description}
-            </div>
+            <div className={styles.line_clamp}>{description}</div>
           </div>
         </div>
         <div className={styles.card_footer}>
@@ -64,7 +56,7 @@ export default function AIToolCard({
         </div>
       </div>
       <div className={styles.favorite}>
-        <Favorite width={24} height={20} />
+        <Favorite isFav={isFav} />
       </div>
     </div>
   );

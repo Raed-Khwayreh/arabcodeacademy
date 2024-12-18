@@ -14,6 +14,7 @@ const AIToolsList = ({ data }: AIToolsListData) => {
       {data.map((e: AIToolCardProps) => {
         return (
           <AIToolCard
+            isFav={e.isFav}
             key={e.tool_id}
             title={e.title}
             description={e.description}

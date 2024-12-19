@@ -1,0 +1,122 @@
+.fieldContainer {
+  width: 250px;
+  height: 79px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.labelContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: flex-end;
+  gap: 2px;
+}
+
+.formLabel {
+  color: #783ba2;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 500;
+  border-radius: 5px;
+}
+
+.formInput {
+  width: 100%;
+  height: 50px;
+  padding: 18px 5px;
+  border: 1px solid #783ba2;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 400;
+  box-sizing: border-box;
+  color: #a067b6;
+  background-color: #fff;
+  direction: rtl;
+}
+
+@media (min-width: 768px) {
+  .fieldContainer {
+    width: 744px;
+    height: 96px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    box-sizing: border-box;
+  }
+
+  .labelContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    justify-content: flex-end;
+    gap: 7px;
+  }
+
+  .formLabel {
+    color: #783ba2;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 500;
+  }
+
+  .formInput {
+    width: 100%;
+    height: 60px;
+    padding-right: 20px;
+    border: 1px solid #783ba2;
+    border-radius: 8px;
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 400;
+    box-sizing: border-box;
+    color: #a067b6;
+    background-color: #fff;
+    direction: rtl;
+  }
+}
+
+@media (min-width: 1640px) {
+  .fieldContainer {
+    width: 744px;
+    height: 96px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .labelContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    justify-content: flex-end;
+    gap: 4px;
+  }
+
+  .formLabel {
+    color: #783ba2;
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 500;
+  }
+
+  .formInput {
+    width: 100%;
+    height: 60px;
+    padding-right: 25px;
+    border: 1px solid #783ba2;
+    border-radius: 10px;
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 400;
+    box-sizing: border-box;
+    color: #a067b6;
+    background-color: #fff;
+    direction: rtl;
+  }
+}

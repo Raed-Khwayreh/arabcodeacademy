@@ -1,12 +1,12 @@
-import FormField from '@/components/ui/FormField/FormField';
-import EnvelopeIcon from '@/components/ui/FormField/Icons/EnvelopeIcon';
-import React from 'react'
 
+import SignupFormOne from '@/components/ui/SignupForms/SignupFormOne/SignupFormOne';
+import React from 'react'
+import styles from './page.module.css'
 const Signup:React.FC=()=>{
 
   return (
-    <div>
-     <FormField label='عنوان البريد الإلكتروني' placeholder='لن نشارك بريدك الإلكتروني أبدًا مع أي شخص' icon={<EnvelopeIcon/>}/>
+    <div className={styles.signupPage}>
+      <SignupFormOne/>
    
 
     </div>

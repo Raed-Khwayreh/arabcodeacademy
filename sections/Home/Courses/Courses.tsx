@@ -7,19 +7,19 @@ const Courses = () => {
   return (
     <div style={{ color: "black", marginBlock: 123 }}>
       <div className={styles["search-container"]}>
-        <SearchBar />
+        <SearchBar placeholder="مقدمة لمحرك الألعاب اليونتي ....." />
         <UnderlineText
           title="الدورات التدريبية"
           fontWeight={700}
           paddingBottom={5}
         />
       </div>
-      <CoursesList activeCourses={false}  />
+      <CoursesList activeCourses={false} />
       <div className={styles["soon-container"]}>
         <UnderlineText title="قريباً" fontWeight={700} paddingBottom={5} />
       </div>
       <div style={{ marginBottom: 61 }}>
-        <CoursesList activeCourses={true}  />
+        <CoursesList activeCourses={true} />
       </div>
     </div>
   );

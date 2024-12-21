@@ -1,13 +1,13 @@
 import React from "react";
-import { Text, VStack, useBreakpointValue } from "@chakra-ui/react";
+import { Text, VStack } from "@chakra-ui/react";
 import Image from "next/image";
+import { ErrorMessage } from "@/types/ErrorMessage";
 
-const ACAError: React.FC = () => {
-  const errorMessage = useBreakpointValue({
-    base: "لا يوجد نتائج لعرضها", 
-    md: "تعذر الاتصال مع خادم البيانات الرجاء المحاولة مرة أخرى", 
-  });
+interface ACAErrorProps {
+  errorMessage: ErrorMessage;
+}
 
+const ACAError: React.FC<ACAErrorProps> = ({ errorMessage }) => {
   return (
     <VStack justifyContent="center" alignItems="center" height="30vh">
       <Image
@@ -25,7 +25,7 @@ const ACAError: React.FC = () => {
         textAlign="center"
         marginTop={21}
       >
-        {errorMessage} 
+        {errorMessage}
       </Text>
     </VStack>
   );

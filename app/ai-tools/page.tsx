@@ -1,136 +1,149 @@
 "use client";
-import ACALoading from "@/components/ui/ACALoading";
-import { AIToolCardProps } from "@/components/ui/AIToolCard/AIToolCard";
 
-import React, { useEffect, useRef, useState } from "react";
-import AIToolsList from "./AIToolsList/AIToolsList";
+import React, { useState, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import styles from "./AITools.module.css";
+import ACALoading from "@/components/ui/ACALoading";
+import ACAError from "@/components/ui/ACAError";
 import { generateNumbersList } from "./utils/generateNumbersList";
 import { getPageSize } from "./utils/getPageSize";
-import styles from "./AITools.module.css";
-import ACAError from "@/components/ui/ACAError";
-import ProgressPagination from "./ProgressPagination/ProgressPagination";
-import { fetchAIToolsData } from "./utils/fetchAIToolsData";
 import { SearchBar } from "@/components/ui";
 import FavoriteButton from "./FavoriteButton/FavoriteButton";
+import AIToolsList from "./AIToolsList/AIToolsList";
+import ProgressPagination from "./ProgressPagination/ProgressPagination";
+import { AIToolsCardProps } from "@/types/AIToolCardProps";
+import useSWR, { mutate } from "swr";
+import { ErrorMessage } from "@/types/ErrorMessage";
+
+const fetchAIToolsData = async (url: string) => {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error("Failed to fetch data");
+  return response.json();
+};
 
 const AITools = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pageNum = parseInt(searchParams.get("page") || "1", 10);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<boolean>(false);
-  const [isFavoritePressed, setIsFavoritePressed] = useState(
-    searchParams.get("isFav") === "true" ? true : false
+  const [isFavoritePressed, setIsFavoritePressed] = useState<boolean>(
+    searchParams.get("isFav") === "true"
   );
-  const [searchValue, setSearchValue] = useState("");
-  const [pageNationState, setPageNationState] = useState({
-    data: [] as AIToolCardProps[],
-    currentPage: parseInt(searchParams.get("page") || "1", 10),
-    totalPages: 0,
-    pageNotFound: false,
-    listStartEnd: generateNumbersList(pageNum),
-  });
-  const pageSize = useRef(0);
+  const [searchValue, setSearchValue] = useState(
+    searchParams.get("search") || ""
+  );
+  const pageSize = useRef(getPageSize());
 
-  useEffect(() => {
-    setLoading(true);
-    fetchAIToolsData(pageNum, pageSize.current, isFavoritePressed, searchValue)
-      .then((result) => {
-        setPageNationState((prev) => {
-          return {
-            ...prev,
-            data: result.data,
-            totalPages: result.total_pages,
-          };
-        });
-      })
-      .catch(() => {
-        setError(true);
-      })
-      .finally(() => {
-        {
-          setLoading(false);
-        }
-      });
-  }, [pageNum, searchParams, isFavoritePressed, searchValue]);
+  const apiUrl = `https://sitev2.arabcodeacademy.com/wp-json/aca/v1/aitools?page_size=${
+    pageSize.current
+  }&page=${pageNum}${
+    isFavoritePressed ? `&isFav=${isFavoritePressed}` : ""
+  }&search=${searchValue}`;
 
-  useEffect(() => {
-    pageSize.current = getPageSize();
-    setPageNationState((prev) => {
-      return {
-        ...prev,
-        listStartEnd: generateNumbersList(pageNum),
-        pageNotFound: pageNum > pageNationState.totalPages,
-        currentPage: pageNum,
-      };
-    });
-  }, [pageNationState.totalPages, pageNum]);
+  const { data, error, isLoading } = useSWR(apiUrl, fetchAIToolsData);
 
   const handlePageChange = (newPage: number) => {
-    if (newPage >= 1 && newPage <= pageNationState.totalPages) {
+    if (newPage >= 1 && data?.total_pages && newPage <= data.total_pages) {
       router.push(
         `/ai-tools?page=${newPage}${
           isFavoritePressed ? `&isFav=${isFavoritePressed}` : ""
-        }`
+        }${searchValue ? `&search=${searchValue}` : ""}`
       );
     }
   };
 
   const handleOnPressFavorite = () => {
-    setIsFavoritePressed((value) => !value);
-    {
-      !isFavoritePressed
-        ? router.push(`/ai-tools?isFav=${!isFavoritePressed}`)
-        : router.push(`/ai-tools`);
-    }
+    setIsFavoritePressed((prev) => !prev);
+    router.push(
+      `/ai-tools?isFav=${!isFavoritePressed}${
+        searchValue ? `&search=${searchValue}` : ""
+      }`
+    );
   };
 
   const handleOnSearch = (searchText: string) => {
-    router.push(`/ai-tools`);
+    router.push(
+      `/ai-tools${searchText ? `?search=${searchText}` : ""}${
+        isFavoritePressed ? `&isFav=${isFavoritePressed}` : ""
+      }`
+    );
     setSearchValue(searchText);
   };
 
+  //TODO: Will replaced when there is authorized user, and will filtered depending on user favorites
+  const handleOnPressFavoriteCard = (toolId: number) => {
+    //Timeout Used to make fadeout anmation
+    setTimeout(
+      () => {
+        if (data) {
+          const updatedData = {
+            ...data,
+            data: data.data.map((tool: AIToolsCardProps) =>
+              tool.tool_id === toolId ? { ...tool, isFav: !tool.isFav } : tool
+            ),
+          };
+          const filteredData = isFavoritePressed
+            ? {
+                ...updatedData,
+                data: updatedData.data.filter(
+                  (tool: AIToolsCardProps) => tool.isFav
+                ),
+              }
+            : updatedData;
+          mutate(apiUrl, filteredData, false);
+        }
+      },
+      isFavoritePressed ? 500 : 0
+    );
+  };
+
+  if (isLoading)
+    return (
+      <div className={styles["loading-container"]}>
+        <ACALoading />
+      </div>
+    );
+
+  if (error)
+    return (
+      <div className={styles["error-container"]}>
+        <ACAError errorMessage={ErrorMessage.CONNECTION_FAILD} />
+      </div>
+    );
+
+  const pageNotFound = pageNum > data?.total_pages;
+
   return (
-    <>
+    <div>
       <div className={styles["search-container"]}>
         <SearchBar placeholder="....chatgpt" handleOnSearch={handleOnSearch} />
-        {!error ? (
+        {!error && (
           <FavoriteButton
             handleOnPressFavorite={handleOnPressFavorite}
             isFavoritePressed={isFavoritePressed}
           />
-        ) : (
-          <></>
         )}
       </div>
-      {loading ? (
-        <div className={styles["loading-container"]}>
-          <ACALoading />
-        </div>
-      ) : pageNationState.pageNotFound ? (
+      {pageNotFound ? (
         <div className={styles["page-not-found"]}>
-          <ACAError />
+          <ACAError errorMessage={ErrorMessage.NO_RESULTS} />
         </div>
       ) : (
         <>
-          {error ? (
-            <ACAError />
-          ) : (
-            <>
-              <AIToolsList data={pageNationState.data} />
-              <ProgressPagination
-                listStartEnd={pageNationState.listStartEnd}
-                currentPage={pageNationState.currentPage}
-                pageNotFound={pageNationState.pageNotFound}
-                totalPages={pageNationState.totalPages}
-                handlePageChange={handlePageChange}
-              />
-            </>
-          )}
+          <AIToolsList
+            isFavoritesPressed={isFavoritePressed}
+            data={data?.data}
+            handleOnPressFavoriteCard={handleOnPressFavoriteCard}
+          />
+          <ProgressPagination
+            listStartEnd={generateNumbersList(pageNum)}
+            currentPage={pageNum}
+            pageNotFound={pageNotFound}
+            totalPages={data?.total_pages}
+            handlePageChange={handlePageChange}
+          />
         </>
       )}
-    </>
+    </div>
   );
 };
 

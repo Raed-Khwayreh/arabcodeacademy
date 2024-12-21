@@ -9,6 +9,7 @@ import ACAAvailability from "@/components/ui/ACAAvailability";
 import ACALoading from "@/components/ui/ACALoading";
 import ACAError from "@/components/ui/ACAError";
 import { CoruseProps } from "@/types/CourseProps";
+import { ErrorMessage } from "@/types/ErrorMessage";
 
 interface CoursesListProps {
   activeCourses: boolean;
@@ -28,7 +29,7 @@ const CoursesList: React.FC<CoursesListProps> = ({ activeCourses }) => {
     fetcher
   );
 
-  if (error) return <ACAError />;
+  if (error) return <ACAError errorMessage={ErrorMessage.CONNECTION_FAILD} />;
   if (!courses) return <ACALoading />;
   if (courses.length === 0)
     return <ACAAvailability message="لا يوجد كورسات لعرضها" />;

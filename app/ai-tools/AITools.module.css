@@ -26,9 +26,9 @@
 @media (max-width: 1320px) {
   .search-container {
     margin-inline: 0px;
-
     flex-direction: column;
-    gap: 40px;
+    gap: 24px;
     justify-content: center;
+    margin-bottom: 34px;
   }
 }

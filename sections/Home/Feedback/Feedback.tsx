@@ -14,6 +14,7 @@ import ACALoading from "@/components/ui/ACALoading";
 import ACAError from "@/components/ui/ACAError";
 import ACAAvailability from "@/components/ui/ACAAvailability";
 import useSWR from "swr";
+import { ErrorMessage } from "@/types/ErrorMessage";
 
 const imageMapping: Record<string, StaticImageData> = {
   user1,
@@ -27,21 +28,17 @@ const fetcher = async (url: string) => {
   return response.json();
 };
 
-const Feedback: React.FC= ({
-}) => {
+const Feedback: React.FC = ({}) => {
   const feedbackRef = useRef<Slider>(null);
   const screenSize = useScreenSize();
   const { data: feedbackData, error } = useSWR<FeedbackProps[]>(
     `${process.env.NEXT_PUBLIC_API_URL}/feedback`,
     fetcher
   );
-
-  if (error) return <ACAError />;
+  if (error) return <ACAError errorMessage={ErrorMessage.CONNECTION_FAILD} />;
   if (!feedbackData) return <ACALoading />;
   if (feedbackData.length === 0)
     return <ACAAvailability message="لا يوجد بيانات لعرضها" />;
-
-
 
   return (
     <div style={{ marginBlock: 111 }}>

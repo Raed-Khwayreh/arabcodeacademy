@@ -22,6 +22,7 @@ const FavIcon = ({
       stroke="currentColor"
       style={{
         color: color,
+        transition: "0.5s",
       }}
     >
       <path

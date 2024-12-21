@@ -1,24 +1,28 @@
-import AIToolCard, {
-  AIToolCardProps,
-} from "@/components/ui/AIToolCard/AIToolCard";
 import React from "react";
 import styles from "./AIToolsList.module.css";
+import AIToolCard from "@/components/ui/AIToolCard/AIToolCard";
+import { AIToolsCardProps } from "@/types/AIToolCardProps";
 
 interface AIToolsListData {
-  data: AIToolCardProps[];
+  data: AIToolsCardProps[];
+  handleOnPressFavoriteCard: (n: number) => void;
+  isFavoritesPressed: boolean;
 }
 
-const AIToolsList = ({ data }: AIToolsListData) => {
+const AIToolsList = ({
+  data,
+  handleOnPressFavoriteCard,
+  isFavoritesPressed,
+}: AIToolsListData) => {
   return (
     <div className={styles["attools-list-container"]}>
-      {data.map((e: AIToolCardProps) => {
+      {data.map((_, i) => {
         return (
           <AIToolCard
-            isFav={e.isFav}
-            key={e.tool_id}
-            title={e.title}
-            description={e.description}
-            tags={e.tags}
+            key={data[i].tool_id}
+            handleOnPressFavoriteCard={handleOnPressFavoriteCard}
+            cardData={data[i]}
+            isFavoritesPressed={isFavoritesPressed}
           />
         );
       })}

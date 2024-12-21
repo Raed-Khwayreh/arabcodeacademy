@@ -13,3 +13,10 @@
     grid-template-columns: repeat(auto-fill, 280px);
   }
 }
+
+@media (max-width: 576px) {
+  .attools-list-container {
+    grid-row-gap: 60px;
+    margin-bottom: 36px;
+  }
+}

@@ -1,29 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./AIToolCard.module.css";
 import Image from "next/image";
 import AIToolImage from "@/public/images/ai-tool-image.png";
 import ACAButton from "../ACAButton/ACAButton";
 import EllipsisCircleIcon from "../ACAButton/ACAButtonIcons/EllipsisCircleIcon";
 import Favorite from "../Favorite/Favorite";
-export interface AIToolCardProps {
-  tool_id?: number;
-  title: string;
-  imageURL?: string;
-  description: string;
-  tags?: string[];
-  isFav?: boolean;
-  subject?: string[];
-  pricing?: string[];
+import { AIToolsCardProps } from "@/types/AIToolCardProps";
+export interface Props {
+  cardData: AIToolsCardProps;
+  handleOnPressFavoriteCard: (n: number) => void;
+  isFavoritesPressed: boolean;
 }
 
 export default function AIToolCard({
-  tags = [],
-  title = "title",
-  description,
-  isFav = false,
-}: AIToolCardProps) {
+  cardData,
+  isFavoritesPressed,
+  handleOnPressFavoriteCard,
+}: Props) {
+  const handleOnPressFavorite = (id: number) => {
+    handleOnPressFavoriteCard(id);
+    if (!fadeOut && isFavoritesPressed) {
+      setFadeOut(true);
+    }
+  };
+
+  const [fadeOut, setFadeOut] = useState(false);
+
   return (
-    <div className={styles.card}>
+    <div
+      className={`${styles.card} ${
+        fadeOut ? styles["fade-out"] : styles["fade-in"]
+      }`}
+    >
       <div className={styles.image_container}>
         <Image
           src={AIToolImage}
@@ -34,15 +42,15 @@ export default function AIToolCard({
       <div className={styles.card_body}>
         <div>
           <div className={styles.card_header}>
-            <div className={styles.card_title}>{title}</div>
+            <div className={styles.card_title}>{cardData.title}</div>
             <div className={styles.card_tags}>
-              {tags.map((e, i) => {
+              {cardData.tags.map((e, i) => {
                 return <div key={i}>{e}</div>;
               })}
             </div>
           </div>
           <div className={styles.card_content}>
-            <div className={styles.line_clamp}>{description}</div>
+            <div className={styles.line_clamp}>{cardData.description}</div>
           </div>
         </div>
         <div className={styles.card_footer}>
@@ -56,7 +64,11 @@ export default function AIToolCard({
         </div>
       </div>
       <div className={styles.favorite}>
-        <Favorite isFav={isFav} />
+        <Favorite
+          id={cardData.tool_id}
+          isFav={cardData.isFav}
+          handleOnPressFavoriteCard={handleOnPressFavorite}
+        />
       </div>
     </div>
   );

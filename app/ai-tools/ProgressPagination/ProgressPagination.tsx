@@ -1,6 +1,7 @@
 import { FilledArrow } from "@/public/icons";
 import React from "react";
 import styles from "./ProgressPagination.module.css";
+import useScreenSize from "@/utils/useScreenSize";
 
 interface ProgressPaginationProps {
   currentPage: number;
@@ -17,6 +18,8 @@ const ProgressPagination = ({
   listStartEnd,
   handlePageChange,
 }: ProgressPaginationProps) => {
+  const screenSize = useScreenSize();
+
   return (
     <div className={styles.container}>
       <button
@@ -26,6 +29,8 @@ const ProgressPagination = ({
         }}
       >
         <FilledArrow
+          width={screenSize <= 576 ? 19 : 46}
+          height={screenSize <= 576 ? 19 : 44}
           color={currentPage === 1 || pageNotFound ? "#793ba28a" : "#783BA2"}
         />
       </button>
@@ -60,6 +65,8 @@ const ProgressPagination = ({
         }}
       >
         <FilledArrow
+          width={screenSize <= 576 ? 19 : 46}
+          height={screenSize <= 576 ? 19 : 44}
           color={
             currentPage === totalPages || pageNotFound ? "#793ba28a" : "#783BA2"
           }

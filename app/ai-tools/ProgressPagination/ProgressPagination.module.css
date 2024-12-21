@@ -50,3 +50,19 @@
 .pointer-cursor {
   cursor: pointer;
 }
+
+@media (max-width: 576px) {
+  .container {
+    gap: 11px;
+    margin-bottom: 72px;
+  }
+
+  .button-number {
+    font-size: 10px;
+    font-weight: 700;
+    width: 23px;
+    height: 23px;
+    padding: 8px;
+    border: 1.5px solid var(--primary-color);
+  }
+}

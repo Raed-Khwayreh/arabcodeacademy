@@ -7,6 +7,7 @@ import { ACAButton, Sidebar } from "@/components/ui";
 import { LoginIcon, ProfileCircleIcon } from "../ACAButton/ACAButtonIcons";
 import { ArrowDown, Avatar, BurgerMenu, Logout } from "./icons";
 import { subMenuList } from "@/sections/Home/Courses/mock/subMenuList";
+import Link from "next/link";
 
 const Navbar = () => {
   const [showResoursesList, setShowResoursesList] = useState(false);
@@ -41,7 +42,7 @@ const Navbar = () => {
         <BurgerMenu />
       </div>
       {isLoggedIn ? (
-        <div className={styles.logout} >
+        <div className={styles.logout}>
           <div onClick={handleOnLogOut}>
             <Logout />
           </div>
@@ -88,13 +89,17 @@ const Navbar = () => {
           </div>
         </div>
       </ul>
-      <Image
-        className={styles.image}
-        src={"/images/logo.png"}
-        alt="logo"
-        width={280}
-        height={61.79}
-      />
+      <Link href="/">
+        <div className={styles["image-contanier"]}>
+          <Image
+            className={styles.image}
+            src={"/images/logo.png"}
+            alt="logo"
+            width={280}
+            height={61.79}
+          />
+        </div>
+      </Link>
     </div>
   );
 };

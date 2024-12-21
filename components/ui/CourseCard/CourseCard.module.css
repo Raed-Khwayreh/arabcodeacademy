@@ -51,6 +51,16 @@
   direction: ltr;
 }
 
+.label {
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  direction: rtl;
+}
+
 @media (max-width: 768px) {
   .card {
     border-radius: 0px;
@@ -91,6 +101,10 @@
   }
   .avatar {
     width: 125px;
+  }
+  .image {
+    height: auto;
+    width: auto;
   }
 }
 

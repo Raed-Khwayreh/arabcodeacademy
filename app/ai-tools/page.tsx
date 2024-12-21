@@ -33,7 +33,7 @@ const AITools = () => {
   );
   const pageSize = useRef(getPageSize());
 
-  const apiUrl = `https://sitev2.arabcodeacademy.com/wp-json/aca/v1/aitools?page_size=${
+  const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/aitools?page_size=${
     pageSize.current
   }&page=${pageNum}${
     isFavoritePressed ? `&isFav=${isFavoritePressed}` : ""

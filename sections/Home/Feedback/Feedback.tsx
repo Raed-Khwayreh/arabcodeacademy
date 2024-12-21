@@ -1,26 +1,18 @@
 "use client";
 import CarouselSlider from "@/components/ui/CarouselSlider/CarouselSlider";
-import FeedbackCardComponent, {
-  FeedbackProps,
-} from "@/components/ui/FeedbackCard/FeedbackCard";
+import FeedbackCardComponent from "@/components/ui/FeedbackCard/FeedbackCard";
 
 import { LargeScreenSize, MediumScreenSize } from "@/constants/ScreenSizes";
 import useScreenSize from "@/utils/useScreenSize";
 import React, { useRef } from "react";
 import Slider from "react-slick";
-import { StaticImageData } from "next/image";
-import { user1, user2, user3 } from "@/components/ui/FeedbackCard/Images";
+
 import ACALoading from "@/components/ui/ACALoading";
 import ACAError from "@/components/ui/ACAError";
 import ACAAvailability from "@/components/ui/ACAAvailability";
 import useSWR from "swr";
 import { ErrorMessage } from "@/types/ErrorMessage";
-
-const imageMapping: Record<string, StaticImageData> = {
-  user1,
-  user2,
-  user3,
-};
+import { FeedBackProps } from "@/types/FeedBackProps";
 
 const fetcher = async (url: string) => {
   const response = await fetch(url);
@@ -31,13 +23,13 @@ const fetcher = async (url: string) => {
 const Feedback: React.FC = ({}) => {
   const feedbackRef = useRef<Slider>(null);
   const screenSize = useScreenSize();
-  const { data: feedbackData, error } = useSWR<FeedbackProps[]>(
+  const { data: feedbackData, error } = useSWR<{ reviews: FeedBackProps[] }>(
     `${process.env.NEXT_PUBLIC_API_URL}/feedback`,
     fetcher
   );
   if (error) return <ACAError errorMessage={ErrorMessage.CONNECTION_FAILD} />;
   if (!feedbackData) return <ACALoading />;
-  if (feedbackData.length === 0)
+  if (feedbackData.reviews.length === 0)
     return <ACAAvailability message="لا يوجد بيانات لعرضها" />;
 
   return (
@@ -66,19 +58,8 @@ const Feedback: React.FC = ({}) => {
             : 1280
         }
         sliderRef={feedbackRef}
-        generatedSliderList={feedbackData.map((feedback, index) => (
-          <FeedbackCardComponent
-            key={index}
-            image={
-              typeof feedback.image === "string"
-                ? imageMapping[feedback.image]
-                : feedback.image
-            }
-            comment={feedback.comment}
-            date={feedback.date}
-            name={feedback.name}
-            rating={feedback.rating}
-          />
+        generatedSliderList={feedbackData.reviews.map((feedback, index) => (
+          <FeedbackCardComponent key={index} feedback={feedback} />
         ))}
       />
     </div>

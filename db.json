@@ -1,304 +1,536 @@
 {
-  "courses": [
-    {
-      "id": 1,
-      "name": "أساسيات HTML",
-      "price": 150,
-      "instructor": "أحمد علي",
-      "duration": {
-        "video": 20,
-        "hour": 10,
-        "min": 30
+  "courses": {
+    "courses": [
+      {
+        "id": 1,
+        "title": "أساسيات البرمجة بلغة بايثون",
+        "imageURL": "https://example.com/python_basics.jpg",
+        "total_videos": 25,
+        "total_duration": "5 ساعات و30 دقيقة",
+        "price": 50,
+        "original_price": 100,
+        "currency": "USD",
+        "status": "available",
+        "trainers": [
+          {
+            "id": 1,
+            "first_name": "أحمد",
+            "last_name": "خالد",
+            "leader": true
+          },
+          {
+            "id": 2,
+            "first_name": "سارة",
+            "last_name": "علي",
+            "leader": false
+          }
+        ]
       },
-      "image": "/images/courses/html.png",
-      "soon": false
-    },
-    {
-      "id": 2,
-      "name": "أساسيات #C",
-      "price": 200,
-      "instructor": "سارة خالد",
-      "duration": {
-        "video": 18,
-        "hour": 12,
-        "min": 45
+      {
+        "id": 2,
+        "title": "تصميم مواقع الإنترنت باستخدام HTML و CSS",
+        "imageURL": "https://example.com/html_css_design.jpg",
+        "total_videos": 30,
+        "total_duration": "6 ساعات و15 دقيقة",
+        "price": 40,
+        "original_price": 80,
+        "currency": "USD",
+        "status": "available",
+        "trainers": [
+          {
+            "id": 3,
+            "first_name": "منى",
+            "last_name": "الزيدي",
+            "leader": true
+          },
+          {
+            "id": 4,
+            "first_name": "علي",
+            "last_name": "النعيمي",
+            "leader": false
+          }
+        ]
       },
-      "image": "/images/courses/csharp.png",
-      "soon": false
-    },
-    {
-      "id": 3,
-      "name": "كورس Bootsrap",
-      "price": 120,
-      "instructor": "محمد عمر",
-      "duration": {
-        "video": 15,
-        "hour": 8,
-        "min": 20
+      {
+        "id": 3,
+        "title": "برمجة تطبيقات الموبايل باستخدام React Native",
+        "imageURL": "https://example.com/react_native.jpg",
+        "total_videos": 35,
+        "total_duration": "7 ساعات و 42 دقيقة",
+        "price": 60,
+        "original_price": 120,
+        "currency": "USD",
+        "status": "coming_soon",
+        "trainers": [
+          {
+            "id": 5,
+            "first_name": "محمود",
+            "last_name": "عوض",
+            "leader": true
+          },
+          {
+            "id": 6,
+            "first_name": "نور",
+            "last_name": "السيد",
+            "leader": false
+          }
+        ]
       },
-      "image": "/images/courses/bootstrap.png",
-      "soon": false
-    },
-    {
-      "id": 4,
-      "name": "أساسيات Java",
-      "price": 250,
-      "instructor": "خالد حسن",
-      "duration": {
-        "video": 25,
-        "hour": 15,
-        "min": 40
+      {
+        "id": 4,
+        "title": "أساسيات قواعد البيانات باستخدام MySQL",
+        "imageURL": "https://example.com/mysql_basics.jpg",
+        "total_videos": 20,
+        "total_duration": "4 ساعات و 22 دقيقة",
+        "price": 30,
+        "original_price": 70,
+        "currency": "USD",
+        "status": "available",
+        "trainers": [
+          {
+            "id": 7,
+            "first_name": "هند",
+            "last_name": "الجابري",
+            "leader": true
+          },
+          {
+            "id": 8,
+            "first_name": "إبراهيم",
+            "last_name": "النعمان",
+            "leader": false
+          }
+        ]
       },
-      "image": "/images/courses/java.png",
-      "soon": false
-    },
-    {
-      "id": 5,
-      "name": "كورس لغة Python",
-      "price": 210,
-      "instructor": "عمرو فهمي",
-      "duration": {
-        "video": 30,
-        "hour": 11,
-        "min": 35
+      {
+        "id": 5,
+        "title": "تعلم برمجة JavaScript من الصفر",
+        "imageURL": "https://example.com/js_from_scratch.jpg",
+        "total_videos": 40,
+        "total_duration": "6 ساعات و35 دقيقة",
+        "price": 45,
+        "original_price": 90,
+        "currency": "USD",
+        "status": "available",
+        "trainers": [
+          {
+            "id": 9,
+            "first_name": "علياء",
+            "last_name": "حمدي",
+            "leader": true
+          },
+          {
+            "id": 10,
+            "first_name": "سعيد",
+            "last_name": "الهاشمي",
+            "leader": false
+          }
+        ]
       },
-      "image": "/images/courses/python.png",
-      "soon": true
-    },
-    {
-      "id": 6,
-      "name": "كورس Laravel",
-      "price": 180,
-      "instructor": "ريم يوسف",
-      "duration": {
-        "video": 22,
-        "hour": 9,
-        "min": 50
+      {
+        "id": 6,
+        "title": "احتراف تطوير الواجهات الأمامية باستخدام React.js",
+        "imageURL": "https://example.com/reactjs_pro.jpg",
+        "total_videos": 50,
+        "total_duration": "6 ساعات و 14 دقيقة",
+        "price": 70,
+        "original_price": 140,
+        "currency": "USD",
+        "status": "coming_soon",
+        "trainers": [
+          {
+            "id": 11,
+            "first_name": "خالد",
+            "last_name": "العتيبي",
+            "leader": true
+          },
+          {
+            "id": 12,
+            "first_name": "سمر",
+            "last_name": "الشرقي",
+            "leader": false
+          }
+        ]
       },
-      "image": "/images/courses/laravel.png",
-      "soon": true
-    },
-    {
-      "id": 7,
-      "name": "Ruby Language",
-      "price": 190,
-      "instructor": "نادية حسن",
-      "duration": {
-        "video": 25,
-        "hour": 10,
-        "min": 0
+      {
+        "id": 7,
+        "title": "تطوير المواقع باستخدام Node.js و Express",
+        "imageURL": "https://example.com/node_express.jpg",
+        "total_videos": 30,
+        "total_duration": "6 ساعات و45 دقيقة",
+        "price": 55,
+        "original_price": 110,
+        "currency": "USD",
+        "status": "available",
+        "trainers": [
+          {
+            "id": 13,
+            "first_name": "عمر",
+            "last_name": "النمر",
+            "leader": true
+          },
+          {
+            "id": 14,
+            "first_name": "ندى",
+            "last_name": "القحطاني",
+            "leader": false
+          }
+        ]
       },
-      "image": "/images/courses/ruby.png",
-      "soon": true
-    },
-    {
-      "id": 8,
-      "name": "كورس PHP",
-      "price": 220,
-      "instructor": "علي رضا",
-      "duration": {
-        "video": 28,
-        "hour": 12,
-        "min": 15
+      {
+        "id": 8,
+        "title": "التعلم الآلي باستخدام Python",
+        "imageURL": "https://example.com/machine_learning.jpg",
+        "total_videos": 45,
+        "total_duration": "4 ساعات و 36 دقيقة",
+        "price": 80,
+        "original_price": 160,
+        "currency": "USD",
+        "status": "coming_soon",
+        "trainers": [
+          {
+            "id": 15,
+            "first_name": "أماني",
+            "last_name": "الزهراني",
+            "leader": true
+          },
+          {
+            "id": 16,
+            "first_name": "راشد",
+            "last_name": "الغامدي",
+            "leader": false
+          }
+        ]
       },
-      "image": "/images/courses/php.png",
-      "soon": true
-    },
-    {
-      "id": 9,
-      "name": "برمجة تطبيقات الموبايل باستخدام React Native",
-      "price": 300,
-      "instructor": "محمود عوض",
-      "duration": {
-        "video": 35,
-        "hour": 7,
-        "min": 42
+      {
+        "id": 9,
+        "title": "إدارة المشاريع البرمجية باستخدام Git و GitHub",
+        "imageURL": "https://example.com/git_github.jpg",
+        "total_videos": 20,
+        "total_duration": "4 ساعات و30 دقيقة",
+        "price": 25,
+        "original_price": 50,
+        "currency": "USD",
+        "status": "available",
+        "trainers": [
+          {
+            "id": 17,
+            "first_name": "ماجد",
+            "last_name": "السعدي",
+            "leader": true
+          },
+          {
+            "id": 18,
+            "first_name": "ليلى",
+            "last_name": "البخيت",
+            "leader": false
+          }
+        ]
       },
-      "image": "/images/courses/html.png",
-      "soon": false
-    },
-    {
-      "id": 10,
-      "name": "أساسيات قواعد البيانات باستخدام MySQL",
-      "price": 120,
-      "instructor": "هند الجابري",
-      "duration": {
-        "video": 20,
-        "hour": 4,
-        "min": 22
+      {
+        "id": 10,
+        "title": "أساسيات البرمجة بلغة Java",
+        "imageURL": "https://example.com/java_basics.jpg",
+        "total_videos": 25,
+        "total_duration": "4 ساعات و 41 دقيقة",
+        "price": 50,
+        "original_price": 100,
+        "currency": "USD",
+        "status": "available",
+        "trainers": [
+          {
+            "id": 19,
+            "first_name": "نواف",
+            "last_name": "الجاسم",
+            "leader": true
+          },
+          {
+            "id": 20,
+            "first_name": "عبير",
+            "last_name": "الشريف",
+            "leader": false
+          }
+        ]
       },
-      "image": "/images/courses/html.png",
-      "soon": false
-    },
-    {
-      "id": 11,
-      "name": "احتراف تطوير الواجهات الأمامية باستخدام React.js",
-      "price": 400,
-      "instructor": "خالد العتيبي",
-      "duration": {
-        "video": 50,
-        "hour": 6,
-        "min": 14
+      {
+        "id": 11,
+        "title": "تطوير الألعاب باستخدام Unity",
+        "imageURL": "https://example.com/unity_game_dev.jpg",
+        "total_videos": 40,
+        "total_duration": "3 ساعات و 50 دقيقة",
+        "price": 60,
+        "original_price": 120,
+        "currency": "USD",
+        "status": "coming_soon",
+        "trainers": [
+          {
+            "id": 21,
+            "first_name": "عبدالله",
+            "last_name": "الحربي",
+            "leader": true
+          },
+          {
+            "id": 22,
+            "first_name": "نورة",
+            "last_name": "العنزي",
+            "leader": false
+          }
+        ]
       },
-      "image": "/images/courses/html.png",
-      "soon": true
-    },
-    {
-      "id": 12,
-      "name": "التعلم الآلي باستخدام Python",
-      "price": 500,
-      "instructor": "أماني الزهراني",
-      "duration": {
-        "video": 45,
-        "hour": 4,
-        "min": 36
+      {
+        "id": 12,
+        "title": "أساسيات الأمن السيبراني",
+        "imageURL": "https://example.com/cybersecurity_basics.jpg",
+        "total_videos": 15,
+        "total_duration": "2 ساعات و 18 دقيقة",
+        "price": 20,
+        "original_price": 40,
+        "currency": "USD",
+        "status": "available",
+        "trainers": [
+          {
+            "id": 23,
+            "first_name": "فهد",
+            "last_name": "القاضي",
+            "leader": true
+          },
+          {
+            "id": 24,
+            "first_name": "ريما",
+            "last_name": "الدماني",
+            "leader": false
+          }
+        ]
       },
-      "image": "/images/courses/html.png",
-      "soon": true
-    },
-    {
-      "id": 13,
-      "name": "إدارة المشاريع البرمجية باستخدام Git و GitHub",
-      "price": 90,
-      "instructor": "ماجد السعدي",
-      "duration": {
-        "video": 20,
-        "hour": 4,
-        "min": 30
+      {
+        "id": 13,
+        "title": "أساسيات الذكاء الإصطناعي",
+        "imageURL": "https://example.com/cybersecurity_basics.jpg",
+        "total_videos": 18,
+        "total_duration": "1 ساعات و 50 دقيقة",
+        "price": 28,
+        "original_price": 40,
+        "currency": "USD",
+        "status": "coming_soon",
+        "trainers": [
+          {
+            "id": 23,
+            "first_name": "فهد",
+            "last_name": "القاضي",
+            "leader": true
+          },
+          {
+            "id": 24,
+            "first_name": "ريما",
+            "last_name": "الدماني",
+            "leader": false
+          }
+        ]
       },
-      "image": "/images/courses/html.png",
-      "soon": false
-    },
-    {
-      "id": 14,
-      "name": "أساسيات البرمجة بلغة Java",
-      "price": 300,
-      "instructor": "نواف الجاسم",
-      "duration": {
-        "video": 25,
-        "hour": 4,
-        "min": 41
+      {
+        "id": 14,
+        "title": "برمجة تطبيقات الأندرويد باستخدام الجافا",
+        "imageURL": "https://example.com/java_basics.jpg",
+        "total_videos": 48,
+        "total_duration": "5 ساعات",
+        "price": 50,
+        "original_price": 100,
+        "currency": "USD",
+        "status": "coming_soon",
+        "trainers": [
+          {
+            "id": 19,
+            "first_name": "نواف",
+            "last_name": "الجاسم",
+            "leader": true
+          },
+          {
+            "id": 20,
+            "first_name": "عبير",
+            "last_name": "الشريف",
+            "leader": false
+          }
+        ]
+      }
+    ]
+  },
+  "feedback": {
+    "reviews": [
+      {
+        "reviewText": "دورات أكاديمية البرمجة العربية رائعة! تعلمت الكثير عن تطوير الويب، وكان المحتوى مفصلاً وسهل الفهم. أنصح الجميع بالانضمام إليها.",
+        "reviewerName": "أحمد",
+        "reviewerLastName": "المصري",
+        "imageURL": "https://example.com/images/ahmed.jpg",
+        "rating": 5,
+        "date": "2024-12-10"
       },
-      "image": "/images/courses/html.png",
-      "soon": false
-    },
-    {
-      "id": 15,
-      "name": "أساسيات الأمن السيبراني",
-      "price": 50,
-      "instructor": "فهد القاضي",
-      "duration": {
-        "video": 15,
-        "hour": 2,
-        "min": 18
+      {
+        "reviewText": "أكاديمية البرمجة العربية قدمت لي الأدوات اللازمة لتطوير مهاراتي البرمجية. الدورات شاملة وتغطي كل ما هو جديد في عالم البرمجة.",
+        "reviewerName": "سارة",
+        "reviewerLastName": "الجمعة",
+        "imageURL": "https://example.com/images/sara.jpg",
+        "rating": 4.5,
+        "date": "2024-12-09"
       },
-      "image": "/images/courses/html.png",
-      "soon": false
-    }
-  ],
-  
-  
-  "feedback": [
-    {
-      "name": "أحمد المصري",
-      "image": "user1",
-      "rating": 5,
-      "comment":"أكاديمية البرمجة العربية قدمت لي الأدوات اللازمة لتطوير مهاراتي البرمجية. الدورات شاملة وتغطي كل ما هو جديد في عالم البرمجة",
-      "date": "2023, 11 نيسان"
-    },
-    {
-      "name": "سارة الجمعة",
-      "image": "user2",
-      "rating": 4.5,
-      "comment":"دورات أكاديمية البرمجة العربية رائعة! تعلمت الكثير عن تطوير الويب، وكان المحتوى مفصلاً وسهل الفهم. أنصح الجميع بالانضمام إليها.",
-      "date": "2023, 11 نيسان"
-    },
-    {
-      "name": "يوسف القصير",
-      "image": "user3",
-      "rating": 5,
-      "comment":"الدورات على أكاديمية البرمجة العربية فعلاً ممتازة، أنا فخور بما تعلمته وأشعر بثقة أكبر في مهاراتي البرمجية.",
-      "date": "2023, 11 نيسان"
-    },
-    {
-      "name": "مريم الحمد",
-      "image": "user1",
-      "rating": 4,
-      "comment":"أكاديمية البرمجة العربية توفر محتوى تعليمي عالي الجودة. الدورات مفيدة للغاية لجميع مستويات المتعلمين",
-      "date": "2023, 11 نيسان"
-    },
-    {
-      "name": "علي الناصر",
-      "image": "user2",
-      "rating": 4,
-      "comment": "الدورات التدريبية في أكاديمية البرمجة العربية متميزة وذات فائدة كبيرة. شكراً لكل من ساهم في تقديم هذا المحتوى القيّم.",
-      "date": "2023, 11 نيسان"
-    },
-    {
-      "name": "خالد الطويل",
-      "image": "user3",
-      "rating": 4,
-      "comment": "محتوى أكاديمية البرمجة العربية غني ومتنوع. أحببت طريقة الشرح التي تجعل الأمور المعقدة سهلة الفهم. أنصح الجميع بها.",
-      "date": "2023, 11 نيسان"
-    }
-  ],
-  "aiTools": [
-    {
-      "id": 1,
-      "name": "Free Essay Generator",
-      "tag": "#writing generators",
-      "description": "يساعد الطلاب والكتّاب في إنشاء مقالات عالية الجودة بسهولة. هل تعاني من كتابة الأوراق الأكاديمية؟ مولد المقالات المجاني هنا للمساعدة!....",
-      "image": "/images/aiTools/freeEssayGenerator.png"
-    },
-    {
-      "id": 2,
-      "name": "Andi",
-      "tag": "#search engine",
-      "description": "أندي هو محرك بحث يعتمد على التكنولوجيا الذكية التي تعززها الذكاء الاصطناعي، ويوفر إجابات مباشرة بدلاً من مجرد روابط. يقوم أندي .....",
-      "image": "/images/aiTools/andi.png"
-    },
-    {
-      "id": 3,
-      "name": "GitMind AI",
-      "tag": "#productivity",
-      "description": "زيِّن سرعة رسم خرائط ذهنك باستخدام أداة GitMind المدعومة بالذكاء الاصطناعي. GitMind هو برنامج مجاني لرسم الخرائط اي،",
-      "image": "/images/aiTools/gitMindAi"
-    },
-    {
-      "id": 4,
-      "name": "Upword",
-      "tag": "#summarizer",
-      "description": "قم بإنشاء ملخصات بشكل أسرع باستخدام أدوات الذكاء الاصطناعي الخاصة بـ Upword.Upword هي أداة بحث مدعومة بالذكاء الاصطناعي للأفراد .......",
-      "image": "/images/aiTools/upword.png"
-    },
-    {
-      "id": 5,
-      "name": "Stable Diffusion",
-      "tag": "#image generators",
-      "description": "نموذج تحويل النصوص إلى صور باستخدام تعلم الآلة العميق. يتفوق في إنشاء صور مفصلة استنادًا إلى وصف النصوص ويمكن تطبيقه على مهام ......",
-      "image": "/images/aiTools/stableDiffusion.png"
-    },
-    {
-      "id": 6,
-      "name": "GPT3 Playground",
-      "tag": "#productivity #writing generators",
-      "description": "أدخل تعليمات أو حدد إعدادًا مسبقًا، وشاهد استجابة واجهة البرمجة (API) يحاول تطابق السياق أو النمط الذي قدمته. يمكنك......",
-      "image": "/images/aiTools/GPT3Playground.png"
-    },
-    {
-      "id": 7,
-      "name": "Chatbase",
-      "tag": "#education",
-      "description": "قم بإنشاء دردشة ذكية باستخدام الذكاء الاصطناعي مدربة على بياناتك. Chatbase هو منصة بناء للدردشة الذكية بواسطة الذكاء الاصطناعي، .....ة.",
-      "image": "/images/aiTools/chatBase.png"
-    },
-    {
-      "id": 8,
-      "name": "Midjourney",
-      "tag": "#art",
-      "description": "مختبر ذكاء اصطناعي يستكشف وسائط جديدة لتوسيع خيال الإنسان. `Midjourney` هو مختبر بحث مستقل مكرس لتقدم قدرات التخيل البشرية .....م.",
-      "image": "/images/aiTools/midjourney.png"
-    }
-  ]
-
+      {
+        "reviewText": "الدورات على أكاديمية البرمجة العربية فعلاً ممتازة، أنا فخور بما تعلمته وأشعر بثقة أكبر في مهاراتي البرمجية.",
+        "reviewerName": "يوسف",
+        "reviewerLastName": "القصير",
+        "imageURL": "https://example.com/images/yousef.jpg",
+        "rating": 5,
+        "date": "2024-12-08"
+      },
+      {
+        "reviewText": "أكاديمية البرمجة العربية توفر محتوى تعليمي عالي الجودة. الدورات مفيدة للغاية لجميع مستويات المتعلمين.",
+        "reviewerName": "مريم",
+        "reviewerLastName": "الحمد",
+        "imageURL": "https://example.com/images/mariam.jpg",
+        "rating": 4,
+        "date": "2024-12-07"
+      },
+      {
+        "reviewText": "الدورات التدريبية في أكاديمية البرمجة العربية متميزة وذات فائدة كبيرة. شكراً لكل من ساهم في تقديم هذا المحتوى القيّم.",
+        "reviewerName": "علي",
+        "reviewerLastName": "الناصر",
+        "imageURL": "https://example.com/images/ali.jpg",
+        "rating": 4.5,
+        "date": "2024-12-06"
+      },
+      {
+        "reviewText": "محتوى أكاديمية البرمجة العربية غني ومتنوع. أحببت طريقة الشرح التي تجعل الأمور المعقدة سهلة الفهم. أنصح الجميع بها.",
+        "reviewerName": "خالد",
+        "reviewerLastName": "الطويل",
+        "imageURL": "https://example.com/images/khaled.jpg",
+        "rating": 5,
+        "date": "2024-12-05"
+      }
+    ]
+  },
+  "aiTools": {
+    "page": 1,
+    "page_size": 12,
+    "total_pages": 5,
+    "total_items": 57,
+    "data": [
+      {
+        "tool_id": 1,
+        "title": "DALL-E",
+        "imageURL": "https://example.com/dall-e.jpg",
+        "description": "توليد صور مذهلة باستخدام الذكاء الاصطناعي.",
+        "tags": ["#art", "#image_generation", "#creative"],
+        "isFav": true,
+        "subject": ["art", "image generation"],
+        "pricing": ["Free", "subscription"]
+      },
+      {
+        "tool_id": 2,
+        "title": "ChatGPT",
+        "imageURL": "https://example.com/chatgpt.jpg",
+        "description": "محادثات ذكية باستخدام نموذج اللغة GPT.",
+        "tags": ["#chatbot", "#text_generation", "#AI"],
+        "isFav": false,
+        "subject": ["text generation", "chatbot"],
+        "pricing": ["Free", "subscription", "paid"]
+      },
+      {
+        "tool_id": 3,
+        "title": "DeepArt",
+        "imageURL": "https://example.com/deepart.jpg",
+        "description": "تحويل الصور إلى أعمال فنية مدهشة.",
+        "tags": ["#art", "#style_transfer"],
+        "isFav": false,
+        "subject": ["art", "style transfer"],
+        "pricing": ["paid"]
+      },
+      {
+        "tool_id": 4,
+        "title": "CodeT5",
+        "imageURL": "https://example.com/codet5.jpg",
+        "description": "إكمال الأكواد البرمجية وشرحها باستخدام الذكاء الاصطناعي.",
+        "tags": ["#coding", "#code_completion"],
+        "isFav": true,
+        "subject": ["code generation", "development"],
+        "pricing": ["open source"]
+      },
+      {
+        "tool_id": 5,
+        "title": "Runway ML",
+        "imageURL": "https://example.com/runwayml.jpg",
+        "description": "أداة لإنشاء الفيديوهات والصور باستخدام الذكاء الاصطناعي.",
+        "tags": ["#media", "#video_generation", "#image_generation"],
+        "isFav": false,
+        "subject": ["video generation", "image generation"],
+        "pricing": ["freemium"]
+      },
+      {
+        "tool_id": 6,
+        "title": "Copy.ai",
+        "imageURL": "https://example.com/copyai.jpg",
+        "description": "إنشاء محتوى نصي تسويقي بسهولة.",
+        "tags": ["#marketing", "#text_generation", "#copywriting"],
+        "isFav": true,
+        "subject": ["text generation", "marketing"],
+        "pricing": ["subscription", "freemium"]
+      },
+      {
+        "tool_id": 7,
+        "title": "Lumen5",
+        "imageURL": "https://example.com/lumen5.jpg",
+        "description": "تحويل النصوص إلى فيديوهات بشكل سريع.",
+        "tags": ["#video_creation", "#media"],
+        "isFav": false,
+        "subject": ["video creation", "media"],
+        "pricing": ["freemium", "subscription"]
+      },
+      {
+        "tool_id": 8,
+        "title": "Hugging Face",
+        "imageURL": "https://example.com/huggingface.jpg",
+        "description": "مكتبة مفتوحة المصدر لنماذج التعلم العميق.",
+        "tags": ["#open_source", "#machine_learning", "#AI"],
+        "isFav": true,
+        "subject": ["machine learning", "development"],
+        "pricing": ["open source", "subscription"]
+      },
+      {
+        "tool_id": 9,
+        "title": "Synthesia",
+        "imageURL": "https://example.com/synthesia.jpg",
+        "description": "إنشاء فيديوهات تعليمية بواسطة الذكاء الاصطناعي.",
+        "tags": ["#education", "#video_generation"],
+        "isFav": false,
+        "subject": ["education", "video generation"],
+        "pricing": ["subscription"]
+      },
+      {
+        "tool_id": 10,
+        "title": "Grammarly",
+        "imageURL": "https://example.com/grammarly.jpg",
+        "description": "تحسين النصوص وتصحيح الأخطاء اللغوية.",
+        "tags": ["#writing", "#text_analysis"],
+        "isFav": true,
+        "subject": ["text analysis", "writing"],
+        "pricing": ["freemium", "paid"]
+      },
+      {
+        "tool_id": 11,
+        "title": "Notion AI",
+        "imageURL": "https://example.com/notionai.jpg",
+        "description": "مساعد ذكي لتنظيم المهام وإدارة المشاريع.",
+        "tags": ["#productivity", "#task_management", "#AI"],
+        "isFav": true,
+        "subject": ["productivity", "task management"],
+        "pricing": ["subscription"]
+      },
+      {
+        "tool_id": 12,
+        "title": "BigSleep",
+        "imageURL": "https://example.com/bigsleep.jpg",
+        "description": "إنشاء صور جديدة من أوصاف نصية.",
+        "tags": ["#art", "#text_to_image"],
+        "isFav": false,
+        "subject": ["text to image", "art"],
+        "pricing": ["open source"]
+      }
+    ]
+  }
 }

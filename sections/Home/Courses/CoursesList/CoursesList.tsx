@@ -5,10 +5,10 @@ import useScreenSize from "@/utils/useScreenSize";
 import Slider from "react-slick";
 import { CarouselSlider, CourseCard } from "@/components/ui";
 import ACAAvailability from "@/components/ui/ACAAvailability";
-import { CoruseProps } from "@/types/CourseProps";
+import { CourseProps } from "@/types/CourseProps";
 
 interface CoursesListProps {
-  courses: CoruseProps[];
+  courses: CourseProps[];
 }
 
 const CoursesList: React.FC<CoursesListProps> = ({ courses }) => {
@@ -46,16 +46,8 @@ const CoursesList: React.FC<CoursesListProps> = ({ courses }) => {
           : "82%"
       }
       sliderRef={coursesRef}
-      generatedSliderList={courses.map((course, index) => (
-        <CourseCard
-          key={index}
-          duration={course.duration}
-          name={course.name}
-          instructor={course.instructor}
-          price={course.price}
-          soon={course.soon}
-          image={course.image}
-        />
+      generatedSliderList={courses.map((course: CourseProps, index) => (
+        <CourseCard key={index} courseData={course} />
       ))}
     />
   );

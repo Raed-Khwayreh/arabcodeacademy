@@ -96,7 +96,7 @@ const Navbar = () => {
             src={"/images/logo.png"}
             alt="logo"
             width={280}
-            height={61.79}
+            height={61}
           />
         </div>
       </Link>

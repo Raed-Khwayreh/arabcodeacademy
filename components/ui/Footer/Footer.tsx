@@ -6,7 +6,7 @@ import { ACAButton, UnderlineText } from "@/components/ui";
 import FooterLinks from "@/components/ui/FooterLinks/FooterLinks";
 import resourcesData from "./data/resourcesData";
 import Image from "next/image";
-import LogoImage from "@/public/images/Arab academy.png";
+import LogoImage from "@/public/images/arab-academy.png";
 
 const Footer = () => {
   return (
@@ -49,7 +49,7 @@ const Footer = () => {
         <hr className={styles.break} />
         <div className={styles.copyright}>
           <div className={styles.image_container}>
-            <Image className={styles.img} src={LogoImage} alt="logo" fill />
+            <Image className={styles.img} src={LogoImage} alt="logo" />
           </div>
           <div className={styles.ref}>
             جميع الحقوق محفوظة &copy; 2023 الأكاديمية العربية للبرمجة

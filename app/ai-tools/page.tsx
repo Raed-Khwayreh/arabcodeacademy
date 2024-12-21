@@ -128,13 +128,7 @@ const AITools = () => {
           <ACAError errorMessage={ErrorMessage.NO_RESULTS} />
         </div>
       ) : (
-        <Suspense
-          fallback={
-            <div className={styles["loading-container"]}>
-              <ACALoading />
-            </div>
-          }
-        >
+        <>
           <AIToolsList
             isFavoritesPressed={isFavoritePressed}
             data={data?.data}
@@ -147,10 +141,24 @@ const AITools = () => {
             totalPages={data?.total_pages}
             handlePageChange={handlePageChange}
           />
-        </Suspense>
+        </>
       )}
     </div>
   );
 };
 
-export default AITools;
+const AIToolsPage = () => {
+  return (
+    <Suspense
+      fallback={
+        <div className={styles["loading-container"]}>
+          <ACALoading />
+        </div>
+      }
+    >
+      <AITools />
+    </Suspense>
+  );
+};
+
+export default AIToolsPage;

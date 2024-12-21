@@ -1,6 +1,10 @@
-export const getPageSize = () =>
-  window.innerWidth > 1280
-    ? 12
-    : window.innerWidth < 1279 && window.innerWidth > 768
-    ? 8
-    : 4;
+export const getPageSize = () => {
+  if (typeof window !== "undefined") {
+    return window.innerWidth > 1280
+      ? 12
+      : window.innerWidth < 1279 && window.innerWidth > 768
+      ? 8
+      : 4;
+  }
+  return 12;
+};

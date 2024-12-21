@@ -1,38 +1,23 @@
 "use client";
 import React, { useRef } from "react";
-import useSWR from "swr";
 import { LargeScreenSize, MediumScreenSize } from "@/constants/ScreenSizes";
 import useScreenSize from "@/utils/useScreenSize";
 import Slider from "react-slick";
 import { CarouselSlider, CourseCard } from "@/components/ui";
 import ACAAvailability from "@/components/ui/ACAAvailability";
-import ACALoading from "@/components/ui/ACALoading";
-import ACAError from "@/components/ui/ACAError";
 import { CoruseProps } from "@/types/CourseProps";
-import { ErrorMessage } from "@/types/ErrorMessage";
 
 interface CoursesListProps {
-  activeCourses: boolean;
+  courses: CoruseProps[];
 }
 
-const fetcher = async (url: string) => {
-  const response = await fetch(url);
-  if (!response.ok) throw new Error("Failed to fetch data");
-  return response.json();
-};
-const CoursesList: React.FC<CoursesListProps> = ({ activeCourses }) => {
+const CoursesList: React.FC<CoursesListProps> = ({ courses }) => {
   const coursesRef = useRef<Slider>(null);
   const screenSize = useScreenSize();
 
-  const { data: courses, error } = useSWR<CoruseProps[]>(
-    `${process.env.NEXT_PUBLIC_API_URL}/courses`,
-    fetcher
-  );
-
-  if (error) return <ACAError errorMessage={ErrorMessage.CONNECTION_FAILD} />;
-  if (!courses) return <ACALoading />;
   if (courses.length === 0)
     return <ACAAvailability message="لا يوجد كورسات لعرضها" />;
+
   return (
     <CarouselSlider
       containerBoxShadow={false}
@@ -61,19 +46,17 @@ const CoursesList: React.FC<CoursesListProps> = ({ activeCourses }) => {
           : "82%"
       }
       sliderRef={coursesRef}
-      generatedSliderList={courses
-        ?.filter((course) => (activeCourses ? course.soon : !course.soon))
-        .map((course, index) => (
-          <CourseCard
-            key={index}
-            duration={course.duration}
-            name={course.name}
-            instructor={course.instructor}
-            price={course.price}
-            soon={course.soon}
-            image={course.image}
-          />
-        ))}
+      generatedSliderList={courses.map((course, index) => (
+        <CourseCard
+          key={index}
+          duration={course.duration}
+          name={course.name}
+          instructor={course.instructor}
+          price={course.price}
+          soon={course.soon}
+          image={course.image}
+        />
+      ))}
     />
   );
 };

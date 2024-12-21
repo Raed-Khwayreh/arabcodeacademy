@@ -52,6 +52,7 @@ const SearchBar = ({ placeholder, handleOnSearch }: SearchBarProps) => {
         />
       </div>
       <input
+        id={placeholder}
         onKeyDown={handleKeyDown}
         value={text}
         onChange={handleOnChange}

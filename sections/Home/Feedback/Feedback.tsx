@@ -24,7 +24,7 @@ const Feedback: React.FC = ({}) => {
   const feedbackRef = useRef<Slider>(null);
   const screenSize = useScreenSize();
   const { data: feedbackData, error } = useSWR<{ reviews: FeedBackProps[] }>(
-    `${process.env.NEXT_PUBLIC_API_URL}/feedback`,
+    `${process.env.NEXT_PUBLIC_API_URL}/reviews`,
     fetcher
   );
   if (error) return <ACAError errorMessage={ErrorMessage.CONNECTION_FAILD} />;

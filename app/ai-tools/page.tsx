@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./AITools.module.css";
 import ACALoading from "@/components/ui/ACALoading";
@@ -128,7 +128,13 @@ const AITools = () => {
           <ACAError errorMessage={ErrorMessage.NO_RESULTS} />
         </div>
       ) : (
-        <>
+        <Suspense
+          fallback={
+            <div className={styles["loading-container"]}>
+              <ACALoading />
+            </div>
+          }
+        >
           <AIToolsList
             isFavoritesPressed={isFavoritePressed}
             data={data?.data}
@@ -141,7 +147,7 @@ const AITools = () => {
             totalPages={data?.total_pages}
             handlePageChange={handlePageChange}
           />
-        </>
+        </Suspense>
       )}
     </div>
   );

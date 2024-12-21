@@ -25,10 +25,17 @@
 
 @media (max-width: 1320px) {
   .search-container {
+    margin-top: 123px;
     margin-inline: 0px;
     flex-direction: column;
     gap: 24px;
     justify-content: center;
     margin-bottom: 34px;
+  }
+}
+
+@media (max-width: 786px) {
+  .search-container {
+    margin-top: 71px;
   }
 }

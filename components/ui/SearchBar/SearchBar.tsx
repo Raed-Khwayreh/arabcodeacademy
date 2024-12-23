@@ -7,10 +7,15 @@ import { LargeScreenSize, SmallScreenSize } from "@/constants/ScreenSizes";
 
 interface SearchBarProps {
   placeholder: string;
+  isDisabled?: boolean;
   handleOnSearch?: (text: string) => void;
 }
 
-const SearchBar = ({ placeholder, handleOnSearch }: SearchBarProps) => {
+const SearchBar = ({
+  placeholder,
+  handleOnSearch,
+  isDisabled,
+}: SearchBarProps) => {
   const screenSize = useScreenSize();
   const [text, setText] = useState("");
   const handleOnPressSearch = () => {
@@ -32,33 +37,46 @@ const SearchBar = ({ placeholder, handleOnSearch }: SearchBarProps) => {
   };
 
   return (
-    <div className={styles.searchBar}>
-      <div className={styles.icon} onClick={handleOnPressSearch}>
+    <div
+      className={`${styles.searchBar} ${
+        isDisabled ? styles["disabled-searchBar"] : styles["active-searchBar"]
+      }`}
+    >
+      <div
+        className={`${styles.icon} ${
+          isDisabled ? styles["disabled-icon"] : styles["active-icon"]
+        }`}
+        onClick={handleOnPressSearch}
+      >
         <SearchIcon
+          color={isDisabled ? "#9e9e9e" : "var(--primary-color)"}
           width={
-            screenSize > LargeScreenSize
-              ? 25
-              : screenSize < SmallScreenSize
-              ? 17.66
+            screenSize < SmallScreenSize
+              ? 17
+              : screenSize < LargeScreenSize
+              ? 28
               : 30
           }
           height={
-            screenSize > LargeScreenSize
-              ? 25
-              : screenSize < SmallScreenSize
-              ? 18.75
-              : 28.13
+            screenSize < SmallScreenSize
+              ? 17
+              : screenSize < LargeScreenSize
+              ? 28
+              : 28
           }
         />
       </div>
       <input
         id={placeholder}
+        disabled={isDisabled}
         onKeyDown={handleKeyDown}
         value={text}
         onChange={handleOnChange}
         type="text"
         placeholder={placeholder}
-        className={styles.input}
+        className={`${styles.input} ${
+          isDisabled ? styles["disabled-input"] : styles["active-input"]
+        }`}
       />
     </div>
   );

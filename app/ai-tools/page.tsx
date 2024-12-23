@@ -96,13 +96,6 @@ const AITools = () => {
     );
   };
 
-  if (isLoading)
-    return (
-      <div className={styles["loading-container"]}>
-        <ACALoading />
-      </div>
-    );
-
   if (error)
     return (
       <div className={styles["error-container"]}>
@@ -113,11 +106,16 @@ const AITools = () => {
   const pageNotFound = pageNum > data?.total_pages;
 
   return (
-    <div>
+    <>
       <div className={styles["search-container"]}>
-        <SearchBar placeholder="....chatgpt" handleOnSearch={handleOnSearch} />
+        <SearchBar
+          isDisabled={isLoading}
+          placeholder="....chatgpt"
+          handleOnSearch={handleOnSearch}
+        />
         {!error && (
           <FavoriteButton
+            isDisabled={isLoading}
             handleOnPressFavorite={handleOnPressFavorite}
             isFavoritePressed={isFavoritePressed}
           />
@@ -126,6 +124,10 @@ const AITools = () => {
       {pageNotFound ? (
         <div className={styles["page-not-found"]}>
           <ACAError errorMessage={ErrorMessage.NO_RESULTS} />
+        </div>
+      ) : isLoading ? (
+        <div className={styles["loading-container"]}>
+          <ACALoading />
         </div>
       ) : (
         <>
@@ -143,7 +145,7 @@ const AITools = () => {
           />
         </>
       )}
-    </div>
+    </>
   );
 };
 

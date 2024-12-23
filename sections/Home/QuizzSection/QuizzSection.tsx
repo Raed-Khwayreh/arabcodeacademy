@@ -27,14 +27,16 @@ const QuizzSection = () => {
       </div>
 
       <div className={styles.rightContent}>
-        {imagesData.map((image, index) => (
-          <Img
-            key={index}
-            src={image.src}
-            alt={image.alt}
-            className={image.className}
-          />
-        ))}
+        <div className={styles.img_container}>
+          {imagesData.map((image, index) => (
+            <Img
+              key={index}
+              src={image.src}
+              alt={image.alt}
+              className={image.className}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

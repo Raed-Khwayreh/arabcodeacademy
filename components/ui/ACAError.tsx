@@ -9,7 +9,7 @@ interface ACAErrorProps {
 
 const ACAError: React.FC<ACAErrorProps> = ({ errorMessage }) => {
   return (
-    <VStack justifyContent="center" alignItems="center" height="30vh">
+    <VStack justifyContent="center" alignItems="center" height="80vh">
       <Image
         src="/images/undefinedDataIcon.png"
         alt="Error Icon"

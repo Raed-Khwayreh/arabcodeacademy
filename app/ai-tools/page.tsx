@@ -53,17 +53,25 @@ const AITools = () => {
 
   const handleOnPressFavorite = () => {
     setIsFavoritePressed((prev) => !prev);
-    router.push(
-      `/ai-tools?isFav=${!isFavoritePressed}${
-        searchValue ? `&search=${searchValue}` : ""
-      }`
-    );
+    if (!isFavoritePressed) {
+      router.push(
+        `/ai-tools?isFav=${!isFavoritePressed}${
+          searchValue ? `&search=${searchValue}` : ""
+        }`
+      );
+      return;
+    }
+    router.push(`/ai-tools${searchValue ? `?search=${searchValue}` : ""}`);
   };
 
   const handleOnSearch = (searchText: string) => {
     router.push(
       `/ai-tools${searchText ? `?search=${searchText}` : ""}${
-        isFavoritePressed ? `&isFav=${isFavoritePressed}` : ""
+        isFavoritePressed && searchText
+          ? `&isFav=${isFavoritePressed}`
+          : isFavoritePressed
+          ? `?isFav=${isFavoritePressed}`
+          : ""
       }`
     );
     setSearchValue(searchText);

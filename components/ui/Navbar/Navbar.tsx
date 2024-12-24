@@ -19,16 +19,25 @@ const Navbar = () => {
 
   const handleOnlogin = () => {
     setIsLoggedIn(true);
+    setIsSidebarOpen(false);
   };
 
   const handleOnLogOut = () => {
     setIsLoggedIn(false);
   };
 
+  const handleOnClick = () => {
+    setIsSidebarOpen(false);
+  };
+
   return (
     <div className={styles.navbar}>
       {isSidebarOpen && (
-        <Sidebar isLoggedIn={isLoggedIn} onLogin={handleOnlogin} />
+        <Sidebar
+          handleOnClick={handleOnClick}
+          isLoggedIn={isLoggedIn}
+          onLogin={handleOnlogin}
+        />
       )}
       <div className={styles["burger-menu"]} onClick={toggleSidebar}>
         {isLoggedIn && (
@@ -77,7 +86,11 @@ const Navbar = () => {
           {showResoursesList && (
             <ul className={styles["resouces-menu"]} style={{}}>
               {subMenuList.map((e, i) => {
-                return <li key={i}>{e}</li>;
+                return (
+                  <li key={i}>
+                    <Link href={e.href}>{e.title}</Link>
+                  </li>
+                );
               })}
             </ul>
           )}

@@ -2,14 +2,17 @@ import React from "react";
 import styles from "../Sidebar.module.css";
 import { ArrowDown } from "../../Navbar/icons";
 import { subMenuList } from "@/sections/Home/Courses/mock/subMenuList";
+import Link from "next/link";
 
 interface SubMenuProps {
   isResourcesOpen: boolean;
   toggleResources: () => void;
+  handleOnClick: () => void;
 }
 const SubMenu: React.FC<SubMenuProps> = ({
   isResourcesOpen,
   toggleResources,
+  handleOnClick,
 }) => {
   return (
     <div>
@@ -31,8 +34,12 @@ const SubMenu: React.FC<SubMenuProps> = ({
           <ul>
             {subMenuList.map((e, i) => {
               return (
-                <li key={i} className={styles.subMenuItem}>
-                  {e}
+                <li
+                  onClick={handleOnClick}
+                  key={i}
+                  className={styles.subMenuItem}
+                >
+                  <Link href={e.href}>{e.title}</Link>
                 </li>
               );
             })}

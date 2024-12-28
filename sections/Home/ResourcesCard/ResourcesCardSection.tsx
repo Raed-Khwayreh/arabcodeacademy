@@ -45,7 +45,7 @@ const ResourcesCardSection: React.FC = () => {
         }
         sliderRef={resourcesCardRef}
         generatedSliderList={cardData.map((e, i) => (
-          <ResourceCard key={i} icon={e.icon} title={e.title} />
+          <ResourceCard key={i} icon={e.icon} title={e.title} href={e.href} />
         ))}
       />
     </div>

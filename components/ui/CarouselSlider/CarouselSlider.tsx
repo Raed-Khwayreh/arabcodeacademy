@@ -56,7 +56,7 @@ const CarouselSlider: React.FC<CarouselSliderProps> = ({
       <div className={styles["dots-container"]}>{dots}</div>
     ),
     dots: showDots,
-    infinite: true,
+    infinite: generatedSliderList.length > 1,
     speed: 500,
     slidesToShow: breakPoints.desktop?.slidesToShow,
     slidesToScroll: breakPoints.desktop?.slidesToScroll,

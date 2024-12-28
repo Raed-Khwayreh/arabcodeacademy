@@ -62,7 +62,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${tajawal.variable}`}>
+      <body className={`${tajawal.variable} vsc-initialized`}>
         <Provider>
           <DiscountHeader
             text="خصومات بنسبة 20% على الكورسات"

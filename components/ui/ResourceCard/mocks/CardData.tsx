@@ -11,6 +11,7 @@ import {
 interface CardDataItem {
   title: string;
   icon: React.ReactNode;
+  href?: string;
 }
 
 export const cardData: CardDataItem[] = [
@@ -35,6 +36,7 @@ export const cardData: CardDataItem[] = [
   {
     title: "دليل أدوات الذكاء الاصطناعي",
     icon: <AiIcon />,
+    href: "/ai-tools",
   },
 
   {

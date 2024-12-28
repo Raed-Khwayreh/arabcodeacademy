@@ -1,58 +1,35 @@
 "use client";
 import CarouselSlider from "@/components/ui/CarouselSlider/CarouselSlider";
-import FeedbackCardComponent, {
-  FeedbackProps,
-} from "@/components/ui/FeedbackCard/FeedbackCard";
+import FeedbackCardComponent from "@/components/ui/FeedbackCard/FeedbackCard";
 
 import { LargeScreenSize, MediumScreenSize } from "@/constants/ScreenSizes";
 import useScreenSize from "@/utils/useScreenSize";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 import Slider from "react-slick";
-import { StaticImageData } from "next/image";
-import { user1, user2, user3 } from "@/components/ui/FeedbackCard/Images";
+
 import ACALoading from "@/components/ui/ACALoading";
 import ACAError from "@/components/ui/ACAError";
 import ACAAvailability from "@/components/ui/ACAAvailability";
+import useSWR from "swr";
+import { ErrorMessage } from "@/types/ErrorMessage";
+import { FeedBackProps } from "@/types/FeedBackProps";
 
-const imageMapping: Record<string, StaticImageData> = {
-  user1,
-  user2,
-  user3,
+const fetcher = async (url: string) => {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error("Failed to fetch data");
+  return response.json();
 };
 
-const Feedback: React.FC= ({
-}) => {
+const Feedback: React.FC = ({}) => {
   const feedbackRef = useRef<Slider>(null);
   const screenSize = useScreenSize();
-  const [feedbackData, setFeedbackData] = useState<FeedbackProps[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchFeedback = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/feedback`
-        );
-        const data = await response.json();
-        setFeedbackData(data);
-      } catch (error) {
-        console.error("Error fetching feedback data:", error);
-        setError((error as Error).message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchFeedback();
-  }, []);
-
-
-  if (loading) return <ACALoading />;
-
-  if (error) return <ACAError />;
-
-  if (feedbackData.length === 0)
+  const { data: feedbackData, error } = useSWR<{ reviews: FeedBackProps[] }>(
+    `${process.env.NEXT_PUBLIC_API_URL}/reviews`,
+    fetcher
+  );
+  if (error) return <ACAError errorMessage={ErrorMessage.CONNECTION_FAILD} />;
+  if (!feedbackData) return <ACALoading />;
+  if (feedbackData.reviews.length === 0)
     return <ACAAvailability message="لا يوجد بيانات لعرضها" />;
 
   return (
@@ -81,19 +58,8 @@ const Feedback: React.FC= ({
             : 1280
         }
         sliderRef={feedbackRef}
-        generatedSliderList={feedbackData.map((feedback, index) => (
-          <FeedbackCardComponent
-            key={index}
-            image={
-              typeof feedback.image === "string"
-                ? imageMapping[feedback.image]
-                : feedback.image
-            }
-            comment={feedback.comment}
-            date={feedback.date}
-            name={feedback.name}
-            rating={feedback.rating}
-          />
+        generatedSliderList={feedbackData.reviews.map((feedback, index) => (
+          <FeedbackCardComponent key={index} feedback={feedback} />
         ))}
       />
     </div>

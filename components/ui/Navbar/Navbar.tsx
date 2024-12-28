@@ -7,6 +7,7 @@ import { ACAButton, Sidebar } from "@/components/ui";
 import { LoginIcon, ProfileCircleIcon } from "../ACAButton/ACAButtonIcons";
 import { ArrowDown, Avatar, BurgerMenu, Logout } from "./icons";
 import { subMenuList } from "@/sections/Home/Courses/mock/subMenuList";
+import Link from "next/link";
 
 const Navbar = () => {
   const [showResoursesList, setShowResoursesList] = useState(false);
@@ -18,16 +19,25 @@ const Navbar = () => {
 
   const handleOnlogin = () => {
     setIsLoggedIn(true);
+    setIsSidebarOpen(false);
   };
 
   const handleOnLogOut = () => {
     setIsLoggedIn(false);
   };
 
+  const handleOnClick = () => {
+    setIsSidebarOpen(false);
+  };
+
   return (
     <div className={styles.navbar}>
       {isSidebarOpen && (
-        <Sidebar isLoggedIn={isLoggedIn} onLogin={handleOnlogin} />
+        <Sidebar
+          handleOnClick={handleOnClick}
+          isLoggedIn={isLoggedIn}
+          onLogin={handleOnlogin}
+        />
       )}
       <div className={styles["burger-menu"]} onClick={toggleSidebar}>
         {isLoggedIn && (
@@ -41,7 +51,7 @@ const Navbar = () => {
         <BurgerMenu />
       </div>
       {isLoggedIn ? (
-        <div className={styles.logout} >
+        <div className={styles.logout}>
           <div onClick={handleOnLogOut}>
             <Logout />
           </div>
@@ -76,7 +86,11 @@ const Navbar = () => {
           {showResoursesList && (
             <ul className={styles["resouces-menu"]} style={{}}>
               {subMenuList.map((e, i) => {
-                return <li key={i}>{e}</li>;
+                return (
+                  <li key={i}>
+                    <Link href={e.href}>{e.title}</Link>
+                  </li>
+                );
               })}
             </ul>
           )}
@@ -88,13 +102,17 @@ const Navbar = () => {
           </div>
         </div>
       </ul>
-      <Image
-        className={styles.image}
-        src={"/images/logo.png"}
-        alt="logo"
-        width={280}
-        height={61.79}
-      />
+      <Link href="/">
+        <div className={styles["image-contanier"]}>
+          <Image
+            className={styles.image}
+            src={"/images/logo.png"}
+            alt="logo"
+            width={280}
+            height={61}
+          />
+        </div>
+      </Link>
     </div>
   );
 };

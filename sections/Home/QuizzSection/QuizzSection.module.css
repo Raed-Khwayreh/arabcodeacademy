@@ -4,175 +4,199 @@
   justify-content: center;
   background: linear-gradient(270.06deg, #783ba2 0.05%, #462576 76.2%);
   color: #ffffff;
-  gap: 80px;
-  padding: 40px;
+  gap: 105px;
+  min-height: 740px;
 }
 
 /* Left Content Styling */
 .leftContent {
   display: flex;
+  align-items: flex-end;
+  justify-content: center;
   flex-direction: column;
-  text-align: end;
-  max-width: 30%;
+}
+
+.leftContent button {
+  margin-right: 45px;
+  margin-top: 20px;
 }
 
 .iconHeading {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 10px;
+  margin-left: 12px;
+  gap: 12px;
 }
 
 .icon {
-  width: 24px;
+  width: 32px;
+  height: 32.4px;
+  color: #ffffff;
 }
 
 .heading {
-  font-size: 1.4375rem;
+  font-size: 23px;
+  font-weight: 700;
 }
 
 .description {
-  font-size: 1.1875rem;
-  margin-top: 8px;
+  max-width: 475px;
+  font-size: 19px;
+  line-height: 22.8px;
+  font-weight: 500;
+  margin-top: 20px;
   direction: rtl;
   text-align: right;
+  margin-right: 45px;
 }
 
 .section {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 /* Right Content Styling */
 .rightContent {
   position: relative;
   width: 100%;
-  max-width: 40%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+  max-width: 600px;
 }
 
 .image {
-  width: 59.5%;
-  height: 56.5%;
+  width: 357.99px;
+  height: 339.3px;  
   border: 3px solid white;
 }
 
 .team2 {
   position: absolute;
-  top: 10%;
+  top: 84px;
   right: 0;
   z-index: 1;
 }
 
 .team1 {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: 100px;
+  left: 5px;
   z-index: 2;
 }
 
-/* Mobile view (less than 768px) */
-@media (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 767px) {
   .container {
     flex-direction: column-reverse;
-    align-items: center;
     justify-content: center;
-    padding: 20px;
+    align-items: center;
+    gap: 70px;
+    padding: 50px 0;
   }
 
-  .rightContent,
-  .leftContent {
-    max-width: 60%;
+  .rightContent {
+    height: 270px;
+    max-width: 297.36px;
   }
 
   .leftContent {
-    margin-top: 30%;
     text-align: center;
+  }
+
+  .leftContent button {
+    margin-top: 0;
   }
 
   .iconHeading {
     justify-content: center;
-  }
-
-  .image {
-    height: auto;
-  }
-
-  .team1 {
-    top: 90px;
-  }
-
-  .heading {
-    font-size: 1rem;
+    gap: 9px;
   }
 
   .icon {
-    width: 20px;
+    width: 31px;
+    height: 27px;
+  }
+
+  .image {
+    width: 177.42px;
+    height: 168.16px;
+  }
+
+  .team1 {
+    top: 116px;
+  }
+
+  .team2 {
+    top: 0;
+    right: 0;
+  }
+
+  .heading {
+    font-size: 18px;
   }
 
   .description {
-    font-size: 0.8rem;
-    margin-top: 6px;
-    direction: rtl;
+    font-size: 16px;
+    line-height: 19.2px;
     text-align: center;
-  }
-
-  .button {
-    font-size: 0.8rem;
-    padding: 8px 18px;
+    max-width: 264.73px;
+    margin-right: 0;
   }
 }
 
-/* Small Mobile view (less than 480px) */
-@media (max-width: 480px) {
+@media (min-width: 768px) and (max-width: 1440px) {
   .container {
     flex-direction: column-reverse;
-    align-items: center;
     justify-content: center;
-    padding: 20px;
+    align-items: center;
+    gap: 70px;
+    padding: 50px 0;
   }
 
-  .rightContent,
-  .leftContent {
-    max-width: 60%;
+  .rightContent {
+    height: 700px;
+    max-width: 770.94px;
   }
 
   .leftContent {
-    margin-top: 23%;
     text-align: center;
+  }
+
+  .leftContent button {
+    margin: 0 auto;
   }
 
   .iconHeading {
     justify-content: center;
-  }
-
-  .image {
-    height: auto;
-  }
-
-  .team1 {
-    top: 55px;
-  }
-
-  .heading {
-    font-size: 0.8rem;
+    gap: 9px;
   }
 
   .icon {
-    width: 16px;
+    width: 31px;
+    height: 27px;
+  }
+
+  .image {
+    width: 459.99px;
+    height: 435.97px;
+  }
+
+  .team1 {
+    top: 274px;
+    left: 6px;
+  }
+
+  .team2 {
+    top: 0;
+    right: 0;
+  }
+
+  .heading {
+    font-size: 25px;
   }
 
   .description {
-    font-size: 0.6rem;
-    margin-top: 4px;
-    direction: rtl;
+    font-size: 19px;
+    line-height: 22.8px;
     text-align: center;
-  }
-
-  .button {
-    font-size: 0.6rem;
-    padding: 6px 16px;
+    max-width: 495px;
+    margin-right: 0;
   }
 }

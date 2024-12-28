@@ -14,14 +14,30 @@
   background-color: white;
 }
 
+.active-searchBar {
+  border: 2px solid var(--primary-color);
+}
+
+.disabled-searchBar {
+  border: 2px solid #9e9e9e;
+}
+
 .icon {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
-  border-right: var(--primary-color) solid 4px;
   padding-right: 3%;
   padding-left: 4%;
+}
+
+.active-icon {
+  border-right: var(--primary-color) solid 4px;
+}
+
+.disabled-icon {
+  border-right: #9e9e9e solid 4px;
 }
 
 .svgIcon {
@@ -34,7 +50,6 @@
   outline: none;
   font-size: 18px;
   font-weight: 400;
-  color: var(--primary-color);
   text-align: right;
   direction: rtl;
   width: 85%;
@@ -42,8 +57,20 @@
   margin: 24px 28px 19px 0px;
 }
 
+.active-input {
+  color: var(--primary-color);
+}
+
+.disabled-input {
+  color: #9e9e9e;
+}
+
+.input::selection {
+  background-color: #3535353f;
+}
+
 .input::placeholder {
-  color: var(--primary-color)ad;
+  color: var(--primary-color) ad;
 }
 
 @media (max-width: 1440px) {

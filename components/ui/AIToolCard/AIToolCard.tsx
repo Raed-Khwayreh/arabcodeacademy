@@ -1,35 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./AIToolCard.module.css";
 import Image from "next/image";
 import AIToolImage from "@/public/images/ai-tool-image.png";
 import ACAButton from "../ACAButton/ACAButton";
 import EllipsisCircleIcon from "../ACAButton/ACAButtonIcons/EllipsisCircleIcon";
 import Favorite from "../Favorite/Favorite";
+import { AIToolsCardProps } from "@/types/AIToolCardProps";
+export interface Props {
+  cardData: AIToolsCardProps;
+  handleOnPressFavoriteCard: (n: number) => void;
+  isFavoritesPressed: boolean;
+}
 
-export default function AIToolCard() {
+export default function AIToolCard({
+  cardData,
+  isFavoritesPressed,
+  handleOnPressFavoriteCard,
+}: Props) {
+  const handleOnPressFavorite = (id: number) => {
+    handleOnPressFavoriteCard(id);
+    if (!fadeOut && isFavoritesPressed) {
+      setFadeOut(true);
+    }
+  };
+
+  const [fadeOut, setFadeOut] = useState(false);
+
   return (
-    <div className={styles.card}>
+    <div
+      className={`${styles.card} ${
+        fadeOut ? styles["fade-out"] : styles["fade-in"]
+      }`}
+    >
       <div className={styles.image_container}>
-        <Image src={AIToolImage} alt="AI tool image" />
+        <Image
+          src={AIToolImage}
+          alt="AI tool image"
+          style={{ width: "100%" }}
+        />
       </div>
       <div className={styles.card_body}>
-        <div className={styles.card_header}>
-          <div className={styles.card_title}>Luna Ai</div>
-          <div className={styles.card_tags}>
-            <div>#social media</div>
-            <div>#personal assistant</div>
+        <div>
+          <div className={styles.card_header}>
+            <div className={styles.card_title}>{cardData.title}</div>
+            <div className={styles.card_tags}>
+              {cardData.tags.map((e, i) => {
+                return <div key={i}>{e}</div>;
+              })}
+            </div>
           </div>
-        </div>
-        <div className={styles.card_content}>
-          <div className={styles.line_clamp}>
-            يساعد الطلاب والكتّاب في إنشاء مقالات عالية الجودة بسهولة. هل تعاني
-            من كتابة الأوراق الأكاديمية؟ مولد المقالات المجاني هنا للمساعدة!
-            توليد العملاء بواسطة الذكاء الاصطناعي. يضع صوتك في رسائل البريد
-            الإلكتروني. يعمل مع أي بريد إلكتروني. حوّل العملاء
+          <div className={styles.card_content}>
+            <div className={styles.line_clamp}>{cardData.description}</div>
           </div>
         </div>
         <div className={styles.card_footer}>
           <ACAButton
+            boxShadow="0px 4px 4px 0px #00000040"
             text="المزيد"
             size="small"
             variant="teal"
@@ -38,7 +64,11 @@ export default function AIToolCard() {
         </div>
       </div>
       <div className={styles.favorite}>
-        <Favorite width={24} height={20} />
+        <Favorite
+          id={cardData.tool_id}
+          isFav={cardData.isFav}
+          handleOnPressFavoriteCard={handleOnPressFavorite}
+        />
       </div>
     </div>
   );

@@ -1,17 +1,25 @@
-
+'use client';
 import SignupFormOne from '@/components/ui/SignupForms/SignupFormOne/SignupFormOne';
-import React from 'react'
-import styles from './page.module.css'
-const Signup:React.FC=()=>{
+import SignupFormTwo from '@/components/ui/SignupForms/SignupFormTwo/SignupFormTwo';
+import React, { useState } from 'react';
+import styles from './page.module.css';
+const Signup: React.FC = () => {
+  const [currentForm, setCurrentForm] = useState(1);
+
+  const handleNextForm = () => {
+    setCurrentForm(2);
+  };
+
 
   return (
     <div className={styles.signupPage}>
-      <SignupFormOne/>
-   
-
+      {currentForm === 1 ? (
+        <SignupFormOne onNext={handleNextForm} />
+      ) : (
+        <SignupFormTwo />
+      )}
     </div>
-  )
- 
-}
+  );
+};
 
 export default Signup;

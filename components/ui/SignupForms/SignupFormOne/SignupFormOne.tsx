@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React, { useState } from "react";
 import styles from "./SignupFormOne.module.css";
 import FormField from "../../FormField/FormField";
@@ -10,11 +10,16 @@ import SocialButton from "../../SocialButtons/SocialButton";
 import GoogleIcon from "../../SocialButtons/SocialIcon/GoogleIcon";
 import FacebookIcon from "../../SocialButtons/SocialIcon/FacebookIcon";
 
-const SignupFormOne: React.FC = () => {
+interface SignupFormOneProps {
+  onNext: () => void;
+}
+
+const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     confirmPassword: "",
+    country: "",
   });
 
   const [errors, setErrors] = useState({
@@ -23,14 +28,20 @@ const SignupFormOne: React.FC = () => {
     confirmPassword: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
     setErrors({ ...errors, [name]: "" });
   };
 
   const validate = () => {
-    const newErrors: typeof errors = { email: "", password: "", confirmPassword: "" };
+    const newErrors: typeof errors = {
+      email: "",
+      password: "",
+      confirmPassword: "",
+    };
     let isValid = true;
 
     if (!formData.email) {
@@ -63,8 +74,9 @@ const SignupFormOne: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
     if (validate()) {
-      console.log("Form Data:", formData);
+      onNext();
     }
   };
 

@@ -22,10 +22,20 @@
   display: flex;
   flex-direction: column;
   gap: 55px;
-
-  margin-bottom: 55px;
 }
 
+.fieldContainer > :last-child {
+  margin-bottom: 15px;
+}
+.errorText {
+  color: #db4a39;
+  width: 263px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  margin-top: -50px;
+}
 .accountPrompt {
   color: #713488;
   font-weight: 500;

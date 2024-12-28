@@ -7,6 +7,7 @@ interface Props {
   size: "small" | "medium" | "large" | "xlarge";
   icon?: React.ReactNode;
   boxShadow?: string;
+  type?: string
 }
 
 const ACAButton: React.FC<Props> = ({

@@ -59,12 +59,14 @@ const Navbar = () => {
         </div>
       ) : (
         <div className={styles["buttons-container"]}>
-          <ACAButton
-            size="medium"
-            variant="teal"
-            text="إنشاء حساب"
-            icon={<ProfileCircleIcon />}
-          />
+          <Link href="/signup">
+            <ACAButton
+              size="medium"
+              variant="teal"
+              text="إنشاء حساب"
+              icon={<ProfileCircleIcon />}
+            />
+          </Link>
           <div onClick={handleOnlogin}>
             <ACAButton
               size="medium"

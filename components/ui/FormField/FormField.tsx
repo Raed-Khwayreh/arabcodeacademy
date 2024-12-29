@@ -14,6 +14,7 @@ interface Props {
   isDropDown?: boolean;
   options?: string[];
   width?: string;
+  labelAlign?: "center" | "right";
 }
 
 const FormField: React.FC<Props> = ({
@@ -26,13 +27,19 @@ const FormField: React.FC<Props> = ({
   isDropDown = false,
   options = [],
   width,
+  labelAlign 
 }) => {
   return (
-    <div className={styles.fieldContainer} style={{ width }}>
-      <div className={styles.labelContainer}>
-        <label className={styles.formLabel}>{label}</label>
-        <span>{icon}</span>
-      </div>
+<div
+  className={`${styles.fieldContainer} ${
+    labelAlign === "center" ? styles.centerAlign : styles.rightAlign
+  }`}
+  style={{ width }}
+> <div className={`${styles.labelContainer} ${labelAlign === "center" ? styles.centerAlign : styles.rightAlign}`}>
+  <label className={styles.formLabel}>{label}</label>
+  <span>{icon}</span>
+</div>
+
       {isDropDown ? (
         <div className={styles.selectInput}>
           <select name={name} value={value} onChange={onChange}>
@@ -45,7 +52,7 @@ const FormField: React.FC<Props> = ({
               </option>
             ))}
           </select>
-          <div className={styles.divider}></div> 
+          <div className={styles.divider}></div>
           <AngleDownIcon />
         </div>
       ) : (

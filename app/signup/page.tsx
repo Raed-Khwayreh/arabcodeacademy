@@ -10,13 +10,16 @@ const Signup: React.FC = () => {
     setCurrentForm(2);
   };
 
+  const handlePreviousForm = () => {
+    setCurrentForm(1);
+  };
 
   return (
     <div className={styles.signupPage}>
       {currentForm === 1 ? (
         <SignupFormOne onNext={handleNextForm} />
       ) : (
-        <SignupFormTwo />
+        <SignupFormTwo onBack={handlePreviousForm} />
       )}
     </div>
   );

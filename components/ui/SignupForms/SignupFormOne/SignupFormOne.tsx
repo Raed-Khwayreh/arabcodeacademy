@@ -55,7 +55,7 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
     if (!formData.password) {
       newErrors.password = "كلمة المرور مطلوبة";
       isValid = false;
-    } else if (formData.password.length < 8) {
+    } else if (formData.password.length < 2) {
       newErrors.password = "يجب أن تكون كلمة المرور 8 أحرف على الأقل";
       isValid = false;
     }
@@ -64,7 +64,8 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
       newErrors.confirmPassword = "يرجى تأكيد كلمة المرور";
       isValid = false;
     } else if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = "كلمات المرور غير متطابقة";
+      newErrors.confirmPassword =
+        "كلمات المرور غير متطابقة. يرجى المحاولة مرة أخرى";
       isValid = false;
     }
 
@@ -91,6 +92,7 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
           name="email"
           value={formData.email}
           onChange={handleChange}
+          labelAlign="center"
         />
         {errors.email && <div className={styles.errorText}>{errors.email}</div>}
 
@@ -101,6 +103,7 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
           name="password"
           value={formData.password}
           onChange={handleChange}
+          labelAlign="center"
         />
         {errors.password && (
           <div className={styles.errorText}>{errors.password}</div>
@@ -113,6 +116,7 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
           name="confirmPassword"
           value={formData.confirmPassword}
           onChange={handleChange}
+          labelAlign="center"
         />
         {errors.confirmPassword && (
           <div className={styles.errorText}>{errors.confirmPassword}</div>

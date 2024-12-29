@@ -1,3 +1,273 @@
-.formContainer{
-    color: black;
-}
+.formContainer {
+    width: 300px;
+    height: 996px;
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+    padding: 56px 25px 99px 25px;
+    box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+  
+  .title,.subtitle {
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    color: #783ba2;
+    width: 266px;
+    margin-bottom: 30px;
+  }
+  
+  .subtitle{
+    margin-bottom: 20px;
+  }
+
+  .fieldContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 53px;
+  }
+
+  .customCheckboxContainer {
+    display: flex;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #783ba2;
+  }
+  
+  .customCheckboxContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 2px solid #783ba2;
+    border-radius: 3px;
+  }
+  
+  .customCheckboxContainer:hover input ~ .checkmark {
+    background-color: #f3e8ff;
+  }
+  
+  .customCheckboxContainer input:checked ~ .checkmark {
+    background-color: #783ba2;
+  }
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .customCheckboxContainer input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  .customCheckboxContainer .checkmark:after {
+    left: 6px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  
+  
+  .buttonGroup {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 20px;
+  }
+
+
+  
+  .fieldContainer > :last-child {
+    margin-bottom: 15px;
+  }
+  .errorText {
+    color: #db4a39;
+    width: 263px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: right;
+    padding-right: 8px;
+    margin-top: -48px;
+  }
+  
+  .errorText + * {
+    margin-top: -10px;
+  }
+  
+  
+  .accountPrompt {
+    color: #713488;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    margin-top: 30px;
+    gap: 5px;
+  }
+  
+  .accountPrompt::after {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 1px;
+    background-color: #713488;
+    margin: 3px auto 0;
+  }
+  
+  .loginPrompt {
+    margin-top: 22px;
+    font-weight: 400px;
+    size: 16px;
+    line-height: 19px;
+    color: #783ba2;
+  }
+  
+  .socialContainer {
+    display: flex;
+    margin-top: 20px;
+    gap: 14px;
+  }
+  
+  @media (min-width: 768px) {
+    .formContainer {
+      width: 872px;
+      height: 1017px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 18px 46px 18px;
+      box-shadow: 0px 1px 20px 2px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+    }
+  
+    .title {
+      font-weight: 700;
+      font-size: 25px;
+      line-height: 30px;
+      color: #783ba2;
+      width: 100%;
+      margin-bottom: 68px;
+      text-align: right;
+    }
+  
+    .fieldContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 61px;
+  
+      margin-bottom: 64px;
+    }
+  
+    .accountPrompt {
+      color: #713488;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 21px;
+      margin-top: 62px;
+      gap: 5px;
+    }
+  
+    .accountPrompt::after {
+      content: "";
+      display: block;
+      width: 153px;
+      background-color: #713488;
+      margin: 3px auto 0;
+    }
+  
+    .loginPrompt {
+      margin-top: 36px;
+      font-weight: 400px;
+      size: 18px;
+      line-height: 21px;
+      color: #783ba2;
+    }
+  
+    .socialContainer {
+      display: flex;
+      margin-top: 30px;
+      gap: 29px;
+    }
+  }
+  
+  @media (min-width: 1640px) {
+    .formContainer {
+      width: 889px;
+      height: 1000px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 82px;
+      box-shadow: 0px 1px 20px 1px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+    }
+  
+    .title {
+      font-weight: 700;
+      font-size: 23px;
+      line-height: 27px;
+      color: #783ba2;
+      width: 100%;
+      margin-bottom: 75px;
+      text-align: right;
+    }
+  
+    .fieldContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+  
+      margin-bottom: 56px;
+    }
+  
+    .accountPrompt {
+      color: #713488;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 21px;
+      margin-top: 40px;
+      gap: 5px;
+    }
+  
+    .accountPrompt::after {
+      content: "";
+      display: block;
+      width: 157px;
+      background-color: #713488;
+      margin: 5px auto 0;
+    }
+  
+    .loginPrompt {
+      margin-top: 54px;
+      font-weight: 400px;
+      size: 18px;
+      line-height: 21px;
+      color: #783ba2;
+    }
+  
+    .socialContainer {
+      display: flex;
+      margin-top: 33px;
+      gap: 20px;
+    }
+  }
+  

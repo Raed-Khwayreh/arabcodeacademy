@@ -9,18 +9,29 @@
 
 .promo-text-container {
   position: absolute;
-  top: 40%;
+  top: 44%;
   transform: translateY(-40%);
   left: 148px;
 }
 
-@media (max-width: 1400px) {
+@media (min-width: 768px) and (max-width: 1400px) {
   .interactive-tools {
     justify-content: center;
-    height: 560px;
+    height: 741.75px;
   }
   .promo-text-container {
     left: 50%;
+    transform: translate(-50%, -40%);
+  }
+}
+
+@media (max-width: 767px) {
+  .interactive-tools {
+    height: 383px;
+  } 
+  .promo-text-container {
+    left: 50%;
+    top: 40%;
     transform: translate(-50%, -40%);
   }
 }

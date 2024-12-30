@@ -14,6 +14,27 @@
   margin-bottom: 65px;
 }
 
+.courses {
+  color: black;
+  margin-block: 123px;
+}
+
+.slider-container {
+  width: 100%;
+  margin: auto;
+  background: white;
+}
+
+.courses-list-container {
+  position: relative;
+}
+
+@media (min-width: 1200px) {
+  .slider-container {
+    width: 820px;
+  }
+}
+
 @media (max-width: 1440px) {
   .search-container {
     margin: 0px;
@@ -27,5 +48,11 @@
     justify-content: center;
     margin-bottom: 33px;
     margin-top: 52px;
+  }
+}
+
+@media (min-width: 1640px) {
+  .slider-container {
+    width: 85%;
   }
 }

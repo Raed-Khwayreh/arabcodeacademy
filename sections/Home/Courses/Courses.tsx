@@ -29,7 +29,7 @@ const Courses = async () => {
   if (!courses) return <ACALoading />;
 
   return (
-    <div style={{ color: "black", marginBlock: 123 }}>
+    <div className={styles.courses}>
       <div className={styles["search-container"]}>
         <SearchBar placeholder="مقدمة لمحرك الألعاب اليونتي ....." />
         <UnderlineText
@@ -38,13 +38,15 @@ const Courses = async () => {
           paddingBottom={5}
         />
       </div>
-      <CoursesList
-        courses={courses.filter((e: CourseProps) => e.status === "available")}
-      />
+      <div className={styles["courses-list-container"]}>
+        <CoursesList
+          courses={courses.filter((e: CourseProps) => e.status === "available")}
+        />
+      </div>
       <div className={styles["soon-container"]}>
         <UnderlineText title="قريباً" fontWeight={700} paddingBottom={5} />
       </div>
-      <div style={{ marginBottom: 61 }}>
+      <div className={styles["courses-list-container"]}>
         <CoursesList
           courses={courses.filter((e: CourseProps) => e.status !== "available")}
         />

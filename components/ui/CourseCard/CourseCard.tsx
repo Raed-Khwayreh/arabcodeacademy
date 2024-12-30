@@ -1,11 +1,9 @@
-"use client";
 import React from "react";
 import styles from "./CourseCard.module.css";
 import ACAButton from "../ACAButton/ACAButton";
 import CartIcon from "../ACAButton/ACAButtonIcons/CartIcon";
 import EllipsisCircleIcon from "../ACAButton/ACAButtonIcons/EllipsisCircleIcon";
-import useScreenSize from "@/utils/useScreenSize";
-import { SoonLargeIcon, SoonSmallIcon } from "./icons";
+import { SoonSmallIcon } from "./icons";
 import Image from "next/image";
 import { CourseProps } from "@/types/CourseProps";
 
@@ -14,16 +12,12 @@ interface Props {
 }
 
 const CourseCard: React.FC<Props> = ({ courseData }) => {
-  const screenSize = useScreenSize();
-
   return (
     <div className={styles.card}>
-      {courseData.status !== "available" ? (
+      {courseData.status !== "available" && (
         <div className={styles.soon}>
-          {screenSize > 768 ? <SoonLargeIcon /> : <SoonSmallIcon />}
+          <SoonSmallIcon />
         </div>
-      ) : (
-        <></>
       )}
       <div className={styles["avatar-container"]}>
         <div className={styles.avatar}>

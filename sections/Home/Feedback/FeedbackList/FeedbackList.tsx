@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { CarouselSlider } from "@/components/ui";
 import ACAAvailability from "@/components/ui/ACAAvailability";

@@ -2,8 +2,8 @@
   margin-top: -15px;
   position: relative;
   width: 100%;
-  background-color: white;
-  z-index: 1;
+  background-color: transparent;
+  z-index: 10;
 }
 
 .slider-container {
@@ -31,7 +31,6 @@
     width: 900px;
   }
 }
-
 
 @media (min-width: 768px) and (max-width: 1440px) {
   .main {

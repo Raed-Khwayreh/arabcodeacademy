@@ -1,7 +1,7 @@
 .title-container {
   width: fit-content;
   border-bottom: solid;
-  line-height: 32.4px;
+  line-height: 32px;
 }
 
 .title {
@@ -12,7 +12,7 @@
   .title-container {
     width: fit-content;
     border-bottom: solid;
-    line-height: 32.4px;
+    line-height: 32px;
   }
   .title {
     font-size: var(--font-size-tablet);
@@ -23,7 +23,7 @@
   .title-container {
     width: fit-content;
     border-bottom: solid;
-    line-height: 32.4px;
+    line-height: 32px;
   }
   .title {
     font-size: var(--font-size-mobile);

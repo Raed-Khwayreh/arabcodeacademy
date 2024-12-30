@@ -10,6 +10,21 @@ interface CarouselSliderProps {
   buttonsPostion: { desktop?: number; tablet?: number; mobile?: number };
 }
 
+/**
+ * A reusable React carousel slider component using the `react-slick` library.
+ *
+ * @param {object} userSettings - Custom settings for the slider to override default behavior.
+ * @param {string} arrowsColor - Color for the slider navigation arrows.
+ * @param {JSX.Element[]} generatedSliderList - List of elements to display in the slider.
+ * @param {object} buttonsPostion - Custom positions for navigation buttons and the base container should be relative to center the buttons on this container.
+ * @param {number} [buttonsPostion.desktop] - The distance between the buttons and the edge of the screen for desktop devices (in pixels).
+ * @param {number} [buttonsPostion.tablet] - The distance between the buttons and the edge of the screen for tablet devices (in pixels).
+ * @param {number} [buttonsPostion.mobile] - The distance between the buttons and the edge of the screen for mobile devices (in pixels).
+ *
+ * @returns {JSX.Element} A responsive slider component.
+ *
+ */
+
 const CarouselSlider: React.FC<CarouselSliderProps> = ({
   generatedSliderList,
   buttonsPostion,

@@ -14,11 +14,17 @@ import { FaAngleRight } from "react-icons/fa";
 
 interface SignupFormTwoProps {
   onBack: () => void;
+  onSubmit: (data: {
+    firstName: string;
+    lastName: string;
+    username: string;
+    country: string;
+  }) => void;
 }
 
-const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack }) => {
+const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
   const [checked, setChecked] = useState(false);
-  const [fieldWidth, setFieldWidth] = useState("100%"); // Default width for smaller screens
+  const [fieldWidth, setFieldWidth] = useState("100%"); 
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -32,9 +38,15 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack }) => {
     lastName: "",
     username: "",
     country: "",
+    conditions: "",
   });
 
   useEffect(() => {
+  /**
+   * Handles window resize event to change the width of the form fields.
+   * For larger screens (>= 768px), sets the width to 361px.
+   * For smaller screens, sets the width to 100%.
+   */
     const handleResize = () => {
       if (window.innerWidth >= 768) {
         setFieldWidth("361px");
@@ -49,6 +61,12 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+/**
+ * Handles changes to form fields by updating the form data
+ * and resetting any error messages for the changed field.
+ * @param {React.ChangeEvent<HTMLInputElement | HTMLSelectElement>} e - The change event from the form input.
+ */
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -57,12 +75,15 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack }) => {
     setErrors({ ...errors, [name]: "" });
   };
 
+
+
   const validate = () => {
-    const newErrors: typeof errors = {
+    const newErrors = {
       firstName: "",
       lastName: "",
       username: "",
       country: "",
+      conditions: "",
     };
     let isValid = true;
 
@@ -86,6 +107,11 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack }) => {
       isValid = false;
     }
 
+    if (!checked) {
+      newErrors.conditions = "يجب أن توافق على سياسة الخصوصية";
+      isValid = false;
+    }
+
     setErrors(newErrors);
     return isValid;
   };
@@ -94,7 +120,7 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack }) => {
     e.preventDefault();
 
     if (validate()) {
-      console.log("Final Form Data:", formData);
+      onSubmit(formData);
     }
   };
 
@@ -172,16 +198,34 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack }) => {
           </div>
         )}
       </div>
-      <div className={styles.checkboxContainer}>
-        <label className={styles.checkboxLabel}>
+      <div
+        className={`${styles.checkboxContainer} ${
+          errors.conditions ? styles.errorCheckboxContainer : ""
+        }`}
+      >
+        <label
+          className={`${styles.checkboxLabel} ${
+            errors.conditions ? styles.errorLabel : ""
+          }`}
+        >
           يرجى تأكيد موافقتك على سياسة الخصوصية الخاصة بنا{" "}
           <input
             type="checkbox"
             checked={checked}
-            onChange={() => setChecked(!checked)}
+            onChange={() => {
+              setChecked(!checked);
+              if (!checked) setErrors({ ...errors, conditions: "" }); 
+            }}
           />
-          <span className={styles.checkmark}></span>
+          <span
+            className={`${styles.checkmark} ${
+              errors.conditions ? styles.errorCheckmark : ""
+            }`}
+          ></span>
         </label>
+        {errors.conditions && (
+          <div className={styles.errorText}>{errors.conditions}</div>
+        )}
       </div>
 
       <div className={styles.buttonGroup}>

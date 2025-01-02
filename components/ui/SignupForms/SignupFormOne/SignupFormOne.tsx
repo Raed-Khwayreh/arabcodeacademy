@@ -10,16 +10,22 @@ import SocialButton from "../../SocialButtons/SocialButton";
 import GoogleIcon from "../../SocialButtons/SocialIcon/GoogleIcon";
 import FacebookIcon from "../../SocialButtons/SocialIcon/FacebookIcon";
 
+interface FormData {
+  email?: string;
+  password?: string;
+  confirmPassword?: string;
+}
+
 interface SignupFormOneProps {
-  onNext: () => void;
+  onNext: (data: Partial<FormData>) => void;
+  onDataChange: (data: Partial<FormData>) => void;
 }
 
 const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
     confirmPassword: "",
-    country: "",
   });
 
   const [errors, setErrors] = useState({
@@ -28,6 +34,10 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
     confirmPassword: "",
   });
 
+  /**
+   * Handles changes to form fields, updating the form data and resetting the error messages.
+   * @param {React.ChangeEvent<HTMLInputElement | HTMLSelectElement>} e The change event.
+   */
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -36,8 +46,12 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
     setErrors({ ...errors, [name]: "" });
   };
 
+  /**
+   * Validates the form data and returns a boolean indicating whether the form is valid.
+   * If the form is invalid, it also updates the errors state with the corresponding error messages.
+   */
   const validate = () => {
-    const newErrors: typeof errors = {
+    const newErrors = {
       email: "",
       password: "",
       confirmPassword: "",
@@ -47,7 +61,7 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
     if (!formData.email) {
       newErrors.email = "البريد الإلكتروني مطلوب";
       isValid = false;
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    } else if (!/\S+@\S+\.\S+/.test(formData.email || "")) {
       newErrors.email = "يرجى إدخال بريد إلكتروني صحيح";
       isValid = false;
     }
@@ -55,7 +69,7 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
     if (!formData.password) {
       newErrors.password = "كلمة المرور مطلوبة";
       isValid = false;
-    } else if (formData.password.length < 2) {
+    } else if ((formData.password || "").length < 8) {
       newErrors.password = "يجب أن تكون كلمة المرور 8 أحرف على الأقل";
       isValid = false;
     }
@@ -73,11 +87,15 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
     return isValid;
   };
 
+  /**
+   * Handles form submission, prevents default behavior, and calls onNext if form is valid.
+   * @param {React.FormEvent} e - The form submission event.
+   */
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (validate()) {
-      onNext();
+      onNext(formData);
     }
   };
 
@@ -90,7 +108,7 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
           placeholder="لن نشارك بريدك الإلكتروني أبدًا مع أي شخص"
           icon={<EnvelopeIcon />}
           name="email"
-          value={formData.email}
+          value={formData.email || ""}
           onChange={handleChange}
           labelAlign="center"
         />
@@ -101,7 +119,7 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
           placeholder="قم بإنشاء كلمة مرور قوية"
           icon={<LockIcon />}
           name="password"
-          value={formData.password}
+          value={formData.password || ""}
           onChange={handleChange}
           labelAlign="center"
         />
@@ -114,7 +132,7 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
           placeholder="أعد إدخال كلمة المرور للتأكد من مطابقتها"
           icon={<LockIcon />}
           name="confirmPassword"
-          value={formData.confirmPassword}
+          value={formData.confirmPassword || ""}
           onChange={handleChange}
           labelAlign="center"
         />

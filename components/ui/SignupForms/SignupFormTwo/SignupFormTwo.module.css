@@ -132,6 +132,19 @@
   transform: rotate(45deg);
 }
 
+.errorCheckboxContainer {
+  margin-bottom: 21px;
+}
+
+.errorLabel {
+  color: #DB4A39;
+}
+
+.errorCheckmark {
+  border: 1px solid #DB4A39;
+  margin-bottom: 21px;
+}
+
 .buttonGroup {
   display: flex;
   justify-content: center;
@@ -327,6 +340,19 @@
     top: 610px;
     right: 60px;
   }
+
+  .errorCheckboxContainer {
+    margin-bottom: 21px;
+  }
+  
+  .errorLabel {
+    color: #DB4A39;
+  }
+  
+  .errorCheckmark {
+    border: 1px solid #DB4A39;
+    margin-bottom: 21px;
+  }
 }
 
 @media (min-width: 1640px) {
@@ -438,5 +464,18 @@
     display: flex;
     margin-top: 33px;
     gap: 20px;
+  }
+
+  .errorCheckboxContainer {
+    margin-bottom: 21px;
+  }
+  
+  .errorLabel {
+    color: #DB4A39;
+  }
+  
+  .errorCheckmark {
+    border: 1px solid #DB4A39;
+    margin-bottom: 21px;
   }
 }

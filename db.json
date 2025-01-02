@@ -1,4 +1,16 @@
 {
+  "users": [
+    {
+      "email": "alamoh282@gmail.com",
+      "password": "11111111",
+      "confirmPassword": "11111111",
+      "firstName": "Alaa",
+      "lastName": "aaa",
+      "username": "alaa_shubita",
+      "country": "فلسطين",
+      "id": 1
+    }
+  ],
   "courses": {
     "courses": [
       {
@@ -416,120 +428,229 @@
         "title": "DALL-E",
         "imageURL": "https://example.com/dall-e.jpg",
         "description": "توليد صور مذهلة باستخدام الذكاء الاصطناعي.",
-        "tags": ["#art", "#image_generation", "#creative"],
+        "tags": [
+          "#art",
+          "#image_generation",
+          "#creative"
+        ],
         "isFav": true,
-        "subject": ["art", "image generation"],
-        "pricing": ["Free", "subscription"]
+        "subject": [
+          "art",
+          "image generation"
+        ],
+        "pricing": [
+          "Free",
+          "subscription"
+        ]
       },
       {
         "tool_id": 2,
         "title": "ChatGPT",
         "imageURL": "https://example.com/chatgpt.jpg",
         "description": "محادثات ذكية باستخدام نموذج اللغة GPT.",
-        "tags": ["#chatbot", "#text_generation", "#AI"],
+        "tags": [
+          "#chatbot",
+          "#text_generation",
+          "#AI"
+        ],
         "isFav": false,
-        "subject": ["text generation", "chatbot"],
-        "pricing": ["Free", "subscription", "paid"]
+        "subject": [
+          "text generation",
+          "chatbot"
+        ],
+        "pricing": [
+          "Free",
+          "subscription",
+          "paid"
+        ]
       },
       {
         "tool_id": 3,
         "title": "DeepArt",
         "imageURL": "https://example.com/deepart.jpg",
         "description": "تحويل الصور إلى أعمال فنية مدهشة.",
-        "tags": ["#art", "#style_transfer"],
+        "tags": [
+          "#art",
+          "#style_transfer"
+        ],
         "isFav": false,
-        "subject": ["art", "style transfer"],
-        "pricing": ["paid"]
+        "subject": [
+          "art",
+          "style transfer"
+        ],
+        "pricing": [
+          "paid"
+        ]
       },
       {
         "tool_id": 4,
         "title": "CodeT5",
         "imageURL": "https://example.com/codet5.jpg",
         "description": "إكمال الأكواد البرمجية وشرحها باستخدام الذكاء الاصطناعي.",
-        "tags": ["#coding", "#code_completion"],
+        "tags": [
+          "#coding",
+          "#code_completion"
+        ],
         "isFav": true,
-        "subject": ["code generation", "development"],
-        "pricing": ["open source"]
+        "subject": [
+          "code generation",
+          "development"
+        ],
+        "pricing": [
+          "open source"
+        ]
       },
       {
         "tool_id": 5,
         "title": "Runway ML",
         "imageURL": "https://example.com/runwayml.jpg",
         "description": "أداة لإنشاء الفيديوهات والصور باستخدام الذكاء الاصطناعي.",
-        "tags": ["#media", "#video_generation", "#image_generation"],
+        "tags": [
+          "#media",
+          "#video_generation",
+          "#image_generation"
+        ],
         "isFav": false,
-        "subject": ["video generation", "image generation"],
-        "pricing": ["freemium"]
+        "subject": [
+          "video generation",
+          "image generation"
+        ],
+        "pricing": [
+          "freemium"
+        ]
       },
       {
         "tool_id": 6,
         "title": "Copy.ai",
         "imageURL": "https://example.com/copyai.jpg",
         "description": "إنشاء محتوى نصي تسويقي بسهولة.",
-        "tags": ["#marketing", "#text_generation", "#copywriting"],
+        "tags": [
+          "#marketing",
+          "#text_generation",
+          "#copywriting"
+        ],
         "isFav": true,
-        "subject": ["text generation", "marketing"],
-        "pricing": ["subscription", "freemium"]
+        "subject": [
+          "text generation",
+          "marketing"
+        ],
+        "pricing": [
+          "subscription",
+          "freemium"
+        ]
       },
       {
         "tool_id": 7,
         "title": "Lumen5",
         "imageURL": "https://example.com/lumen5.jpg",
         "description": "تحويل النصوص إلى فيديوهات بشكل سريع.",
-        "tags": ["#video_creation", "#media"],
+        "tags": [
+          "#video_creation",
+          "#media"
+        ],
         "isFav": false,
-        "subject": ["video creation", "media"],
-        "pricing": ["freemium", "subscription"]
+        "subject": [
+          "video creation",
+          "media"
+        ],
+        "pricing": [
+          "freemium",
+          "subscription"
+        ]
       },
       {
         "tool_id": 8,
         "title": "Hugging Face",
         "imageURL": "https://example.com/huggingface.jpg",
         "description": "مكتبة مفتوحة المصدر لنماذج التعلم العميق.",
-        "tags": ["#open_source", "#machine_learning", "#AI"],
+        "tags": [
+          "#open_source",
+          "#machine_learning",
+          "#AI"
+        ],
         "isFav": true,
-        "subject": ["machine learning", "development"],
-        "pricing": ["open source", "subscription"]
+        "subject": [
+          "machine learning",
+          "development"
+        ],
+        "pricing": [
+          "open source",
+          "subscription"
+        ]
       },
       {
         "tool_id": 9,
         "title": "Synthesia",
         "imageURL": "https://example.com/synthesia.jpg",
         "description": "إنشاء فيديوهات تعليمية بواسطة الذكاء الاصطناعي.",
-        "tags": ["#education", "#video_generation"],
+        "tags": [
+          "#education",
+          "#video_generation"
+        ],
         "isFav": false,
-        "subject": ["education", "video generation"],
-        "pricing": ["subscription"]
+        "subject": [
+          "education",
+          "video generation"
+        ],
+        "pricing": [
+          "subscription"
+        ]
       },
       {
         "tool_id": 10,
         "title": "Grammarly",
         "imageURL": "https://example.com/grammarly.jpg",
         "description": "تحسين النصوص وتصحيح الأخطاء اللغوية.",
-        "tags": ["#writing", "#text_analysis"],
+        "tags": [
+          "#writing",
+          "#text_analysis"
+        ],
         "isFav": true,
-        "subject": ["text analysis", "writing"],
-        "pricing": ["freemium", "paid"]
+        "subject": [
+          "text analysis",
+          "writing"
+        ],
+        "pricing": [
+          "freemium",
+          "paid"
+        ]
       },
       {
         "tool_id": 11,
         "title": "Notion AI",
         "imageURL": "https://example.com/notionai.jpg",
         "description": "مساعد ذكي لتنظيم المهام وإدارة المشاريع.",
-        "tags": ["#productivity", "#task_management", "#AI"],
+        "tags": [
+          "#productivity",
+          "#task_management",
+          "#AI"
+        ],
         "isFav": true,
-        "subject": ["productivity", "task management"],
-        "pricing": ["subscription"]
+        "subject": [
+          "productivity",
+          "task management"
+        ],
+        "pricing": [
+          "subscription"
+        ]
       },
       {
         "tool_id": 12,
         "title": "BigSleep",
         "imageURL": "https://example.com/bigsleep.jpg",
         "description": "إنشاء صور جديدة من أوصاف نصية.",
-        "tags": ["#art", "#text_to_image"],
+        "tags": [
+          "#art",
+          "#text_to_image"
+        ],
         "isFav": false,
-        "subject": ["text to image", "art"],
-        "pricing": ["open source"]
+        "subject": [
+          "text to image",
+          "art"
+        ],
+        "pricing": [
+          "open source"
+        ]
       }
     ]
   }

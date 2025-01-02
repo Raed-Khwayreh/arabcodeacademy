@@ -2,8 +2,8 @@ import React from "react";
 import { SVGProps } from "@/types/SVGProps";
 
 const ProfileCircleIcon: React.FC<SVGProps> = ({
-  width = 34,
-  height = 34,
+  width = 26,
+  height = 26,
   color = "white",
 }) => {
   return (

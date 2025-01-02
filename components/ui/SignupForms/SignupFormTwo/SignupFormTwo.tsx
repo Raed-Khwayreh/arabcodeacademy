@@ -1,15 +1,16 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./SignupFormTwo.module.css";
 import FormField from "../../FormField/FormField";
 import ACAButton from "../../ACAButton/ACAButton";
-import AngleLeft from "../../ACAButton/ACAButtonIcons/AngleLeft";
 import UserCheck from "../../FormField/Icons/UserCheck";
 import UserIcon from "../../FormField/Icons/UserIcon";
 import LocationIcon from "../../FormField/Icons/LocationIcon";
 import SocialButton from "../../SocialButtons/SocialButton";
 import GoogleIcon from "../../SocialButtons/SocialIcon/GoogleIcon";
 import FacebookIcon from "../../SocialButtons/SocialIcon/FacebookIcon";
+import { ProfileCircleIcon } from "../../ACAButton/ACAButtonIcons";
+import { FaAngleRight } from "react-icons/fa";
 
 interface SignupFormTwoProps {
   onBack: () => void;
@@ -17,6 +18,8 @@ interface SignupFormTwoProps {
 
 const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack }) => {
   const [checked, setChecked] = useState(false);
+  const [fieldWidth, setFieldWidth] = useState("100%"); // Default width for smaller screens
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -30,6 +33,21 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack }) => {
     username: "",
     country: "",
   });
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setFieldWidth("361px");
+      } else {
+        setFieldWidth("100%");
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -88,29 +106,41 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack }) => {
       <div className={styles.subtitle}>أنشئ ملف التعريف الخاص بك</div>
 
       <div className={styles.fieldContainer}>
-        <FormField
-          label="الاسم الأول"
-          placeholder="أدخل اسمك الأول"
-          name="firstName"
-          value={formData.firstName}
-          onChange={handleChange}
-          icon={<UserCheck />}
-        />
-        {errors.firstName && (
-          <div className={styles.errorText}>{errors.firstName}</div>
-        )}
+        <div className={styles.nameContainer}>
+          <FormField
+            label="الاسم الأول"
+            placeholder="أدخل اسمك الأول"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+            icon={<UserCheck />}
+            width={fieldWidth}
+          />
 
-        <FormField
-          label="الاسم الثاني"
-          placeholder="أدخل اسم العائلة"
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleChange}
-          icon={<UserCheck />}
-        />
-        {errors.lastName && (
-          <div className={styles.errorText}>{errors.lastName}</div>
-        )}
+          <FormField
+            label="الاسم الثاني"
+            placeholder="أدخل اسم العائلة"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+            icon={<UserCheck />}
+            width={fieldWidth}
+          />
+
+          <div className={styles.errorTextNameContainer}>
+            {errors.firstName && (
+              <div id={styles.firstNameError} className={styles.errorTextName}>
+                {errors.firstName}
+              </div>
+            )}
+
+            {errors.lastName && (
+              <div id={styles.lastNameError} className={styles.errorTextName}>
+                {errors.lastName}
+              </div>
+            )}
+          </div>
+        </div>
 
         <FormField
           label="اسم المستخدم"
@@ -121,7 +151,9 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack }) => {
           icon={<UserIcon />}
         />
         {errors.username && (
-          <div className={styles.errorText}>{errors.username}</div>
+          <div id={styles.userNameError} className={styles.errorText}>
+            {errors.username}
+          </div>
         )}
 
         <FormField
@@ -135,12 +167,13 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack }) => {
           icon={<LocationIcon />}
         />
         {errors.country && (
-          <div className={styles.errorText}>{errors.country}</div>
+          <div id={styles.locationError} className={styles.errorText}>
+            {errors.country}
+          </div>
         )}
       </div>
-
       <div className={styles.checkboxContainer}>
-        <label className={styles.customCheckboxContainer}>
+        <label className={styles.checkboxLabel}>
           يرجى تأكيد موافقتك على سياسة الخصوصية الخاصة بنا{" "}
           <input
             type="checkbox"
@@ -154,18 +187,19 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack }) => {
       <div className={styles.buttonGroup}>
         <ACAButton
           size="small"
-          text="رجوع"
-          icon={<AngleLeft />}
-          variant="teal"
-          type="button"
-          onClick={onBack}
-        />
-        <ACAButton
-          size="small"
-          text="التالي"
-          icon={<AngleLeft />}
+          text="انشاء حسابي"
+          icon={<ProfileCircleIcon />}
           variant="teal"
           type="submit"
+        />
+
+        <ACAButton
+          size="small"
+          text="رجوع"
+          icon={<FaAngleRight size={25} />}
+          variant="tomato"
+          type="button"
+          onClick={onBack}
         />
       </div>
 

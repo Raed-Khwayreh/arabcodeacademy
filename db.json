@@ -9,6 +9,16 @@
       "username": "alaa_shubita",
       "country": "فلسطين",
       "id": 1
+    },
+    {
+      "email": "alaamoh282@gmail.com",
+      "password": "11111111",
+      "confirmPassword": "11111111",
+      "firstName": "Alaa",
+      "lastName": "Mohamad",
+      "username": "alaa_shubita",
+      "country": "فلسطين",
+      "id": 2
     }
   ],
   "courses": {

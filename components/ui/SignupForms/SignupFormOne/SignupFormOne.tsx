@@ -18,7 +18,6 @@ interface FormData {
 
 interface SignupFormOneProps {
   onNext: (data: Partial<FormData>) => void;
-  onDataChange: (data: Partial<FormData>) => void;
 }
 
 const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
@@ -35,22 +34,26 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
   });
 
   /**
-   * Handles changes to form fields, updating the form data and resetting the error messages.
-   * @param {React.ChangeEvent<HTMLInputElement | HTMLSelectElement>} e The change event.
+   * Checks if an email already exists in the database.
+   * @param email The email to check.
+   * @returns A boolean indicating if the email exists.
    */
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    setErrors({ ...errors, [name]: "" });
+  const checkEmailExists = async (email: string): Promise<boolean> => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`);
+      const users = await response.json();
+      return users.some((user: { email: string }) => user.email === email);
+    } catch (error) {
+      console.error("Error checking email existence:", error);
+      return false;
+    }
   };
 
   /**
-   * Validates the form data and returns a boolean indicating whether the form is valid.
-   * If the form is invalid, it also updates the errors state with the corresponding error messages.
+   * Validates the form data.
+   * @returns A boolean indicating if the data is valid.
    */
-  const validate = () => {
+  const validate = async () => {
     const newErrors = {
       email: "",
       password: "",
@@ -64,6 +67,13 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
     } else if (!/\S+@\S+\.\S+/.test(formData.email || "")) {
       newErrors.email = "يرجى إدخال بريد إلكتروني صحيح";
       isValid = false;
+    } else {
+      const emailExists = await checkEmailExists(formData.email || "");
+      if (emailExists) {
+        newErrors.email =
+          "عنوان البريد الإلكترونى هذا مسجل بالفعل. حاول تسجيل الدخول باستخدام بريدًا إلكترونيًا مختلفًا";
+        isValid = false;
+      }
     }
 
     if (!formData.password) {
@@ -72,8 +82,15 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
     } else if ((formData.password || "").length < 8) {
       newErrors.password = "يجب أن تكون كلمة المرور 8 أحرف على الأقل";
       isValid = false;
+    } else if (
+      !/(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/.test(
+        formData.password || ""
+      )
+    ) {
+      newErrors.password =
+        "يجب أن تتضمن كلمة المرور حرفًا كبيرًا واحدًا ورقمًا واحدًا وحرفًا خاصًا واحدًا على الأقل";
+      isValid = false;
     }
-
     if (!formData.confirmPassword) {
       newErrors.confirmPassword = "يرجى تأكيد كلمة المرور";
       isValid = false;
@@ -88,13 +105,14 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
   };
 
   /**
-   * Handles form submission, prevents default behavior, and calls onNext if form is valid.
+   * Submits the form and validates the data.
    * @param {React.FormEvent} e - The form submission event.
    */
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (validate()) {
+    const isValid = await validate();
+    if (isValid) {
       onNext(formData);
     }
   };
@@ -109,7 +127,7 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
           icon={<EnvelopeIcon />}
           name="email"
           value={formData.email || ""}
-          onChange={handleChange}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           labelAlign="center"
         />
         {errors.email && <div className={styles.errorText}>{errors.email}</div>}
@@ -120,7 +138,9 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
           icon={<LockIcon />}
           name="password"
           value={formData.password || ""}
-          onChange={handleChange}
+          onChange={(e) =>
+            setFormData({ ...formData, password: e.target.value })
+          }
           labelAlign="center"
         />
         {errors.password && (
@@ -133,7 +153,9 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
           icon={<LockIcon />}
           name="confirmPassword"
           value={formData.confirmPassword || ""}
-          onChange={handleChange}
+          onChange={(e) =>
+            setFormData({ ...formData, confirmPassword: e.target.value })
+          }
           labelAlign="center"
         />
         {errors.confirmPassword && (

@@ -18,24 +18,26 @@ const Signup: React.FC = () => {
   const [currentForm, setCurrentForm] = useState(1);
   const [formData, setFormData] = useState<FormData>({});
 
-
+  /**
+   * Moves to the next form step while merging the data.
+   * @param {Partial<FormData>} data - Form data to merge.
+   */
   const handleNextForm = (data: Partial<FormData>) => {
     setFormData({ ...formData, ...data });
-    setCurrentForm(2);
-  };
-
-  const handlePreviousForm = () => {
-    setCurrentForm(1);
+    setCurrentForm(2); // Navigate to the second form
   };
 
   /**
-   * Submits the final form data to create a new user.
-   * Merges the existing form data with the provided data and sends a POST request to the server.
-   * Logs a success message if the user is created successfully, otherwise logs an error.
-   *
-   * @param {Partial<FormData>} data - The additional form data to be merged and submitted.
+   * Moves back to the previous form.
    */
+  const handlePreviousForm = () => {
+    setCurrentForm(1); // Navigate back to the first form
+  };
 
+  /**
+   * Submits the complete form data to the backend.
+   * @param {Partial<FormData>} data - Final form data to submit.
+   */
   const handleFinalSubmit = async (data: Partial<FormData>) => {
     const finalData = { ...formData, ...data };
 
@@ -52,19 +54,16 @@ const Signup: React.FC = () => {
         console.error("Failed to create user:", response.statusText);
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error submitting form data:", error);
     }
   };
 
   return (
     <div className={styles.signupPage}>
       {currentForm === 1 ? (
-        <SignupFormOne onNext={handleNextForm} onDataChange={handleNextForm} />
+        <SignupFormOne onNext={handleNextForm} />
       ) : (
-        <SignupFormTwo
-          onBack={handlePreviousForm}
-          onSubmit={handleFinalSubmit}
-        />
+        <SignupFormTwo onBack={handlePreviousForm} onSubmit={handleFinalSubmit} />
       )}
     </div>
   );

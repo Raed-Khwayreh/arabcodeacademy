@@ -129,6 +129,7 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
           value={formData.email || ""}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           labelAlign="center"
+          error={errors.email}
         />
         {errors.email && <div className={styles.errorText}>{errors.email}</div>}
 
@@ -142,6 +143,7 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
             setFormData({ ...formData, password: e.target.value })
           }
           labelAlign="center"
+          error={errors.password}
         />
         {errors.password && (
           <div className={styles.errorText}>{errors.password}</div>
@@ -157,6 +159,7 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
             setFormData({ ...formData, confirmPassword: e.target.value })
           }
           labelAlign="center"
+          error={errors.confirmPassword}
         />
         {errors.confirmPassword && (
           <div className={styles.errorText}>{errors.confirmPassword}</div>

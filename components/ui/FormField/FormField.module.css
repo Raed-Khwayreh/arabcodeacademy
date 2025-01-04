@@ -3,17 +3,17 @@
   height: 79px;
   display: flex;
   flex-direction: column;
-  text-align: right; 
+  text-align: right;
   color: #000000;
 }
 
 .centerAlign {
-  align-items: center; 
+  align-items: center;
   text-align: center;
 }
 
 .rightAlign {
-  align-items: flex-end; 
+  align-items: flex-end;
   text-align: right;
 }
 
@@ -23,7 +23,6 @@
   margin-bottom: 10px;
   gap: 2px;
 }
-
 
 .formLabel {
   color: #783ba2;
@@ -67,7 +66,7 @@
   font-weight: 500;
   background-color: #fff;
   color: #783ba2;
-  appearance: none; 
+  appearance: none;
   direction: rtl;
 }
 
@@ -77,7 +76,7 @@
 }
 
 .selectInput option {
-  color: #A067B6;
+  color: #a067b6;
   background-color: #fff;
 }
 
@@ -94,7 +93,7 @@
 }
 .selectInput .divider {
   position: absolute;
-  top:1px;
+  top: 1px;
   left: 50px;
   width: 1px;
   height: 99%;
@@ -102,6 +101,13 @@
   margin: 0 10px;
 }
 
+.errorInput {
+  border: 1px solid #db4a39;
+}
+
+.selectInput select.errorInput {
+  border-color: red;
+}
 @media (min-width: 768px) {
   .fieldContainer {
     width: 744px;

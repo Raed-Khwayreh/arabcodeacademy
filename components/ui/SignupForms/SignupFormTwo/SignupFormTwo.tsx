@@ -172,6 +172,7 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
             onChange={handleChange}
             icon={<UserCheck />}
             width={fieldWidth}
+            error={errors.firstName}
           />
 
           <FormField
@@ -182,6 +183,7 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
             onChange={handleChange}
             icon={<UserCheck />}
             width={fieldWidth}
+            error={errors.lastName}
           />
 
           <div className={styles.errorTextNameContainer}>
@@ -206,6 +208,7 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
           value={formData.username}
           onChange={handleChange}
           icon={<UserIcon />}
+          error={errors.username}
         />
         {errors.username && (
           <div id={styles.userNameError} className={styles.errorText}>
@@ -222,6 +225,7 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
           isDropDown
           options={["فلسطين", "العراق", "الأردن", "سوريا"]}
           icon={<LocationIcon />}
+          error={errors.country}
         />
         {errors.country && (
           <div id={styles.locationError} className={styles.errorText}>

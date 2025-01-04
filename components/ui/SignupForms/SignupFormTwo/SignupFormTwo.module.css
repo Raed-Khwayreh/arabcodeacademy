@@ -322,6 +322,8 @@
     color: #db4a39;
     position: absolute;
     font-weight: 400;
+    width: 100%;
+
   }
   #firstNameError {
     top: 270px;
@@ -409,6 +411,8 @@
     position: absolute;
     line-height: 19px;
     font-weight: 400;
+    width: 100%;
+
   }
   #firstNameError {
     top: 280px;

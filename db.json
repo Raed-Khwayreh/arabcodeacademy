@@ -2,21 +2,21 @@
   "users": [
     {
       "email": "alamoh282@gmail.com",
-      "password": "11111111",
-      "confirmPassword": "11111111",
+      "password": "Alaa1111111@",
+      "confirmPassword": "Alaa1111111@",
       "firstName": "Alaa",
-      "lastName": "aaa",
+      "lastName": "Shubita",
       "username": "alaa_shubita",
       "country": "فلسطين",
       "id": 1
     },
     {
-      "email": "alaamoh282@gmail.com",
-      "password": "11111111",
-      "confirmPassword": "11111111",
-      "firstName": "Alaa",
-      "lastName": "Mohamad",
-      "username": "alaa_shubita",
+      "email": "tala@gmail.com",
+      "password": "Alaa1111111@",
+      "confirmPassword": "Alaa1111111@",
+      "firstName": "Tala",
+      "lastName": "Ismail",
+      "username": "tala",
       "country": "فلسطين",
       "id": 2
     }

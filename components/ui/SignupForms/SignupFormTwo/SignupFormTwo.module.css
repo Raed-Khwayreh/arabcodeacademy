@@ -28,6 +28,8 @@
   font-size: 14px;
   color: #db4a39;
   position: absolute;
+  text-align: right;
+  width: 268px;
 }
 
 #firstNameError {

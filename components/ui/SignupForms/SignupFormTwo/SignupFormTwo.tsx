@@ -24,7 +24,7 @@ interface SignupFormTwoProps {
 
 const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
   const [checked, setChecked] = useState(false);
-  const [fieldWidth, setFieldWidth] = useState("100%"); 
+  const [fieldWidth, setFieldWidth] = useState("100%");
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -42,11 +42,11 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
   });
 
   useEffect(() => {
-  /**
-   * Handles window resize event to change the width of the form fields.
-   * For larger screens (>= 768px), sets the width to 361px.
-   * For smaller screens, sets the width to 100%.
-   */
+    /**
+     * Handles window resize event to change the width of the form fields.
+     * For larger screens (>= 768px), sets the width to 361px.
+     * For smaller screens, sets the width to 100%.
+     */
     const handleResize = () => {
       if (window.innerWidth >= 768) {
         setFieldWidth("361px");
@@ -61,11 +61,11 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-/**
- * Handles changes to form fields by updating the form data
- * and resetting any error messages for the changed field.
- * @param {React.ChangeEvent<HTMLInputElement | HTMLSelectElement>} e - The change event from the form input.
- */
+  /**
+   * Handles changes to form fields by updating the form data
+   * and resetting any error messages for the changed field.
+   * @param {React.ChangeEvent<HTMLInputElement | HTMLSelectElement>} e - The change event from the form input.
+   */
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -75,9 +75,26 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
     setErrors({ ...errors, [name]: "" });
   };
 
+  /**
+   * Checks if a given username already exists in the database.
+   * @param username The username to check.
+   * @returns A boolean indicating if the username exists.
+   **/
 
+  const checkUsernameExists = async (username: string): Promise<boolean> => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`);
+      const users = await response.json();
+      return users.some(
+        (user: { username: string }) => user.username === username
+      );
+    } catch (error) {
+      console.error("Error checking username existence:", error);
+      return false;
+    }
+  };
 
-  const validate = () => {
+  const validate = async () => {
     const newErrors = {
       firstName: "",
       lastName: "",
@@ -95,11 +112,21 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
     if (!formData.lastName) {
       newErrors.lastName = "الرجاء إدخال اسم العائلة";
       isValid = false;
+    } else if (/[^a-zA-Z\u0621-\u064A ]/.test(formData.lastName)) {
+      newErrors.lastName =
+        "لا يمكن أن يحتوي اسم العائلة على أرقام أو أحرف خاصة";
+      isValid = false;
     }
 
     if (!formData.username) {
       newErrors.username = "الرجاء إدخال اسم المستخدم";
       isValid = false;
+    } else {
+      const usernameExists = await checkUsernameExists(formData.username);
+      if (usernameExists) {
+        newErrors.username = "اسم المستخدم هذا مأخوذ بالفعل. الرجاء اختيار آخر";
+        isValid = false;
+      }
     }
 
     if (!formData.country) {
@@ -116,10 +143,14 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
     return isValid;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  /**
+   * Submits the form and validates the data.
+   * @param {React.FormEvent} e - The form submission event.
+   */
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (validate()) {
+    if (await validate()) {
       onSubmit(formData);
     }
   };
@@ -214,7 +245,7 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
             checked={checked}
             onChange={() => {
               setChecked(!checked);
-              if (!checked) setErrors({ ...errors, conditions: "" }); 
+              if (!checked) setErrors({ ...errors, conditions: "" });
             }}
           />
           <span

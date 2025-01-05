@@ -1,7 +1,6 @@
 .card {
   margin: 20px auto;
   width: 350px;
-  height: 509px;
   box-shadow: 0 1px 15px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   direction: rtl;
@@ -17,8 +16,6 @@
   background: #ff6542 center center;
   border-radius: 10px 10px 0 0;
 }
-
-
 
 .card_body {
   display: flex;
@@ -54,11 +51,20 @@
   direction: ltr;
 }
 
+.label {
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  direction: rtl;
+}
+
 @media (max-width: 768px) {
   .card {
     border-radius: 0px;
     width: 260px;
-    height: 377.86px;
   }
 
   .avatar-container {
@@ -95,6 +101,10 @@
   }
   .avatar {
     width: 125px;
+  }
+  .image {
+    height: auto;
+    width: auto;
   }
 }
 

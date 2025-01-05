@@ -2,13 +2,15 @@ import React from "react";
 import styles from "./ResourceCard.module.css";
 import EllipsisCircleIcon from "../ACAButton/ACAButtonIcons/EllipsisCircleIcon";
 import ACAButton from "../ACAButton/ACAButton";
+import Link from "next/link";
 
 interface Props {
   title: string;
   icon: React.ReactNode;
+  href?: string;
 }
 
-const ResourceCard: React.FC<Props> = ({ title, icon }) => {
+const ResourceCard: React.FC<Props> = ({ title, icon, href = "" }) => {
   return (
     <div className={styles.container}>
       <div className={styles.iconContainer}>{icon}</div>
@@ -20,12 +22,14 @@ const ResourceCard: React.FC<Props> = ({ title, icon }) => {
       </div>
       <div className={styles.buttonContainer}>
         {
-          <ACAButton
-            text="...المزيد"
-            variant="teal"
-            size="medium"
-            icon={<EllipsisCircleIcon />}
-          />
+          <Link href={href}>
+            <ACAButton
+              text="...المزيد"
+              variant="teal"
+              size="medium"
+              icon={<EllipsisCircleIcon />}
+            />
+          </Link>
         }
       </div>
     </div>

@@ -10,9 +10,10 @@ import SubMenu from "./SubMenu/SubMenu";
 interface SidebarProps {
   isLoggedIn: boolean;
   onLogin: () => void;
+  handleOnClick: () => void;
 }
 
-const Sidebar: FC<SidebarProps> = ({ isLoggedIn, onLogin }) => {
+const Sidebar: FC<SidebarProps> = ({ isLoggedIn, onLogin, handleOnClick }) => {
   const [isResourcesOpen, setIsResourcesOpen] = useState<boolean>(false);
 
   const toggleResources = (): void => {
@@ -35,17 +36,20 @@ const Sidebar: FC<SidebarProps> = ({ isLoggedIn, onLogin }) => {
           </>
         )}
 
-        <li className={styles.menuItem}>
+        <li onClick={handleOnClick} className={styles.menuItem}>
           <span>المسارات التعليمية</span>
         </li>
         <li>
           <SubMenu
+            handleOnClick={handleOnClick}
             isResourcesOpen={isResourcesOpen}
             toggleResources={toggleResources}
           />
         </li>
 
-        <li className={styles.menuItem}>التواصل</li>
+        <li onClick={handleOnClick} className={styles.menuItem}>
+          التواصل
+        </li>
       </ul>
     </nav>
   );

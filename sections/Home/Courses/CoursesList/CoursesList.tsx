@@ -4,15 +4,19 @@ import { LargeScreenSize, MediumScreenSize } from "@/constants/ScreenSizes";
 import useScreenSize from "@/utils/useScreenSize";
 import Slider from "react-slick";
 import { CarouselSlider, CourseCard } from "@/components/ui";
-import coursesData from "../mock/coursesData";
+import ACAAvailability from "@/components/ui/ACAAvailability";
+import { CourseProps } from "@/types/CourseProps";
 
 interface CoursesListProps {
-  activeCourses: boolean;
+  courses: CourseProps[];
 }
 
-const CoursesList: React.FC<CoursesListProps> = ({ activeCourses }) => {
+const CoursesList: React.FC<CoursesListProps> = ({ courses }) => {
   const coursesRef = useRef<Slider>(null);
   const screenSize = useScreenSize();
+
+  if (courses.length === 0)
+    return <ACAAvailability message="لا يوجد كورسات لعرضها" />;
 
   return (
     <CarouselSlider
@@ -42,19 +46,9 @@ const CoursesList: React.FC<CoursesListProps> = ({ activeCourses }) => {
           : "82%"
       }
       sliderRef={coursesRef}
-      generatedSliderList={coursesData
-        .filter((e) => (activeCourses ? e.soon : !e.soon))
-        .map((e, i) => (
-          <CourseCard
-            key={i}
-            duration={e.duration}
-            name={e.name}
-            instructor={e.instructor}
-            price={e.price}
-            soon={e.soon}
-            image={e.image}
-          />
-        ))}
+      generatedSliderList={courses.map((course: CourseProps, index) => (
+        <CourseCard key={index} courseData={course} />
+      ))}
     />
   );
 };

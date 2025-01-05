@@ -1,25 +1,17 @@
 import React from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import styles from "./FeedbackCard.module.css";
 import FilledStar from "./Icons/FilledStar";
 import OutlinedStar from "./Icons/OutlinedStar";
 import headerBackground from "./Icons/headerBackground.png";
+import { FeedBackProps } from "@/types/FeedBackProps";
+import avatar from "./Images/avatar.png";
 
-interface Props {
-  name: string;
-  image: StaticImageData;
-  rating: number;
-  comment: string;
-  date: string;
+export interface Props {
+  feedback: FeedBackProps;
 }
 
-const FeedbackCardComponent: React.FC<Props> = ({
-  name,
-  image,
-  rating,
-  comment,
-  date,
-}) => {
+const FeedbackCardComponent: React.FC<Props> = ({ feedback }) => {
   return (
     <div className={styles.card}>
       <div className={styles.header}>
@@ -30,18 +22,26 @@ const FeedbackCardComponent: React.FC<Props> = ({
         />
         <div className={styles.profileImageContainer}>
           <Image
-            src={image}
-            alt={`${name}'s profile`}
+            src={feedback.imageURL && avatar}
+            width={100}
+            height={100}
+            alt={`${feedback.reviewerName} 's profile`}
             className={styles.profileImage}
           />
         </div>
       </div>
-      <div className={styles.name}>{name}</div>
-      <p className={styles.comment}>{comment}</p>
-      <div className={styles.dateContainer}>{date}</div>
+      <div
+        className={styles.name}
+      >{`${feedback.reviewerName} ${feedback.reviewerLastName}`}</div>
+      <p className={styles.comment}>{feedback.reviewText}</p>
+      <div className={styles.dateContainer}>{feedback.date}</div>
       <div className={styles.ratingContainer}>
         {Array.from({ length: 5 }, (_, i) =>
-          i < rating ? <FilledStar key={i} /> : <OutlinedStar key={i} />
+          i < feedback.rating ? (
+            <FilledStar key={i} />
+          ) : (
+            <OutlinedStar key={i} />
+          )
         )}
       </div>
     </div>

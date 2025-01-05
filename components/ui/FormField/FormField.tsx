@@ -16,6 +16,7 @@ interface Props {
   width?: string;
   labelAlign?: "center" | "right";
   error?: string;
+  type?: string; 
 }
 
 const FormField: React.FC<Props> = ({
@@ -30,6 +31,7 @@ const FormField: React.FC<Props> = ({
   width,
   labelAlign,
   error,
+  type = "text",
 }) => {
   return (
     <div
@@ -53,7 +55,7 @@ const FormField: React.FC<Props> = ({
             name={name}
             value={value}
             onChange={onChange}
-            className={`${styles.formInput} ${error ? styles.errorInput : ""}`} 
+            className={`${styles.formInput} ${error ? styles.errorInput : ""}`}
           >
             <option value="" disabled>
               {placeholder}
@@ -69,7 +71,8 @@ const FormField: React.FC<Props> = ({
         </div>
       ) : (
         <input
-          className={`${styles.formInput} ${error ? styles.errorInput : ""}`} 
+          className={`${styles.formInput} ${error ? styles.errorInput : ""}`}
+          type={type} 
           placeholder={placeholder}
           name={name}
           value={value}

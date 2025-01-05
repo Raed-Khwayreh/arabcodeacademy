@@ -15,9 +15,11 @@ const Favorite: React.FC<Props> = ({
   id,
 }) => {
   const [isHovered, setIsHovered] = React.useState(false);
+  const [isFavorite, setIsFavorite] = React.useState(false);
 
   const handleClick = () => {
     handleOnPressFavoriteCard(id);
+    setIsFavorite((isFav) => !isFav);
   };
 
   return (
@@ -31,7 +33,15 @@ const Favorite: React.FC<Props> = ({
         width={26}
         height={28}
         color={"#783ba2"}
-        fillColor={isFav ? "#783ba2" : isHovered ? "#DEDEDE" : "none"}
+        fillColor={
+          isFav
+            ? "#783ba2"
+            : isFavorite
+            ? "#783ba2"
+            : isHovered
+            ? "#DEDEDE"
+            : "none"
+        }
       />
     </button>
   );

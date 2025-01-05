@@ -1,5 +1,35 @@
 .main {
   margin-top: -15px;
+  position: relative;
+  width: 100%;
+  background-color: transparent;
+  z-index: 10;
+}
+
+.slider-container {
+  margin: auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 25px -2px #7f7f7f;
+  width: 204px;
+}
+
+@media (min-width: 768px) {
+  .slider-container {
+    width: 300px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .slider-container {
+    width: 720px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .slider-container {
+    width: 900px;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1440px) {

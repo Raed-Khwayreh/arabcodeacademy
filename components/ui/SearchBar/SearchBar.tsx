@@ -11,6 +11,14 @@ interface SearchBarProps {
   handleOnSearch?: (text: string) => void;
 }
 
+/**
+ * A Search component.
+ * @param {function} handleOnSearch - Callback function to handle search.
+ * @param {number} handleOnSearch.text - The new string to search.
+ *
+ * @returns {JSX.Element} A responsive pagination component with navigation buttons and page indicators.
+ */
+
 const SearchBar = ({
   placeholder,
   handleOnSearch,

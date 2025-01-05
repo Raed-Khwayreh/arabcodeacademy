@@ -120,7 +120,7 @@
   .card_content {
     margin: 7px 20px;
     font-size: 14px;
-    line-height: 16.8px;
+    line-height: 16px;
     text-align: center;
   }
 
@@ -132,6 +132,6 @@
 
 @media (min-width: 768px) and (max-width: 1400px) {
   .card_tags {
-    gap: 12.5px;
+    gap: 12px;
   }
 }

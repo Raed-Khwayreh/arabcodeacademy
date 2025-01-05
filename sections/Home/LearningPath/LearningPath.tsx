@@ -13,8 +13,8 @@ const LearningPath = () => {
 
   React.useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 600);
-      setShowBorder(window.innerWidth < 1400);
+      setIsMobile(window.innerWidth < 768);
+      setShowBorder(window.innerWidth < 1440);
     };
     window.addEventListener("resize", handleResize);
     return () => {
@@ -34,7 +34,7 @@ const LearningPath = () => {
               <ACAButton
                 text="المسارات التعليمية"
                 variant="teal"
-                size="medium"
+                size="large"
                 icon={<ChalkboardTeacherIcon />}
               />
             )
@@ -45,7 +45,7 @@ const LearningPath = () => {
             <ACAButton
               text="المسارات التعليمية"
               variant="teal"
-              size="medium"
+              size="large"
               icon={<ChalkboardTeacherIcon />}
             />
           )}

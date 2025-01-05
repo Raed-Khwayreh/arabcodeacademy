@@ -1,5 +1,7 @@
-import { FilledArrow } from "@/public/icons";
+"use client";
+
 import React from "react";
+import { FilledArrow } from "@/public/icons";
 import styles from "./ProgressPagination.module.css";
 import useScreenSize from "@/utils/useScreenSize";
 
@@ -10,6 +12,21 @@ interface ProgressPaginationProps {
   listStartEnd: { start: number; end: number };
   handlePageChange: (newPage: number) => void;
 }
+
+/**
+ * A pagination component with progress indicators, allowing navigation between pages.
+ *
+ * @param {number} currentPage - The current active page number.
+ * @param {boolean} pageNotFound - Indicates if the current page does not exist this component will disapper.
+ * @param {number} totalPages - The total number of pages.
+ * @param {object} listStartEnd - Defines the range of page numbers to display.
+ * @param {number} listStartEnd.start - The starting index of the page list to display.
+ * @param {number} listStartEnd.end - The ending index of the page list to display.
+ * @param {function} handlePageChange - Callback function to handle changes in the current page.
+ * @param {number} handlePageChange.newPage - The new page number to navigate to.
+ *
+ * @returns {JSX.Element} A responsive pagination component with navigation buttons and page indicators.
+ */
 
 const ProgressPagination = ({
   currentPage,
@@ -27,6 +44,7 @@ const ProgressPagination = ({
         onClick={() => {
           handlePageChange(currentPage - 1);
         }}
+        disabled={currentPage === 1 || pageNotFound}
       >
         <FilledArrow
           width={screenSize <= 576 ? 19 : 46}
@@ -35,11 +53,8 @@ const ProgressPagination = ({
         />
       </button>
       <div className={styles.numbers}>
-        {[
-          ...Array(totalPages)
-            .fill(0)
-            .map((_, i) => i),
-        ]
+        {Array.from({ length: totalPages })
+          .map((_, i) => i)
           .slice(listStartEnd.start, listStartEnd.end)
           .map((number, index) => (
             <button
@@ -58,11 +73,12 @@ const ProgressPagination = ({
             </button>
           ))}
       </div>
-      <div
+      <button
         className={styles["arrow-right"]}
         onClick={() => {
           handlePageChange(currentPage + 1);
         }}
+        disabled={currentPage === totalPages || pageNotFound}
       >
         <FilledArrow
           width={screenSize <= 576 ? 19 : 46}
@@ -71,7 +87,7 @@ const ProgressPagination = ({
             currentPage === totalPages || pageNotFound ? "#793ba28a" : "#783BA2"
           }
         />
-      </div>
+      </button>
     </div>
   );
 };

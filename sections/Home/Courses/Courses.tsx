@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import styles from "./Courses.module.css";
 import { SearchBar, UnderlineText } from "@/components/ui";
@@ -7,25 +6,30 @@ import ACALoading from "@/components/ui/ACALoading";
 import ACAError from "@/components/ui/ACAError";
 import { ErrorMessage } from "@/types/ErrorMessage";
 import { CourseProps } from "@/types/CourseProps";
-import useSWR from "swr";
 
-const fetcher = async (url: string) => {
-  const response = await fetch(url);
-  if (!response.ok) throw new Error("Failed to fetch data");
-  return response.json();
+const fetchCourses = async () => {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/courses`);
+    if (!response.ok) throw new Error("Failed to fetch data");
+    return response.json();
+  } catch {
+    throw new Error(ErrorMessage.CONNECTION_FAILD);
+  }
 };
 
-const Courses = () => {
-  const { data: courses, error } = useSWR<{ courses: CourseProps[] }>(
-    `${process.env.NEXT_PUBLIC_API_URL}/courses`,
-    fetcher
-  );
+const Courses = async () => {
+  let courses;
+  try {
+    const data = await fetchCourses();
+    courses = data.courses;
+  } catch {
+    return <ACAError errorMessage={ErrorMessage.CONNECTION_FAILD} />;
+  }
 
-  if (error) return <ACAError errorMessage={ErrorMessage.CONNECTION_FAILD} />;
   if (!courses) return <ACALoading />;
 
   return (
-    <div style={{ color: "black", marginBlock: 123 }}>
+    <div className={styles.courses}>
       <div className={styles["search-container"]}>
         <SearchBar placeholder="مقدمة لمحرك الألعاب اليونتي ....." />
         <UnderlineText
@@ -34,15 +38,17 @@ const Courses = () => {
           paddingBottom={5}
         />
       </div>
-      <CoursesList
-        courses={courses.courses.filter((e) => e.status === "available")}
-      />
+      <div className={styles["courses-list-container"]}>
+        <CoursesList
+          courses={courses.filter((e: CourseProps) => e.status === "available")}
+        />
+      </div>
       <div className={styles["soon-container"]}>
         <UnderlineText title="قريباً" fontWeight={700} paddingBottom={5} />
       </div>
-      <div style={{ marginBottom: 61 }}>
+      <div className={styles["courses-list-container"]}>
         <CoursesList
-          courses={courses.courses.filter((e) => e.status !== "available")}
+          courses={courses.filter((e: CourseProps) => e.status !== "available")}
         />
       </div>
     </div>

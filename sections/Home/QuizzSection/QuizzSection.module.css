@@ -43,7 +43,7 @@
 .description {
   max-width: 475px;
   font-size: 19px;
-  line-height: 22.8px;
+  line-height: 22px;
   font-weight: 500;
   margin-top: 20px;
   direction: rtl;
@@ -63,8 +63,8 @@
 }
 
 .image {
-  width: 357.99px;
-  height: 339.3px;  
+  width: 357px;
+  height: 339px;  
   border: 3px solid white;
 }
 
@@ -93,7 +93,7 @@
 
   .rightContent {
     height: 270px;
-    max-width: 297.36px;
+    max-width: 297px;
   }
 
   .leftContent {
@@ -115,8 +115,8 @@
   }
 
   .image {
-    width: 177.42px;
-    height: 168.16px;
+    width: 177px;
+    height: 168px;
   }
 
   .team1 {
@@ -134,9 +134,9 @@
 
   .description {
     font-size: 16px;
-    line-height: 19.2px;
+    line-height: 19px;
     text-align: center;
-    max-width: 264.73px;
+    max-width: 264px;
     margin-right: 0;
   }
 }
@@ -152,7 +152,7 @@
 
   .rightContent {
     height: 700px;
-    max-width: 770.94px;
+    max-width: 770px;
   }
 
   .leftContent {
@@ -174,8 +174,8 @@
   }
 
   .image {
-    width: 459.99px;
-    height: 435.97px;
+    width: 459px;
+    height: 435px;
   }
 
   .team1 {
@@ -194,7 +194,7 @@
 
   .description {
     font-size: 19px;
-    line-height: 22.8px;
+    line-height: 22px;
     text-align: center;
     max-width: 495px;
     margin-right: 0;

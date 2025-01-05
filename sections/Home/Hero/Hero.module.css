@@ -11,6 +11,10 @@
   color: white;
 }
 
+.slider {
+  width: 100%;
+}
+
 @media (max-width: 1440px) {
   .hero {
     height: 831px;

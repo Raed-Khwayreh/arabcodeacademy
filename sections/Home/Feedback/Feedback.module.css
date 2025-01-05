@@ -1,0 +1,25 @@
+.container {
+  margin-block: 111px;
+}
+
+.reviews-list-container{
+  position: relative;
+}
+
+.slider-container {
+  width: 100%;
+  margin: auto;
+  background: white;
+}
+
+@media (min-width: 1200px) {
+  .slider-container {
+    width: 820px;
+  }
+}
+
+@media (min-width: 1640px) {
+  .slider-container {
+    width: 1280px;
+  }
+}

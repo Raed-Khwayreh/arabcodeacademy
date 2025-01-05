@@ -82,7 +82,7 @@ const InfiniteScrolling = () => {
       ) : (
         <>
           {data?.pages.map((page, i) => (
-            <AIToolsList isFetching={isFetching} key={i} data={page.data} />
+            <AIToolsList key={i} data={page.data} />
           ))}
           <div ref={ref}>
             {isFetchingNextPage && (

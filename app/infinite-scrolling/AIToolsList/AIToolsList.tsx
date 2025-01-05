@@ -7,10 +7,9 @@ import { ErrorMessage } from "@/types/ErrorMessage";
 
 interface AIListProps {
   data: AIToolsCardProps[];
-  isFetching: boolean;
 }
 
-const AIToolsList = ({ data, isFetching }: AIListProps) => {
+const AIToolsList = ({ data }: AIListProps) => {
   if (data.length === 0)
     return <ACAError errorMessage={ErrorMessage.NO_RESULTS} />;
 

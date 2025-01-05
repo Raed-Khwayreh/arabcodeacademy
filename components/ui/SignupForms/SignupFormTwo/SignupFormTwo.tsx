@@ -173,6 +173,7 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
             icon={<UserCheck />}
             width={fieldWidth}
             error={errors.firstName}
+            type="text"
           />
 
           <FormField
@@ -184,6 +185,7 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
             icon={<UserCheck />}
             width={fieldWidth}
             error={errors.lastName}
+            type="text"
           />
 
           <div className={styles.errorTextNameContainer}>
@@ -209,6 +211,7 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
           onChange={handleChange}
           icon={<UserIcon />}
           error={errors.username}
+          type="text"
         />
         {errors.username && (
           <div id={styles.userNameError} className={styles.errorText}>

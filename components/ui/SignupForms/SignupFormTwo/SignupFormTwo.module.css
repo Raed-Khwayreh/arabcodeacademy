@@ -1,0 +1,487 @@
+.formContainer {
+  width: 300px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 56px 25px 99px 25px;
+  box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.title,
+.subtitle {
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  color: #783ba2;
+  width: 100%;
+}
+
+#firstNameError,
+#lastNameError,
+#firstNameError,
+#userNameError,
+#locationError {
+  font-size: 14px;
+  color: #db4a39;
+  position: absolute;
+  text-align: right;
+  width: 268px;
+}
+
+#firstNameError {
+  top: 240px;
+  right: 25px;
+}
+
+#lastNameError {
+  top: 370px;
+  right: 25px;
+}
+
+#userNameError {
+  top: 550px;
+  right: 25px;
+}
+
+#locationError {
+  top: 685px;
+  right: 25px;
+}
+.formContainer .title {
+  margin-bottom: 17px;
+}
+
+.subtitle {
+  margin-bottom: 21px;
+}
+
+.fieldContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 53px;
+  margin-bottom: 63px;
+}
+
+.nameContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-bottom: -53px;
+}
+
+.checkboxLabel {
+  width: 180px;
+  display: flex;
+  flex-direction: row-reverse;
+  position: relative;
+  margin-bottom: 21px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #783ba2;
+  font-weight: 400;
+  line-height: 17px;
+}
+
+.checkboxLabel input {
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  right: -20px;
+  height: 17px;
+  margin: 4px;
+  width: 17px;
+  background-color: #fff;
+  border: 1px solid #783ba2;
+  border-radius: 2px;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+.checkboxLabel:hover input ~ .checkmark {
+  background-color: #f3e8ff;
+}
+
+.checkboxLabel input:checked ~ .checkmark {
+  background-color: #783ba2;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkboxLabel input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkboxLabel .checkmark:after {
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.errorCheckboxContainer {
+  margin-bottom: 21px;
+}
+
+.errorLabel {
+  color: #DB4A39;
+}
+
+.errorCheckmark {
+  border: 1px solid #DB4A39;
+  margin-bottom: 21px;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 20px;
+  width: 300px;
+}
+
+.errorText {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: right;
+  margin-top: -48px;
+}
+
+.accountPrompt {
+  color: #713488;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  margin-top: 30px;
+  gap: 5px;
+}
+
+.accountPrompt::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 1px;
+  background-color: #713488;
+  margin: 3px auto 0;
+}
+
+.loginPrompt {
+  margin-top: 22px;
+  font-weight: 400px;
+  size: 16px;
+  line-height: 19px;
+  color: #783ba2;
+}
+
+.socialContainer {
+  display: flex;
+  margin-top: 20px;
+  gap: 14px;
+}
+
+@media (min-width: 768px) {
+  .formContainer {
+    width: 880px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 54px 60px 68px 53px;
+    box-shadow: 0px 1px 20px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+
+  .title {
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    color: #783ba2;
+    width: 100%;
+    margin-bottom: 68px;
+    text-align: right;
+  }
+
+  .nameContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 30px;
+    margin-bottom: 0;
+  }
+
+  .title,
+  .subtitle {
+    text-align: right;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    color: #783ba2;
+    width: 100%;
+  }
+
+  .formContainer .title {
+    margin-bottom: 17px;
+  }
+
+  .subtitle {
+    margin-bottom: 61px;
+  }
+  .fieldContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .accountPrompt {
+    color: #713488;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    margin-top: 62px;
+    gap: 5px;
+  }
+
+  .accountPrompt::after {
+    content: "";
+    display: block;
+    width: 153px;
+    background-color: #713488;
+    margin: 3px auto 0;
+  }
+
+  .buttonGroup {
+    gap: 15px;
+    margin-top: 40px;
+    width: 100%;
+  }
+
+  .loginPrompt {
+    margin-top: 36px;
+    font-weight: 400px;
+    size: 18px;
+    line-height: 21px;
+    color: #783ba2;
+  }
+
+  .socialContainer {
+    display: flex;
+    margin-top: 30px;
+    gap: 29px;
+    margin-bottom: 80px;
+  }
+
+  .checkboxLabel {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    position: relative;
+    margin-bottom: 21px;
+    cursor: pointer;
+    font-size: 19px;
+    color: #783ba2;
+    font-weight: 400;
+    line-height: 23px;
+  }
+
+  .checkmark {
+    top: -3px;
+
+    right: -35px;
+    height: 22px;
+    margin: 4px;
+    width: 23px;
+  }
+
+  .checkboxLabel .checkmark:after {
+    left: 5px;
+    top: 2px;
+    width: 9px;
+    height: 14px;
+    border-width: 0 3px 3px 0;
+  }
+
+  #firstNameError,
+  #lastNameError,
+  #userNameError,
+  #locationError {
+    font-size: 17px;
+    color: #db4a39;
+    position: absolute;
+    font-weight: 400;
+    width: 100%;
+
+  }
+  #firstNameError {
+    top: 270px;
+    right: 60px;
+  }
+
+  #lastNameError {
+    top: 270px;
+    right: 450px;
+  }
+
+  #userNameError {
+    top: 470px;
+    right: 60px;
+  }
+
+  #locationError {
+    top: 610px;
+    right: 60px;
+  }
+
+  .errorCheckboxContainer {
+    margin-bottom: 21px;
+  }
+  
+  .errorLabel {
+    color: #DB4A39;
+  }
+  
+  .errorCheckmark {
+    border: 1px solid #DB4A39;
+    margin-bottom: 21px;
+  }
+}
+
+@media (min-width: 1640px) {
+  .formContainer {
+    width: 889px;
+    padding: 63px 88px 60px 72px;
+    box-shadow: 0px 1px 20px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+
+  .title {
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 27px;
+    color: #783ba2;
+    width: 100%;
+    margin-bottom: 75px;
+    text-align: right;
+  }
+
+  .nameContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 15px;
+    margin-bottom: 0;
+  }
+
+  .title,
+  .subtitle {
+    text-align: right;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    color: #783ba2;
+    width: 100%;
+  }
+
+  .formContainer .title {
+    margin-bottom: 17px;
+  }
+
+  .subtitle {
+    margin-bottom: 61px;
+  }
+
+  #firstNameError,
+  #lastNameError,
+  #userNameError,
+  #locationError {
+    font-size: 16px;
+    color: #db4a39;
+    position: absolute;
+    line-height: 19px;
+    font-weight: 400;
+    width: 100%;
+
+  }
+  #firstNameError {
+    top: 280px;
+    right: 80px;
+  }
+
+  #lastNameError {
+    top: 280px;
+    right: 460px;
+  }
+
+  #userNameError {
+    top: 480px;
+    right: 80px;
+  }
+
+  #locationError {
+    top: 625px;
+    right: 80px;
+  }
+  .fieldContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+
+    margin-bottom: 56px;
+  }
+
+  .accountPrompt {
+    color: #713488;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    margin-top: 40px;
+    gap: 5px;
+  }
+
+  .accountPrompt::after {
+    content: "";
+    display: block;
+    width: 157px;
+    background-color: #713488;
+    margin: 5px auto 0;
+  }
+
+  .loginPrompt {
+    margin-top: 54px;
+    font-weight: 400px;
+    size: 18px;
+    line-height: 21px;
+    color: #783ba2;
+  }
+
+  .socialContainer {
+    display: flex;
+    margin-top: 33px;
+    gap: 20px;
+  }
+
+  .errorCheckboxContainer {
+    margin-bottom: 21px;
+  }
+  
+  .errorLabel {
+    color: #DB4A39;
+  }
+  
+  .errorCheckmark {
+    border: 1px solid #DB4A39;
+    margin-bottom: 21px;
+  }
+}

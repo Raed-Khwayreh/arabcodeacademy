@@ -7,6 +7,8 @@ interface Props {
   size: "small" | "medium" | "large" | "xlarge";
   icon?: React.ReactNode;
   boxShadow?: string;
+  type?: string;
+  onClick?: () => void;
 }
 
 const ACAButton: React.FC<Props> = ({
@@ -15,11 +17,12 @@ const ACAButton: React.FC<Props> = ({
   size,
   icon,
   boxShadow,
+  onClick,
 }) => {
   const buttonClass = `${styles.button} ${styles[variant]} ${styles[size]}`;
 
   return (
-    <button className={buttonClass} style={{ boxShadow }}>
+    <button className={buttonClass} style={{ boxShadow }} onClick={onClick}>
       {text}
       <span className={styles.icon}>{icon}</span>
     </button>

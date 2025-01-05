@@ -1,0 +1,17 @@
+.signupPage {
+  display: flex;
+  justify-content: center;
+  padding: 55px 50px 55px 40px;
+}
+
+@media (min-width: 768px) {
+  .signupPage {
+    padding-top: 238px;
+  }
+}
+
+@media (min-width: 1640px) {
+  .signupPage {
+    padding-top: 333px;
+  }
+}

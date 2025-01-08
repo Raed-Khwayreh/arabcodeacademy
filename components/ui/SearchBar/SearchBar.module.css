@@ -12,6 +12,7 @@
   border-radius: 50px;
   box-sizing: border-box;
   background-color: white;
+  transition: 0.5s;
 }
 
 .active-searchBar {
@@ -46,6 +47,7 @@
 }
 
 .input {
+  transition: 0.5s;
   border: none;
   outline: none;
   font-size: 18px;

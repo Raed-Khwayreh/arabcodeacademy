@@ -7,10 +7,10 @@ import { useInView } from "react-intersection-observer";
 import styles from "./InfiniteScrolling.module.css";
 import ACAError from "@/components/ui/ACAError";
 import { ErrorMessage } from "@/types/ErrorMessage";
-import { SearchBar } from "@/components/ui";
-import FavoriteButton from "../ai-tools/FavoriteButton/FavoriteButton";
+
 import AIToolsList from "./AIToolsList/AIToolsList";
 import { fetchItems } from "./utils/fetchAItools";
+import Filters from "./Filters/Filters";
 
 const InfiniteScrolling = () => {
   const [isFavoritePressed, setIsFavoritePressed] = useState(false);
@@ -43,6 +43,7 @@ const InfiniteScrolling = () => {
         ? lastPage.page + 1
         : undefined;
     },
+    refetchOnWindowFocus: false,
   });
 
   const { ref, inView } = useInView({
@@ -63,18 +64,12 @@ const InfiniteScrolling = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles["header-container"]}>
-        <SearchBar
-          isDisabled={isFetching}
-          placeholder="....chatgpt"
-          handleOnSearch={handleOnSearch}
-        />
-        <FavoriteButton
-          isDisabled={isFetching}
-          handleOnPressFavorite={handleOnPressFavorite}
-          isFavoritePressed={isFavoritePressed}
-        />
-      </div>
+      <Filters
+        handleOnPressFavorite={handleOnPressFavorite}
+        isFavoritePressed={isFavoritePressed}
+        isFetching={isFetching}
+        handleOnSearch={handleOnSearch}
+      />
       {isLoading || isRefetching ? (
         <div className={styles["page-loading-container"]}>
           <ACALoading />

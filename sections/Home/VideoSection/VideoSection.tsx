@@ -5,6 +5,14 @@ import DhadIcon from "./icons/DhadIcon";
 import { ACAButton } from "@/components/ui";
 import DocumentListIcon from "@/components/ui/ACAButton/ACAButtonIcons/DocumentListIcon";
 
+/**
+ * A section on the home page that displays a video and some text about language.
+ *
+ * The video is either a small or large version, depending on the screen size.
+ * When the screen size changes, the video source is updated.
+ *
+ * @returns The video section component.
+ */
 const VideoSection: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
 

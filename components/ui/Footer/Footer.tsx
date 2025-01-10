@@ -1,12 +1,16 @@
 import React from "react";
 import styles from "./Footer.module.css";
 import ContactInfoCard from "@/components/ui/ContactInfoCard/ContactInfoCard";
-import SocialMedia from "@/components/ui/SocialMedia/SocialMedia";
-import { ACAButton, UnderlineText } from "@/components/ui";
-import FooterLinks from "@/components/ui/FooterLinks/FooterLinks";
+
+import {
+  ACAButton,
+  FooterLinks,
+  SocialMedia,
+  UnderlineText,
+} from "@/components/ui";
 import resourcesData from "./data/resourcesData";
 import Image from "next/image";
-import LogoImage from "@/public/images/arab-academy.png";
+import LogoImage from "@/public/images/footer-logo.webp";
 
 const Footer = () => {
   return (

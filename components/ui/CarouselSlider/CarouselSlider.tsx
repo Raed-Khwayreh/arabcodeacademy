@@ -37,7 +37,7 @@ const CarouselSlider: React.FC<CarouselSliderProps> = ({
     },
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     appendDots: (dots: any) => (
-      <div className={styles["dots-container"]}>{dots}</div>
+      <ul className={styles["dots-container"]}>{dots}</ul>
     ),
     infinite: generatedSliderList.length > 1,
     speed: 500,

@@ -30,6 +30,10 @@
   position: relative;
 }
 
+.image {
+  width: "100%";
+}
+
 .fade-in {
   animation: fadeIn 0.8s forwards;
   visibility: visible;

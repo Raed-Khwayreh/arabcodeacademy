@@ -50,6 +50,7 @@ const tajawal = localFont({
 
 export const metadata: Metadata = {
   title: "Arab Code Academy",
+  description: "الأكاديمية العربية لتعلم البرمجة وتطوير المهارات التقنية.",
   icons: {
     icon: "/favicon.svg",
   },
@@ -58,7 +59,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+children: React.ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>

@@ -40,6 +40,7 @@ const ProgressPagination = ({
   return (
     <div className={styles.container}>
       <button
+        aria-label="arrow-left-button"
         className={styles["arrow-left"]}
         onClick={() => {
           handlePageChange(currentPage - 1);
@@ -74,6 +75,7 @@ const ProgressPagination = ({
           ))}
       </div>
       <button
+        aria-label="arrow-right-button"
         className={styles["arrow-right"]}
         onClick={() => {
           handlePageChange(currentPage + 1);

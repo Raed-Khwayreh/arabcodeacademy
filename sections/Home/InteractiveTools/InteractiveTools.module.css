@@ -2,7 +2,7 @@
   display: flex;
   position: relative;
   background-position: center;
-  background-image: url("/images/interactive-tools-image.png");
+  background-image: url("/images/interactiveSection/interactive-tools-image.webp");
   background-size: cover;
   height: 856px;
 }
@@ -28,7 +28,7 @@
 @media (max-width: 767px) {
   .interactive-tools {
     height: 383px;
-  } 
+  }
   .promo-text-container {
     left: 50%;
     top: 40%;

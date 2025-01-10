@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import ImageSource from "@/public/images/learning-path-image.png";
+import ImageSource from "@/public/images/learningPath/learning-path-image.webp";
 import styles from "./LearningPath.module.css";
 import ACAButton from "@/components/ui/ACAButton/ACAButton";
 import ChalkboardTeacherIcon from "@/components/ui/ACAButton/ACAButtonIcons/ChalkboardTeacherIcon";

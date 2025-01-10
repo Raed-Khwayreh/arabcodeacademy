@@ -24,7 +24,7 @@ const CourseCard: React.FC<Props> = ({ courseData }) => {
           <Image
             className={styles.image}
             alt="course-image"
-            src={courseData.imageURL && "/images/courses/default-course.png"}
+            src={courseData.imageURL && "/images/courses/default-course.svg"}
             width={180}
             height={100}
           />

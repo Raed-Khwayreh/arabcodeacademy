@@ -1,6 +1,6 @@
 import React from "react";
-import FeatureList from "./FeatureList";
-import { imagesData, quizzSectionsData } from "./QuizzSectionData";
+import FeatureList from "./FeatureList/FeatureList";
+import { imagesData, quizzSectionsData } from "./mocks/QuizzSectionData";
 import Img from "next/image";
 import styles from "./QuizzSection.module.css";
 import Button from "@/components/ui/ACAButton/ACAButton";

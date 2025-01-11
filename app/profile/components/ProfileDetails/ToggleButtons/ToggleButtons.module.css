@@ -30,7 +30,7 @@
   gap: 7px;
 }
 
-@media (max-width: 1040px) {
+@media (max-width: 1024px) {
   .toggle-container {
     height: 111px;
     background-color: white;

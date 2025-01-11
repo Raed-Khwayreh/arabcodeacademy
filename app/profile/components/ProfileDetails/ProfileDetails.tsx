@@ -7,6 +7,7 @@ import avatar from "@/public/images/default-profile.webp";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import { ProfileDataProps } from "./mock/profileData";
 import ToggleButtons from "./ToggleButtons/ToggleButtons";
+import { BurgerMenu } from "@/components/ui/Navbar/icons";
 
 interface ProfileDetailsProps {
   data: ProfileDataProps;
@@ -22,12 +23,6 @@ const ProfileDetails = ({
   return (
     <section className={styles.container}>
       <div className={styles["header-container"]}>
-        <ACAButton
-          size="small"
-          variant="teal"
-          text="تعديل"
-          icon={<EditProfileIcon />}
-        />
         <div className={styles["header-details"]}>
           <ProfileInfo data={data} />
           <Image
@@ -38,10 +33,22 @@ const ProfileDetails = ({
             className={styles.profileImage}
           />
         </div>
+        <ACAButton
+          size="small"
+          variant="teal"
+          text="تعديل"
+          icon={<EditProfileIcon />}
+        />
+        <div className={styles.details}>
+          <p>تفاصيل</p>
+          <BurgerMenu color="var(--primary-color)" />
+        </div>
       </div>
       <ToggleButtons
-        completedCourses={data.coursesData.completedCourses}
-        coursesNum={data.coursesData.coursesNum}
+        completedCourses={
+          data.courses.filter((e) => e.userSteps === e.totalSteps).length
+        }
+        coursesNum={data.courses.length}
         activeToggleButton={activeToggleButton}
         onToggle={onToggle}
       />

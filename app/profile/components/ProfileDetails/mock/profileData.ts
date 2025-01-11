@@ -7,15 +7,11 @@ export interface ProfileDataProps {
     userName?: string;
     url?: string;
   }[];
-  coursesData: {
-    coursesNum: number;
-    completedCourses: number;
-    courses: {
-      courseName: string;
-      totalSteps: number;
-      completionRate: number;
-    }[];
-  };
+  courses: {
+    courseName: string;
+    totalSteps: number;
+    userSteps: number;
+  }[];
 }
 
 export const profileData: ProfileDataProps = {
@@ -39,9 +35,31 @@ export const profileData: ProfileDataProps = {
       url: "https://github.com/Raed-Khwayreh",
     },
   ],
-  coursesData: {
-    coursesNum: 12,
-    completedCourses: 2,
-    courses: [],
-  },
+  courses: [
+    {
+      courseName: "مقدمة لمحرك الألعاب اليونيتي unity",
+      userSteps: 5,
+      totalSteps: 20,
+    },
+    {
+      courseName: "تعلم الجت لإدارة البرمجيات من البداية للإحتراف ",
+      userSteps: 8,
+      totalSteps: 15,
+    },
+    {
+      courseName: "التعلم الآلي والذكاء الاصطناعي",
+      userSteps: 30,
+      totalSteps: 30,
+    },
+    {
+      courseName: "مقدمة للبرمجة باستخدام لغة الجافا سكربت java script",
+      userSteps: 0,
+      totalSteps: 30,
+    },
+    {
+      courseName: "أساسيات Html و Css",
+      userSteps: 43,
+      totalSteps: 50,
+    },
+  ],
 };

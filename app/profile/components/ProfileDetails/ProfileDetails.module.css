@@ -6,6 +6,7 @@
   color: var(--primary-color);
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .header-container {
@@ -13,11 +14,13 @@
   justify-content: space-between;
   margin: 56px 111px 24px 39px;
   align-items: end;
+  direction: rtl;
 }
 
 .header-details {
   display: flex;
   gap: 45px;
+  direction: ltr;
 }
 
 .info {
@@ -78,4 +81,63 @@
 .link-label a {
   font-size: 18px;
   font-weight: 700;
+}
+
+.details {
+  display: none;
+}
+
+@media (max-width: 1440px) {
+  .container {
+    width: 940px;
+  }
+  .header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 19px 0px 42px 0px;
+  }
+  .header-details {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .info {
+    align-items: center;
+  }
+  .links {
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  .links-container {
+    align-items: center;
+  }
+}
+
+@media (max-width: 1040px) {
+  .container {
+    width: 311px;
+  }
+  .user-name {
+    font-size: 18px;
+  }
+
+  .icon-label {
+    font-size: 14px;
+  }
+  .link-label a {
+    font-size: 14px;
+  }
+  .profileImage {
+    width: 100px;
+    height: 100px;
+  }
+  .details {
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 27px;
+    display: block;
+    display: flex;
+    gap: 10px;
+  }
 }

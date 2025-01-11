@@ -2,8 +2,10 @@
   margin-top: 104px;
   margin-bottom: 71px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 35px;
 }
 
 @media (max-width: 1440px) {

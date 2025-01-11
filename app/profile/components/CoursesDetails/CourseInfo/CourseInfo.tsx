@@ -16,7 +16,6 @@ export const CourseInfo = ({
   totalSteps,
   userSteps,
 }: CourseInfoProps) => {
-  const screenSize = useScreenSize();
   const complete = percentageOfCompletion(userSteps, totalSteps);
 
   return (

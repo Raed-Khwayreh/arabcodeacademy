@@ -96,6 +96,11 @@ const Signin = () => {
         Cookies.set('accessToken', data.token, { expires: 7 }); // Expires in 7 days
         Cookies.set('currentUser', JSON.stringify(data.user), { expires: 7 });
 
+        const loginEvent = new CustomEvent('userLogin', { 
+          detail: { user: data.user } 
+        });
+        window.dispatchEvent(loginEvent);
+
         router.push('/');
       } catch (error) {
         console.error('Error during login:', error);

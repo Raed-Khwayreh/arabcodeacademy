@@ -11,12 +11,17 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Cookies from 'js-cookie';
 
+interface UserData {
+  name?: string;
+  email: string;
+}
+
 const Navbar = () => {
   const router = useRouter();
   const [showResoursesList, setShowResoursesList] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [userData, setUserData] = useState<any>(null);
+  const [userData, setUserData] = useState<UserData | null>(null);
 
   useEffect(() => {
     const accessToken = Cookies.get('accessToken');
@@ -26,6 +31,17 @@ const Navbar = () => {
       setIsLoggedIn(true);
       setUserData(JSON.parse(currentUser));
     }
+
+    const handleLogin = (event: CustomEvent<{ user: UserData }>) => {
+      setIsLoggedIn(true);
+      setUserData(event.detail.user);
+    };
+
+    window.addEventListener('userLogin', handleLogin as EventListener);
+
+    return () => {
+      window.removeEventListener('userLogin', handleLogin as EventListener);
+    };
   }, []);
 
   const toggleSidebar = () => {

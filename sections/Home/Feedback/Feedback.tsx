@@ -18,7 +18,7 @@ const fetchReviews = async () => {
 const FeedbackListLazyComponent = dynamic(
   () => import("./FeedbackList/FeedbackList"),
   {
-    loading: () => <ACALoading />, // عرض نص أثناء تحميل المكون
+    loading: () => <ACALoading />,
     ssr: false,
   }
 );

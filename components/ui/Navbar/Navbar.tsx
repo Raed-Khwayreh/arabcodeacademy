@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import Image from "next/image";
 import { ACAButton, Sidebar } from "@/components/ui";
@@ -8,22 +8,51 @@ import { LoginIcon, ProfileCircleIcon } from "../ACAButton/ACAButtonIcons";
 import { ArrowDown, Avatar, BurgerMenu, Logout } from "./icons";
 import { subMenuList } from "@/sections/Home/Courses/mock/subMenuList";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import Cookies from 'js-cookie';
 
 const Navbar = () => {
+  const router = useRouter();
   const [showResoursesList, setShowResoursesList] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [userData, setUserData] = useState<any>(null);
+
+  useEffect(() => {
+    const accessToken = Cookies.get('accessToken');
+    const currentUser = Cookies.get('currentUser');
+    
+    if (accessToken && currentUser) {
+      setIsLoggedIn(true);
+      setUserData(JSON.parse(currentUser));
+    }
+  }, []);
+
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const handleOnlogin = () => {
-    setIsLoggedIn(true);
-    setIsSidebarOpen(false);
-  };
+  const handleOnLogOut = async () => {
+    try {
+      const response = await fetch('/api/auth/signout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
-  const handleOnLogOut = () => {
-    setIsLoggedIn(false);
+      if (!response.ok) {
+        throw new Error('Failed to logout');
+      }
+
+      Cookies.remove('accessToken');
+      Cookies.remove('currentUser');
+      setIsLoggedIn(false);
+      setUserData(null);
+      router.push('/');
+    } catch (error) {
+      console.error('Error during logout:', error);
+    }
   };
 
   const handleOnClick = () => {
@@ -36,7 +65,7 @@ const Navbar = () => {
         <Sidebar
           handleOnClick={handleOnClick}
           isLoggedIn={isLoggedIn}
-          onLogin={handleOnlogin}
+          onLogin={() => router.push('/signin')}
         />
       )}
       <div className={styles["burger-menu"]} onClick={toggleSidebar}>
@@ -45,7 +74,10 @@ const Navbar = () => {
             <div onClick={handleOnLogOut}>
               <Logout />
             </div>
-            <Avatar />
+            <div className={styles.userInfo}>
+              <Avatar />
+              {userData?.name && <span className={styles.userName}>{userData.name}</span>}
+            </div>
           </div>
         )}
         <BurgerMenu />
@@ -55,7 +87,10 @@ const Navbar = () => {
           <div onClick={handleOnLogOut}>
             <Logout />
           </div>
-          <Avatar />
+          <div className={styles.userInfo}>
+            <Avatar />
+            {userData?.name && <span className={styles.userName}>{userData.name}</span>}
+          </div>
         </div>
       ) : (
         <div className={styles["buttons-container"]}>
@@ -67,14 +102,14 @@ const Navbar = () => {
               icon={<ProfileCircleIcon />}
             />
           </Link>
-          <div onClick={handleOnlogin}>
+          <Link href="/signin">
             <ACAButton
               size="medium"
               variant="tomato"
               text="تسجيل الدخول"
               icon={<LoginIcon />}
             />
-          </div>
+          </Link>
         </div>
       )}
       <ul className={styles.links}>
@@ -86,7 +121,7 @@ const Navbar = () => {
         >
           <li>المصادر</li>
           {showResoursesList && (
-            <ul className={styles["resouces-menu"]} style={{}}>
+            <ul className={styles["resouces-menu"]}>
               {subMenuList.map((e, i) => {
                 return (
                   <li key={i}>

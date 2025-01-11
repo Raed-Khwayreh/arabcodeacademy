@@ -75,12 +75,27 @@
   cursor: pointer;
 }
 
-.logout {
+.userInfo {
   display: flex;
-  gap: 25px;
   align-items: center;
+  gap: 8px;
   cursor: pointer;
 }
+
+.userName {
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+
+
 
 .arrowDown {
   transition: 0.3s;

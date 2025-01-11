@@ -3,7 +3,6 @@ import styles from "./CourseInfo.module.css";
 import { ArrowUp, ContinueIcon } from "@/app/profile/icons";
 import { ACAButton } from "@/components/ui";
 import { percentageOfCompletion } from "./utils/percentageOfCompletion";
-import useScreenSize from "@/utils/useScreenSize";
 
 interface CourseInfoProps {
   courseName: string;

@@ -9,11 +9,15 @@ import { ArrowDown, Avatar, BurgerMenu, Logout } from "./icons";
 import { subMenuList } from "@/sections/Home/Courses/mock/subMenuList";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
 interface UserData {
-  name?: string;
   email: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+  country: string;
+  id: number;
 }
 
 const Navbar = () => {
@@ -24,9 +28,9 @@ const Navbar = () => {
   const [userData, setUserData] = useState<UserData | null>(null);
 
   useEffect(() => {
-    const accessToken = Cookies.get('accessToken');
-    const currentUser = Cookies.get('currentUser');
-    
+    const accessToken = Cookies.get("accessToken");
+    const currentUser = Cookies.get("currentUser");
+
     if (accessToken && currentUser) {
       setIsLoggedIn(true);
       setUserData(JSON.parse(currentUser));
@@ -37,10 +41,10 @@ const Navbar = () => {
       setUserData(event.detail.user);
     };
 
-    window.addEventListener('userLogin', handleLogin as EventListener);
+    window.addEventListener("userLogin", handleLogin as EventListener);
 
     return () => {
-      window.removeEventListener('userLogin', handleLogin as EventListener);
+      window.removeEventListener("userLogin", handleLogin as EventListener);
     };
   }, []);
 
@@ -50,24 +54,24 @@ const Navbar = () => {
 
   const handleOnLogOut = async () => {
     try {
-      const response = await fetch('/api/auth/signout', {
-        method: 'POST',
+      const response = await fetch("/api/auth/signout", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       });
 
       if (!response.ok) {
-        throw new Error('Failed to logout');
+        throw new Error("Failed to logout");
       }
 
-      Cookies.remove('accessToken');
-      Cookies.remove('currentUser');
+      Cookies.remove("accessToken");
+      Cookies.remove("currentUser");
       setIsLoggedIn(false);
       setUserData(null);
-      router.push('/');
+      router.push("/");
     } catch (error) {
-      console.error('Error during logout:', error);
+      console.error("Error during logout:", error);
     }
   };
 
@@ -81,7 +85,7 @@ const Navbar = () => {
         <Sidebar
           handleOnClick={handleOnClick}
           isLoggedIn={isLoggedIn}
-          onLogin={() => router.push('/signin')}
+          onLogin={() => router.push("/signin")}
         />
       )}
       <div className={styles["burger-menu"]} onClick={toggleSidebar}>
@@ -89,10 +93,6 @@ const Navbar = () => {
           <div className={styles["logout-mobile"]}>
             <div onClick={handleOnLogOut}>
               <Logout />
-            </div>
-            <div className={styles.userInfo}>
-              <Avatar />
-              {userData?.name && <span className={styles.userName}>{userData.name}</span>}
             </div>
           </div>
         )}
@@ -105,7 +105,9 @@ const Navbar = () => {
           </div>
           <div className={styles.userInfo}>
             <Avatar />
-            {userData?.name && <span className={styles.userName}>{userData.name}</span>}
+            {userData && (
+              <span className={styles.userName}>{userData.username}</span>
+            )}
           </div>
         </div>
       ) : (

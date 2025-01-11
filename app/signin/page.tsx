@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import { ACAButton } from "@/components/ui";
 import FormField from "@/components/ui/FormField/FormField";
@@ -9,7 +9,7 @@ import SocialButton from "@/components/ui/SocialButtons/SocialButton";
 import GoogleIcon from "@/components/ui/SocialButtons/SocialIcon/GoogleIcon";
 import FacebookIcon from "@/components/ui/SocialButtons/SocialIcon/FacebookIcon";
 import { useRouter } from "next/navigation";
-
+import Cookies from 'js-cookie';
 
 interface FormData {
   email: string;
@@ -20,8 +20,6 @@ interface FormErrors {
   email: string;
   password: string;
 }
-
-
 
 const Signin = () => {
   const router = useRouter();
@@ -34,6 +32,15 @@ const Signin = () => {
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    const accessToken = Cookies.get('accessToken');
+    const currentUser = Cookies.get('currentUser');
+    
+    if (accessToken && currentUser) {
+      router.replace('/');
+    }
+  }, [router]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -85,9 +92,9 @@ const Signin = () => {
           throw new Error(data.error || 'حدث خطأ أثناء تسجيل الدخول');
         }
 
-        // Store token and user data
-        localStorage.setItem('accessToken', data.token);
-        localStorage.setItem('currentUser', JSON.stringify(data.user));
+        // Store token in cookies
+        Cookies.set('accessToken', data.token, { expires: 7 }); // Expires in 7 days
+        Cookies.set('currentUser', JSON.stringify(data.user), { expires: 7 });
 
         router.push('/');
       } catch (error) {

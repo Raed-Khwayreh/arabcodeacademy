@@ -8,7 +8,7 @@ import DocumentCheckIcon from "@/components/ui/ACAButton/ACAButtonIcons/Document
 
 const QuizzSection = () => {
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <div className={styles.leftContent}>
         {quizzSectionsData.map((section, index) => (
           <FeatureList
@@ -38,7 +38,7 @@ const QuizzSection = () => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

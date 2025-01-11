@@ -3,17 +3,14 @@
 import React, { useState, useRef, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./AITools.module.css";
-import ACALoading from "@/components/ui/ACALoading";
-import ACAError from "@/components/ui/ACAError";
+
 import { generateNumbersList } from "./utils/generateNumbersList";
 import { getPageSize } from "./utils/getPageSize";
-import { SearchBar } from "@/components/ui";
-import FavoriteButton from "./FavoriteButton/FavoriteButton";
-import AIToolsList from "./AIToolsList/AIToolsList";
-import ProgressPagination from "./ProgressPagination/ProgressPagination";
+import { ACAError, ACALoading, SearchBar } from "@/components/ui";
 import { AIToolsCardProps } from "@/types/AIToolCardProps";
 import useSWR, { mutate } from "swr";
 import { ErrorMessage } from "@/types/ErrorMessage";
+import { AIToolsList, FavoriteButton, ProgressPagination } from "./components";
 
 const fetchAIToolsData = async (url: string) => {
   const response = await fetch(url);

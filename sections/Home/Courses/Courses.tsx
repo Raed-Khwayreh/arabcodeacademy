@@ -36,7 +36,7 @@ const Courses = async () => {
   if (!courses) return <ACALoading />;
 
   return (
-    <div className={styles.courses}>
+    <section className={styles.courses}>
       <div className={styles["search-container"]}>
         <SearchBar placeholder="مقدمة لمحرك الألعاب اليونتي ....." />
         <UnderlineText
@@ -58,7 +58,7 @@ const Courses = async () => {
           courses={courses.filter((e: CourseProps) => e.status !== "available")}
         />
       </div>
-    </div>
+    </section>
   );
 };
 

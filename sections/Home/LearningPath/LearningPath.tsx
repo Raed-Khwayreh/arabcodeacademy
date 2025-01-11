@@ -23,7 +23,7 @@ const LearningPath = () => {
   });
 
   return (
-    <div className={styles.learning_path_section}>
+    <section className={styles.learning_path_section}>
       <div className={styles.promotext_style}>
         <PromoText
           title="التجربة التعليمية في الأكاديمية العربية للبرمجة"
@@ -59,7 +59,7 @@ const LearningPath = () => {
           priority
         />
       </div>
-    </div>
+    </section>
   );
 };
 

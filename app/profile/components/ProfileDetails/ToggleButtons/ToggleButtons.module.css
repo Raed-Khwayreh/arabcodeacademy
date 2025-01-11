@@ -1,0 +1,30 @@
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid var(--primary-color);
+}
+
+.toggle-button {
+  width: 230px;
+  padding: 20px 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-size: 23px;
+  font-weight: 700;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.active-button {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.toggle-button-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}

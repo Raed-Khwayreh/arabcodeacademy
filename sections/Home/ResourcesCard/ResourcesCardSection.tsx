@@ -14,11 +14,11 @@ const ResourcesListLazyComponent = dynamic(
 
 const ResourcesCardSection: React.FC = () => {
   return (
-    <div className={styles.main}>
+    <section className={styles.main}>
       <div className={styles["slider-container"]}>
         <ResourcesListLazyComponent />
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -35,11 +35,11 @@ const Feedback = async () => {
   if (!reviews) return <ACALoading />;
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <div className={styles["reviews-list-container"]}>
         <FeedbackListLazyComponent reviews={reviews} />
       </div>
-    </div>
+    </section>
   );
 };
 

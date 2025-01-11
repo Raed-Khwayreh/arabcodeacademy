@@ -6,7 +6,7 @@ import PhoneIcon from "@/components/ui/ACAButton/ACAButtonIcons/PhoneIcon";
 
 const InteractiveTools = () => {
   return (
-    <div className={styles["interactive-tools"]}>
+    <section className={styles["interactive-tools"]}>
       <div className={styles["promo-text-container"]}>
         <PromoText
           title="أدوات تفاعلية والعاب تعليمية"
@@ -22,7 +22,7 @@ const InteractiveTools = () => {
           }
         />
       </div>
-    </div>
+    </section>
   );
 };
 

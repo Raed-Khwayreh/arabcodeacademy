@@ -57,7 +57,9 @@ const Navbar = () => {
           <div onClick={handleOnLogOut}>
             <Logout />
           </div>
-          <Avatar />
+          <Link href="/profile">
+            <Avatar />
+          </Link>
         </div>
       ) : (
         <div className={styles["buttons-container"]}>

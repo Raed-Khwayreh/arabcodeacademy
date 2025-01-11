@@ -90,8 +90,14 @@ const Navbar = () => {
       )}
       <div className={styles["burger-menu"]} onClick={toggleSidebar}>
         {isLoggedIn && (
-          <div className={styles["logout-mobile"]}>
-            <div onClick={handleOnLogOut}>
+          <div className={styles["mobile-user-info"]}>
+            <div className={styles.userInfo}>
+              <Avatar />
+              {userData && (
+                <span className={styles.userName}>{userData.username}</span>
+              )}
+            </div>
+            <div className={styles["logout-mobile"]} onClick={handleOnLogOut}>
               <Logout />
             </div>
           </div>

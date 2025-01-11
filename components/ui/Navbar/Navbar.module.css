@@ -73,6 +73,7 @@
 .burger-menu {
   display: none;
   cursor: pointer;
+  position: relative;
 }
 
 .image-contanier {
@@ -109,6 +110,12 @@
 
 .arrowDown {
   transition: 0.3s;
+}
+
+.mobile-user-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 @media (max-width: 1440px) {
@@ -156,5 +163,25 @@
     align-items: center;
     gap: 12px;
     cursor: pointer;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 16.5px 20px;
+  }
+
+  .burger-menu {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .userInfo {
+    padding: 4px 8px;
+  }
+
+  .userName {
+    font-size: 12px;
   }
 }

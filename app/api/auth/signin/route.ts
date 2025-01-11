@@ -3,6 +3,11 @@ import fs from 'fs';
 import path from 'path';
 import jwt from 'jsonwebtoken';
 
+  /**
+   * @description Handles login request. Returns a JSON response with the user data and the JWT token
+   * @param {Request} request The request object
+   * @returns {NextResponse} The response object
+   */
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -12,7 +17,7 @@ export async function POST(request: Request) {
     const dbData = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
     
     const user = dbData.users.find(
-      (u: any) => u.email === email && u.password === password
+      (u: { email: string; password: string }) => u.email === email && u.password === password
     );
 
     if (!user) {

@@ -41,16 +41,20 @@ const Navbar = () => {
           onLogin={handleOnlogin}
         />
       )}
-      <div className={styles["burger-menu"]} onClick={toggleSidebar}>
+      <div className={styles["burger-menu"]}>
         {isLoggedIn && (
           <div className={styles["logout-mobile"]}>
             <div onClick={handleOnLogOut}>
               <Logout />
             </div>
-            <Avatar />
+            <Link href="/profile">
+              <Avatar />
+            </Link>
           </div>
         )}
-        <BurgerMenu />
+        <button onClick={toggleSidebar}>
+          <BurgerMenu />
+        </button>
       </div>
       {isLoggedIn ? (
         <div className={styles.logout}>

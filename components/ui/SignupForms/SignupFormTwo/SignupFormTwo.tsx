@@ -26,6 +26,7 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
   const [checked, setChecked] = useState(false);
   const [fieldWidth, setFieldWidth] = useState("100%");
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -154,7 +155,14 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
     setSubmitted(true);
 
     if (await validate()) {
-      onSubmit(formData);
+      setIsLoading(true);
+      try {
+        await onSubmit(formData);
+      } catch (error) {
+        console.error("Error during form submission:", error);
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -219,7 +227,9 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
       </div>
       <div
         className={
-          !checked && submitted ? styles.errorCheckboxContainer : styles.checkboxContainer
+          !checked && submitted
+            ? styles.errorCheckboxContainer
+            : styles.checkboxContainer
         }
       >
         <label
@@ -253,20 +263,20 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
 
       <div className={styles.buttonGroup}>
         <ACAButton
-          size="small"
-          text="انشاء حسابي"
-          icon={<ProfileCircleIcon />}
+          text="إنشاء حساب"
           variant="teal"
+          size="medium"
           type="submit"
+          loading={isLoading}
+          icon={<ProfileCircleIcon />}
         />
-
         <ACAButton
-          size="small"
           text="رجوع"
-          icon={<FaAngleRight size={25} />}
           variant="tomato"
-          type="button"
+          size="medium"
           onClick={onBack}
+          disabled={isLoading}
+          icon={<FaAngleRight />}
         />
       </div>
 

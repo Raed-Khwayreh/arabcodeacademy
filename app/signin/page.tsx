@@ -26,6 +26,7 @@ interface FormData {
 interface FormErrors {
   email: string;
   password: string;
+  submit?: string;
 }
 
 const Signin = () => {
@@ -42,6 +43,7 @@ const Signin = () => {
 
   const [credentialError, setCredentialError] = useState("");
   const [currentImage, setCurrentImage] = useState(smallImage);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -105,39 +107,42 @@ const Signin = () => {
     e.preventDefault();
 
     if (validate()) {
+      setIsLoading(true);
       try {
-        const loginData = {
-          email: formData.email,
-          password: formData.password,
-          username: formData.email,
-        };
-
         const response = await fetch("/api/auth/signin", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(loginData),
+          body: JSON.stringify(formData),
         });
 
         const data = await response.json();
 
-        if (!response.ok) {
-          setCredentialError("بيانات الدخول غير صحيحة");
-          return;
+        if (response.ok) {
+          Cookies.set("accessToken", data.token, { expires: 7 });
+          Cookies.set("currentUser", JSON.stringify(data.user), { expires: 7 });
+
+          const loginEvent = new CustomEvent("userLogin", {
+            detail: { user: data.user },
+          });
+          window.dispatchEvent(loginEvent);
+
+          router.push("/");
+        } else {
+          setErrors((prev) => ({
+            ...prev,
+            submit: data.message || "حدث خطأ أثناء تسجيل الدخول",
+          }));
         }
-
-        Cookies.set("accessToken", data.token, { expires: 7 });
-        Cookies.set("currentUser", JSON.stringify(data.user), { expires: 7 });
-
-        const loginEvent = new CustomEvent("userLogin", {
-          detail: { user: data.user },
-        });
-        window.dispatchEvent(loginEvent);
-        router.push("/");
       } catch (error) {
-        console.error("Error during login:", error);
-        setCredentialError("حدث خطأ أثناء تسجيل الدخول");
+        console.error(error);
+        setErrors((prev) => ({
+          ...prev,
+          submit: "حدث خطأ أثناء تسجيل الدخول",
+        }));
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -198,10 +203,11 @@ const Signin = () => {
 
           <div className={styles.buttonContainer}>
             <ACAButton
-              size="medium"
               text="تسجيل الدخول"
               variant="teal"
+              size="medium"
               type="submit"
+              loading={isLoading}
               icon={<LogOutIcon />}
             />
             <ACAButton

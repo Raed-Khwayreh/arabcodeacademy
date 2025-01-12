@@ -299,7 +299,6 @@
     align-items: center;
     gap: 41px;
     width: 100%;
-    /* justify-content: center; */
     margin-bottom: 25px;
   }
 
@@ -326,7 +325,7 @@
     width: 100%;
     justify-content: center;
     align-items: center;
-    padding: 40px;
+    padding: 200px;
     min-height: 100vh;
   }
 

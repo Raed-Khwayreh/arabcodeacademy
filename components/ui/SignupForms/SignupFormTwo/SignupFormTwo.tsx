@@ -25,6 +25,7 @@ interface SignupFormTwoProps {
 const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
   const [checked, setChecked] = useState(false);
   const [fieldWidth, setFieldWidth] = useState("100%");
+  const [submitted, setSubmitted] = useState(false);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -133,9 +134,12 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
     if (!formData.country) {
       newErrors.country = "يرجى اختيار بلد إقامتك";
       isValid = false;
-    } 
+    }
 
-
+    if (!checked) {
+      newErrors.conditions = "";
+      isValid = false;
+    }
 
     setErrors(newErrors);
     return isValid;
@@ -147,6 +151,7 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
    */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitted(true);
 
     if (await validate()) {
       onSubmit(formData);
@@ -213,32 +218,36 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
         />
       </div>
       <div
-        className={`${styles.checkboxContainer} ${
-          errors.conditions ? styles.errorCheckboxContainer : ""
-        }`}
+        className={
+          !checked && submitted ? styles.errorCheckboxContainer : styles.checkboxContainer
+        }
       >
         <label
           className={`${styles.checkboxLabel} ${
-            errors.conditions ? styles.errorLabel : ""
+            !checked && submitted ? styles.errorLabel : ""
           }`}
         >
-          يرجى تأكيد موافقتك على سياسة الخصوصية الخاصة بنا{" "}
+          <span>يرجى تأكيد موافقتك على سياسة الخصوصية الخاصة بنا</span>
           <input
             type="checkbox"
             checked={checked}
-            onChange={() => {
-              setChecked(!checked);
-              if (!checked) setErrors({ ...errors, conditions: "" });
+            onChange={(e) => {
+              setChecked(e.target.checked);
+              if (e.target.checked) {
+                setErrors((prev) => ({ ...prev, conditions: "" }));
+              }
             }}
           />
           <span
             className={`${styles.checkmark} ${
-              errors.conditions ? styles.errorCheckmark : ""
+              !checked && submitted ? styles.errorCheckmark : ""
             }`}
           ></span>
         </label>
-        {errors.conditions && (
-          <div className={styles.errorText}>{errors.conditions}</div>
+        {errors.conditions && errors.conditions !== "" && (
+          <div className={styles.errorText} style={{ color: "#db4a39" }}>
+            {errors.conditions}
+          </div>
         )}
       </div>
 

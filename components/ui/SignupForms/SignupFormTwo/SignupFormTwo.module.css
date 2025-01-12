@@ -108,12 +108,20 @@
 }
 
 .errorLabel {
-  color: #db4a39;
+  color: #db4a39 !important;
 }
 
 .errorCheckmark {
-  border: 1px solid #db4a39;
-  margin-bottom: 21px;
+  border: 1px solid #db4a39 !important;
+}
+
+.errorText {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: right;
+  margin-top: 5px;
+  color: #db4a39;
 }
 
 .buttonGroup {
@@ -122,14 +130,6 @@
   gap: 5px;
   margin-top: 20px;
   width: 300px;
-}
-
-.errorText {
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 16px;
-  text-align: right;
-  margin-top: -48px;
 }
 
 .accountPrompt {
@@ -288,12 +288,11 @@
   }
 
   .errorLabel {
-    color: #db4a39;
+    color: #db4a39 !important;
   }
 
   .errorCheckmark {
-    border: 1px solid #db4a39;
-    margin-bottom: 21px;
+    border: 1px solid #db4a39 !important;
   }
 }
 
@@ -384,11 +383,10 @@
   }
 
   .errorLabel {
-    color: #db4a39;
+    color: #db4a39 !important;
   }
 
   .errorCheckmark {
-    border: 1px solid #db4a39;
-    margin-bottom: 21px;
+    border: 1px solid #db4a39 !important;
   }
 }

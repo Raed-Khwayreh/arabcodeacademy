@@ -132,7 +132,7 @@ const Signin = () => {
         } else {
           setErrors((prev) => ({
             ...prev,
-            submit: data.message || "حدث خطأ أثناء تسجيل الدخول",
+            submit: data.error || "حدث خطأ أثناء تسجيل الدخول",
           }));
         }
       } catch (error) {
@@ -188,6 +188,11 @@ const Signin = () => {
               error={errors.password || credentialError}
               labelAlign="center"
             />
+            <div style={{ position: 'relative', width: '100%' }}>
+              {errors.submit && (
+                <div className={styles.errorMessage}>{errors.submit}</div>
+              )}
+            </div>
           </div>
 
           <div className={styles.optionsContainer}>

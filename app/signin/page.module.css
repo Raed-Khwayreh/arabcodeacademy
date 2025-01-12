@@ -104,10 +104,9 @@
   font-size: 14px;
   text-align: center;
   line-height: 17px;
-  margin-bottom: 20px;
   font-weight: 400;
   width: 100%;
-  top: 220px;
+  top: 20px;
 }
 
 .optionsContainer {
@@ -270,15 +269,12 @@
   }
 
   .errorMessage {
-    position: absolute;
-    color: #db4a39;
     font-size: 17px;
     text-align: center;
     line-height: 20px;
-    margin-bottom: 20px;
     font-weight: 400;
     width: 100%;
-    top: 220px;
+    top: -50px;
   }
 
   .buttonContainer {

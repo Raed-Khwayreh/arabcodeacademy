@@ -24,17 +24,9 @@
 }
 
 .fieldContainer > :last-child {
-  margin-bottom: 15px;
+  margin-bottom: 50px;
 }
-.errorText {
-  color: #db4a39;
-  width: 263px;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 15px;
-  text-align: center;
-  margin-top: -50px;
-}
+
 .accountPrompt {
   color: #713488;
   font-weight: 500;
@@ -126,16 +118,6 @@
     margin-top: 30px;
     gap: 29px;
   }
-
-  .errorText {
-    color: #db4a39;
-    width: 100%;
-    font-weight: 400;
-    font-size: 17px;
-    line-height: 20px;
-    text-align: right;
-    margin-top: -55px;
-  }
 }
 
 @media (min-width: 1640px) {
@@ -196,15 +178,5 @@
     display: flex;
     margin-top: 33px;
     gap: 20px;
-  }
-
-  .errorText {
-    color: #db4a39;
-    width: 100%;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
-    text-align: right;
-    margin-top: -55px;
   }
 }

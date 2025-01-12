@@ -10,10 +10,14 @@ import GoogleIcon from "@/components/ui/SocialButtons/SocialIcon/GoogleIcon";
 import FacebookIcon from "@/components/ui/SocialButtons/SocialIcon/FacebookIcon";
 import { useRouter } from "next/navigation";
 import Cookies from 'js-cookie';
+import Image from "next/image";
+import LogOutIcon from "@/components/ui/ACAButton/ACAButtonIcons/LoginIcon";
+import { ProfileCircleIcon } from "@/components/ui/ACAButton/ACAButtonIcons";
 
 interface FormData {
   email: string;
   password: string;
+  username?: string;
 }
 
 interface FormErrors {
@@ -32,6 +36,8 @@ const Signin = () => {
     email: "",
     password: "",
   });
+  
+  const [credentialError, setCredentialError] = useState("");
 
   useEffect(() => {
     const accessToken = Cookies.get('accessToken');
@@ -47,6 +53,8 @@ const Signin = () => {
   ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    setErrors(prev => ({ ...prev, [name]: "" }));
+    setCredentialError(""); // Clear credential error when user types
   };
 
   const validate = () => {
@@ -57,10 +65,7 @@ const Signin = () => {
     let isValid = true;
 
     if (!formData.email) {
-      newErrors.email = "الرجاء إدخال بريدك الإلكتروني";
-      isValid = false;
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "يرجى إدخال بريد إلكتروني صحيح";
+      newErrors.email = "الرجاء إدخال اسم المستخدم أو البريد الإلكتروني";
       isValid = false;
     }
 
@@ -78,36 +83,38 @@ const Signin = () => {
 
     if (validate()) {
       try {
+        const loginData = {
+          email: formData.email,
+          password: formData.password,
+          username: formData.email
+        };
+
         const response = await fetch('/api/auth/signin', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(loginData),
         });
 
         const data = await response.json();
 
         if (!response.ok) {
-          throw new Error(data.error || 'حدث خطأ أثناء تسجيل الدخول');
+          setCredentialError("بيانات الدخول غير صحيحة");
+          return;
         }
 
-        // Store token in cookies
-        Cookies.set('accessToken', data.token, { expires: 7 }); // Expires in 7 days
+        Cookies.set('accessToken', data.token, { expires: 7 });
         Cookies.set('currentUser', JSON.stringify(data.user), { expires: 7 });
 
         const loginEvent = new CustomEvent('userLogin', { 
           detail: { user: data.user } 
         });
         window.dispatchEvent(loginEvent);
-
         router.push('/');
       } catch (error) {
         console.error('Error during login:', error);
-        setErrors({
-          email: error instanceof Error ? error.message : "حدث خطأ أثناء تسجيل الدخول",
-          password: error instanceof Error ? error.message : "حدث خطأ أثناء تسجيل الدخول"
-        });
+        setCredentialError("حدث خطأ أثناء تسجيل الدخول");
       }
     }
   };
@@ -119,72 +126,87 @@ const Signin = () => {
   return (
     <div className={styles.loginContainer}>
       <form className={styles.formContainer} onSubmit={handleSubmit}>
-        <div className={styles.title}>تسجيل الدخول</div>
-
-        <FormField
-          label="اسم المستخدم أو البريد الإلكتروني"
-          placeholder="أدخل بريدك الإلكتروني"
-          icon={<EnvelopeIcon />}
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          error={errors.email}
-        />
-        {errors.email && <div className={styles.errorText}>{errors.email}</div>}
-
-        <FormField
-          label="كلمة المرور"
-          placeholder="أدخل كلمة المرور"
-          icon={<LockIcon />}
-          name="password"
-          type="password"
-          value={formData.password}
-          onChange={handleChange}
-          error={errors.password}
-        />
-        {errors.password && (
-          <div className={styles.errorText}>{errors.password}</div>
-        )}
-
-        <div className={styles.optionsContainer}>
-          <label className={styles.checkboxLabel}>
-            <input type="checkbox" />
-            <span className={styles.checkmark}></span> إبقاء متصلاً
-          </label>
-          <a href="#" className={styles.forgotPassword}>
-            نسيت كلمة المرور؟
-          </a>
-        </div>
-
-        <div className={styles.buttonContainer}>
-          <ACAButton
-            size="medium"
-            text="تسجيل الدخول"
-            variant="teal"
-            type="submit"
-          />
-          <ACAButton
-            size="medium"
-            text="إنشاء حساب جديد"
-            variant="tomato"
-            type="button"
-            onClick={handleSignupRedirect}
+        <div className={styles.imageContainer}>
+          <Image
+            src="/images/loginPage.JPG"
+            alt="Login"
+            width={270}
+            height={240}
+            className={styles.image}
+            priority
+            
           />
         </div>
+        <div className={styles.formContent}>
+          <div className={styles.felidsContainer}>
+            <FormField
+              label="اسم المستخدم أو البريد الإلكتروني"
+              placeholder=" أدخل بريدك الإلكتروني أو اسم المستخدم"
+              icon={<EnvelopeIcon />}
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              error={errors.email}
+              labelAlign="center"
 
-        <div className={styles.divider}>أو</div>
+            />
 
-        <div className={styles.socialContainer}>
-          <SocialButton
-            icon={<GoogleIcon />}
-            text="Google"
-            variant="google"
-          />
-          <SocialButton
-            icon={<FacebookIcon />}
-            text="Facebook"
-            variant="facebook"
-          />
+            <FormField
+              label="كلمة المرور"
+              placeholder="أدخل كلمة المرور"
+              icon={<LockIcon />}
+              name="password"
+              type="password"
+              value={formData.password}
+              onChange={handleChange}
+              error={errors.password || credentialError}
+              labelAlign="center"
+            />
+          </div>
+
+          <div className={styles.optionsContainer}>
+            <label className={styles.checkboxLabel}>
+              البقاء متصلا 
+              <input type="checkbox" />
+              <span className={styles.checkmark}></span>
+            </label>
+            <a href="#" className={styles.forgotPassword}>
+              نسيت كلمة المرور؟
+            </a>
+          </div>
+
+          <div className={styles.buttonContainer}>
+            <ACAButton
+              size="small"
+              text="تسجيل الدخول"
+              variant="teal"
+              type="submit"
+              icon={<LogOutIcon/>}
+            />
+            <ACAButton
+              size="small"
+              text="إنشاء حساب جديد"
+              variant="tomato"
+              type="button"
+              onClick={handleSignupRedirect}
+              icon={<ProfileCircleIcon/>}
+            />
+          </div>
+
+          <div className={styles.divider}>يمكنك تسجيل الدخول باستخدام</div>
+
+          <div className={styles.socialContainer}>
+            <SocialButton
+              icon={<GoogleIcon />}
+              text="Google"
+              variant="google"
+            />
+            <SocialButton
+              icon={<FacebookIcon />}
+              text="Facebook"
+              variant="facebook"
+            />
+          </div>
         </div>
       </form>
     </div>

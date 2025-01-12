@@ -71,15 +71,16 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    setErrors({ ...errors, [name]: "" });
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    // Clear error when user starts typing
+    setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
   /**
    * Checks if a given username already exists in the database.
    * @param username The username to check.
    * @returns A boolean indicating if the username exists.
-   **/
+   */
 
   const checkUsernameExists = async (username: string): Promise<boolean> => {
     try {
@@ -132,12 +133,9 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
     if (!formData.country) {
       newErrors.country = "يرجى اختيار بلد إقامتك";
       isValid = false;
-    }
+    } 
 
-    if (!checked) {
-      newErrors.conditions = "يجب أن توافق على سياسة الخصوصية";
-      isValid = false;
-    }
+
 
     setErrors(newErrors);
     return isValid;
@@ -188,19 +186,7 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
             type="text"
           />
 
-          <div className={styles.errorTextNameContainer}>
-            {errors.firstName && (
-              <div id={styles.firstNameError} className={styles.errorTextName}>
-                {errors.firstName}
-              </div>
-            )}
-
-            {errors.lastName && (
-              <div id={styles.lastNameError} className={styles.errorTextName}>
-                {errors.lastName}
-              </div>
-            )}
-          </div>
+          <div></div>
         </div>
 
         <FormField
@@ -213,11 +199,6 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
           error={errors.username}
           type="text"
         />
-        {errors.username && (
-          <div id={styles.userNameError} className={styles.errorText}>
-            {errors.username}
-          </div>
-        )}
 
         <FormField
           label="بلد الإقامة"
@@ -230,11 +211,6 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
           icon={<LocationIcon />}
           error={errors.country}
         />
-        {errors.country && (
-          <div id={styles.locationError} className={styles.errorText}>
-            {errors.country}
-          </div>
-        )}
       </div>
       <div
         className={`${styles.checkboxContainer} ${

@@ -118,6 +118,12 @@
   gap: 16px;
 }
 
+.logout-mobile {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
 @media (max-width: 1440px) {
   .navbar {
     padding: 16.5px 44px;
@@ -177,8 +183,20 @@
     gap: 16px;
   }
 
+  .mobile-user-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    order: 1;
+  }
+
+  .logout-mobile {
+    order: 1;
+  }
+
   .userInfo {
     padding: 4px 8px;
+    order: 2;
   }
 
   .userName {

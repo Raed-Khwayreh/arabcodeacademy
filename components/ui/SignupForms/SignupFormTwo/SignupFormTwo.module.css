@@ -20,37 +20,6 @@
   width: 100%;
 }
 
-#firstNameError,
-#lastNameError,
-#firstNameError,
-#userNameError,
-#locationError {
-  font-size: 14px;
-  color: #db4a39;
-  position: absolute;
-  text-align: right;
-  width: 268px;
-}
-
-#firstNameError {
-  top: 240px;
-  right: 25px;
-}
-
-#lastNameError {
-  top: 370px;
-  right: 25px;
-}
-
-#userNameError {
-  top: 550px;
-  right: 25px;
-}
-
-#locationError {
-  top: 685px;
-  right: 25px;
-}
 .formContainer .title {
   margin-bottom: 17px;
 }
@@ -139,11 +108,11 @@
 }
 
 .errorLabel {
-  color: #DB4A39;
+  color: #db4a39;
 }
 
 .errorCheckmark {
-  border: 1px solid #DB4A39;
+  border: 1px solid #db4a39;
   margin-bottom: 21px;
 }
 
@@ -314,47 +283,16 @@
     border-width: 0 3px 3px 0;
   }
 
-  #firstNameError,
-  #lastNameError,
-  #userNameError,
-  #locationError {
-    font-size: 17px;
-    color: #db4a39;
-    position: absolute;
-    font-weight: 400;
-    width: 100%;
-
-  }
-  #firstNameError {
-    top: 270px;
-    right: 60px;
-  }
-
-  #lastNameError {
-    top: 270px;
-    right: 450px;
-  }
-
-  #userNameError {
-    top: 470px;
-    right: 60px;
-  }
-
-  #locationError {
-    top: 610px;
-    right: 60px;
-  }
-
   .errorCheckboxContainer {
     margin-bottom: 21px;
   }
-  
+
   .errorLabel {
-    color: #DB4A39;
+    color: #db4a39;
   }
-  
+
   .errorCheckmark {
-    border: 1px solid #DB4A39;
+    border: 1px solid #db4a39;
     margin-bottom: 21px;
   }
 }
@@ -402,37 +340,6 @@
     margin-bottom: 61px;
   }
 
-  #firstNameError,
-  #lastNameError,
-  #userNameError,
-  #locationError {
-    font-size: 16px;
-    color: #db4a39;
-    position: absolute;
-    line-height: 19px;
-    font-weight: 400;
-    width: 100%;
-
-  }
-  #firstNameError {
-    top: 280px;
-    right: 80px;
-  }
-
-  #lastNameError {
-    top: 280px;
-    right: 460px;
-  }
-
-  #userNameError {
-    top: 480px;
-    right: 80px;
-  }
-
-  #locationError {
-    top: 625px;
-    right: 80px;
-  }
   .fieldContainer {
     display: flex;
     flex-direction: column;
@@ -475,13 +382,13 @@
   .errorCheckboxContainer {
     margin-bottom: 21px;
   }
-  
+
   .errorLabel {
-    color: #DB4A39;
+    color: #db4a39;
   }
-  
+
   .errorCheckmark {
-    border: 1px solid #DB4A39;
+    border: 1px solid #db4a39;
     margin-bottom: 21px;
   }
 }

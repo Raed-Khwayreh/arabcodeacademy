@@ -69,9 +69,10 @@ const Navbar = () => {
       Cookies.remove("currentUser");
       setIsLoggedIn(false);
       setUserData(null);
-      router.push("/");
+      router.push("/signin");
     } catch (error) {
       console.error("Error during logout:", error);
+      router.push("/signin");
     }
   };
 
@@ -88,21 +89,23 @@ const Navbar = () => {
           onLogin={() => router.push("/signin")}
         />
       )}
-      <div className={styles["burger-menu"]} onClick={toggleSidebar}>
+      <div className={styles["burger-menu"]}>
         {isLoggedIn && (
           <div className={styles["mobile-user-info"]}>
+            <div className={styles["logout-mobile"]} onClick={handleOnLogOut}>
+              <Logout />
+            </div>
             <div className={styles.userInfo}>
               <Avatar />
               {userData && (
                 <span className={styles.userName}>{userData.username}</span>
               )}
             </div>
-            <div className={styles["logout-mobile"]} onClick={handleOnLogOut}>
-              <Logout />
-            </div>
           </div>
         )}
-        <BurgerMenu />
+        <div onClick={toggleSidebar}>
+          <BurgerMenu />
+        </div>
       </div>
       {isLoggedIn ? (
         <div className={styles.logout}>

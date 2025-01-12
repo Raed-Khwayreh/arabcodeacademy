@@ -11,13 +11,13 @@ import jwt from 'jsonwebtoken';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { email, password } = body;
+    const { email, password ,username } = body;
 
     const dbPath = path.join(process.cwd(), 'db.json');
     const dbData = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
     
     const user = dbData.users.find(
-      (u: { email: string; password: string }) => u.email === email && u.password === password
+      (u: { email: string; password: string ; username:string }) => (u.email === email  || u.username===username) && u.password === password
     );
 
     if (!user) {

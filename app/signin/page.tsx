@@ -9,10 +9,13 @@ import SocialButton from "@/components/ui/SocialButtons/SocialButton";
 import GoogleIcon from "@/components/ui/SocialButtons/SocialIcon/GoogleIcon";
 import FacebookIcon from "@/components/ui/SocialButtons/SocialIcon/FacebookIcon";
 import { useRouter } from "next/navigation";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 import Image from "next/image";
 import LogOutIcon from "@/components/ui/ACAButton/ACAButtonIcons/LoginIcon";
 import { ProfileCircleIcon } from "@/components/ui/ACAButton/ACAButtonIcons";
+import largeImage from "@/public/images/signin/loginLarge.png";
+import smallImage from "@/public/images/signin/loginSmall.png";
+import mediumImage from "@/public/images/signin/loginMeduim.png";
 
 interface FormData {
   email: string;
@@ -36,15 +39,35 @@ const Signin = () => {
     email: "",
     password: "",
   });
-  
+
   const [credentialError, setCredentialError] = useState("");
+  const [currentImage, setCurrentImage] = useState(smallImage);
 
   useEffect(() => {
-    const accessToken = Cookies.get('accessToken');
-    const currentUser = Cookies.get('currentUser');
-    
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width >= 1024) {
+        setCurrentImage(largeImage);
+      } else if (width >= 768) {
+        setCurrentImage(mediumImage);
+      } else {
+        setCurrentImage(smallImage);
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const accessToken = Cookies.get("accessToken");
+    const currentUser = Cookies.get("currentUser");
+
     if (accessToken && currentUser) {
-      router.replace('/');
+      router.replace("/");
     }
   }, [router]);
 
@@ -53,8 +76,8 @@ const Signin = () => {
   ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    setErrors(prev => ({ ...prev, [name]: "" }));
-    setCredentialError(""); // Clear credential error when user types
+    setErrors((prev) => ({ ...prev, [name]: "" }));
+    setCredentialError("");
   };
 
   const validate = () => {
@@ -86,13 +109,13 @@ const Signin = () => {
         const loginData = {
           email: formData.email,
           password: formData.password,
-          username: formData.email
+          username: formData.email,
         };
 
-        const response = await fetch('/api/auth/signin', {
-          method: 'POST',
+        const response = await fetch("/api/auth/signin", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(loginData),
         });
@@ -104,23 +127,23 @@ const Signin = () => {
           return;
         }
 
-        Cookies.set('accessToken', data.token, { expires: 7 });
-        Cookies.set('currentUser', JSON.stringify(data.user), { expires: 7 });
+        Cookies.set("accessToken", data.token, { expires: 7 });
+        Cookies.set("currentUser", JSON.stringify(data.user), { expires: 7 });
 
-        const loginEvent = new CustomEvent('userLogin', { 
-          detail: { user: data.user } 
+        const loginEvent = new CustomEvent("userLogin", {
+          detail: { user: data.user },
         });
         window.dispatchEvent(loginEvent);
-        router.push('/');
+        router.push("/");
       } catch (error) {
-        console.error('Error during login:', error);
+        console.error("Error during login:", error);
         setCredentialError("حدث خطأ أثناء تسجيل الدخول");
       }
     }
   };
 
   const handleSignupRedirect = () => {
-    router.push('/signup');
+    router.push("/signup");
   };
 
   return (
@@ -128,13 +151,12 @@ const Signin = () => {
       <form className={styles.formContainer} onSubmit={handleSubmit}>
         <div className={styles.imageContainer}>
           <Image
-            src="/images/loginPage.JPG"
+            src={currentImage}
             alt="Login"
-            width={270}
-            height={240}
+            fill
+            objectFit="cover"
             className={styles.image}
             priority
-            
           />
         </div>
         <div className={styles.formContent}>
@@ -148,7 +170,6 @@ const Signin = () => {
               onChange={handleChange}
               error={errors.email}
               labelAlign="center"
-
             />
 
             <FormField
@@ -166,7 +187,7 @@ const Signin = () => {
 
           <div className={styles.optionsContainer}>
             <label className={styles.checkboxLabel}>
-              البقاء متصلا 
+              البقاء متصلا
               <input type="checkbox" />
               <span className={styles.checkmark}></span>
             </label>
@@ -177,19 +198,19 @@ const Signin = () => {
 
           <div className={styles.buttonContainer}>
             <ACAButton
-              size="small"
+              size="medium"
               text="تسجيل الدخول"
               variant="teal"
               type="submit"
-              icon={<LogOutIcon/>}
+              icon={<LogOutIcon />}
             />
             <ACAButton
-              size="small"
+              size="medium"
               text="إنشاء حساب جديد"
               variant="tomato"
               type="button"
               onClick={handleSignupRedirect}
-              icon={<ProfileCircleIcon/>}
+              icon={<ProfileCircleIcon />}
             />
           </div>
 

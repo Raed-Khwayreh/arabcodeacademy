@@ -105,29 +105,32 @@ const Signin = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+  
     if (validate()) {
       setIsLoading(true);
       try {
+        // Encode the password using Base64 encoding (btoa) before sending it in the request payload.
+        const encodedPassword = btoa(formData.password);
+  
         const response = await fetch("/api/auth/signin", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify({ ...formData, password: encodedPassword }),
         });
-
+  
         const data = await response.json();
-
+  
         if (response.ok) {
           Cookies.set("accessToken", data.token, { expires: 7 });
           Cookies.set("currentUser", JSON.stringify(data.user), { expires: 7 });
-
+  
           const loginEvent = new CustomEvent("userLogin", {
             detail: { user: data.user },
           });
           window.dispatchEvent(loginEvent);
-
+  
           router.push("/");
         } else {
           setErrors((prev) => ({
@@ -146,6 +149,7 @@ const Signin = () => {
       }
     }
   };
+  
 
   const handleSignupRedirect = () => {
     router.push("/signup");

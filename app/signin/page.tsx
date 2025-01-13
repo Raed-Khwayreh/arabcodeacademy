@@ -213,6 +213,7 @@ const Signin = () => {
               size="medium"
               type="submit"
               loading={isLoading}
+              disabled={isLoading}
               icon={<LogOutIcon />}
             />
             <ACAButton
@@ -221,6 +222,7 @@ const Signin = () => {
               variant="tomato"
               type="button"
               onClick={handleSignupRedirect}
+              disabled={isLoading}
               icon={<ProfileCircleIcon />}
             />
           </div>

@@ -25,22 +25,27 @@
 .transparent {
   background-color: transparent;
   border: 1px solid #ffffff;
+  color: #ffffff;
 }
 
 .primary {
   background-color: var(--primary-color);
+  color: #ffffff;
 }
 
 .secondary {
   background-color: var(--secondary-color);
+  color: #ffffff;
 }
 
 .teal {
   background-color: var(--teal-color);
+  color: #ffffff;
 }
 
 .tomato {
   background-color: var(--tomato-color);
+  color: #ffffff;
 }
 
 .small,

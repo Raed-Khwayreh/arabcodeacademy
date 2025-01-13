@@ -20,6 +20,8 @@ export async function POST(request: Request) {
       (u: { email: string; password: string ; username:string }) => (u.email === email  || u.username===username) && u.password === password
     );
 
+    // console.log(user);
+
     if (!user) {
       return NextResponse.json(
         { error: 'البريد الإلكتروني أو كلمة المرور غير صحيحة' },
@@ -27,24 +29,21 @@ export async function POST(request: Request) {
       );
     }
 
-    const secretKey = 'mySecret'; 
     const token = jwt.sign(
       {
         userId: user.id,
         email: user.email,
         username: user.username,
       },
-      secretKey,
+      process.env.NEXT_PUBLIC_JWT_SECRET!,
       { expiresIn: '24h' }
     );
 
     return NextResponse.json({
       user: {
         id: user.id,
-        email: user.email,
         username: user.username,
-        firstName: user.firstName,
-        lastName: user.lastName,
+
       },
       token,
     });

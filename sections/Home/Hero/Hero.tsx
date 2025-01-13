@@ -1,42 +1,31 @@
-"use client";
-
-import React, { useRef } from "react";
+import React from "react";
 import styles from "./Hero.module.css";
-import Slider from "react-slick";
 import { CarouselSlider } from "@/components/ui";
-import { LargeScreenSize, MediumScreenSize } from "@/constants/ScreenSizes";
 import HeroComponent from "./Hero/HeroComponent";
 
 const Hero = () => {
-  const coursesRef = useRef<Slider>(null);
+  const settings = {
+    dots: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    arrows: false,
+  };
 
   return (
-    <div className={styles.hero}>
-      <CarouselSlider
-        showDots={true}
-        containerBackgroundColor="transparent"
-        arrowsColor="white"
-        carouselContainerPadding={0}
-        buttonsPostion={{ desktop: 20, tablet: 158, mobile: 28 }}
-        breakPoints={{
-          desktop: { slidesToScroll: 1, slidesToShow: 1 },
-          tablet: {
-            screenSize: LargeScreenSize + 200,
-            slidesToScroll: 1,
-            slidesToShow: 1,
-          },
-          mobile: {
-            screenSize: MediumScreenSize,
-            slidesToScroll: 1,
-            slidesToShow: 1,
-          },
-        }}
-        sliderRef={coursesRef}
-        generatedSliderList={[1, 2].map((e, i) => (
-          <HeroComponent key={i} />
-        ))}
-      />
-    </div>
+    <section className={styles.hero}>
+      <div className={styles.slider}>
+        <CarouselSlider
+          userSettings={settings}
+          arrowsColor="white"
+          buttonsPostion={{ desktop: 20, tablet: 158, mobile: 28 }}
+          generatedSliderList={[1, 2].map((e, i) => (
+            <HeroComponent key={i} />
+          ))}
+        />
+      </div>
+    </section>
   );
 };
 

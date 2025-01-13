@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import ImageSource from "@/public/images/learning-path-image.png";
+import ImageSource from "@/public/images/learningPath/learning-path-image.webp";
 import styles from "./LearningPath.module.css";
 import ACAButton from "@/components/ui/ACAButton/ACAButton";
 import ChalkboardTeacherIcon from "@/components/ui/ACAButton/ACAButtonIcons/ChalkboardTeacherIcon";
@@ -13,8 +13,8 @@ const LearningPath = () => {
 
   React.useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 600);
-      setShowBorder(window.innerWidth < 1400);
+      setIsMobile(window.innerWidth < 768);
+      setShowBorder(window.innerWidth < 1440);
     };
     window.addEventListener("resize", handleResize);
     return () => {
@@ -23,7 +23,7 @@ const LearningPath = () => {
   });
 
   return (
-    <div className={styles.learning_path_section}>
+    <section className={styles.learning_path_section}>
       <div className={styles.promotext_style}>
         <PromoText
           title="التجربة التعليمية في الأكاديمية العربية للبرمجة"
@@ -34,7 +34,7 @@ const LearningPath = () => {
               <ACAButton
                 text="المسارات التعليمية"
                 variant="teal"
-                size="medium"
+                size="large"
                 icon={<ChalkboardTeacherIcon />}
               />
             )
@@ -45,7 +45,7 @@ const LearningPath = () => {
             <ACAButton
               text="المسارات التعليمية"
               variant="teal"
-              size="medium"
+              size="large"
               icon={<ChalkboardTeacherIcon />}
             />
           )}
@@ -59,7 +59,7 @@ const LearningPath = () => {
           priority
         />
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -4,8 +4,18 @@ import styles from "./VideoSection.module.css";
 import DhadIcon from "./icons/DhadIcon";
 import { ACAButton } from "@/components/ui";
 import DocumentListIcon from "@/components/ui/ACAButton/ACAButtonIcons/DocumentListIcon";
+import useScreenSize from "@/utils/useScreenSize";
 
+/**
+ * A section on the home page that displays a video and some text about language.
+ *
+ * The video is either a small or large version, depending on the screen size.
+ * When the screen size changes, the video source is updated.
+ *
+ * @returns The video section component.
+ */
 const VideoSection: React.FC = () => {
+  const screenSize = useScreenSize();
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -13,7 +23,9 @@ const VideoSection: React.FC = () => {
       const video = videoRef.current;
       if (video) {
         const isMobile = window.innerWidth <= 768;
-        const source = isMobile ? "/dhadSection_small.mp4" : "/dhadSection_large.mp4";
+        const source = isMobile
+          ? "/videoSection/dhadSection_small.webm"
+          : "/videoSection/dhadSection_large.webm";
 
         if (video.src !== source) {
           video.src = source;
@@ -30,7 +42,18 @@ const VideoSection: React.FC = () => {
 
   return (
     <main className={styles.main}>
-      <video ref={videoRef} autoPlay muted loop className={styles.video} />
+      <video
+        poster={
+          screenSize < 768
+            ? "/videoSection/posterLarge.webp"
+            : "/videoSection/poster.webp"
+        }
+        ref={videoRef}
+        autoPlay
+        muted
+        loop
+        className={styles.video}
+      />
 
       <div className={styles.container}>
         <div className={styles.icon}>
@@ -48,7 +71,12 @@ const VideoSection: React.FC = () => {
         </p>
       </div>
       <div className={styles.button}>
-        <ACAButton text="لغة الضاد" variant="tomato" size="medium" icon={<DocumentListIcon />}/>
+        <ACAButton
+          text="لغة الضاد"
+          variant="tomato"
+          size="medium"
+          icon={<DocumentListIcon />}
+        />
       </div>
     </main>
   );

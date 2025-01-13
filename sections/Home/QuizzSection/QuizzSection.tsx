@@ -1,6 +1,6 @@
 import React from "react";
-import FeatureList from "./FeatureList";
-import { imagesData, quizzSectionsData } from "./QuizzSectionData";
+import FeatureList from "./FeatureList/FeatureList";
+import { imagesData, quizzSectionsData } from "./mocks/QuizzSectionData";
 import Img from "next/image";
 import styles from "./QuizzSection.module.css";
 import Button from "@/components/ui/ACAButton/ACAButton";
@@ -8,7 +8,7 @@ import DocumentCheckIcon from "@/components/ui/ACAButton/ACAButtonIcons/Document
 
 const QuizzSection = () => {
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <div className={styles.leftContent}>
         {quizzSectionsData.map((section, index) => (
           <FeatureList
@@ -38,7 +38,7 @@ const QuizzSection = () => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -7,6 +7,8 @@ import { ACAButton, Sidebar } from "@/components/ui";
 import { LoginIcon, ProfileCircleIcon } from "../ACAButton/ACAButtonIcons";
 import { ArrowDown, Avatar, BurgerMenu, Logout } from "./icons";
 import { subMenuList } from "@/sections/Home/Courses/mock/subMenuList";
+import logo from "@/public/images/logo.webp";
+
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
@@ -103,9 +105,9 @@ const Navbar = () => {
             </div>
           </div>
         )}
-        <div onClick={toggleSidebar}>
+        <button onClick={toggleSidebar}>
           <BurgerMenu />
-        </div>
+        </button>
       </div>
       {isLoggedIn ? (
         <div className={styles.logout}>
@@ -170,7 +172,7 @@ const Navbar = () => {
         <div className={styles["image-contanier"]}>
           <Image
             className={styles.image}
-            src={"/images/logo.png"}
+            src={logo}
             alt="logo"
             width={280}
             height={61}

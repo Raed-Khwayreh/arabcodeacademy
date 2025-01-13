@@ -11,7 +11,7 @@ const ACAError: React.FC<ACAErrorProps> = ({ errorMessage }) => {
   return (
     <VStack justifyContent="center" alignItems="center" height="80vh">
       <Image
-        src="/images/undefinedDataIcon.png"
+        src="/images/undefinedDataIcon.webp"
         alt="Error Icon"
         width={170}
         height={130}

@@ -12,7 +12,7 @@ const ACAAvailability: React.FC<ACAAvailabilityProps> = ({
   return (
     <VStack justifyContent="center" alignItems="center" height="30vh">
       <Image
-        src="/images/undefinedDataIcon.png"
+        src="/images/undefinedDataIcon.webp"
         alt="Error Icon"
         width={170}
         height={130}

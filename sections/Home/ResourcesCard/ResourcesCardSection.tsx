@@ -1,54 +1,24 @@
 "use client";
-import CarouselSlider from "@/components/ui/CarouselSlider/CarouselSlider";
-import cardData from "@/components/ui/ResourceCard/mocks/CardData";
-import ResourceCard from "@/components/ui/ResourceCard/ResourceCard";
-import {
-  LargeScreenSize,
-  MediumScreenSize,
-  SmallScreenSize,
-} from "@/constants/ScreenSizes";
-import useScreenSize from "@/utils/useScreenSize";
-import React, { useRef } from "react";
-import Slider from "react-slick";
+import React from "react";
 import styles from "./ResourcesCardSection.module.css";
+import dynamic from "next/dynamic";
+import { ACALoading } from "@/components/ui";
+
+const ResourcesListLazyComponent = dynamic(
+  () => import("./ResourcesList/ResourcesList"),
+  {
+    loading: () => <ACALoading />,
+    ssr: false,
+  }
+);
 
 const ResourcesCardSection: React.FC = () => {
-  const resourcesCardRef = useRef<Slider>(null);
-  const screenSize = useScreenSize();
-
   return (
-    <div className={styles.main}>
-      <CarouselSlider
-        containerBoxShadow={true}
-        buttonsPostion={{ desktop: 69, mobile: 32, tablet: 158 }}
-        breakPoints={{
-          desktop: { slidesToScroll: 3, slidesToShow: 3 },
-          tablet: {
-            screenSize: LargeScreenSize,
-            slidesToScroll: 2,
-            slidesToShow: 2,
-          },
-          mobile: {
-            screenSize: MediumScreenSize,
-            slidesToScroll: 1,
-            slidesToShow: 1,
-          },
-        }}
-        carouselContainerWidth={
-          screenSize < SmallScreenSize
-            ? 204
-            : screenSize < MediumScreenSize
-            ? 300
-            : screenSize < LargeScreenSize
-            ? 720
-            : 900
-        }
-        sliderRef={resourcesCardRef}
-        generatedSliderList={cardData.map((e, i) => (
-          <ResourceCard key={i} icon={e.icon} title={e.title} href={e.href} />
-        ))}
-      />
-    </div>
+    <section className={styles.main}>
+      <div className={styles["slider-container"]}>
+        <ResourcesListLazyComponent />
+      </div>
+    </section>
   );
 };
 

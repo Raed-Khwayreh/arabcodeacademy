@@ -126,11 +126,11 @@
 
 .buttonGroup {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column-reverse;
   justify-content: center;
-  gap: 5px;
-  margin-top: 20px;
-  width: 300px;
+  gap: 21px;
+  margin: 20px 75px 0 75px;
+  width: 200px;
 }
 
 .accountPrompt {

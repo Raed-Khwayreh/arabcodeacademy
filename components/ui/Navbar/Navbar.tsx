@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import Image from "next/image";
 import { ACAButton, Sidebar } from "@/components/ui";
@@ -10,22 +10,72 @@ import { subMenuList } from "@/sections/Home/Courses/mock/subMenuList";
 import logo from "@/public/images/logo.webp";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
+
+interface UserData {
+  email: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+  country: string;
+  id: number;
+}
 
 const Navbar = () => {
+  const router = useRouter();
   const [showResoursesList, setShowResoursesList] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [userData, setUserData] = useState<UserData | null>(null);
+
+  useEffect(() => {
+    const accessToken = Cookies.get("accessToken");
+    const currentUser = Cookies.get("currentUser");
+
+    if (accessToken && currentUser) {
+      setIsLoggedIn(true);
+      setUserData(JSON.parse(currentUser));
+    }
+
+    const handleLogin = (event: CustomEvent<{ user: UserData }>) => {
+      setIsLoggedIn(true);
+      setUserData(event.detail.user);
+    };
+
+    window.addEventListener("userLogin", handleLogin as EventListener);
+
+    return () => {
+      window.removeEventListener("userLogin", handleLogin as EventListener);
+    };
+  }, []);
+
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const handleOnlogin = () => {
-    setIsLoggedIn(true);
-    setIsSidebarOpen(false);
-  };
+  const handleOnLogOut = async () => {
+    try {
+      const response = await fetch("/api/auth/signout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-  const handleOnLogOut = () => {
-    setIsLoggedIn(false);
+      if (!response.ok) {
+        throw new Error("Failed to logout");
+      }
+
+      Cookies.remove("accessToken");
+      Cookies.remove("currentUser");
+      setIsLoggedIn(false);
+      setUserData(null);
+      router.push("/signin");
+    } catch (error) {
+      console.error("Error during logout:", error);
+      router.push("/signin");
+    }
   };
 
   const handleOnClick = () => {
@@ -38,18 +88,21 @@ const Navbar = () => {
         <Sidebar
           handleOnClick={handleOnClick}
           isLoggedIn={isLoggedIn}
-          onLogin={handleOnlogin}
+          onLogin={() => router.push("/signin")}
         />
       )}
       <div className={styles["burger-menu"]}>
         {isLoggedIn && (
-          <div className={styles["logout-mobile"]}>
-            <div onClick={handleOnLogOut}>
+          <div className={styles["mobile-user-info"]}>
+            <div className={styles["logout-mobile"]} onClick={handleOnLogOut}>
               <Logout />
             </div>
-            <Link href="/profile">
+            <div className={styles.userInfo}>
               <Avatar />
-            </Link>
+              {userData && (
+                <span className={styles.userName}>{userData.username}</span>
+              )}
+            </div>
           </div>
         )}
         <button onClick={toggleSidebar}>
@@ -61,9 +114,12 @@ const Navbar = () => {
           <div onClick={handleOnLogOut}>
             <Logout />
           </div>
-          <Link href="/profile">
+          <div className={styles.userInfo}>
             <Avatar />
-          </Link>
+            {userData && (
+              <span className={styles.userName}>{userData.username}</span>
+            )}
+          </div>
         </div>
       ) : (
         <div className={styles["buttons-container"]}>
@@ -75,14 +131,14 @@ const Navbar = () => {
               icon={<ProfileCircleIcon />}
             />
           </Link>
-          <div onClick={handleOnlogin}>
+          <Link href="/signin">
             <ACAButton
               size="medium"
               variant="tomato"
               text="تسجيل الدخول"
               icon={<LoginIcon />}
             />
-          </div>
+          </Link>
         </div>
       )}
       <ul className={styles.links}>
@@ -94,7 +150,7 @@ const Navbar = () => {
         >
           <li>المصادر</li>
           {showResoursesList && (
-            <ul className={styles["resouces-menu"]} style={{}}>
+            <ul className={styles["resouces-menu"]}>
               {subMenuList.map((e, i) => {
                 return (
                   <li key={i}>

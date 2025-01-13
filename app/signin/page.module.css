@@ -1,0 +1,427 @@
+.loginContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+}
+
+.formContainer {
+  width: 270px;
+  background: #ffffff;
+  box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.image {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+}
+
+.formContent {
+  padding: 34px 21px 32px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.felidsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 62px;
+  margin-bottom: 62px;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.checkboxLabel {
+  width: 78px;
+  display: flex;
+  flex-direction: row-reverse;
+  position: relative;
+  cursor: pointer;
+  font-size: 15px;
+  color: #783ba2;
+  font-weight: 500;
+  line-height: 18px;
+  align-items: center;
+}
+
+.checkboxLabel input {
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 1;
+  right: -23px;
+  height: 17px;
+  margin: 4px;
+  width: 17px;
+  background-color: #fff;
+  border: 1px solid #783ba2;
+  border-radius: 2px;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+.checkboxLabel:hover input ~ .checkmark {
+  background-color: #f3e8ff;
+}
+
+.checkboxLabel input:checked ~ .checkmark {
+  background-color: #783ba2;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkboxLabel input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkboxLabel .checkmark:after {
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.errorMessage {
+  position: absolute;
+  color: #db4a39;
+  font-size: 14px;
+  text-align: center;
+  line-height: 17px;
+  font-weight: 400;
+  width: 100%;
+  top: 20px;
+}
+
+.optionsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  margin-bottom: 23px;
+}
+
+.forgotPassword {
+  font-size: 15px;
+  color: #783ba2;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 29px;
+}
+
+.divider {
+  text-align: center;
+  color: #783ba2;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 23px;
+}
+
+.socialContainer {
+  display: flex;
+  gap: 14px;
+}
+
+@media (min-width: 768px) {
+  .loginContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 200px;
+  }
+
+  .formContainer {
+    width: 1364px;
+    background: #ffffff;
+  }
+
+  .formContent {
+    padding: 70px 76px 42px 41px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .felidsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 47px;
+    margin-bottom: 55px;
+    width: 100%;
+    max-width: 550px;
+    box-sizing: border-box;
+  }
+
+  .felidsContainer > div {
+    width: 100%;
+  }
+
+  .felidsContainer input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .optionsContainer {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 550px;
+    gap: 30px;
+    margin-bottom: 23px;
+  }
+
+  .checkboxLabel {
+    width: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 8px;
+    align-items: center;
+    position: relative;
+    right: 25px;
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .forgotPassword {
+    text-align: right;
+    font-weight: 500;
+    line-height: 22px;
+    font-size: 18px;
+  }
+
+  .checkboxLabel input {
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmark {
+    position: absolute;
+    top: 1;
+    right: -30px;
+    height: 17px;
+    margin: 4px;
+    width: 17px;
+    background-color: #fff;
+    border: 1px solid #783ba2;
+    border-radius: 2px;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  .checkboxLabel:hover input ~ .checkmark {
+    background-color: #f3e8ff;
+  }
+
+  .checkboxLabel input:checked ~ .checkmark {
+    background-color: #783ba2;
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .checkboxLabel input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  .checkboxLabel .checkmark:after {
+    left: 5px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .errorMessage {
+    font-size: 17px;
+    text-align: center;
+    line-height: 20px;
+    font-weight: 400;
+    width: 100%;
+    top: -50px;
+  }
+
+  .buttonContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 29px;
+    margin-bottom: 25px;
+    width: 100%;
+  }
+
+  .divider {
+    text-align: center;
+    color: #783ba2;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    gap: 41px;
+    width: 100%;
+    margin-bottom: 25px;
+  }
+
+  .divider::before,
+  .divider::after {
+    content: "";
+    height: 1px;
+    width: 100%;
+    background-color: #a067b6;
+    color: #a067b6;
+    flex: 1;
+    position: relative;
+  }
+
+  .socialContainer {
+    display: flex;
+    gap: 29px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .loginContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 200px;
+    min-height: 100vh;
+  }
+
+  .formContainer {
+    width: 1364px;
+    background: #ffffff;
+    box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
+    display: flex;
+    overflow: hidden;
+  }
+
+  .image {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+  }
+
+  .formContent {
+    flex: 1;
+    padding: 89px 76px 42px 76px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .felidsContainer {
+    width: 100%;
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    gap: 47px;
+    margin-bottom: 55px;
+  }
+
+  .optionsContainer {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 550px;
+    gap: 30px;
+    margin-bottom: 23px;
+  }
+
+  .checkboxLabel {
+    width: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 8px;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    position: relative;
+    right: 25px;
+  }
+
+  .forgotPassword {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    color: #783ba2;
+  }
+
+  .buttonContainer {
+    width: 100%;
+    max-width: 550px;
+    display: flex;
+    flex-direction: row;
+    gap: 29px;
+    margin-bottom: 40px;
+    justify-content: center;
+  }
+
+  .divider {
+    text-align: center;
+    color: #783ba2;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    width: 100%;
+    max-width: 550px;
+    display: flex;
+    align-items: center;
+    gap: 41px;
+    margin-bottom: 40px;
+  }
+
+  .divider::before,
+  .divider::after {
+    content: "";
+    height: 1px;
+    background-color: #a067b6;
+    flex: 1;
+  }
+
+  .socialContainer {
+    display: flex;
+    gap: 29px;
+    justify-content: center;
+  }
+}

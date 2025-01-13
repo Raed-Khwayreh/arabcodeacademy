@@ -9,6 +9,8 @@ interface Props {
   boxShadow?: string;
   type?: string;
   onClick?: () => void;
+  disabled?: boolean;
+  loading?: boolean;
 }
 
 const ACAButton: React.FC<Props> = ({
@@ -18,13 +20,20 @@ const ACAButton: React.FC<Props> = ({
   icon,
   boxShadow,
   onClick,
+  disabled,
+  loading,
 }) => {
-  const buttonClass = `${styles.button} ${styles[variant]} ${styles[size]}`;
+  const buttonClass = `${styles.button} ${styles[variant]} ${styles[size]} ${loading ? styles.loading : ''}`;
 
   return (
-    <button className={buttonClass} style={{ boxShadow }} onClick={onClick}>
-      {text}
-      <span className={styles.icon}>{icon}</span>
+    <button 
+      className={buttonClass} 
+      style={{ boxShadow }} 
+      onClick={onClick}
+      disabled={disabled || loading}
+    >
+      {loading ? 'جاري التحميل...' : text}
+      {!loading && <span className={styles.icon}>{icon}</span>}
     </button>
   );
 };

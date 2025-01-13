@@ -3,18 +3,16 @@
   height: 79px;
   display: flex;
   flex-direction: column;
-  text-align: right;
+  align-items: flex-end;
   color: #000000;
 }
 
 .centerAlign {
-  align-items: center;
-  text-align: center;
+  align-items: flex-end;
 }
 
 .rightAlign {
   align-items: flex-end;
-  text-align: right;
 }
 
 .labelContainer {
@@ -22,6 +20,15 @@
   justify-content: flex-end;
   margin-bottom: 10px;
   gap: 2px;
+  width: 100%;
+}
+
+.centerAlign .labelContainer {
+  justify-content: flex-end;
+}
+
+.rightAlign .labelContainer {
+  justify-content: flex-end;
 }
 
 .formLabel {
@@ -91,6 +98,7 @@
   transform: translateY(-50%);
   color: #783ba2;
 }
+
 .selectInput .divider {
   position: absolute;
   top: 1px;
@@ -101,13 +109,28 @@
   margin: 0 10px;
 }
 
+.errorText {
+  color: #DB4A39;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  margin-top: 8px;
+  width: 100%;
+  text-align: right;
+}
+
+.errorText.centerAlign {
+  text-align: center;
+}
+
 .errorInput {
-  border: 1px solid #db4a39;
+  border-color: #DB4A39;
 }
 
 .selectInput select.errorInput {
   border-color: red;
 }
+
 @media (min-width: 768px) {
   .fieldContainer {
     width: 744px;
@@ -195,11 +218,26 @@
     background-color: #fff;
     direction: rtl;
   }
+
   .errorInput {
     border: 1px solid #db4a39;
   }
-  
+
   .selectInput select.errorInput {
     border-color: red;
+  }
+}
+
+@media (max-width: 767px) {
+  .centerAlign {
+    align-items: center;
+  }
+
+  .centerAlign .labelContainer {
+    justify-content: center;
+  }
+
+  .centerAlign .errorText {
+    text-align: center;
   }
 }

@@ -30,6 +30,7 @@
   padding: 16px 0px 14px 0px;
   font-size: 16px;
   color: #713488;
+  font-weight: 500;
   border-bottom: 1px solid #713488;
 }
 
@@ -39,6 +40,10 @@
   background: white;
   color: #713488;
   border-radius: 0px;
+}
+
+.create-account {
+  display: flex;
 }
 
 .pressed {
@@ -97,6 +102,7 @@
   justify-content: center;
   padding: 19px 0px 14px 0px;
   font-size: 16px;
+  font-weight: 500;
   color: #713488;
   border-bottom: 1px solid #713488;
 }

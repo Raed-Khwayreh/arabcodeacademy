@@ -35,6 +35,22 @@ const Sidebar: FC<SidebarProps> = ({
   return (
     <nav className={styles.sidebar} style={{ top: isLoggedIn ? 84 : 62 }}>
       <ul className={styles.menu}>
+        {!isLoggedIn && (
+          <>
+            <li onClick={handleOnSignIn} className={styles.menuItem}>
+              <Link href="/signin">
+                <span>تسجيل الدخول</span>
+              </Link>
+              <SignInIcon className={styles.icon} />
+            </li>
+            <li onClick={toggleSidebar} className={styles.menuItem}>
+              <Link href="/signup" className={styles["create-account"]}>
+                <span>إنشاء حساب</span>
+                <CreateAccountIcon className={styles.icon} />
+              </Link>
+            </li>
+          </>
+        )}
         <li onClick={handleOnClick} className={styles.menuItem}>
           <span>المسارات التعليمية</span>
         </li>
@@ -48,22 +64,6 @@ const Sidebar: FC<SidebarProps> = ({
         <li onClick={handleOnClick} className={styles.menuItem}>
           التواصل
         </li>
-        {!isLoggedIn && (
-          <>
-            <li onClick={handleOnSignIn} className={styles.menuItem}>
-              <Link href="/signin">
-                <span>تسجيل الدخول</span>
-              </Link>
-              <SignInIcon className={styles.icon} />
-            </li>
-            <Link href="/signup">
-              <li onClick={toggleSidebar} className={styles.menuItem}>
-                <span>إنشاء حساب</span>
-                <CreateAccountIcon className={styles.icon} />
-              </li>
-            </Link>
-          </>
-        )}
       </ul>
     </nav>
   );

@@ -12,13 +12,24 @@ interface SidebarProps {
   isLoggedIn: boolean;
   onLogin: () => void;
   handleOnClick: () => void;
+  toggleSidebar: () => void;
 }
 
-const Sidebar: FC<SidebarProps> = ({ isLoggedIn, onLogin, handleOnClick }) => {
+const Sidebar: FC<SidebarProps> = ({
+  isLoggedIn,
+  onLogin,
+  handleOnClick,
+  toggleSidebar,
+}) => {
   const [isResourcesOpen, setIsResourcesOpen] = useState<boolean>(false);
 
   const toggleResources = (): void => {
     setIsResourcesOpen(!isResourcesOpen);
+  };
+
+  const handleOnSignIn = () => {
+    onLogin();
+    toggleSidebar();
   };
 
   return (
@@ -39,14 +50,14 @@ const Sidebar: FC<SidebarProps> = ({ isLoggedIn, onLogin, handleOnClick }) => {
         </li>
         {!isLoggedIn && (
           <>
-            <li onClick={onLogin} className={styles.menuItem}>
+            <li onClick={handleOnSignIn} className={styles.menuItem}>
               <Link href="/signin">
                 <span>تسجيل الدخول</span>
               </Link>
               <SignInIcon className={styles.icon} />
             </li>
             <Link href="/signup">
-              <li className={styles.menuItem}>
+              <li onClick={toggleSidebar} className={styles.menuItem}>
                 <span>إنشاء حساب</span>
                 <CreateAccountIcon className={styles.icon} />
               </li>

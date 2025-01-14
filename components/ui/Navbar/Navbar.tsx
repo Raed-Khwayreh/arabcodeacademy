@@ -61,6 +61,7 @@ const Navbar = () => {
       {isSidebarOpen && (
         <Sidebar
           handleOnClick={handleOnClick}
+          toggleSidebar={toggleSidebar}
           isLoggedIn={isLoggedIn}
           onLogin={() => router.push("/signin")}
         />

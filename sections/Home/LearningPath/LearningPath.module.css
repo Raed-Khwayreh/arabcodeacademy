@@ -1,7 +1,7 @@
 .learning_path_section {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   padding: 4rem;
   gap: 72px;
 }
@@ -17,6 +17,7 @@
   flex-direction: column;
   align-items: center;
   gap: 22px;
+  margin-top: 20px;
 }
 
 .promotext_style div:first-child {
@@ -26,7 +27,14 @@
 @media (min-width: 768px) and (max-width: 1440px) {
   .learning_path_section {
     flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
+    margin-top: 20px;
+  }
+
+  .img {
+    margin-bottom: 20px;
   }
 
   .promotext_style div:first-child {
@@ -49,11 +57,13 @@
     padding: 1rem;
     gap: 0;
     align-items: center;
+    justify-content: center;
   }
 
-  .img_container {
+  .img {
     width: 300px;
     height: auto;
+    margin-bottom: 20px;
   }
 
   .img {

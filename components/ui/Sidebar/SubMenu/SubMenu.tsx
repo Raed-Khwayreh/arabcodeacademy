@@ -15,7 +15,7 @@ const SubMenu: React.FC<SubMenuProps> = ({
   handleOnClick,
 }) => {
   return (
-    <ul className={isResourcesOpen ? styles.l : styles.subMenu}>
+    <ul className={isResourcesOpen ? styles.subMenuOpen : styles.subMenu}>
       <li
         className={`${styles.menuItem}  ${
           isResourcesOpen ? styles.pressed : styles.notpressed

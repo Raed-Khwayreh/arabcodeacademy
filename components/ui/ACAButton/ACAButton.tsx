@@ -7,7 +7,7 @@ interface Props {
   size: "small" | "medium" | "large" | "xlarge";
   icon?: React.ReactNode;
   boxShadow?: string;
-  type?: string;
+  type?: "button" | "submit";
   onClick?: () => void;
   disabled?: boolean;
   loading?: boolean;
@@ -22,17 +22,21 @@ const ACAButton: React.FC<Props> = ({
   onClick,
   disabled,
   loading,
+  type,
 }) => {
-  const buttonClass = `${styles.button} ${styles[variant]} ${styles[size]} ${loading ? styles.loading : ''}`;
+  const buttonClass = `${styles.button} ${styles[variant]} ${styles[size]} ${
+    loading ? styles.loading : ""
+  }`;
 
   return (
-    <button 
-      className={buttonClass} 
-      style={{ boxShadow }} 
+    <button
+      className={buttonClass}
+      style={{ boxShadow }}
       onClick={onClick}
       disabled={disabled || loading}
+      type="submit"
     >
-      {loading ? 'جاري التحميل...' : text}
+      {loading ? "جاري التحميل..." : text}
       {!loading && <span className={styles.icon}>{icon}</span>}
     </button>
   );

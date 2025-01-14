@@ -41,8 +41,9 @@ const FormField: React.FC<Props> = ({
     labelAlign === "center" ? styles.centerAlign : styles.rightAlign;
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleOnShowPassword = () => {
+  const handleOnShowPassword = (e: React.FormEvent) => {
     setShowPassword((prev) => !prev);
+    e.preventDefault();
   };
 
   return (

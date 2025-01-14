@@ -84,7 +84,6 @@ const Signin = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (validate()) {
       setIsLoading(true);
       try {
@@ -169,11 +168,11 @@ const Signin = () => {
                 error={errors.password || credentialError}
                 labelAlign="center"
               />
-              <div style={{ position: "relative", width: "100%" }}>
-                {errors.submit && (
-                  <div className={styles.errorMessage}>{errors.submit}</div>
-                )}
-              </div>
+            </div>
+            <div className={styles["error-container"]}>
+              {errors.submit && (
+                <div className={styles.errorMessage}>{errors.submit}</div>
+              )}
             </div>
             <div className={styles.optionsContainer}>
               <a href="#" className={styles.forgotPassword}>

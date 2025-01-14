@@ -53,6 +53,19 @@
   direction: rtl;
 }
 
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+.icon {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+}
+
 .formInput::placeholder {
   color: #a067b6;
 }

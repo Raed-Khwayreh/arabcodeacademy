@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./FormField.module.css";
-import AngleDownIcon from "../../../public/icons/AngleDownIcon";
+import { EyeIcon, HideEyeIcon } from "./Icons";
+import AngleDownIcon from "@/public/icons/AngleDownIcon";
 
 type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
 type SelectChangeEvent = React.ChangeEvent<HTMLSelectElement>;
@@ -38,6 +39,11 @@ const FormField: React.FC<Props> = ({
 }) => {
   const alignment =
     labelAlign === "center" ? styles.centerAlign : styles.rightAlign;
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleOnShowPassword = () => {
+    setShowPassword((prev) => !prev);
+  };
 
   return (
     <div
@@ -76,14 +82,25 @@ const FormField: React.FC<Props> = ({
         </>
       ) : (
         <>
-          <input
-            className={`${styles.formInput} ${error ? styles.errorInput : ""}`}
-            type={type}
-            placeholder={placeholder}
-            name={name}
-            value={value}
-            onChange={onChange as (e: InputChangeEvent) => void}
-          />
+          <div className={styles["input-container"]}>
+            <input
+              className={`${styles.formInput} ${
+                error ? styles.errorInput : ""
+              }`}
+              type={type === "password" && !showPassword ? "password" : "text"}
+              placeholder={placeholder}
+              name={name}
+              value={value}
+              onChange={onChange as (e: InputChangeEvent) => void}
+            />
+            {type === "password" ? (
+              <button onClick={handleOnShowPassword} className={styles["icon"]}>
+                {showPassword ? <EyeIcon /> : <HideEyeIcon />}
+              </button>
+            ) : (
+              <></>
+            )}
+          </div>
           {error && <div className={styles.errorText}>{error}</div>}
         </>
       )}

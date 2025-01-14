@@ -146,53 +146,53 @@ const Signin = () => {
           className={styles.image}
           priority
         />
-        <div className={styles.formContent}>
-          <div className={styles.felidsContainer}>
-            <p className={styles["title"]}>تسجيل الدخول</p>
-            <div className={styles["inputs"]}>
-              <FormField
-                label="اسم المستخدم أو البريد الإلكتروني"
-                placeholder=" أدخل بريدك الإلكتروني أو اسم المستخدم"
-                icon={<EnvelopeIcon />}
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                error={errors.email}
-                labelAlign="center"
-              />
-              <FormField
-                label="كلمة المرور"
-                placeholder="أدخل كلمة المرور"
-                icon={<LockIcon />}
-                name="password"
-                type="password"
-                value={formData.password}
-                onChange={handleChange}
-                error={errors.password || credentialError}
-                labelAlign="center"
-              />
-            </div>
-            <div className={styles["error-container"]}>
-              {errors.submit && (
-                <div className={styles.errorMessage}>{errors.submit}</div>
-              )}
-            </div>
-            <div className={styles.optionsContainer}>
-              <a href="#" className={styles.forgotPassword}>
-                نسيت كلمة المرور؟
-              </a>
-              <label className={styles.checkboxLabel}>
-                البقاء متصلا
-                <input type="checkbox" />
-                <span className={styles.checkmark}></span>
-              </label>
-            </div>
+        {isLoading ? (
+          <div className={styles.spinner}>
+            <ACALoading />
           </div>
-          {isLoading ? (
-            <div className={styles.spinner}>
-              <Spinner color={"var(--primary-color)"} size="lg" />
+        ) : (
+          <div className={styles.formContent}>
+            <div className={styles.felidsContainer}>
+              <p className={styles["title"]}>تسجيل الدخول</p>
+              <div className={styles["inputs"]}>
+                <FormField
+                  label="اسم المستخدم أو البريد الإلكتروني"
+                  placeholder=" أدخل بريدك الإلكتروني أو اسم المستخدم"
+                  icon={<EnvelopeIcon />}
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  error={errors.email}
+                  labelAlign="center"
+                />
+                <FormField
+                  label="كلمة المرور"
+                  placeholder="أدخل كلمة المرور"
+                  icon={<LockIcon />}
+                  name="password"
+                  type="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  error={errors.password || credentialError}
+                  labelAlign="center"
+                />
+              </div>
+              <div className={styles["error-container"]}>
+                {errors.submit && (
+                  <div className={styles.errorMessage}>{errors.submit}</div>
+                )}
+              </div>
+              <div className={styles.optionsContainer}>
+                <a href="#" className={styles.forgotPassword}>
+                  نسيت كلمة المرور؟
+                </a>
+                <label className={styles.checkboxLabel}>
+                  البقاء متصلا
+                  <input type="checkbox" />
+                  <span className={styles.checkmark}></span>
+                </label>
+              </div>
             </div>
-          ) : (
             <div className={styles.buttonContainer}>
               <ACAButton
                 size={screenSize > 768 ? "medium" : "large"}
@@ -213,21 +213,21 @@ const Signin = () => {
                 icon={<LogOutIcon />}
               />
             </div>
-          )}
-          <div className={styles.divider}>يمكنك تسجيل الدخول باستخدام</div>
-          <div className={styles.socialContainer}>
-            <SocialButton
-              icon={<GoogleIcon />}
-              text="Google"
-              variant="google"
-            />
-            <SocialButton
-              icon={<FacebookIcon />}
-              text="Facebook"
-              variant="facebook"
-            />
+            <div className={styles.divider}>يمكنك تسجيل الدخول باستخدام</div>
+            <div className={styles.socialContainer}>
+              <SocialButton
+                icon={<GoogleIcon />}
+                text="Google"
+                variant="google"
+              />
+              <SocialButton
+                icon={<FacebookIcon />}
+                text="Facebook"
+                variant="facebook"
+              />
+            </div>
           </div>
-        </div>
+        )}
       </form>
     </div>
   );

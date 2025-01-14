@@ -156,10 +156,11 @@
 }
 
 .spinner {
-  height: 5vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 1;
+  width: 100%;
 }
 
 @media (max-width: 1440px) {
@@ -168,6 +169,7 @@
     flex-direction: column;
     width: 667px;
     margin: 135px 0px;
+    min-height: 1400px;
   }
   .formContent {
     width: 667px;
@@ -183,6 +185,7 @@
     flex-direction: column;
     width: 300px;
     margin: 63px 0px;
+    min-height: 800px;
   }
   .formContent {
     width: 300px;

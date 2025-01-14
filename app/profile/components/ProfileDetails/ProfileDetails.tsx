@@ -5,12 +5,13 @@ import { EditProfileIcon } from "@/public/icons";
 import Image from "next/image";
 import avatar from "@/public/images/default-profile.webp";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import { ProfileDataProps } from "./mock/profileData";
 import ToggleButtons from "./ToggleButtons/ToggleButtons";
 import { BurgerMenu } from "@/components/ui/Navbar/icons";
+import { profileData } from "./mock/profileData";
+import { UserData } from "@/types/UserDataProps";
 
 interface ProfileDetailsProps {
-  data: ProfileDataProps;
+  data: UserData;
   activeToggleButton: 1 | 2;
   onToggle: () => void;
 }
@@ -46,9 +47,9 @@ const ProfileDetails = ({
       </div>
       <ToggleButtons
         completedCourses={
-          data.courses.filter((e) => e.userSteps === e.totalSteps).length
+          profileData.courses.filter((e) => e.userSteps === e.totalSteps).length
         }
-        coursesNum={data.courses.length}
+        coursesNum={profileData.courses.length}
         activeToggleButton={activeToggleButton}
         onToggle={onToggle}
       />

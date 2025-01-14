@@ -2,7 +2,7 @@ import React from "react";
 import UnderlineText from "../UnderlineText/UnderlineText";
 import styles from "./FooterLinks.module.css";
 import ACAButton from "../ACAButton/ACAButton";
-import ChalkboardTeacher from "../ACAButton/ACAButtonIcons/ChalkboardTeacherIcon";
+import ChalkboardTeacher from "../../../public/icons/ChalkboardTeacherIcon";
 
 const FooterLinks = () => {
   return (

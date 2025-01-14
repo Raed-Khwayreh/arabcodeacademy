@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./FormField.module.css";
-import AngleDownIcon from "../ACAButton/ACAButtonIcons/AngleDownIcon";
+import AngleDownIcon from "../../../public/icons/AngleDownIcon";
 
 type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
 type SelectChangeEvent = React.ChangeEvent<HTMLSelectElement>;
@@ -36,7 +36,8 @@ const FormField: React.FC<Props> = ({
   fontSize,
   type = "text",
 }) => {
-  const alignment = labelAlign === "center" ? styles.centerAlign : styles.rightAlign;
+  const alignment =
+    labelAlign === "center" ? styles.centerAlign : styles.rightAlign;
 
   return (
     <div
@@ -55,7 +56,9 @@ const FormField: React.FC<Props> = ({
               name={name}
               value={value}
               onChange={onChange as (e: SelectChangeEvent) => void}
-              className={`${styles.formInput} ${error ? styles.errorInput : ""}`}
+              className={`${styles.formInput} ${
+                error ? styles.errorInput : ""
+              }`}
             >
               <option value="" disabled>
                 {placeholder}
@@ -75,7 +78,7 @@ const FormField: React.FC<Props> = ({
         <>
           <input
             className={`${styles.formInput} ${error ? styles.errorInput : ""}`}
-            type={type} 
+            type={type}
             placeholder={placeholder}
             name={name}
             value={value}

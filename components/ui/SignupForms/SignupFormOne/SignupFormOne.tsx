@@ -5,7 +5,7 @@ import FormField from "../../FormField/FormField";
 import EnvelopeIcon from "../../FormField/Icons/EnvelopeIcon";
 import LockIcon from "../../FormField/Icons/LockIcon";
 import ACAButton from "../../ACAButton/ACAButton";
-import AngleLeft from "../../ACAButton/ACAButtonIcons/AngleLeft";
+import AngleLeft from "../../../../public/icons/AngleLeft";
 import SocialButton from "../../SocialButtons/SocialButton";
 import GoogleIcon from "../../SocialButtons/SocialIcon/GoogleIcon";
 import FacebookIcon from "../../SocialButtons/SocialIcon/FacebookIcon";
@@ -33,7 +33,9 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
     confirmPassword: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     // Clear error when user starts typing
@@ -47,7 +49,7 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
    */
   const checkEmailExists = async (email: string): Promise<boolean> => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`);
+      const response = await fetch(`http://localhost:3001/users`);
       const users = await response.json();
       return users.some((user: { email: string }) => user.email === email);
     } catch (error) {

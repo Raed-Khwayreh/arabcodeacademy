@@ -4,7 +4,7 @@ import SignupFormTwo from "@/components/ui/SignupForms/SignupFormTwo/SignupFormT
 import React, { useState } from "react";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
 interface FormData {
   email?: string;
@@ -46,13 +46,13 @@ const Signup: React.FC = () => {
       const loginData = {
         email: userData.email,
         password: userData.password,
-        username: userData.email
+        username: userData.email,
       };
 
-      const response = await fetch('/api/auth/signin', {
-        method: 'POST',
+      const response = await fetch("/api/auth/signin", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(loginData),
       });
@@ -60,25 +60,25 @@ const Signup: React.FC = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        console.error('Auto-login failed');
-        router.push('/signin');
+        console.error("Auto-login failed");
+        router.push("/signin");
         return;
       }
 
       // Set cookies and dispatch login event
-      Cookies.set('accessToken', data.token, { expires: 7 });
-      Cookies.set('currentUser', JSON.stringify(data.user), { expires: 7 });
+      Cookies.set("accessToken", data.token, { expires: 7 });
+      Cookies.set("currentUser", JSON.stringify(data.user), { expires: 7 });
 
-      const loginEvent = new CustomEvent('userLogin', { 
-        detail: { user: data.user } 
+      const loginEvent = new CustomEvent("userLogin", {
+        detail: { user: data.user },
       });
       window.dispatchEvent(loginEvent);
 
       // Redirect to home page
-      router.push('/');
+      router.push("/");
     } catch (error) {
-      console.error('Error during auto-login:', error);
-      router.push('/signin');
+      console.error("Error during auto-login:", error);
+      router.push("/signin");
     }
   };
 
@@ -90,15 +90,13 @@ const Signup: React.FC = () => {
     const finalData = { ...formData, ...data };
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`, {
+      const response = await fetch(`http://localhost:3001/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(finalData),
       });
 
       if (response.ok) {
-        console.log("User created successfully:", finalData);
-        // Automatically log in the user
         await handleAutoLogin(finalData as FormData);
       } else {
         console.error("Failed to create user:", response.statusText);
@@ -113,7 +111,10 @@ const Signup: React.FC = () => {
       {currentForm === 1 ? (
         <SignupFormOne onNext={handleNextForm} />
       ) : (
-        <SignupFormTwo onBack={handlePreviousForm} onSubmit={handleFinalSubmit} />
+        <SignupFormTwo
+          onBack={handlePreviousForm}
+          onSubmit={handleFinalSubmit}
+        />
       )}
     </div>
   );

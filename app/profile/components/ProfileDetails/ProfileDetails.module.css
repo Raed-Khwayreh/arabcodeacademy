@@ -78,7 +78,7 @@
   gap: 5px;
 }
 
-.link-label a {
+.link-label {
   font-size: 18px;
   font-weight: 700;
 }
@@ -125,7 +125,7 @@
   .icon-label {
     font-size: 14px;
   }
-  .link-label a {
+  .link-label {
     font-size: 14px;
   }
   .profileImage {

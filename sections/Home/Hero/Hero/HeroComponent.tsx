@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./HeroComponent.module.css";
 import { ACAButton } from "@/components/ui";
-import ChalkboardTeacherIcon from "@/components/ui/ACAButton/ACAButtonIcons/ChalkboardTeacherIcon";
+import ChalkboardTeacherIcon from "@/public/icons/ChalkboardTeacherIcon";
 
 const HeroComponent = () => {
   return (

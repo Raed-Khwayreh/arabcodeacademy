@@ -9,8 +9,8 @@ import LocationIcon from "../../FormField/Icons/LocationIcon";
 import SocialButton from "../../SocialButtons/SocialButton";
 import GoogleIcon from "../../SocialButtons/SocialIcon/GoogleIcon";
 import FacebookIcon from "../../SocialButtons/SocialIcon/FacebookIcon";
-import { ProfileCircleIcon } from "../../ACAButton/ACAButtonIcons";
 import { FaAngleRight } from "react-icons/fa";
+import { ProfileCircleIcon } from "@/public/icons";
 
 interface SignupFormTwoProps {
   onBack: () => void;
@@ -86,7 +86,7 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
 
   const checkUsernameExists = async (username: string): Promise<boolean> => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`);
+      const response = await fetch(`http://localhost:3001/users`);
       const users = await response.json();
       return users.some(
         (user: { username: string }) => user.username === username

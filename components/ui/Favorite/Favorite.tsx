@@ -24,6 +24,7 @@ const Favorite: React.FC<Props> = ({
 
   return (
     <button
+      aria-label="fav-button"
       className={styles.favorite}
       onClick={handleClick}
       onMouseEnter={() => setIsHovered(true)}

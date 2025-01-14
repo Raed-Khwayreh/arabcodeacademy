@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import styles from "./AIToolCard.module.css";
 import Image from "next/image";
-import AIToolImage from "@/public/images/ai-tool-image.png";
+import AIToolImage from "@/public/images/aitool/ai-tool-image.webp";
 import ACAButton from "../ACAButton/ACAButton";
-import EllipsisCircleIcon from "../ACAButton/ACAButtonIcons/EllipsisCircleIcon";
-import Favorite from "../Favorite/Favorite";
+import EllipsisCircleIcon from "../../../public/icons/EllipsisCircleIcon";
+
 import { AIToolsCardProps } from "@/types/AIToolCardProps";
+import Favorite from "../Favorite/Favorite";
 export interface Props {
   cardData: AIToolsCardProps;
   handleOnPressFavoriteCard?: (n: number) => void;
@@ -36,9 +37,10 @@ export default function AIToolCard({
     >
       <div className={styles.image_container}>
         <Image
+          loading="lazy"
           src={AIToolImage}
           alt="AI tool image"
-          style={{ width: "100%" }}
+          className={styles.image}
         />
       </div>
       <div className={styles.card_body}>

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./ResourceCard.module.css";
-import EllipsisCircleIcon from "../ACAButton/ACAButtonIcons/EllipsisCircleIcon";
+import EllipsisCircleIcon from "../../../public/icons/EllipsisCircleIcon";
 import ACAButton from "../ACAButton/ACAButton";
 import Link from "next/link";
 

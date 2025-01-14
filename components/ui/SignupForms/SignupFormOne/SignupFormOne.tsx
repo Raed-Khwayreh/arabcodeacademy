@@ -5,7 +5,7 @@ import FormField from "../../FormField/FormField";
 import EnvelopeIcon from "../../FormField/Icons/EnvelopeIcon";
 import LockIcon from "../../FormField/Icons/LockIcon";
 import ACAButton from "../../ACAButton/ACAButton";
-import AngleLeft from "../../ACAButton/ACAButtonIcons/AngleLeft";
+import AngleLeft from "../../../../public/icons/AngleLeft";
 import SocialButton from "../../SocialButtons/SocialButton";
 import GoogleIcon from "../../SocialButtons/SocialIcon/GoogleIcon";
 import FacebookIcon from "../../SocialButtons/SocialIcon/FacebookIcon";
@@ -33,6 +33,15 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
     confirmPassword: "",
   });
 
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    // Clear error when user starts typing
+    setErrors((prev) => ({ ...prev, [name]: "" }));
+  };
+
   /**
    * Checks if an email already exists in the database.
    * @param email The email to check.
@@ -40,7 +49,7 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
    */
   const checkEmailExists = async (email: string): Promise<boolean> => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`);
+      const response = await fetch(`http://localhost:3001/users`);
       const users = await response.json();
       return users.some((user: { email: string }) => user.email === email);
     } catch (error) {
@@ -127,12 +136,11 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
           icon={<EnvelopeIcon />}
           name="email"
           value={formData.email || ""}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          onChange={handleChange}
           labelAlign="center"
           error={errors.email}
           type="email"
         />
-        {errors.email && <div className={styles.errorText}>{errors.email}</div>}
 
         <FormField
           label="كلمة المرور"
@@ -140,16 +148,11 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
           icon={<LockIcon />}
           name="password"
           value={formData.password || ""}
-          onChange={(e) =>
-            setFormData({ ...formData, password: e.target.value })
-          }
+          onChange={handleChange}
           labelAlign="center"
           error={errors.password}
           type="password"
         />
-        {errors.password && (
-          <div className={styles.errorText}>{errors.password}</div>
-        )}
 
         <FormField
           label="تأكيد كلمة المرور"
@@ -157,16 +160,11 @@ const SignupFormOne: React.FC<SignupFormOneProps> = ({ onNext }) => {
           icon={<LockIcon />}
           name="confirmPassword"
           value={formData.confirmPassword || ""}
-          onChange={(e) =>
-            setFormData({ ...formData, confirmPassword: e.target.value })
-          }
+          onChange={handleChange}
           labelAlign="center"
           error={errors.confirmPassword}
           type="password"
         />
-        {errors.confirmPassword && (
-          <div className={styles.errorText}>{errors.confirmPassword}</div>
-        )}
       </div>
 
       <ACAButton

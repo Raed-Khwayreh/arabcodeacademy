@@ -1,33 +1,59 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
-import Image from "next/image";
-import { ACAButton, Sidebar } from "@/components/ui";
-import { LoginIcon, ProfileCircleIcon } from "../ACAButton/ACAButtonIcons";
-import { ArrowDown, Avatar, BurgerMenu, Logout } from "./icons";
-import { subMenuList } from "@/sections/Home/Courses/mock/subMenuList";
-import Link from "next/link";
+import { Sidebar } from "@/components/ui";
+import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
+import { logout } from "./utils/logout";
+
+import {
+  Logout,
+  NavbarButtons,
+  NavbarList,
+  NavbarLogo,
+  NavbarMenu,
+} from "./components";
 
 const Navbar = () => {
-  const [showResoursesList, setShowResoursesList] = useState(false);
+  const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const accessToken = Cookies.get("accessToken");
+    const currentUser = Cookies.get("currentUser");
+    if (accessToken && currentUser) {
+      setIsLoggedIn(true);
+    }
+    const handleLogin = () => {
+      setIsLoggedIn(true);
+    };
+    window.addEventListener("userLogin", handleLogin as EventListener);
+    setIsLoading(false);
+    return () => {
+      window.removeEventListener("userLogin", handleLogin as EventListener);
+    };
+  }, []);
+
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const handleOnlogin = () => {
-    setIsLoggedIn(true);
+  const handleOnClick = () => {
     setIsSidebarOpen(false);
   };
 
   const handleOnLogOut = () => {
-    setIsLoggedIn(false);
-  };
-
-  const handleOnClick = () => {
-    setIsSidebarOpen(false);
+    logout()
+      .then(() => {
+        setIsLoggedIn(false);
+        router.push("/signin");
+      })
+      .catch(() => {
+        router.push("/signin");
+      });
   };
 
   return (
@@ -36,85 +62,21 @@ const Navbar = () => {
         <Sidebar
           handleOnClick={handleOnClick}
           isLoggedIn={isLoggedIn}
-          onLogin={handleOnlogin}
+          onLogin={() => router.push("/signin")}
         />
       )}
-      <div className={styles["burger-menu"]} onClick={toggleSidebar}>
-        {isLoggedIn && (
-          <div className={styles["logout-mobile"]}>
-            <div onClick={handleOnLogOut}>
-              <Logout />
-            </div>
-            <Avatar />
-          </div>
-        )}
-        <BurgerMenu />
-      </div>
+      <NavbarMenu
+        handleOnLogOut={handleOnLogOut}
+        isLoggedIn={isLoggedIn}
+        toggleSidebar={toggleSidebar}
+      />
       {isLoggedIn ? (
-        <div className={styles.logout}>
-          <div onClick={handleOnLogOut}>
-            <Logout />
-          </div>
-          <Avatar />
-        </div>
+        <Logout handleOnLogOut={handleOnLogOut} />
       ) : (
-        <div className={styles["buttons-container"]}>
-          <Link href="/signup">
-            <ACAButton
-              size="medium"
-              variant="teal"
-              text="إنشاء حساب"
-              icon={<ProfileCircleIcon />}
-            />
-          </Link>
-          <div onClick={handleOnlogin}>
-            <ACAButton
-              size="medium"
-              variant="tomato"
-              text="تسجيل الدخول"
-              icon={<LoginIcon />}
-            />
-          </div>
-        </div>
+        <NavbarButtons isLoading={isLoading} />
       )}
-      <ul className={styles.links}>
-        <li>المسارات التعليمية</li>
-        <li>التواصل </li>
-        <div
-          onClick={() => setShowResoursesList((e) => !e)}
-          className={styles["resource-list"]}
-        >
-          <li>المصادر</li>
-          {showResoursesList && (
-            <ul className={styles["resouces-menu"]} style={{}}>
-              {subMenuList.map((e, i) => {
-                return (
-                  <li key={i}>
-                    <Link href={e.href}>{e.title}</Link>
-                  </li>
-                );
-              })}
-            </ul>
-          )}
-          <div
-            className={styles.arrowDown}
-            style={{ transform: showResoursesList ? "rotate(60deg)" : "" }}
-          >
-            <ArrowDown />
-          </div>
-        </div>
-      </ul>
-      <Link href="/">
-        <div className={styles["image-contanier"]}>
-          <Image
-            className={styles.image}
-            src={"/images/logo.png"}
-            alt="logo"
-            width={280}
-            height={61}
-          />
-        </div>
-      </Link>
+      <NavbarList />
+      <NavbarLogo />
     </div>
   );
 };

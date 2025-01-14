@@ -6,6 +6,7 @@ import SignInIcon from "./icons/LogIn.svg";
 import CreateAccountIcon from "./icons/CreateAccount.svg";
 
 import SubMenu from "./SubMenu/SubMenu";
+import Link from "next/link";
 
 interface SidebarProps {
   isLoggedIn: boolean;
@@ -23,19 +24,6 @@ const Sidebar: FC<SidebarProps> = ({ isLoggedIn, onLogin, handleOnClick }) => {
   return (
     <nav className={styles.sidebar} style={{ top: isLoggedIn ? 84 : 62 }}>
       <ul className={styles.menu}>
-        {!isLoggedIn && (
-          <>
-            <li onClick={onLogin} className={styles.menuItem}>
-              <span>تسجيل الدخول</span>
-              <SignInIcon className={styles.icon} />
-            </li>
-            <li className={styles.menuItem}>
-              <span>إنشاء حساب</span>
-              <CreateAccountIcon className={styles.icon} />
-            </li>
-          </>
-        )}
-
         <li onClick={handleOnClick} className={styles.menuItem}>
           <span>المسارات التعليمية</span>
         </li>
@@ -50,6 +38,22 @@ const Sidebar: FC<SidebarProps> = ({ isLoggedIn, onLogin, handleOnClick }) => {
         <li onClick={handleOnClick} className={styles.menuItem}>
           التواصل
         </li>
+        {!isLoggedIn && (
+          <>
+            <li onClick={onLogin} className={styles.menuItem}>
+              <Link href="/signin">
+                <span>تسجيل الدخول</span>
+              </Link>
+              <SignInIcon className={styles.icon} />
+            </li>
+            <li className={styles.menuItem}>
+              <Link href="/signup">
+                <span>إنشاء حساب</span>
+                <CreateAccountIcon className={styles.icon} />
+              </Link>
+            </li>
+          </>
+        )}
       </ul>
     </nav>
   );

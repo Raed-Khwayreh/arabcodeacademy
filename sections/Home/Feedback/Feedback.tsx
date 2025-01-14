@@ -3,7 +3,7 @@ import ACALoading from "@/components/ui/ACALoading";
 import ACAError from "@/components/ui/ACAError";
 import { ErrorMessage } from "@/types/ErrorMessage";
 import styles from "./Feedback.module.css";
-import FeedbackList from "./FeedbackList/FeedbackList";
+import dynamic from "next/dynamic";
 
 const fetchReviews = async () => {
   try {
@@ -14,6 +14,14 @@ const fetchReviews = async () => {
     throw new Error(ErrorMessage.CONNECTION_FAILD);
   }
 };
+
+const FeedbackListLazyComponent = dynamic(
+  () => import("./FeedbackList/FeedbackList"),
+  {
+    loading: () => <ACALoading />,
+    ssr: false,
+  }
+);
 
 const Feedback = async () => {
   let reviews;
@@ -27,11 +35,11 @@ const Feedback = async () => {
   if (!reviews) return <ACALoading />;
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <div className={styles["reviews-list-container"]}>
-        <FeedbackList reviews={reviews} />
+        <FeedbackListLazyComponent reviews={reviews} />
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -2,11 +2,11 @@ import React from "react";
 import styles from "./InteractiveTools.module.css";
 import PromoText from "@/components/ui/PromoText/PromoText";
 import ACAButton from "@/components/ui/ACAButton/ACAButton";
-import PhoneIcon from "@/components/ui/ACAButton/ACAButtonIcons/PhoneIcon";
+import PhoneIcon from "@/public/icons/PhoneIcon";
 
 const InteractiveTools = () => {
   return (
-    <div className={styles["interactive-tools"]}>
+    <section className={styles["interactive-tools"]}>
       <div className={styles["promo-text-container"]}>
         <PromoText
           title="أدوات تفاعلية والعاب تعليمية"
@@ -22,7 +22,7 @@ const InteractiveTools = () => {
           }
         />
       </div>
-    </div>
+    </section>
   );
 };
 

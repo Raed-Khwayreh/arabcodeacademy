@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import ImageSource from "@/public/images/learning-path-image.png";
+import ImageSource from "@/public/images/learningPath/learning-path-image.webp";
 import styles from "./LearningPath.module.css";
 import ACAButton from "@/components/ui/ACAButton/ACAButton";
-import ChalkboardTeacherIcon from "@/components/ui/ACAButton/ACAButtonIcons/ChalkboardTeacherIcon";
+import ChalkboardTeacherIcon from "@/public/icons/ChalkboardTeacherIcon";
 import PromoText from "@/components/ui/PromoText/PromoText";
 
 const LearningPath = () => {
@@ -23,7 +23,7 @@ const LearningPath = () => {
   });
 
   return (
-    <div className={styles.learning_path_section}>
+    <section className={styles.learning_path_section}>
       <div className={styles.promotext_style}>
         <PromoText
           title="التجربة التعليمية في الأكاديمية العربية للبرمجة"
@@ -59,7 +59,7 @@ const LearningPath = () => {
           priority
         />
       </div>
-    </div>
+    </section>
   );
 };
 

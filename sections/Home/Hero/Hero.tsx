@@ -14,7 +14,7 @@ const Hero = () => {
   };
 
   return (
-    <div className={styles.hero}>
+    <section className={styles.hero}>
       <div className={styles.slider}>
         <CarouselSlider
           userSettings={settings}
@@ -25,7 +25,7 @@ const Hero = () => {
           ))}
         />
       </div>
-    </div>
+    </section>
   );
 };
 

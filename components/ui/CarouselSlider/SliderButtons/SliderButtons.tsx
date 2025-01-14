@@ -30,7 +30,8 @@ const SliderButtons: React.FC<SliderButtonsProps> = ({
 
   return (
     <>
-      <div
+      <button
+        aria-label="left-arrow"
         onClick={() => sliderRef.current?.slickPrev()}
         className={styles["left-arrow"]}
         style={{
@@ -38,8 +39,9 @@ const SliderButtons: React.FC<SliderButtonsProps> = ({
         }}
       >
         <ArrowLeft color={arrowsColor} width={iconSize} height={iconSize} />
-      </div>
+      </button>
       <button
+        aria-label="right-arrow"
         onClick={() => sliderRef.current?.slickNext()}
         style={{
           right: buttonsSpace,

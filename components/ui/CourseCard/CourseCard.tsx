@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./CourseCard.module.css";
 import ACAButton from "../ACAButton/ACAButton";
-import CartIcon from "../ACAButton/ACAButtonIcons/CartIcon";
-import EllipsisCircleIcon from "../ACAButton/ACAButtonIcons/EllipsisCircleIcon";
+import CartIcon from "../../../public/icons/CartIcon";
+import EllipsisCircleIcon from "../../../public/icons/EllipsisCircleIcon";
 import { SoonSmallIcon } from "./icons";
 import Image from "next/image";
 import { CourseProps } from "@/types/CourseProps";
@@ -24,7 +24,7 @@ const CourseCard: React.FC<Props> = ({ courseData }) => {
           <Image
             className={styles.image}
             alt="course-image"
-            src={courseData.imageURL && "/images/courses/default-course.png"}
+            src={courseData.imageURL && "/images/courses/default-course.svg"}
             width={180}
             height={100}
           />

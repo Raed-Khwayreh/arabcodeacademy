@@ -9,8 +9,8 @@ import LocationIcon from "../../FormField/Icons/LocationIcon";
 import SocialButton from "../../SocialButtons/SocialButton";
 import GoogleIcon from "../../SocialButtons/SocialIcon/GoogleIcon";
 import FacebookIcon from "../../SocialButtons/SocialIcon/FacebookIcon";
-import { ProfileCircleIcon } from "../../ACAButton/ACAButtonIcons";
 import { FaAngleRight } from "react-icons/fa";
+import { ProfileCircleIcon } from "@/public/icons";
 
 interface SignupFormTwoProps {
   onBack: () => void;
@@ -25,6 +25,8 @@ interface SignupFormTwoProps {
 const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
   const [checked, setChecked] = useState(false);
   const [fieldWidth, setFieldWidth] = useState("100%");
+  const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -71,19 +73,20 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    setErrors({ ...errors, [name]: "" });
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    // Clear error when user starts typing
+    setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
   /**
    * Checks if a given username already exists in the database.
    * @param username The username to check.
    * @returns A boolean indicating if the username exists.
-   **/
+   */
 
   const checkUsernameExists = async (username: string): Promise<boolean> => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`);
+      const response = await fetch(`http://localhost:3001/users`);
       const users = await response.json();
       return users.some(
         (user: { username: string }) => user.username === username
@@ -135,7 +138,7 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
     }
 
     if (!checked) {
-      newErrors.conditions = "يجب أن توافق على سياسة الخصوصية";
+      newErrors.conditions = "";
       isValid = false;
     }
 
@@ -149,9 +152,17 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
    */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitted(true);
 
     if (await validate()) {
-      onSubmit(formData);
+      setIsLoading(true);
+      try {
+        await onSubmit(formData);
+      } catch (error) {
+        console.error("Error during form submission:", error);
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -188,19 +199,7 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
             type="text"
           />
 
-          <div className={styles.errorTextNameContainer}>
-            {errors.firstName && (
-              <div id={styles.firstNameError} className={styles.errorTextName}>
-                {errors.firstName}
-              </div>
-            )}
-
-            {errors.lastName && (
-              <div id={styles.lastNameError} className={styles.errorTextName}>
-                {errors.lastName}
-              </div>
-            )}
-          </div>
+          <div></div>
         </div>
 
         <FormField
@@ -213,11 +212,6 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
           error={errors.username}
           type="text"
         />
-        {errors.username && (
-          <div id={styles.userNameError} className={styles.errorText}>
-            {errors.username}
-          </div>
-        )}
 
         <FormField
           label="بلد الإقامة"
@@ -230,58 +224,59 @@ const SignupFormTwo: React.FC<SignupFormTwoProps> = ({ onBack, onSubmit }) => {
           icon={<LocationIcon />}
           error={errors.country}
         />
-        {errors.country && (
-          <div id={styles.locationError} className={styles.errorText}>
-            {errors.country}
-          </div>
-        )}
       </div>
       <div
-        className={`${styles.checkboxContainer} ${
-          errors.conditions ? styles.errorCheckboxContainer : ""
-        }`}
+        className={
+          !checked && submitted
+            ? styles.errorCheckboxContainer
+            : styles.checkboxContainer
+        }
       >
         <label
           className={`${styles.checkboxLabel} ${
-            errors.conditions ? styles.errorLabel : ""
+            !checked && submitted ? styles.errorLabel : ""
           }`}
         >
-          يرجى تأكيد موافقتك على سياسة الخصوصية الخاصة بنا{" "}
+          <span>يرجى تأكيد موافقتك على سياسة الخصوصية الخاصة بنا</span>
           <input
             type="checkbox"
             checked={checked}
-            onChange={() => {
-              setChecked(!checked);
-              if (!checked) setErrors({ ...errors, conditions: "" });
+            onChange={(e) => {
+              setChecked(e.target.checked);
+              if (e.target.checked) {
+                setErrors((prev) => ({ ...prev, conditions: "" }));
+              }
             }}
           />
           <span
             className={`${styles.checkmark} ${
-              errors.conditions ? styles.errorCheckmark : ""
+              !checked && submitted ? styles.errorCheckmark : ""
             }`}
           ></span>
         </label>
-        {errors.conditions && (
-          <div className={styles.errorText}>{errors.conditions}</div>
+        {errors.conditions && errors.conditions !== "" && (
+          <div className={styles.errorText} style={{ color: "#db4a39" }}>
+            {errors.conditions}
+          </div>
         )}
       </div>
 
       <div className={styles.buttonGroup}>
         <ACAButton
-          size="small"
-          text="انشاء حسابي"
-          icon={<ProfileCircleIcon />}
+          text="إنشاء حساب"
           variant="teal"
+          size="medium"
           type="submit"
+          loading={isLoading}
+          icon={<ProfileCircleIcon />}
         />
-
         <ACAButton
-          size="small"
           text="رجوع"
-          icon={<FaAngleRight size={25} />}
           variant="tomato"
-          type="button"
+          size="medium"
           onClick={onBack}
+          disabled={isLoading}
+          icon={<FaAngleRight />}
         />
       </div>
 

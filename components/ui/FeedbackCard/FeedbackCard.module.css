@@ -21,12 +21,12 @@
   height: 100%;
   position: absolute;
   top: 0;
-  left: 0;
+  left: -1px;
 }
 
 .profileImageContainer {
-  width: 63px;
-  height: 63px;
+  width: 60px;
+  height: 60px;
   position: absolute;
   top: 24px;
   left: 50%;
@@ -82,11 +82,29 @@
   height: 14px;
 }
 
+.svg {
+  width: 259px;
+  height: 76px;
+}
+
+.profileImage {
+  border-radius: 50%;
+}
+
 @media (min-width: 768px) {
   .card {
     width: 385px;
     height: 380px;
     border-radius: 10px;
+  }
+
+  .svg {
+    width: 386px;
+    height: 114px;
+  }
+
+  .headerBackground {
+    left: 0px;
   }
 
   .header {
@@ -95,9 +113,8 @@
   }
 
   .profileImageContainer {
-    width: 92px;
-    height: 92px;
-
+    width: 85px;
+    height: 85px;
     top: 36px;
   }
 

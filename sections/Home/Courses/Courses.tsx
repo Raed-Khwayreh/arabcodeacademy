@@ -1,11 +1,10 @@
 import React from "react";
 import styles from "./Courses.module.css";
-import { SearchBar, UnderlineText } from "@/components/ui";
-import CoursesList from "./CoursesList/CoursesList";
-import ACALoading from "@/components/ui/ACALoading";
-import ACAError from "@/components/ui/ACAError";
+import { ACAError, ACALoading, SearchBar, UnderlineText } from "@/components/ui";
+
 import { ErrorMessage } from "@/types/ErrorMessage";
 import { CourseProps } from "@/types/CourseProps";
+import dynamic from "next/dynamic";
 
 const fetchCourses = async () => {
   try {
@@ -16,6 +15,14 @@ const fetchCourses = async () => {
     throw new Error(ErrorMessage.CONNECTION_FAILD);
   }
 };
+
+const CoursesListLazyComponent = dynamic(
+  () => import("./CoursesList/CoursesList"),
+  {
+    loading: () => <ACALoading />,
+    ssr: false,
+  }
+);
 
 const Courses = async () => {
   let courses;
@@ -29,7 +36,7 @@ const Courses = async () => {
   if (!courses) return <ACALoading />;
 
   return (
-    <div className={styles.courses}>
+    <section className={styles.courses}>
       <div className={styles["search-container"]}>
         <SearchBar placeholder="مقدمة لمحرك الألعاب اليونتي ....." />
         <UnderlineText
@@ -39,7 +46,7 @@ const Courses = async () => {
         />
       </div>
       <div className={styles["courses-list-container"]}>
-        <CoursesList
+        <CoursesListLazyComponent
           courses={courses.filter((e: CourseProps) => e.status === "available")}
         />
       </div>
@@ -47,11 +54,11 @@ const Courses = async () => {
         <UnderlineText title="قريباً" fontWeight={700} paddingBottom={5} />
       </div>
       <div className={styles["courses-list-container"]}>
-        <CoursesList
+        <CoursesListLazyComponent
           courses={courses.filter((e: CourseProps) => e.status !== "available")}
         />
       </div>
-    </div>
+    </section>
   );
 };
 

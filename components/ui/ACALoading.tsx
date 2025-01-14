@@ -1,18 +1,26 @@
 import React from "react";
 import { Spinner, Text, VStack } from "@chakra-ui/react";
 
-const ACALoading: React.FC = () => {
+interface ACALoadingProps {
+  color?: string;
+  height?: string | number;
+}
+
+const ACALoading = ({
+  color = "#783ba2",
+  height = "30vh",
+}: ACALoadingProps) => {
   return (
     <VStack
       justifyContent="center"
       alignItems="center"
-      height="30vh"
+      height={height}
       style={{
         transition: "0.2s",
       }}
     >
-      <Spinner color="#783ba2" size="xl" fontWeight={"bold"} />
-      <Text color="#783ba2" fontSize="2xl" fontWeight="bold">
+      <Spinner color={color} size="xl" fontWeight={"bold"} />
+      <Text color={color} fontSize="2xl" fontWeight="bold">
         جاري التحميل
       </Text>
     </VStack>

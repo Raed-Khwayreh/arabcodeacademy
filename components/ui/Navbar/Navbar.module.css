@@ -150,6 +150,7 @@
   }
   .burger-menu {
     display: flex;
+    flex-direction: row-reverse;
     align-items: center;
     gap: 12px;
   }
@@ -186,6 +187,7 @@
   .mobile-user-info {
     display: flex;
     align-items: center;
+    flex-direction: row-reverse;
     gap: 16px;
     order: 1;
   }

@@ -22,17 +22,17 @@ export const profileData: ProfileDataProps = {
     {
       site: "linkedin",
       userName: "Ra'ed Khwayreh",
-      url: "https://www.linkedin.com/in/raed-khwayreh",
+      url: "https://www.linkedin.com/in/user-name",
     },
     {
       site: "facebook",
       userName: "Ra'ed Khwayerh ",
-      url: "https://www.facebook.com/RaEDxkH",
+      url: "https://www.facebook.com/user-name",
     },
     {
       site: "github",
       userName: "Raed-Khwayreh",
-      url: "https://github.com/Raed-Khwayreh",
+      url: "https://github.com/user-name",
     },
   ],
   courses: [

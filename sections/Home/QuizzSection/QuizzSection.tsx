@@ -4,7 +4,7 @@ import { imagesData, quizzSectionsData } from "./mocks/QuizzSectionData";
 import Img from "next/image";
 import styles from "./QuizzSection.module.css";
 import Button from "@/components/ui/ACAButton/ACAButton";
-import DocumentCheckIcon from "@/components/ui/ACAButton/ACAButtonIcons/DocumentCheckIcon";
+import DocumentCheckIcon from "@/public/icons/DocumentCheckIcon";
 
 const QuizzSection = () => {
   return (

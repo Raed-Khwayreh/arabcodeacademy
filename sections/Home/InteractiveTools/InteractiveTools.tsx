@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./InteractiveTools.module.css";
 import PromoText from "@/components/ui/PromoText/PromoText";
 import ACAButton from "@/components/ui/ACAButton/ACAButton";
-import PhoneIcon from "@/components/ui/ACAButton/ACAButtonIcons/PhoneIcon";
+import PhoneIcon from "@/public/icons/PhoneIcon";
 
 const InteractiveTools = () => {
   return (

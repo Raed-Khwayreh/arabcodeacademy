@@ -2,7 +2,7 @@ import React from "react";
 import { LocationIcon, PhoneContactIcon, MessageIcon } from "./Icons";
 import ACAButton from "../ACAButton/ACAButton";
 import styles from "./ContactInfoCard.module.css";
-import PhoneIcon from "../ACAButton/ACAButtonIcons/PhoneIcon";
+import PhoneIcon from "../../../public/icons/PhoneIcon";
 import UnderlineText from "../UnderlineText/UnderlineText";
 
 const ContactInfoCard: React.FC = () => {

@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import styles from "./VideoSection.module.css";
 import DhadIcon from "./icons/DhadIcon";
 import { ACAButton } from "@/components/ui";
-import DocumentListIcon from "@/components/ui/ACAButton/ACAButtonIcons/DocumentListIcon";
+import DocumentListIcon from "@/public/icons/DocumentListIcon";
 import useScreenSize from "@/utils/useScreenSize";
 
 /**

@@ -1,7 +1,7 @@
 .learning_path_section {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 4rem;
   gap: 72px;
 }
@@ -12,17 +12,11 @@
   height: auto;
 }
 
-.img {
-  width: 100%;
-  object-fit: cover;
-}
-
 .promotext_style {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 22px;
-  margin-top: 37px;
 }
 
 .promotext_style div:first-child {
@@ -54,6 +48,7 @@
     flex-direction: column-reverse;
     padding: 1rem;
     gap: 0;
+    align-items: center;
   }
 
   .img_container {

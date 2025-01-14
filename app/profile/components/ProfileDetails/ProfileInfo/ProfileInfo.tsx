@@ -1,38 +1,39 @@
 import React from "react";
 import { LinkIcon, LocationIcon, UserIcon } from "../icons";
-import { ProfileDataProps } from "../mock/profileData";
 import styles from "../ProfileDetails.module.css";
 import { SocialMediaoIconsMap } from "../icons/SocialMediaoIconsMap";
+import { profileData } from "../mock/profileData";
+import { UserData } from "@/types/UserDataProps";
 
 interface ProfileInfoProps {
-  data: ProfileDataProps;
+  data: UserData;
 }
 
 const ProfileInfo = ({ data }: ProfileInfoProps) => {
   return (
     <div className={styles.info}>
-      <h1 className={styles["user-name"]}>{data.userName}</h1>
+      <h1 className={styles["user-name"]}>{data.username}</h1>
       <div className={styles["icon-container"]}>
-        <h2 className={styles["icon-label"]}>{data.name}</h2>
+        <h2
+          className={styles["icon-label"]}
+        >{`${data.firstName} ${data.lastName}`}</h2>
         <UserIcon />
       </div>
       <div className={`${styles["icon-container"]} ${styles["location"]}`}>
-        <h2 className={styles["icon-label"]}>{data.location}</h2>
+        <h2 className={styles["icon-label"]}>{data.country}</h2>
         <LocationIcon />
       </div>
-      {data.links && (
+      {profileData.links && (
         <div className={styles["links-container"]}>
           <div className={styles["icon-container"]}>
             <h2 className={styles["icon-label"]}>الروابط:</h2>
             <LinkIcon />
           </div>
           <div className={styles.links}>
-            {data.links.map((link) => (
+            {profileData.links.map((link) => (
               <div key={link.url} className={styles["link-container"]}>
                 {link.site && SocialMediaoIconsMap[link.site]}
-                <h2 className={styles["link-label"]}>
-                  <a href={link.url}> {link.url}</a>
-                </h2>
+                <h2 className={styles["link-label"]}>{link.url}</h2>
               </div>
             ))}
           </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./ToggleButtons.module.css";
-import { ChalkboardTeacherIcon } from "@/components/ui/ACAButton/ACAButtonIcons";
 import { CheckIcon } from "../icons";
+import { ChalkboardTeacherIcon } from "@/public/icons";
 
 interface ToggleButtonsProps {
   coursesNum: number;

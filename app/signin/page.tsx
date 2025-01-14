@@ -11,11 +11,11 @@ import FacebookIcon from "@/components/ui/SocialButtons/SocialIcon/FacebookIcon"
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import Image from "next/image";
-import LogOutIcon from "@/components/ui/ACAButton/ACAButtonIcons/LoginIcon";
-import { ProfileCircleIcon } from "@/components/ui/ACAButton/ACAButtonIcons";
+import LogOutIcon from "@/public/icons/LoginIcon";
 import largeImage from "@/public/images/signin/loginLarge.png";
 import smallImage from "@/public/images/signin/loginSmall.png";
 import mediumImage from "@/public/images/signin/loginMeduim.png";
+import { ProfileCircleIcon } from "@/public/icons";
 
 interface FormData {
   email: string;
@@ -105,13 +105,13 @@ const Signin = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  
+
     if (validate()) {
       setIsLoading(true);
       try {
         // Encode the password using Base64 encoding (btoa) before sending it in the request payload.
         const encodedPassword = btoa(formData.password);
-  
+
         const response = await fetch("/api/auth/signin", {
           method: "POST",
           headers: {
@@ -119,18 +119,18 @@ const Signin = () => {
           },
           body: JSON.stringify({ ...formData, password: encodedPassword }),
         });
-  
+
         const data = await response.json();
-  
+
         if (response.ok) {
           Cookies.set("accessToken", data.token, { expires: 7 });
           Cookies.set("currentUser", JSON.stringify(data.user), { expires: 7 });
-  
+
           const loginEvent = new CustomEvent("userLogin", {
             detail: { user: data.user },
           });
           window.dispatchEvent(loginEvent);
-  
+
           router.push("/");
         } else {
           setErrors((prev) => ({
@@ -149,7 +149,6 @@ const Signin = () => {
       }
     }
   };
-  
 
   const handleSignupRedirect = () => {
     router.push("/signup");
@@ -192,7 +191,7 @@ const Signin = () => {
               error={errors.password || credentialError}
               labelAlign="center"
             />
-            <div style={{ position: 'relative', width: '100%' }}>
+            <div style={{ position: "relative", width: "100%" }}>
               {errors.submit && (
                 <div className={styles.errorMessage}>{errors.submit}</div>
               )}

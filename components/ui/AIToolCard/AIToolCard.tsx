@@ -3,7 +3,7 @@ import styles from "./AIToolCard.module.css";
 import Image from "next/image";
 import AIToolImage from "@/public/images/aitool/ai-tool-image.webp";
 import ACAButton from "../ACAButton/ACAButton";
-import EllipsisCircleIcon from "../ACAButton/ACAButtonIcons/EllipsisCircleIcon";
+import EllipsisCircleIcon from "../../../public/icons/EllipsisCircleIcon";
 
 import { AIToolsCardProps } from "@/types/AIToolCardProps";
 import Favorite from "../Favorite/Favorite";

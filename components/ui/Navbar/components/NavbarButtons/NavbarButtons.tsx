@@ -9,7 +9,7 @@ const NavbarButtons = ({ isLoading }: { isLoading: boolean }) => {
   return (
     <div className={styles["buttons-container"]}>
       {isLoading ? (
-        <Spinner color={"white"} size="xl" fontWeight={"bold"} />
+        <Spinner color={"white"} size="lg" fontWeight={"bold"} />
       ) : (
         <>
           <Link href="/signup">

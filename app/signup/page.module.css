@@ -6,12 +6,12 @@
 
 @media (min-width: 768px) {
   .signupPage {
-    padding-top: 238px;
+    padding-block: 200px;
   }
 }
 
 @media (min-width: 1640px) {
   .signupPage {
-    padding-top: 333px;
+    padding-block: 200px;
   }
 }

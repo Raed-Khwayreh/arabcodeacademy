@@ -1,5 +1,5 @@
 .fieldContainer {
-  width: 250px;
+  width: 100%;
   height: 79px;
   display: flex;
   flex-direction: column;
@@ -110,7 +110,7 @@
 }
 
 .errorText {
-  color: #DB4A39;
+  color: #db4a39;
   font-size: 14px;
   line-height: 17px;
   font-weight: 400;
@@ -124,7 +124,7 @@
 }
 
 .errorInput {
-  border-color: #DB4A39;
+  border-color: #db4a39;
 }
 
 .selectInput select.errorInput {
@@ -133,7 +133,7 @@
 
 @media (min-width: 768px) {
   .fieldContainer {
-    width: 744px;
+    width: 100%;
     height: 96px;
     display: flex;
     flex-direction: column;
@@ -182,7 +182,7 @@
 
 @media (min-width: 1640px) {
   .fieldContainer {
-    width: 744px;
+    width: 100%;
     height: 96px;
     display: flex;
     flex-direction: column;

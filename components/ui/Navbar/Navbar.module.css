@@ -76,6 +76,10 @@
   position: relative;
 }
 
+.burger-menu button {
+  cursor: pointer;
+}
+
 .image-contanier {
   position: relative;
   display: flex;
@@ -154,6 +158,7 @@
     align-items: center;
     gap: 12px;
   }
+
   .image {
     width: 155.48px;
     height: 30px;

@@ -15,38 +15,36 @@ const SubMenu: React.FC<SubMenuProps> = ({
   handleOnClick,
 }) => {
   return (
-    <div>
-      <ul className={isResourcesOpen ? styles.subMenuOpen : styles.subMenu}>
-        <li
-          className={`${styles.menuItem}  ${
-            isResourcesOpen ? styles.pressed : styles.notpressed
-          }`}
-          onClick={toggleResources}
-        >
-          <div className={styles.meanuHeader}>
-            <span className={styles.menuHeader}>المصادر</span>
-            <ArrowDown
-              color={isResourcesOpen ? "white" : "var(--primary-color)"}
-            />
-          </div>
-        </li>
-        {isResourcesOpen && (
-          <ul>
-            {subMenuList.map((e, i) => {
-              return (
-                <li
-                  onClick={handleOnClick}
-                  key={i}
-                  className={styles.subMenuItem}
-                >
-                  <Link href={e.href}>{e.title}</Link>
-                </li>
-              );
-            })}
-          </ul>
-        )}
-      </ul>
-    </div>
+    <ul className={isResourcesOpen ? styles.l : styles.subMenu}>
+      <li
+        className={`${styles.menuItem}  ${
+          isResourcesOpen ? styles.pressed : styles.notpressed
+        }`}
+        onClick={toggleResources}
+      >
+        <div className={styles.meanuHeader}>
+          <span className={styles.menuHeader}>المصادر</span>
+          <ArrowDown
+            color={isResourcesOpen ? "white" : "var(--primary-color)"}
+          />
+        </div>
+      </li>
+      {isResourcesOpen && (
+        <ul>
+          {subMenuList.map((e, i) => {
+            return (
+              <li
+                onClick={handleOnClick}
+                key={i}
+                className={styles.subMenuItem}
+              >
+                <Link href={e.href}>{e.title}</Link>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </ul>
   );
 };
 

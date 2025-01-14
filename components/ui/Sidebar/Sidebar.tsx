@@ -34,7 +34,6 @@ const Sidebar: FC<SidebarProps> = ({ isLoggedIn, onLogin, handleOnClick }) => {
             toggleResources={toggleResources}
           />
         </li>
-
         <li onClick={handleOnClick} className={styles.menuItem}>
           التواصل
         </li>
@@ -46,12 +45,12 @@ const Sidebar: FC<SidebarProps> = ({ isLoggedIn, onLogin, handleOnClick }) => {
               </Link>
               <SignInIcon className={styles.icon} />
             </li>
-            <li className={styles.menuItem}>
-              <Link href="/signup">
+            <Link href="/signup">
+              <li className={styles.menuItem}>
                 <span>إنشاء حساب</span>
                 <CreateAccountIcon className={styles.icon} />
-              </Link>
-            </li>
+              </li>
+            </Link>
           </>
         )}
       </ul>

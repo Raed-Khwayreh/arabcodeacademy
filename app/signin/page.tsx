@@ -12,10 +12,8 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import Image from "next/image";
 import LogOutIcon from "@/public/icons/LoginIcon";
-import largeImage from "@/public/images/signin/loginLarge.png";
-import smallImage from "@/public/images/signin/loginSmall.png";
-import mediumImage from "@/public/images/signin/loginMeduim.png";
 import { ProfileCircleIcon } from "@/public/icons";
+import useScreenSize from "@/utils/useScreenSize";
 
 interface FormData {
   email: string;
@@ -42,27 +40,8 @@ const Signin = () => {
   });
 
   const [credentialError, setCredentialError] = useState("");
-  const [currentImage, setCurrentImage] = useState(smallImage);
   const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      if (width >= 1024) {
-        setCurrentImage(largeImage);
-      } else if (width >= 768) {
-        setCurrentImage(mediumImage);
-      } else {
-        setCurrentImage(smallImage);
-      }
-    };
-
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const screenSize = useScreenSize();
 
   useEffect(() => {
     const accessToken = Cookies.get("accessToken");
@@ -157,70 +136,60 @@ const Signin = () => {
   return (
     <div className={styles.loginContainer}>
       <form className={styles.formContainer} onSubmit={handleSubmit}>
-        <div className={styles.imageContainer}>
-          <Image
-            src={currentImage}
-            alt="Login"
-            fill
-            objectFit="cover"
-            className={styles.image}
-            priority
-          />
-        </div>
+        <Image
+          src={"/images/signin/loginImage.webp"}
+          alt="Login"
+          width={683}
+          height={718}
+          className={styles.image}
+          priority
+        />
         <div className={styles.formContent}>
           <div className={styles.felidsContainer}>
-            <FormField
-              label="اسم المستخدم أو البريد الإلكتروني"
-              placeholder=" أدخل بريدك الإلكتروني أو اسم المستخدم"
-              icon={<EnvelopeIcon />}
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              error={errors.email}
-              labelAlign="center"
-            />
-
-            <FormField
-              label="كلمة المرور"
-              placeholder="أدخل كلمة المرور"
-              icon={<LockIcon />}
-              name="password"
-              type="password"
-              value={formData.password}
-              onChange={handleChange}
-              error={errors.password || credentialError}
-              labelAlign="center"
-            />
-            <div style={{ position: "relative", width: "100%" }}>
-              {errors.submit && (
-                <div className={styles.errorMessage}>{errors.submit}</div>
-              )}
+            <p className={styles["title"]}>تسجيل الدخول</p>
+            <div className={styles["inputs"]}>
+              <FormField
+                label="اسم المستخدم أو البريد الإلكتروني"
+                placeholder=" أدخل بريدك الإلكتروني أو اسم المستخدم"
+                icon={<EnvelopeIcon />}
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                error={errors.email}
+                labelAlign="center"
+              />
+              <FormField
+                label="كلمة المرور"
+                placeholder="أدخل كلمة المرور"
+                icon={<LockIcon />}
+                name="password"
+                type="password"
+                value={formData.password}
+                onChange={handleChange}
+                error={errors.password || credentialError}
+                labelAlign="center"
+              />
+              <div style={{ position: "relative", width: "100%" }}>
+                {errors.submit && (
+                  <div className={styles.errorMessage}>{errors.submit}</div>
+                )}
+              </div>
             </div>
-          </div>
-
-          <div className={styles.optionsContainer}>
-            <label className={styles.checkboxLabel}>
-              البقاء متصلا
-              <input type="checkbox" />
-              <span className={styles.checkmark}></span>
-            </label>
-            <a href="#" className={styles.forgotPassword}>
-              نسيت كلمة المرور؟
-            </a>
+            <div className={styles.optionsContainer}>
+              <a href="#" className={styles.forgotPassword}>
+                نسيت كلمة المرور؟
+              </a>
+              <label className={styles.checkboxLabel}>
+                البقاء متصلا
+                <input type="checkbox" />
+                <span className={styles.checkmark}></span>
+              </label>
+            </div>
           </div>
 
           <div className={styles.buttonContainer}>
             <ACAButton
-              text="تسجيل الدخول"
-              variant="teal"
-              size="medium"
-              type="submit"
-              loading={isLoading}
-              disabled={isLoading}
-              icon={<LogOutIcon />}
-            />
-            <ACAButton
-              size="medium"
+              size={screenSize > 768 ? "medium" : "large"}
               text="إنشاء حساب جديد"
               variant="tomato"
               type="button"
@@ -228,10 +197,17 @@ const Signin = () => {
               disabled={isLoading}
               icon={<ProfileCircleIcon />}
             />
+            <ACAButton
+              text="تسجيل الدخول"
+              variant="teal"
+              size={screenSize > 768 ? "medium" : "large"}
+              type="submit"
+              loading={isLoading}
+              disabled={isLoading}
+              icon={<LogOutIcon />}
+            />
           </div>
-
           <div className={styles.divider}>يمكنك تسجيل الدخول باستخدام</div>
-
           <div className={styles.socialContainer}>
             <SocialButton
               icon={<GoogleIcon />}

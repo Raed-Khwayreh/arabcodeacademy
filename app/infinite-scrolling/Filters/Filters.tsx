@@ -1,7 +1,7 @@
-import FavoriteButton from "@/app/ai-tools/FavoriteButton/FavoriteButton";
 import { SearchBar } from "@/components/ui";
 import React from "react";
 import styles from "../InfiniteScrolling.module.css";
+import { FavoriteButton } from "@/app/ai-tools/components";
 
 interface FiltersProps {
   isFetching: boolean;

@@ -13,6 +13,9 @@ const SearchIcon: React.FC<SVGProps> = ({
       y="0px"
       width={width}
       height={height}
+      style={{
+        transition: " 0.5s",
+      }}
       viewBox="0,0,256,256"
     >
       <g

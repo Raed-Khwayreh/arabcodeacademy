@@ -9,7 +9,7 @@ import { AIToolsCardProps } from "@/types/AIToolCardProps";
 import Favorite from "../Favorite/Favorite";
 export interface Props {
   cardData: AIToolsCardProps;
-  handleOnPressFavoriteCard: (n: number) => void;
+  handleOnPressFavoriteCard?: (n: number) => void;
   isFavoritesPressed: boolean;
 }
 
@@ -19,9 +19,11 @@ export default function AIToolCard({
   handleOnPressFavoriteCard,
 }: Props) {
   const handleOnPressFavorite = (id: number) => {
-    handleOnPressFavoriteCard(id);
-    if (!fadeOut && isFavoritesPressed) {
-      setFadeOut(true);
+    if (handleOnPressFavoriteCard) {
+      handleOnPressFavoriteCard(id);
+      if (!fadeOut && isFavoritesPressed) {
+        setFadeOut(true);
+      }
     }
   };
 

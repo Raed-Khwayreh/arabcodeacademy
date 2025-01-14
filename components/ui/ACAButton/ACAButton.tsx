@@ -34,7 +34,7 @@ const ACAButton: React.FC<Props> = ({
       style={{ boxShadow }}
       onClick={onClick}
       disabled={disabled || loading}
-      type="submit"
+      type={type}
     >
       {loading ? "جاري التحميل..." : text}
       {!loading && <span className={styles.icon}>{icon}</span>}

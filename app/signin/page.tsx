@@ -14,7 +14,6 @@ import Image from "next/image";
 import LogOutIcon from "@/public/icons/LoginIcon";
 import { ProfileCircleIcon } from "@/public/icons";
 import useScreenSize from "@/utils/useScreenSize";
-import { Spinner } from "@chakra-ui/react";
 
 interface FormData {
   email: string;

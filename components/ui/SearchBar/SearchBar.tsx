@@ -29,7 +29,6 @@ const SearchBar = ({
   const handleOnPressSearch = () => {
     if (handleOnSearch !== undefined) {
       handleOnSearch(text);
-      setText("");
     }
   };
 

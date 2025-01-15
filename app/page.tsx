@@ -1,14 +1,23 @@
+import { ACALoading } from "@/components/ui";
 import {
   Courses,
   Feedback,
   Hero,
   InteractiveTools,
-  LearningPath,
   QuizzSection,
   ResourcesCardSection,
   VideoSection,
 } from "@/sections/Home";
+import dynamic from "next/dynamic";
 import React from "react";
+
+const LearningPathSection = dynamic(
+  () => import("@/sections/Home/LearningPath/LearningPath"),
+  {
+    loading: () => <ACALoading />,
+    ssr: false,
+  }
+);
 
 const page = () => {
   return (
@@ -18,9 +27,9 @@ const page = () => {
       <VideoSection />
       <Courses />
       <QuizzSection />
-      <LearningPath />
+      <LearningPathSection />
       <InteractiveTools />
-      <Feedback/>
+      <Feedback />
     </>
   );
 };

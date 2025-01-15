@@ -115,7 +115,7 @@ const AITools = () => {
       <div className={styles["search-container"]}>
         <SearchBar
           isDisabled={isLoading}
-          placeholder="....chatgpt"
+          placeholder={searchValue !== "" ? searchValue : "....chatgpt"}
           handleOnSearch={handleOnSearch}
         />
         {!error && (

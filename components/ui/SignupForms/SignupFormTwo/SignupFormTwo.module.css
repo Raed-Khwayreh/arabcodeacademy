@@ -30,6 +30,7 @@
 
 .fieldContainer {
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 53px;
   margin-bottom: 63px;

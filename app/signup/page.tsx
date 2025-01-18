@@ -19,7 +19,7 @@ interface FormData {
 const Signup: React.FC = () => {
   const router = useRouter();
   const [currentForm, setCurrentForm] = useState(1);
-  const [formData, setFormData] = useState<FormData>({});
+  const [formData, setFormData] = useState<FormData>( {});
 
   /**
    * Moves to the next form step while merging the data.
@@ -45,7 +45,7 @@ const Signup: React.FC = () => {
     try {
       const loginData = {
         email: userData.email,
-        password: userData.password,
+        password: btoa(userData.password || ''),
         username: userData.email,
       };
 

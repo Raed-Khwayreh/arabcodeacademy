@@ -33,9 +33,10 @@
 }
 
 .error-container {
-  padding-right: 110px;
   margin-block: 10px;
   color: #db4a39;
+  text-align: right;
+  padding-right: 110px;
 }
 
 .inputs {
@@ -177,6 +178,11 @@
   .image {
     max-width: 667px;
   }
+
+  .error-container {
+    padding-right: 110px;
+  
+  }
 }
 
 @media (max-width: 768px) {
@@ -241,5 +247,10 @@
     display: flex;
     justify-content: center;
     gap: 20px;
+  }
+  .error-container {
+    text-align: center;
+    padding-right: 0;
+    padding-inline: 15px;
   }
 }

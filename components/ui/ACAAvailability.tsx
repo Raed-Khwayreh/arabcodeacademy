@@ -17,7 +17,12 @@ const ACAAvailability: React.FC<ACAAvailabilityProps> = ({
         width={170}
         height={130}
       />
-      <Text color="#783ba2" fontSize="xl" fontWeight="bold" textAlign="center">
+      <Text
+        color="var(--primary-color)"
+        fontSize="xl"
+        fontWeight="bold"
+        textAlign="center"
+      >
         {message}
       </Text>
     </VStack>

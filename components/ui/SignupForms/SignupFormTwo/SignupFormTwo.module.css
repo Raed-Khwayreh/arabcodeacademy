@@ -16,7 +16,7 @@
   font-weight: 700;
   font-size: 18px;
   line-height: 21px;
-  color: #783ba2;
+  color: var(--primary-color);
   width: 100%;
 }
 
@@ -51,7 +51,7 @@
   margin-bottom: 21px;
   cursor: pointer;
   font-size: 14px;
-  color: #783ba2;
+  color: var(--primary-color);
   font-weight: 400;
   line-height: 17px;
 }
@@ -71,7 +71,7 @@
   margin: 4px;
   width: 17px;
   background-color: #fff;
-  border: 1px solid #783ba2;
+  border: 1px solid var(--primary-color);
   border-radius: 2px;
   box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
 }
@@ -81,7 +81,7 @@
 }
 
 .checkboxLabel input:checked ~ .checkmark {
-  background-color: #783ba2;
+  background-color: var(--primary-color);
 }
 
 .checkmark:after {
@@ -157,7 +157,7 @@
   font-weight: 400px;
   size: 16px;
   line-height: 19px;
-  color: #783ba2;
+  color: var(--primary-color);
 }
 
 .socialContainer {
@@ -181,7 +181,7 @@
     font-weight: 700;
     font-size: 25px;
     line-height: 30px;
-    color: #783ba2;
+    color: var(--primary-color);
     width: 100%;
     margin-bottom: 68px;
     text-align: right;
@@ -200,7 +200,7 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 21px;
-    color: #783ba2;
+    color: var(--primary-color);
     width: 100%;
   }
 
@@ -248,7 +248,7 @@
     font-weight: 400px;
     size: 18px;
     line-height: 21px;
-    color: #783ba2;
+    color: var(--primary-color);
   }
 
   .socialContainer {
@@ -266,7 +266,7 @@
     margin-bottom: 21px;
     cursor: pointer;
     font-size: 19px;
-    color: #783ba2;
+    color: var(--primary-color);
     font-weight: 400;
     line-height: 23px;
   }
@@ -313,7 +313,7 @@
     font-weight: 700;
     font-size: 23px;
     line-height: 27px;
-    color: #783ba2;
+    color: var(--primary-color);
     width: 100%;
     margin-bottom: 75px;
     text-align: right;
@@ -332,7 +332,7 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 21px;
-    color: #783ba2;
+    color: var(--primary-color);
     width: 100%;
   }
 
@@ -374,7 +374,7 @@
     font-weight: 400px;
     size: 18px;
     line-height: 21px;
-    color: #783ba2;
+    color: var(--primary-color);
   }
 
   .socialContainer {

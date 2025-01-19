@@ -7,7 +7,7 @@ interface ACALoadingProps {
 }
 
 const ACALoading = ({
-  color = "#783ba2",
+  color = "var(--primary-color)",
   height = "30vh",
 }: ACALoadingProps) => {
   return (

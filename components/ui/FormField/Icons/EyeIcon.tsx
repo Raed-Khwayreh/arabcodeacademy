@@ -8,7 +8,7 @@ const EyeIcon = () => {
       viewBox="0 0 20 20"
       width="20"
       height="20"
-      fill="#783ba2"
+      fill="var(--primary-color)"
     >
       <style>{".a{fill:none}"}</style>
       <path fillRule="evenodd" className="a" d="m20 0v20h-20v-20z" />

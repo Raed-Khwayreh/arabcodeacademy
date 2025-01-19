@@ -63,7 +63,7 @@
   display: flex;
   position: relative;
   cursor: pointer;
-  color: #783ba2;
+  color: var(--primary-color);
   font-weight: 500;
   line-height: 18px;
   align-items: center;
@@ -84,7 +84,7 @@
   margin: 4px;
   width: 17px;
   background-color: #fff;
-  border: 1px solid #783ba2;
+  border: 1px solid var(--primary-color);
   border-radius: 2px;
   box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
 }
@@ -94,7 +94,7 @@
 }
 
 .checkboxLabel input:checked ~ .checkmark {
-  background-color: #783ba2;
+  background-color: var(--primary-color);
 }
 
 .checkmark:after {
@@ -126,7 +126,7 @@
 .divider {
   margin-block: 30px;
   text-align: center;
-  color: #783ba2;
+  color: var(--primary-color);
   font-size: 18px;
   font-weight: 500;
   line-height: 22px;

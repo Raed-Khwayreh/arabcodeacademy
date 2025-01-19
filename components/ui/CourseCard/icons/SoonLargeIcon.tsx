@@ -22,8 +22,8 @@ const SoonLargeIcon = () => {
         </filter>
       </defs>
       <style>
-        {`.s0 { fill: #00be98 } 
-		.s1 { filter: url(#f1);fill: #00be98 } 
+        {`.s0 { fill: var(--teal-color) } 
+		.s1 { filter: url(#f1);fill: var(--teal-color) } 
 		.s2 { fill: #ffffff }`}
       </style>
       <g>

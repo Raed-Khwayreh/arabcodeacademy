@@ -8,14 +8,14 @@ const NavbarList = () => {
   const [showResoursesList, setShowResoursesList] = useState(false);
 
   return (
-    <ul className={styles.links}>
-      <li>المسارات التعليمية</li>
-      <li>التواصل </li>
+    <div className={styles.links}>
+      <div>المسارات التعليمية</div>
+      <div>التواصل </div>
       <div
         onClick={() => setShowResoursesList((e) => !e)}
         className={styles["resource-list"]}
       >
-        <li>المصادر</li>
+        <div>المصادر</div>
         {showResoursesList && (
           <ul className={styles["resouces-menu"]}>
             {subMenuList.map((e, i) => {
@@ -34,7 +34,7 @@ const NavbarList = () => {
           <ArrowDown />
         </div>
       </div>
-    </ul>
+    </div>
   );
 };
 

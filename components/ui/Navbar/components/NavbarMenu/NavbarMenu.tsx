@@ -29,7 +29,7 @@ const NavbarMenu = ({
           </div>
         </div>
       )}
-      <button onClick={toggleSidebar}>
+      <button title="burger-menu" onClick={toggleSidebar}>
         <BurgerMenu />
       </button>
     </div>

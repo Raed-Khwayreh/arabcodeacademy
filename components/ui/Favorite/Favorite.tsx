@@ -33,12 +33,12 @@ const Favorite: React.FC<Props> = ({
       <FavIcon
         width={26}
         height={28}
-        color={"#783ba2"}
+        color={"var(--primary-color)"}
         fillColor={
           isFav
-            ? "#783ba2"
+            ? "var(--primary-color)"
             : isFavorite
-            ? "#783ba2"
+            ? "var(--primary-color)"
             : isHovered
             ? "#DEDEDE"
             : "none"

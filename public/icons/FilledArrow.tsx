@@ -2,7 +2,7 @@ import { SVGProps } from "@/types/SVGProps";
 import React from "react";
 
 const FilledArrow = ({
-  color = "#783BA2",
+  color = "var(--primary-color)",
   height = 37,
   width = 32,
 }: SVGProps) => {

@@ -50,7 +50,11 @@ const ProgressPagination = ({
         <FilledArrow
           width={screenSize <= 576 ? 19 : 46}
           height={screenSize <= 576 ? 19 : 44}
-          color={currentPage === 1 || pageNotFound ? "#793ba28a" : "#783BA2"}
+          color={
+            currentPage === 1 || pageNotFound
+              ? "#793ba28a"
+              : "var(--primary-color)"
+          }
         />
       </button>
       <div className={styles.numbers}>
@@ -86,7 +90,9 @@ const ProgressPagination = ({
           width={screenSize <= 576 ? 19 : 46}
           height={screenSize <= 576 ? 19 : 44}
           color={
-            currentPage === totalPages || pageNotFound ? "#793ba28a" : "#783BA2"
+            currentPage === totalPages || pageNotFound
+              ? "#793ba28a"
+              : "var(--primary-color)"
           }
         />
       </button>

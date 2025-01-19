@@ -28,12 +28,12 @@ const FavoriteButton = ({
       <FavIcon
         width={26}
         height={28}
-        color={isDisabled ? "#9e9e9e" : "#783ba2"}
+        color={isDisabled ? "#9e9e9e" : "var(--primary-color)"}
         fillColor={
           isDisabled
             ? "white"
             : isFavoritePressed
-            ? "#783ba2"
+            ? "var(--primary-color)"
             : isHovered
             ? "#DEDEDE"
             : "none"

@@ -12,7 +12,7 @@
   font-weight: 700;
   font-size: 18px;
   line-height: 21px;
-  color: #783ba2;
+  color: var(--primary-color);
   width: 265px;
   margin-bottom: 35px;
 }
@@ -51,7 +51,7 @@
   font-weight: 400px;
   size: 16px;
   line-height: 19px;
-  color: #783ba2;
+  color: var(--primary-color);
 }
 
 .socialContainer {
@@ -75,7 +75,7 @@
     font-weight: 700;
     font-size: 25px;
     line-height: 30px;
-    color: #783ba2;
+    color: var(--primary-color);
     width: 100%;
     margin-bottom: 68px;
     text-align: right;
@@ -111,7 +111,7 @@
     font-weight: 400px;
     size: 18px;
     line-height: 21px;
-    color: #783ba2;
+    color: var(--primary-color);
   }
 
   .socialContainer {
@@ -136,7 +136,7 @@
     font-weight: 700;
     font-size: 23px;
     line-height: 27px;
-    color: #783ba2;
+    color: var(--primary-color);
     width: 100%;
     margin-bottom: 75px;
     text-align: right;
@@ -172,7 +172,7 @@
     font-weight: 400px;
     size: 18px;
     line-height: 21px;
-    color: #783ba2;
+    color: var(--primary-color);
   }
 
   .socialContainer {

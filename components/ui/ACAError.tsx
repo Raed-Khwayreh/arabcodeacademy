@@ -17,7 +17,7 @@ const ACAError: React.FC<ACAErrorProps> = ({ errorMessage }) => {
         height={130}
       />
       <Text
-        color="#783ba2"
+        color="var(--primary-color)"
         fontSize="2xl"
         fontWeight="500"
         height={32}

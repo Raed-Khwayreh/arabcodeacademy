@@ -10,7 +10,7 @@
     "fake-server": "json-server --watch db.json --port 3001"
   },
   "dependencies": {
-    "@chakra-ui/react": "^3.0.2",
+    "@chakra-ui/react": "^3.22.0",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@svgr/webpack": "^8.1.0",

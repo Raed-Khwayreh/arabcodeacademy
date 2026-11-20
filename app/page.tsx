@@ -1,4 +1,3 @@
-import { ACALoading } from "@/components/ui";
 import {
   Courses,
   Feedback,
@@ -8,16 +7,8 @@ import {
   ResourcesCardSection,
   VideoSection,
 } from "@/sections/Home";
-import dynamic from "next/dynamic";
+import LearningPathSection from "@/sections/Home/LearningPath/LearningPathLazy";
 import React from "react";
-
-const LearningPathSection = dynamic(
-  () => import("@/sections/Home/LearningPath/LearningPath"),
-  {
-    loading: () => <ACALoading />,
-    ssr: false,
-  }
-);
 
 const page = () => {
   return (

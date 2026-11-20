@@ -12,7 +12,7 @@ interface DecodedToken {
 
 export async function GET() {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const token = cookieStore.get('accessToken');
 
     if (!token) {

@@ -4,7 +4,7 @@ import { ACAError, ACALoading, SearchBar, UnderlineText } from "@/components/ui"
 
 import { ErrorMessage } from "@/types/ErrorMessage";
 import { CourseProps } from "@/types/CourseProps";
-import dynamic from "next/dynamic";
+import CoursesListLazyComponent from "./CoursesList/CoursesListLazy";
 
 const fetchCourses = async () => {
   try {
@@ -15,14 +15,6 @@ const fetchCourses = async () => {
     throw new Error(ErrorMessage.CONNECTION_FAILD);
   }
 };
-
-const CoursesListLazyComponent = dynamic(
-  () => import("./CoursesList/CoursesList"),
-  {
-    loading: () => <ACALoading />,
-    ssr: false,
-  }
-);
 
 const Courses = async () => {
   let courses;
